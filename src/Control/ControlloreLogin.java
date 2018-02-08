@@ -1,6 +1,7 @@
 package Control;
 
 import Bean.BeanUtente;
+import DAO.DAOLogin;
 import Entity.Utente;
 
 import java.util.ArrayList;
@@ -20,7 +21,9 @@ public class ControlloreLogin {
     }
 
 
-    /*public Utente verifyLoginFromBean(BeanUtente beanUtente) {
-        //ArrayList<String> risultato= DAO.method(beanUtente.get....)
-    }*/
+    public Utente verifyLoginFromBean(BeanUtente beanUtente) {
+        DAOLogin d = DAOLogin.getInstance();
+        ArrayList<String> risultato= d.findUtente(beanUtente.getUsername());
+        return null;
+    }
 }
