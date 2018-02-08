@@ -21,7 +21,7 @@
     <title>ProjectSF</title>
 </head>
 <body>
-<nav style="background: #5a4e8e">
+<nav style="background: #0f90cc">
 
     <div class="nav-wrapper">
         <a href="#" class="brand-logo"> Welcome to ProjectSF </a>

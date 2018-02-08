@@ -8,11 +8,11 @@
 <jsp:include page="Include/header.jsp"/>
 
 
-<div class="container" style="height: 90%;width: 40%;margin-right: 58%">
+<div class="container" style="height: 10%;width: 10%;margin-left: 70%">
     <form>
         <div class="row">
-            <div class="col s12 m6" style="width: 60%;height: 60%">
-                <div class="card-panel" style="margin-top: 10%">
+            <div class="col s12 m6" style="width: 200%;height: 20%; margin-top: 10%">
+                <div class="card-panel">
                     <!--immagine-->
                     <img src="Images/img_logoLogin.jpg" style="width: 55%;height: 65%;margin-left: 25%" alt="Avatar" class="avatar">
                     <br>

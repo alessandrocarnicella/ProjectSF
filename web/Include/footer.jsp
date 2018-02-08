@@ -7,7 +7,7 @@
 --%>
 
 
-<footer class="page-footer" style="background:  #5a4e8e">
+<footer class="page-footer" style="background:  #0f90cc">
     <div class="container" >
         <div class="row">
             <div class="col l6 s12">
