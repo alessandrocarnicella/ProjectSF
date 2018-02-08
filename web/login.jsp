@@ -11,7 +11,7 @@
 <div class="container" style="height: 90%;width: 40%;margin-right: 58%">
     <form>
         <div class="row">
-            <div class="col s12 m6" style="width: 90%;height: 60%">
+            <div class="col s12 m6" style="width: 60%;height: 60%">
                 <div class="card-panel" style="margin-top: 10%">
                     <!--immagine-->
                     <img src="Images/img_avatarLogin.png" style="width: 45%;height: 55%;margin-left: 25%" alt="Avatar" class="avatar">
@@ -34,7 +34,6 @@
     </form>
 
 </div>
-
 
 
 <jsp:include page="Include/footer.jsp"/>

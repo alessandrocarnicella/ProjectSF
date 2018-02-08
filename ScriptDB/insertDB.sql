@@ -40,3 +40,9 @@ INSERT INTO "Strumento"(nome, "nomeSatellite")
   VALUES ('Spitzer-IRAC','Spitzer');
 INSERT INTO "Strumento"(nome, "nomeSatellite")
   VALUES ('Spitzer-MIPS','Spitzer');
+
+
+INSERT INTO "Utente"(nome, cognome, username, password, email, "tipoUtente")
+  VALUES ('Franco','Gialli','FrancoG94','francobasi94','FrancoG94@gmail.com','utenteRegitrato');
+INSERT INTO "Utente"(nome, cognome, username, password, email, "tipoUtente")
+  VALUES ('Marco','Rossi','MarcoR94','marcobasi94','MarcoR94@gmail.com','Amministartore');

@@ -7,7 +7,7 @@
 --%>
 
 
-<footer class="page-footer" style="background:  #2096ca">
+<footer class="page-footer" style="background:  #5a4e8e">
     <div class="container" >
         <div class="row">
             <div class="col l6 s12">
@@ -28,7 +28,7 @@
     <div class="footer-copyright">
         <div class="container">
             © 2018 Copyright ProjectSF
-            <a class="grey-text text-lighten-4 right" href="#!"> Universita' di Roma Tor Vergata</a>
+            <a class="grey-text text-lighten-4 right" href="#!"> University of Roma Tor Vergata</a>
         </div>
     </div>
 </footer>
