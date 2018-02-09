@@ -1,16 +1,16 @@
-INSERT INTO "Agenzia"(nome)
+INSERT INTO agenzia(nome)
   VALUES
     ('ESA'),
     ('NASA');
 
 
-INSERT INTO "Satellite"(nome,"dataInizio","dataFine","nomeAgenzia")
+INSERT INTO satellite(nome,datainizio,datafine,nomeagenzia)
   VALUES
     ('Herschel','2009-07-10','2013-06-17','ESA'),
     ('Spitzer','2003-12-18','2009-05-15','NASA');
 
 
-INSERT INTO "Banda"(lunghezza)
+INSERT INTO banda(lunghezza)
   VALUES
   (70),
   (160),
@@ -24,7 +24,7 @@ INSERT INTO "Banda"(lunghezza)
   (24);
 
 
-INSERT INTO "Strumento"(nome, "nomeSatellite")
+INSERT INTO strumento(nome, nomesatellite)
   VALUES
     ('Herschel-PACS','Herschel'),
     ('Herschel-SPIRE','Herschel'),
@@ -32,7 +32,9 @@ INSERT INTO "Strumento"(nome, "nomeSatellite")
     ('Spitzer-MIPS','Spitzer');
 
 
-INSERT INTO "Utente"(nome, cognome, username, password, email, "tipoUtente")
+INSERT INTO utente(nome, cognome, username, password, email, tipoUtente)
   VALUES
     ('Franco','Gialli','FrancoG94','francobasi94','FrancoG94@gmail.com','utenteRegitrato'),
-    ('Marco','Rossi','MarcoR94','marcobasi94','MarcoR94@gmail.com','Amministartore');
+    ('Marco','Rossi','MarcoR94','marcobasi94','MarcoR94@gmail.com','Amministartore'),
+    ('user','user','user','user','@email','utenteRegistrato'),
+    ('usera','usera','usera','usera','@emaila','Amministratore');

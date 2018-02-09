@@ -2,50 +2,75 @@ package DAO;
 
 import Entity.Utente;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
  * Created by alessandro on 08/02/18.
  */
 public class DAOLogin {
-    private DataSource dataSource;
+
+    private DataSource DataSource;
     private static DAOLogin instance;
-    private ResultSet res;
-    private Connection con;
+
 
     protected DAOLogin() {
-        this.dataSource = new DataSource();
+        this.DataSource = new DataSource();
     }
 
+    //singleton
     public synchronized static DAOLogin getInstance() {
         if (DAOLogin.instance == null)
             DAOLogin.instance = new DAOLogin();
         return instance;
     }
 
-    public ArrayList<String> findUtente(String userName) {
-        Statement stmt = null;
+    public ArrayList<String> findUtente(String userName) throws SQLException {
+
         Connection conn = null;
-
-
+        PreparedStatement stmt = null;
+        ArrayList<String> val = new ArrayList<String>();
+        ResultSet rs = null;
         try {
+            conn = this.DataSource.getConnection();
+
+            String query = "select * from utente where username=?";
+            stmt = conn.prepareStatement(query);
+            stmt.setString(1,userName);
+            rs = stmt.executeQuery();
+            /*
             stmt = conn.createStatement();
-            final String query = "SELECT * FROM Utente WHERE username=?";
-            ResultSet rs = stmt.executeQuery(query);
-
-            if (!rs.first()) {// rs not empty
+            String query = "SELECT * FROM Utente WHERE username=?";
+            rs = stmt.executeQuery(query);
+            */
+            if (rs.next()) {
+                val.add(rs.getString("nome"));
+                val.add(rs.getString("cognome"));
+                val.add(rs.getString("username"));
+                val.add(rs.getString("password"));
+                val.add(rs.getString("email"));
+                val.add(rs.getString("tipoUtente"));
+            }else {
                 return null;
-                //System.out.println("NOME O PASSW ERRATI");
             }
-
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        finally{
+            // release resources
+            if(rs != null){
+                rs.close();
+            }
+            // release resources
+            if(stmt != null){
+                stmt.close();
+            }
+            // close connection
+            if(conn  != null){
+                conn.close();
+            }
+        }
+        return val;
     }
 }
 

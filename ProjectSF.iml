@@ -19,5 +19,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="org.jboss.spec.javax.el:jboss-el-api_2.2_spec:1.0.1.Final" level="project" />
+    <orderEntry type="library" name="org.jboss.spec.javax.servlet.jsp:jboss-jsp-api_2.2_spec:1.0.1.Final" level="project" />
+    <orderEntry type="library" name="org.jboss.spec.javax.xml.soap:jboss-saaj-api_1.3_spec:1.0.1.Final" level="project" />
+    <orderEntry type="library" name="org.ow2.petals:petals-sl-postgresql-9.4-1201-jdbc4:1.1.0" level="project" />
   </component>
 </module>

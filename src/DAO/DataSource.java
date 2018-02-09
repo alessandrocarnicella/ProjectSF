@@ -12,7 +12,7 @@ import Util.ConfigFile;
 public class DataSource {
 
     private String dbURI = "jdbc:postgresql://localhost:5432/"+ConfigFile.DBName;
-    private String user = ConfigFile.DBName;
+    private String user = ConfigFile.DBUser;
     private String password = ConfigFile.DBPassword;
 
     public Connection getConnection() throws SQLException, ClassNotFoundException {
