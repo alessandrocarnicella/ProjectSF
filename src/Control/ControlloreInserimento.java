@@ -33,8 +33,15 @@ public class ControlloreInserimento {
     public boolean inserisciDatiCSV(String nome, String path) {
         if (nome.equals("stelle_Herschel.csv")) {
             return this.inserisciStelle(nome, path);
-        } else
+        } else if(nome.equals("contorni_filamenti_Herschel.csv")) {
+            return this.inserisciContornoFilamento(nome, path);
+        }
+        else
             return false;
+    }
+
+    private boolean inserisciContornoFilamento(String nome, String path) {
+
     }
 
     public boolean inserisciStelle(String nome, String path) {
@@ -47,7 +54,6 @@ public class ControlloreInserimento {
 
         try {
             br = new BufferedReader(new FileReader(path + "/" + nome));
-
             Stella stella = new Stella();
             while ((line = br.readLine()) != null) {
                 ArrayList<String> values =new ArrayList<>(Arrays.asList(line.split(split,-1)));
