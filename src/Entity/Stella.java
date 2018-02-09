@@ -13,6 +13,10 @@ public class Stella {
     private String tipoStella;
 
     //constructor
+    public Stella() {
+    }
+
+    //constructor
     public Stella(int idStella, String nomeStella, Double lonG, Double latG, Double valoreFlusso, String tipoStella) {
         this.idStella = idStella;
         this.nomeStella = nomeStella;
