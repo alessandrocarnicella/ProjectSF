@@ -9,28 +9,6 @@
 <jsp:useBean id="BeanUtente" scope="session" class="Bean.BeanUtente"/>
 <jsp:setProperty property="*" name="BeanUtente"/>
 
-<%if(request.getParameter("verify")!= null){
-    BeanUtente.setUsername(request.getParameter("username"));
-    BeanUtente.setPassword(request.getParameter("password"));
-    //esegui il metodo verifica per controllare se l'utente è già presente nel DB
-    Utente utente = BeanUtente.verifyLogin();
-    //se il consumatore è presente allora procedi alla pagina Home.jsp altrimenti rieffetua il Login
-    if (utente != null) { %>
-
-<jsp:forward page="Home.jsp"/>
-
-<%  }else {
-%>
-
-<tr>
-    <td colspan=2 align="center">
-        <b class="red-text">INSERIMENTO DEI CAMPI ERRRATO RIEFFETTUARE IL LOGIN</b><br>
-    </td>
-</tr>
-
-<% }
-
-    } %>
 
 <div class="container" style="height: 10%;width: 10%;margin-left: 70%">
     <form>
@@ -49,7 +27,23 @@
                     <label><b>Password</b></label>
                     <input type="password" placeholder="Enter Password" name="password" required>
                     <br>
+                    <%
+                        if(request.getParameter("verify")!= null){
+                            BeanUtente.setUsername(request.getParameter("username"));
+                            BeanUtente.setPassword(request.getParameter("password"));
+                            //eseguo il metodo verify per controllare se l'utente è già presente nel DB
+                            Utente utente = BeanUtente.verifyLogin();
+                            //se l'utente è presente, allora procedo alla pagina Home.jsp altrimenti rieffettuo il Login
+                            if (utente != null) { %>
+                    <jsp:forward page="Home.jsp"/>
+                    <% } else{ %>
+
+                    <b class="red-text"> Errore inserimento dati! </b>
                     <br>
+                    <br>
+
+                    <% }
+                    } %>
                     <!--bottone login-->
                     <button type="submit" name="verify" style="background-color: #4CAF50;height: 10%;width: 30%">Login</button>
                 </div>
@@ -58,6 +52,5 @@
     </form>
 
 </div>
-
 
 <jsp:include page="Include/footer.jsp"/>

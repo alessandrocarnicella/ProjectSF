@@ -1,7 +1,5 @@
 package DAO;
 
-import Entity.Utente;
-
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -31,6 +29,7 @@ public class DAOLogin {
         PreparedStatement stmt = null;
         ArrayList<String> val = new ArrayList<String>();
         ResultSet rs = null;
+
         try {
             conn = this.DataSource.getConnection();
 
@@ -38,11 +37,7 @@ public class DAOLogin {
             stmt = conn.prepareStatement(query);
             stmt.setString(1,userName);
             rs = stmt.executeQuery();
-            /*
-            stmt = conn.createStatement();
-            String query = "SELECT * FROM Utente WHERE username=?";
-            rs = stmt.executeQuery(query);
-            */
+
             if (rs.next()) {
                 val.add(rs.getString("nome"));
                 val.add(rs.getString("cognome"));
@@ -51,7 +46,7 @@ public class DAOLogin {
                 val.add(rs.getString("email"));
                 val.add(rs.getString("tipoUtente"));
             }else {
-                return null;
+               return null;
             }
         } catch (Exception e) {
             e.printStackTrace();

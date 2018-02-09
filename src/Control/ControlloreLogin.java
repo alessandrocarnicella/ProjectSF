@@ -26,7 +26,7 @@ public class ControlloreLogin {
         DAOLogin d = DAOLogin.getInstance();
         try {
             ArrayList<String> risultato= d.findUtente(beanUtente.getUsername());
-            if (risultato.size() != 0 ) {
+            if (risultato != null ) {
                 if(beanUtente.getPassword().equals(risultato.get(3))) {
                     Utente utente = new Utente(risultato.get(0), risultato.get(1), risultato.get(2), risultato.get(3), risultato.get(4), risultato.get(5));
                     return utente;

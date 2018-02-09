@@ -47,7 +47,7 @@ public class ControlloreInserimento {
 
         try {
             br = new BufferedReader(new FileReader(path + "/" + nome));
-            DAOS.openConnection();
+
             Stella stella = new Stella();
             while ((line = br.readLine()) != null) {
                 ArrayList<String> values =new ArrayList<>(Arrays.asList(line.split(split,-1)));
@@ -58,7 +58,7 @@ public class ControlloreInserimento {
                     stella.setValoreFlusso(Double.valueOf(values.get(4)));
                     stella.setTipoStella(values.get(5));
 
-                DAOS.insertStella(stella,true);
+                DAOS.insertStella(stella);
             }
 
 
