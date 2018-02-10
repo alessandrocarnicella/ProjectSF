@@ -1,7 +1,5 @@
 package DAO;
 
-import Bean.BeanUtente;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,48 +9,54 @@ import java.util.ArrayList;
 /**
  * Created by Manuel on 10/02/2018.
  */
-public class DAOUtente {
+public class DAOAgenzia {
 
     private DataSource DataSource;
-    private static DAOUtente instance;
+    private static DAOAgenzia instance;
 
 
-    protected DAOUtente() {
+    protected DAOAgenzia() {
         this.DataSource = new DataSource();
     }
 
     //singleton
-    public synchronized static DAOUtente getInstance() {
-        if (DAOUtente.instance == null)
-            DAOUtente.instance = new DAOUtente();
+    public synchronized static DAOAgenzia getInstance() {
+        if (DAOAgenzia.instance == null)
+            DAOAgenzia.instance = new DAOAgenzia();
         return instance;
     }
 
-
-    public boolean insertNewUtenteInDB(BeanUtente beanUtente) {
+    public ArrayList<String> selectAgenziaFromDB(){
 
         Connection conn = null;
         PreparedStatement stmt = null;
-
+        ArrayList<String> val = new ArrayList<String>();
+        ResultSet rs = null;
 
         try {
             conn = this.DataSource.getConnection();
-
-            String query = "INSERT INTO utente(nome, cognome, username, password, email, tipoutente) " +
-                    "VALUES (?,?,?,?,?,?)";
+            String query = "select * from agenzia";
             stmt = conn.prepareStatement(query);
-            stmt.setString(1, beanUtente.getNome());
-            stmt.setString(2, beanUtente.getCognome());
-            stmt.setString(3, beanUtente.getUsername());
-            stmt.setString(4, beanUtente.getPassword());
-            stmt.setString(5, beanUtente.getEmail());
-            stmt.setString(6, beanUtente.getTipoUtente());
-            stmt.executeUpdate();
+            rs = stmt.executeQuery();
+
+            if (rs.next()){
+                val.add(rs.getString(0));
+            }
+            else
+                return null;
+
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
-            return false;
-        } finally {
+        } finally{
+            // release resources
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
             // release resources
             if(stmt != null){
                 try {
@@ -71,8 +75,7 @@ public class DAOUtente {
             }
         }
 
-        return true;
-
+    return val;
 
     }
 }
