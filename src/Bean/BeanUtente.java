@@ -1,5 +1,6 @@
 package Bean;
 
+import Control.ControlloreInserimentoDati;
 import Control.ControlloreLogin;
 import Entity.Utente;
 
@@ -83,4 +84,16 @@ public class BeanUtente {
             return null;
 
     }
+
+    //method
+    public boolean insertNewUtente(){
+        boolean inserimento= ControlloreInserimentoDati.getInstance().insertNewUserFromBean(this);
+        if (inserimento==true){
+            return true;
+        }
+        else
+            return false;
+    }
+
+
 }
