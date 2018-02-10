@@ -14,6 +14,10 @@ public class Scheletro {
     private Double flussoMisurato;
 
     //constructor
+    public Scheletro() {
+    }
+
+    //constructor
     public Scheletro(int idFilamento, int idSegmento, char tipoRamo, Double lonG, Double latG, int nProg, Double flussoMisurato) {
         this.idFilamento = idFilamento;
         this.idSegmento = idSegmento;

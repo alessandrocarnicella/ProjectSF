@@ -9,6 +9,10 @@ public class Contorno {
     private Double latG;
 
     //constructor
+    public Contorno() {
+    }
+
+    //constructor
     public Contorno(int idFilamento, Double lonG, Double latG) {
         this.idFilamento = idFilamento;
         this.lonG = lonG;
