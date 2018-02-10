@@ -26,10 +26,10 @@ INSERT INTO banda(lunghezza)
 
 INSERT INTO strumento(nome, nomesatellite)
   VALUES
-    ('Herschel-PACS','Herschel'),
-    ('Herschel-SPIRE','Herschel'),
-    ('Spitzer-IRAC','Spitzer'),
-    ('Spitzer-MIPS','Spitzer');
+    ('PACS','Herschel'),
+    ('SPIRE','Herschel'),
+    ('IRAC','Spitzer'),
+    ('MIPS','Spitzer');
 
 
 INSERT INTO utente(nome, cognome, username, password, email, tipoUtente)
@@ -38,3 +38,15 @@ INSERT INTO utente(nome, cognome, username, password, email, tipoUtente)
     ('Marco','Rossi','MarcoR94','marcobasi94','MarcoR94@gmail.com','Amministartore'),
     ('user','user','user','user','@email','utenteRegistrato'),
     ('usera','usera','usera','usera','@emaila','Amministratore');
+
+
+DELETE  FROM stella;
+
+DELETE FROM punto;
+
+DELETE FROM contorno;
+
+DELETE FROM filamento;
+
+DELETE FROM scheletro;
+

@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class DAOFilamento {
     private DataSource DataSource;
     private static DAOFilamento instance;
-
+    private Connection conn = null;
 
     protected DAOFilamento() {
         this.DataSource = new DataSource();
@@ -27,24 +27,54 @@ public class DAOFilamento {
         return instance;
     }
 
-    public void insertFilamento(Filamento filamento) {
-
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
+    public void openConnection() {
         try {
             conn = this.DataSource.getConnection();
-
-
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
 
+    public void closeConnection() {
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public void insertFilamento(Filamento filamento) {
+
+        PreparedStatement stmt = null;
+
+        String insertQuery = "INSERT INTO filamento(idfilamento,nome,flussototale,densitamedia,temperaturamedia,ellitticita,contrasto,nomesatellite,nomestrumento) VALUES (?,?,?,?,?,?,?,?,?)";
+
+        try {
+            stmt = conn.prepareStatement(insertQuery);
+            stmt.setInt(1, filamento.getIdFilamento());
+            stmt.setString(2, filamento.getNome());
+            stmt.setDouble(3, filamento.getFlussoTotale());
+            stmt.setDouble(4, filamento.getDensitaMedia());
+            stmt.setDouble(5, filamento.getTemperaturaMedia());
+            stmt.setDouble(6, filamento.getEllitticita());
+            stmt.setDouble(7, filamento.getContrasto());
+            stmt.setString(8, filamento.getNomeSatellite());
+            stmt.setString(9, filamento.getNomeStrumento());
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // release resources
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 package DAO;
 
+import Entity.Contorno;
 import Entity.Scheletro;
 import Entity.Stella;
 
@@ -14,7 +15,7 @@ import java.sql.SQLException;
 public class DAOScheletro {
     private DataSource DataSource;
     private static DAOScheletro instance;
-
+    private Connection conn = null;
 
     protected DAOScheletro() {
         this.DataSource = new DataSource();
@@ -27,24 +28,104 @@ public class DAOScheletro {
         return instance;
     }
 
-    public void insertScheletro(Scheletro scheletro) {
-
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
+    public void openConnection() {
         try {
             conn = this.DataSource.getConnection();
-
-
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public void closeConnection() {
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void insertPuntiScheletro(Scheletro scheletro) {
+
+        PreparedStatement stmt = null;
+
+        String insertQuery = "INSERT INTO punto(long,latg) VALUES (?,?)";
+
+        try {
+            stmt = conn.prepareStatement(insertQuery);
+            stmt.setDouble(1, scheletro.getLonG());
+            stmt.setDouble(2, scheletro.getLatG());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            //e.printStackTrace();
+        } finally {
+            // release resources
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void insertSegmento(Scheletro scheletro) {
+
+        PreparedStatement stmt = null;
+
+        String insertQuery = "INSERT INTO segmento(idsegmento,idfilamento) VALUES (?,?)";
+
+        try {
+            stmt = conn.prepareStatement(insertQuery);
+            stmt.setInt(1, scheletro.getIdSegmento());
+            stmt.setInt(2, scheletro.getIdFilamento());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            //e.printStackTrace();
+        } finally {
+            // release resources
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void insertScheletro(Scheletro scheletro) {
+
+        PreparedStatement stmt = null;
+
+        insertSegmento(scheletro);
+        insertPuntiScheletro(scheletro);
 
 
+        String insertQuery = "INSERT INTO scheletro(idfilamento,idsegmento,tiporamo,long,latg,nprog,flussomisurato) VALUES (?,?,?,?,?,?,?)";
+        try {
+            stmt = conn.prepareStatement(insertQuery);
+            stmt.setInt(1, scheletro.getIdFilamento());
+            stmt.setInt(2, scheletro.getIdSegmento());
+            stmt.setString(3, scheletro.getTipoRamo());
+            stmt.setDouble(4, scheletro.getLonG());
+            stmt.setDouble(5, scheletro.getLatG());
+            stmt.setInt(6, scheletro.getnProg());
+            stmt.setDouble(7, scheletro.getFlussoMisurato());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // release resources
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
     }
 }

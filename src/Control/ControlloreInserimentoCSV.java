@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 
 import DAO.*;
 import Entity.Contorno;
@@ -18,19 +19,21 @@ import Entity.Stella;
  */
 
 public class ControlloreInserimentoCSV {
+
     private static ControlloreInserimentoCSV instance;
     private DAOStelle DAOStella;
     private DAOContorno DAOContorno;
     private DAOFilamento DAOFilamento;
     private DAOScheletro DAOScheletro;
+
+    protected ControlloreInserimentoCSV() {
+    }
+
     // singleton
     public static synchronized final ControlloreInserimentoCSV getInstance() {
         if (instance == null)
             instance = new ControlloreInserimentoCSV();
         return instance;
-    }
-
-    protected ControlloreInserimentoCSV() {
     }
 
     public boolean inserisciDatiCSV(String nome, String path) {
@@ -54,24 +57,42 @@ public class ControlloreInserimentoCSV {
 
 
     private boolean inserisciContornoFilamento(String nome, String path) {
-
         BufferedReader br = null;
         String line = "";
         String split = ",";
+        int num = 0;
+        int count = 0;
 
         DAOContorno = DAOContorno.getInstance();
-
         try {
             br = new BufferedReader(new FileReader(path + "/" + nome));
             Contorno contorno = new Contorno();
+            stampaTempo();
+
+            DAOContorno.openConnection();
+
             while ((line = br.readLine()) != null) {
                 ArrayList<String> values = new ArrayList<>(Arrays.asList(line.split(split, -1)));
-                contorno.setIdFilamento(Integer.valueOf(values.get(0)));
-                contorno.setLonG(Double.valueOf(values.get(1)));
-                contorno.setLatG(Double.valueOf(values.get(2)));
+                count++;
+                if (num == 1) {
+                    contorno.setIdFilamento(Integer.valueOf(values.get(0)));
+                    contorno.setLonG(Double.valueOf(values.get(1)));
+                    contorno.setLatG(Double.valueOf(values.get(2)));
 
-                DAOContorno.insertContorno(contorno);
+                    DAOContorno.insertContorno(contorno);
+
+                }else if(values.get(0).equals("IDFIL")&&values.get(1).equals("GLON_CONT")
+                        &&values.get(2).equals("GLAT_CONT")){
+                    num++;
+                }
+                if(count%1000 == 0) {
+                    System.out.println(count);
+                }
             }
+
+            DAOContorno.closeConnection();
+
+            stampaTempo();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return false;
@@ -86,36 +107,60 @@ public class ControlloreInserimentoCSV {
                     e.printStackTrace();
                 }
             }
-
         }
         return true;
     }
 
     private boolean inserisciFilamento(String nome, String path) {
-
         BufferedReader br = null;
         String line = "";
         String split = ",";
-
+        int num = 0;
+        int count = 0;
         DAOFilamento = DAOFilamento.getInstance();
 
         try {
             br = new BufferedReader(new FileReader(path + "/" + nome));
             Filamento filamento = new Filamento();
+            stampaTempo();
+
+            DAOFilamento.openConnection();
+
             while ((line = br.readLine()) != null) {
                 ArrayList<String> values = new ArrayList<>(Arrays.asList(line.split(split, -1)));
-                filamento.setIdFilamento(Integer.valueOf(values.get(0)));
-                filamento.setNome(values.get(1));
-                filamento.setFlussoTotale(Double.valueOf(values.get(2)));
-                filamento.setDensitaMedia(Double.valueOf(values.get(3)));
-                filamento.setTemperaturaMedia(Double.valueOf(values.get(4)));
-                filamento.setEllitticita(Double.valueOf(values.get(5)));
-                filamento.setContrasto(Double.valueOf(values.get(6)));
-                filamento.setNomeSatellite(values.get(7));
-                filamento.setNomeStrumento(values.get(8));
+                if (num == 1) {
+                    count++;
+                    filamento.setIdFilamento(Integer.valueOf(values.get(0)));
+                    filamento.setNome(values.get(1));
+                    filamento.setFlussoTotale(Double.valueOf(values.get(2)));
+                    filamento.setDensitaMedia(Double.valueOf(values.get(3)));
+                    filamento.setTemperaturaMedia(Double.valueOf(values.get(4)));
+                    filamento.setEllitticita(Double.valueOf(values.get(5)));
+                    filamento.setContrasto(Double.valueOf(values.get(6)));
+                    filamento.setNomeSatellite(values.get(7));
+                    filamento.setNomeStrumento(values.get(8));
 
-                DAOFilamento.insertFilamento(filamento);
+                    DAOFilamento.insertFilamento(filamento);
+
+                }else if(values.get(0).equals("IDFIL")&&
+                        values.get(1).equals("NAME")&&
+                        values.get(2).equals("TOTAL_FLUX")&&
+                        values.get(3).equals("MEAN_DENS")&&
+                        values.get(4).equals("MEAN_TEMP")&&
+                        values.get(5).equals("ELLIPTICITY")&&
+                        values.get(6).equals("CONTRAST")&&
+                        values.get(7).equals("SATELLITE")&&
+                        values.get(8).equals("INSTRUMENT")){
+                    num++;
+                }
+                if(count%1000 == 0) {
+                    System.out.println(count);
+                }
             }
+            stampaTempo();
+
+            DAOFilamento.closeConnection();
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return false;
@@ -130,7 +175,6 @@ public class ControlloreInserimentoCSV {
                     e.printStackTrace();
                 }
             }
-
         }
         return true;
     }
@@ -139,24 +183,44 @@ public class ControlloreInserimentoCSV {
         BufferedReader br = null;
         String line = "";
         String split = ",";
+        int num = 0;
+        int count = 0;
+        stampaTempo();
 
         DAOScheletro = DAOScheletro.getInstance();
 
         try {
             br = new BufferedReader(new FileReader(path + "/" + nome));
-           Scheletro scheletro = new Scheletro();
+            Scheletro scheletro = new Scheletro();
+            DAOScheletro.openConnection();
             while ((line = br.readLine()) != null) {
                 ArrayList<String> values = new ArrayList<>(Arrays.asList(line.split(split, -1)));
-                scheletro.setIdFilamento(Integer.valueOf(values.get(0)));
-                scheletro.setIdSegmento(Integer.valueOf(values.get(1)));
-                scheletro.setTipoRamo(values.get(2).charAt(0));
-                scheletro.setLonG(Double.valueOf(values.get(3)));
-                scheletro.setLatG(Double.valueOf(values.get(4)));
-                scheletro.setnProg(Integer.valueOf(values.get(5)));
-                scheletro.setFlussoMisurato(Double.valueOf(values.get(6)));
+                if (num==1) {
+                    count++;
+                    scheletro.setIdFilamento(Integer.valueOf(values.get(0)));
+                    scheletro.setIdSegmento(Integer.valueOf(values.get(1)));
+                    scheletro.setTipoRamo(values.get(2));
+                    scheletro.setLonG(Double.valueOf(values.get(3)));
+                    scheletro.setLatG(Double.valueOf(values.get(4)));
+                    scheletro.setnProg(Integer.valueOf(values.get(5)));
+                    scheletro.setFlussoMisurato(Double.valueOf(values.get(6)));
 
-                DAOScheletro.insertScheletro(scheletro);
+                    DAOScheletro.insertScheletro(scheletro);
+
+                }else if(values.get(0).equals("IDFIL")&&
+                        values.get(1).equals("IDBRANCH")&&
+                        values.get(2).equals("TYPE")&&
+                        values.get(3).equals("GLON_BR")&&
+                        values.get(4).equals("GLAT_BR")&&
+                        values.get(5).equals("N")&&
+                        values.get(6).equals("FLUX")){
+                    num++;
+                }
+                if(count%1000 == 0) {
+                    System.out.println(count);
+                }
             }
+            DAOScheletro.closeConnection();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return false;
@@ -176,29 +240,45 @@ public class ControlloreInserimentoCSV {
         return true;
     }
 
-
     public boolean inserisciStelle(String nome, String path) {
 
         BufferedReader br = null;
         String line = "";
         String split = ",";
-
+        int num = 0;
+        int count = 0;
         DAOStella = DAOStelle.getInstance();
-
         try {
             br = new BufferedReader(new FileReader(path + "/" + nome));
             Stella stella = new Stella();
+            stampaTempo();
+            DAOStella.openConnection();
             while ((line = br.readLine()) != null) {
+                count++;
                 ArrayList<String> values = new ArrayList<>(Arrays.asList(line.split(split, -1)));
-                stella.setIdStella(Integer.valueOf(values.get(0)));
-                stella.setNomeStella(values.get(1));
-                stella.setLonG(Double.valueOf(values.get(2)));
-                stella.setLatG(Double.valueOf(values.get(3)));
-                stella.setValoreFlusso(Double.valueOf(values.get(4)));
-                stella.setTipoStella(values.get(5));
+                if(num==1) {
+                    stella.setIdStella(Integer.valueOf(values.get(0)));
+                    stella.setNomeStella(values.get(1));
+                    stella.setLonG(Double.valueOf(values.get(2)));
+                    stella.setLatG(Double.valueOf(values.get(3)));
+                    stella.setValoreFlusso(Double.valueOf(values.get(4)));
+                    stella.setTipoStella(values.get(5));
 
-                DAOStella.insertStella(stella);
+                    DAOStella.insertStella(stella);
+                }else if(values.get(0).equals("IDSTAR")&&
+                        values.get(1).equals("NAMESTAR")&&
+                        values.get(2).equals("GLON_ST")&&
+                        values.get(3).equals("GLAT_ST")&&
+                        values.get(4).equals("FLUX_ST")&&
+                        values.get(5).equals("TYPE_ST")){
+                    num++;
+                }
+                if(count%1000 == 0) {
+                    System.out.println(count);
+                }
             }
+            stampaTempo();
+            DAOStella.closeConnection();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return false;
@@ -213,8 +293,20 @@ public class ControlloreInserimentoCSV {
                     e.printStackTrace();
                 }
             }
-
         }
         return true;
+    }
+
+    public void stampaTempo(){
+        System.out.println(Calendar.getInstance().get(Calendar.HOUR_OF_DAY)+":"
+                +Calendar.getInstance().get(Calendar.MINUTE)+":"
+                +Calendar.getInstance().get(Calendar.SECOND));
+    }
+
+    public static void main(String args[]){
+        ControlloreInserimentoCSV.getInstance().inserisciDatiCSV("scheletro_filamenti_Herschel.csv","/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
+        ControlloreInserimentoCSV.getInstance().inserisciDatiCSV("stelle_Herschel.csv","/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
+        ControlloreInserimentoCSV.getInstance().inserisciDatiCSV("filamenti_Herschel.csv","/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
+        ControlloreInserimentoCSV.getInstance().inserisciDatiCSV("contorni_filamenti_Herschel.csv","/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
     }
 }

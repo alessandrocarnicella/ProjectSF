@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class DAOContorno {
     private DataSource DataSource;
     private static DAOContorno instance;
-
+    private  Connection conn = null;
 
     protected DAOContorno() {
         this.DataSource = new DataSource();
@@ -27,25 +27,77 @@ public class DAOContorno {
         return instance;
     }
 
-    public void insertContorno(Contorno contorno) {
-
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
+    public void openConnection() {
         try {
             conn = this.DataSource.getConnection();
-
-
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
-
     }
 
+    public void closeConnection() {
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void insertPuntiContorno(Contorno contorno) {
+
+        PreparedStatement stmt = null;
+
+
+        String insertQuery = "INSERT INTO punto(long,latg) VALUES (?,?)";
+
+        try {
+            stmt = conn.prepareStatement(insertQuery);
+            stmt.setDouble(1, contorno.getLonG());
+            stmt.setDouble(2, contorno.getLatG());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            //e.printStackTrace();
+        } finally {
+            // release resources
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void insertContorno(Contorno contorno) {
+
+        insertPuntiContorno(contorno);
+
+        /*PreparedStatement stmt = null;
+
+        String insertQuery = "INSERT INTO contorno(idfilamento,long,latg) VALUES (?,?,?)";
+
+        try {
+            stmt = conn.prepareStatement(insertQuery);
+            stmt.setInt(1, contorno.getIdFilamento());
+            stmt.setDouble(2, contorno.getLonG());
+            stmt.setDouble(3, contorno.getLatG());
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // release resources
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+        */
+    }
 }

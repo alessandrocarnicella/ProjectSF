@@ -15,7 +15,7 @@ public class DAOStelle {
 
     private DataSource DataSource;
     private static DAOStelle instance;
-
+    private Connection conn = null;
 
     protected DAOStelle() {
         this.DataSource = new DataSource();
@@ -28,24 +28,82 @@ public class DAOStelle {
         return instance;
     }
 
-    public void insertStella(Stella stella) {
 
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
+    public void openConnection() {
         try {
             conn = this.DataSource.getConnection();
-
-
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public void closeConnection() {
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void insertPuntiStella(Stella stella) {
+
+        PreparedStatement stmt = null;
 
 
+        String insertQuery = "INSERT INTO punto(long,latg) VALUES (?,?)";
+
+        try {
+            stmt = conn.prepareStatement(insertQuery);
+            stmt.setDouble(1, stella.getLonG());
+            stmt.setDouble(2, stella.getLatG());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            //e.printStackTrace();
+        } finally {
+            // release resources
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+    }
+
+
+    public void insertStella(Stella stella) {
+
+        PreparedStatement stmt = null;
+
+        insertPuntiStella(stella);
+
+        String insertQuery = "INSERT INTO stella(idstella,nomestella,long,latg,valoreflusso,tipostella) VALUES (?,?,?,?,?,?)";
+
+        try {
+            stmt = conn.prepareStatement(insertQuery);
+            stmt.setInt(1, stella.getIdStella());
+            stmt.setString(2, stella.getNomeStella());
+            stmt.setDouble(3, stella.getLonG());
+            stmt.setDouble(4, stella.getLatG());
+            stmt.setDouble(5, stella.getValoreFlusso());
+            stmt.setString(6, stella.getTipoStella());
+            stmt.executeUpdate();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // release resources
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
     }
 }
