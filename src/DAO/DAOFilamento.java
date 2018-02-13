@@ -31,7 +31,7 @@ public class DAOFilamento {
     public void openConnection() {
         try {
             conn = this.DataSource.getConnection();
-            //conn.setAutoCommit(false);
+            conn.setAutoCommit(false);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -42,7 +42,7 @@ public class DAOFilamento {
 
     public void closeConnection() {
         try {
-            //conn.commit();
+            conn.commit();
             conn.close();
         } catch (SQLException e) {
             e.printStackTrace();

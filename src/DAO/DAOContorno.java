@@ -30,7 +30,7 @@ public class DAOContorno {
     public void openConnection() {
         try {
             conn = this.DataSource.getConnection();
-            //conn.setAutoCommit(false);
+            conn.setAutoCommit(false);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -40,7 +40,7 @@ public class DAOContorno {
 
     public void closeConnection() {
         try {
-            //conn.commit();
+            conn.commit();
             conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -78,16 +78,12 @@ public class DAOContorno {
     public boolean findItemById(Contorno contorno) {
         PreparedStatement stmt = null;
         ResultSet rs = null;
-
-        String selectQuery = "SELECT idfilamento,latg,long FROM contorno WHERE idfilamento=? AND long=? AND latg=?";
-
-        // "select * from punto where punto.latg=? AND punto.long";
-
+        String selectQuery ="SELECT * FROM contorno WHERE idfilamento=?  AND long=?  AND latg=?";
         try {
             stmt = conn.prepareStatement(selectQuery);
             stmt.setInt(1, contorno.getIdFilamento());
-            stmt.setFloat(2, contorno.getLatG());
-            stmt.setFloat(3, contorno.getLonG());
+            stmt.setFloat(2, contorno.getLonG());
+            stmt.setFloat(3, contorno.getLatG());
             rs = stmt.executeQuery();
 
             if(rs.next()) {

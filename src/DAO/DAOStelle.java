@@ -45,11 +45,6 @@ public class DAOStelle {
             conn.commit();
             conn.close();
         } catch (SQLException e) {
-            try {
-                conn.rollback();
-            } catch (SQLException e1) {
-                e1.printStackTrace();
-            }
             e.printStackTrace();
         }
     }
@@ -57,18 +52,9 @@ public class DAOStelle {
     public void insertStella(Stella stella) {
 
         PreparedStatement stmt = null;
-        PreparedStatement stmt2 = null;
 
         String insertQuery = "INSERT INTO stella(idstella,nomestella,long,latg,valoreflusso,tipostella) VALUES (?,?,?,?,?,?)";
-        String insertQuery2 = "INSERT INTO punto(long,latg) VALUES (?,?)";
-
         try {
-
-            stmt2 = conn.prepareStatement(insertQuery2);
-            stmt2.setDouble(1, stella.getLonG());
-            stmt2.setDouble(2, stella.getLatG());
-            stmt2.executeUpdate();
-
             stmt = conn.prepareStatement(insertQuery);
             stmt.setInt(1, stella.getIdStella());
             stmt.setString(2, stella.getNomeStella());
@@ -84,7 +70,6 @@ public class DAOStelle {
             // release resources
             if (stmt != null) {
                 try {
-                    stmt2.close();
                     stmt.close();
                 } catch (SQLException e1) {
                     e1.printStackTrace();

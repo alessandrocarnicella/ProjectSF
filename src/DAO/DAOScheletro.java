@@ -16,7 +16,7 @@ public class DAOScheletro {
     private DataSource DataSource;
     private static DAOScheletro instance;
     private Connection conn = null;
-    private PreparedStatement stmt2 = null;
+    private PreparedStatement stmt = null;
     protected DAOScheletro() {
         this.DataSource = new DataSource();
     }
@@ -53,22 +53,22 @@ public class DAOScheletro {
 
         String insertQuery = "INSERT INTO scheletro(idfilamento,idsegmento,tiporamo,long,latg,nprog,flussomisurato) VALUES (?,?,?,?,?,?,?)";
         try {
-            stmt2 = conn.prepareStatement(insertQuery);
-            stmt2.setInt(1, scheletro.getIdFilamento());
-            stmt2.setInt(2, scheletro.getIdSegmento());
-            stmt2.setString(3, scheletro.getTipoRamo());
-            stmt2.setDouble(4, scheletro.getLonG());
-            stmt2.setDouble(5, scheletro.getLatG());
-            stmt2.setInt(6, scheletro.getnProg());
-            stmt2.setDouble(7, scheletro.getFlussoMisurato());
-            stmt2.executeUpdate();
+            stmt = conn.prepareStatement(insertQuery);
+            stmt.setInt(1, scheletro.getIdFilamento());
+            stmt.setInt(2, scheletro.getIdSegmento());
+            stmt.setString(3, scheletro.getTipoRamo());
+            stmt.setDouble(4, scheletro.getLonG());
+            stmt.setDouble(5, scheletro.getLatG());
+            stmt.setInt(6, scheletro.getnProg());
+            stmt.setDouble(7, scheletro.getFlussoMisurato());
+            stmt.executeUpdate();
         } catch (SQLException e) {
             //e.printStackTrace();
         } finally {
             // release resources
-            if (stmt2 != null) {
+            if (stmt != null) {
                 try {
-                    stmt2.close();
+                    stmt.close();
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }

@@ -24,6 +24,8 @@ public class ControlloreInserimentoCSV {
     private DAOFilamento DAOFilamento;
     private DAOScheletro DAOScheletro;
     private DAO.DAOSegmento DAOSegmento;
+
+    //constructor
     protected ControlloreInserimentoCSV() {
     }
 
@@ -34,6 +36,7 @@ public class ControlloreInserimentoCSV {
         return instance;
     }
 
+    //method
     public boolean inserisciDatiCSV(String nome, String path) {
         if (nome.equals("stelle_Herschel.csv")) {
             return this.inserisciStelle(nome, path);
@@ -53,26 +56,91 @@ public class ControlloreInserimentoCSV {
             return false;
     }
 
+    //method
     private boolean inserisciContornoFilamento(String nome, String path) {
         BufferedReader br = null;
         String line = "";
         String split = ",";
         int num = 0;
         int count = 0;
+
+        Contorno contorno = new Contorno();
+        Punto punto = new Punto();
+        //Filamento filamento = new Filamento();
+
         DAOContorno = DAOContorno.getInstance();
         DAOPunto = DAOPunto.getInstance();
-        DAOFilamento = DAOFilamento.getInstance();
+        //DAOFilamento = DAOFilamento.getInstance();
+        //DAOFilamento.openConnection();
+
         try {
+            /*
             br = new BufferedReader(new FileReader(path + "/" + nome));
-            Contorno contorno = new Contorno();
-            Punto punto = new Punto();
-            Filamento filamento = new Filamento();
-
             stampaTempo();
-            DAOPunto.openConnection();
-            DAOContorno.openConnection();
-            DAOFilamento.openConnection();
+            while ((line = br.readLine()) != null) {
+                ArrayList<String> values = new ArrayList<>(Arrays.asList(line.split(split, -1)));
 
+                if (num == 1) {
+                    count++;
+
+                    filamento.setIdFilamento(Integer.valueOf(values.get(0)));
+                    filamento.setNome(null);
+                    filamento.setFlussoTotale(0.0);
+                    filamento.setDensitaMedia(0.0);
+                    filamento.setTemperaturaMedia(0.0);
+                    filamento.setEllitticita(0.0);
+                    filamento.setContrasto(0.0);
+                    filamento.setNomeSatellite(null);
+                    filamento.setNomeStrumento(null);
+
+                    if ( !DAOFilamento.findItemById(filamento) ){
+                        DAOFilamento.insertFilamento(filamento);
+                    }
+                }else if(equalsColoumnsNamesContorno(values)){
+                    num++;
+                }
+                if(count%10000 == 0) {
+                    System.out.println(count);
+                }
+            }
+
+            DAOFilamento.closeConnection();
+            stampaTempo();
+            br.close();
+            */
+            DAOPunto.openConnection();
+            num = 0;
+            count = 0;
+            br = new BufferedReader(new FileReader(path + "/" + nome));
+            stampaTempo();
+            while ((line = br.readLine()) != null) {
+                ArrayList<String> values = new ArrayList<>(Arrays.asList(line.split(split, -1)));
+                if (num == 1) {
+                    count++;
+
+                    punto.setLonG(Float.valueOf(values.get(1)));
+                    punto.setLatG(Float.valueOf(values.get(2)));
+
+                    if ( !DAOPunto.findItemById(punto) ){
+                        DAOPunto.insertPunto(punto);
+                    }
+
+                }else if(equalsColoumnsNamesContorno(values)){
+                    num++;
+                }
+                if(count%10000 == 0) {
+                    System.out.println(count);
+                }
+            }
+            DAOPunto.closeConnection();
+            stampaTempo();
+            br.close();
+
+            DAOContorno.openConnection();
+            num = 0;
+            count = 0;
+            br = new BufferedReader(new FileReader(path + "/" + nome));
+            stampaTempo();
             while ((line = br.readLine()) != null) {
                 ArrayList<String> values = new ArrayList<>(Arrays.asList(line.split(split, -1)));
 
@@ -83,44 +151,17 @@ public class ControlloreInserimentoCSV {
                     contorno.setLonG(Float.valueOf(values.get(1)));
                     contorno.setLatG(Float.valueOf(values.get(2)));
 
-
-                    punto.setLonG(Float.valueOf(values.get(1)));
-                    punto.setLatG(Float.valueOf(values.get(2)));
-
-                    filamento.setIdFilamento(Integer.valueOf(values.get(0)));
-
-                    filamento.setNome(null);
-                    filamento.setFlussoTotale(0.0);
-                    filamento.setDensitaMedia(0.0);
-                    filamento.setTemperaturaMedia(0.0);
-                    filamento.setEllitticita(0.0);
-                    filamento.setContrasto(0.0);
-                    filamento.setNomeSatellite(null);
-                    filamento.setNomeStrumento(null);
-
-                   if ( !DAOFilamento.findItemById(filamento) ){
-                        DAOFilamento.insertFilamento(filamento);
-                    }
-
-                    if ( !DAOPunto.findItemById(punto) ){
-                        DAOPunto.insertPunto(punto);
-                    }
                     if ( !DAOContorno.findItemById(contorno) ) {
                         DAOContorno.insertContorno(contorno);
                     }
 
-                }else if(values.get(0).equals("IDFIL")&&values.get(1).equals("GLON_CONT")
-                        &&values.get(2).equals("GLAT_CONT")){
+                }else if(equalsColoumnsNamesContorno(values)){
                     num++;
                 }
-                if(count%1000 == 0) {
+                if(count%10000 == 0) {
                     System.out.println(count);
                 }
             }
-            DAOPunto.closeConnection();
-            DAOFilamento.closeConnection();
-            DAOContorno.closeConnection();
-
             stampaTempo();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -137,24 +178,169 @@ public class ControlloreInserimentoCSV {
                 }
             }
         }
+        DAOContorno.closeConnection();
         return true;
     }
 
+/*
+        DAOFilamento.openConnection();
+        try {
+            br = new BufferedReader(new FileReader(path + "/" + nome));
+            stampaTempo();
+            while ((line = br.readLine()) != null) {
+                ArrayList<String> values = new ArrayList<>(Arrays.asList(line.split(split, -1)));
+
+                if (num == 1) {
+                    count++;
+
+                    filamento.setIdFilamento(Integer.valueOf(values.get(0)));
+                    filamento.setNome(null);
+                    filamento.setFlussoTotale(0.0);
+                    filamento.setDensitaMedia(0.0);
+                    filamento.setTemperaturaMedia(0.0);
+                    filamento.setEllitticita(0.0);
+                    filamento.setContrasto(0.0);
+                    filamento.setNomeSatellite(null);
+                    filamento.setNomeStrumento(null);
+
+                   if ( !DAOFilamento.findItemById(filamento) ){
+                        DAOFilamento.insertFilamento(filamento);
+                    }
+
+                }else if(values.get(0).equals("IDFIL")&&values.get(1).equals("GLON_CONT")
+                        &&values.get(2).equals("GLAT_CONT")){
+                    num++;
+                }
+                if(count%1000 == 0) {
+                    System.out.println(count);
+                }
+            }
+            DAOFilamento.closeConnection();
+            stampaTempo();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        DAOPunto.openConnection();
+        try {
+            num = 0;
+            count = 0;
+            br = new BufferedReader(new FileReader(path + "/" + nome));
+            stampaTempo();
+            while ((line = br.readLine()) != null) {
+                ArrayList<String> values = new ArrayList<>(Arrays.asList(line.split(split, -1)));
+
+                if (num == 1) {
+                    count++;
+
+                    punto.setLonG(Float.valueOf(values.get(1)));
+                    punto.setLatG(Float.valueOf(values.get(2)));
+
+                    if ( !DAOPunto.findItemById(punto) ){
+                        DAOPunto.insertPunto(punto);
+                    }
+
+                }else if(values.get(0).equals("IDFIL")&&values.get(1).equals("GLON_CONT")
+                        &&values.get(2).equals("GLAT_CONT")){
+                    num++;
+                }
+                if(count%1000 == 0) {
+                    System.out.println(count);
+                }
+            }
+            DAOPunto.closeConnection();
+            stampaTempo();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+     DAOContorno.openConnection();
+        try {
+            num = 0;
+            count = 0;
+            br = new BufferedReader(new FileReader(path + "/" + nome));
+            stampaTempo();
+            while ((line = br.readLine()) != null) {
+                ArrayList<String> values = new ArrayList<>(Arrays.asList(line.split(split, -1)));
+
+                if (num == 1) {
+                    count++;
+
+                    contorno.setIdFilamento(Integer.valueOf(values.get(0)));
+                    contorno.setLonG(Float.valueOf(values.get(1)));
+                    contorno.setLatG(Float.valueOf(values.get(2)));
+
+                    if ( !DAOContorno.findItemById(contorno) ) {
+                        DAOContorno.insertContorno(contorno);
+                    }
+
+                }else if(values.get(0).equals("IDFIL")&&values.get(1).equals("GLON_CONT")
+                        &&values.get(2).equals("GLAT_CONT")){
+                    num++;
+                }
+                if(count%1000 == 0) {
+                    System.out.println(count);
+                }
+            }
+            stampaTempo();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        DAOContorno.closeConnection();
+
+        */
+
+    //method
     private boolean inserisciFilamento(String nome, String path) {
         BufferedReader br = null;
         String line = "";
         String split = ",";
         int num = 0;
         int count = 0;
+
         DAOFilamento = DAOFilamento.getInstance();
+        Filamento filamento = new Filamento();
+        stampaTempo();
 
         try {
             br = new BufferedReader(new FileReader(path + "/" + nome));
-            Filamento filamento = new Filamento();
-            stampaTempo();
-
             DAOFilamento.openConnection();
-
             while ((line = br.readLine()) != null) {
                 ArrayList<String> values = new ArrayList<>(Arrays.asList(line.split(split, -1)));
                 if (num == 1) {
@@ -171,15 +357,7 @@ public class ControlloreInserimentoCSV {
 
                     DAOFilamento.insertFilamento(filamento);
 
-                }else if(values.get(0).equals("IDFIL")&&
-                        values.get(1).equals("NAME")&&
-                        values.get(2).equals("TOTAL_FLUX")&&
-                        values.get(3).equals("MEAN_DENS")&&
-                        values.get(4).equals("MEAN_TEMP")&&
-                        values.get(5).equals("ELLIPTICITY")&&
-                        values.get(6).equals("CONTRAST")&&
-                        values.get(7).equals("SATELLITE")&&
-                        values.get(8).equals("INSTRUMENT")){
+                }else if(equalsColoumnsNamesFilamento(values)){
                     num++;
                 }
                 if(count%1000 == 0) {
@@ -187,7 +365,6 @@ public class ControlloreInserimentoCSV {
                 }
             }
             stampaTempo();
-
             DAOFilamento.closeConnection();
 
         } catch (FileNotFoundException e) {
@@ -208,6 +385,7 @@ public class ControlloreInserimentoCSV {
         return true;
     }
 
+    //method
     private boolean inserisciScheletroFilamento(String nome, String path) {
         BufferedReader br = null;
         String line = "";
@@ -250,13 +428,7 @@ public class ControlloreInserimentoCSV {
                     DAOSegmento.insertSegmento(segmento);
                     DAOScheletro.insertScheletro(scheletro);
 
-                }else if(values.get(0).equals("IDFIL")&&
-                        values.get(1).equals("IDBRANCH")&&
-                        values.get(2).equals("TYPE")&&
-                        values.get(3).equals("GLON_BR")&&
-                        values.get(4).equals("GLAT_BR")&&
-                        values.get(5).equals("N")&&
-                        values.get(6).equals("FLUX")){
+                }else if(equalsColoumnsNamesScheletro(values)){
                     num++;
                 }
                 if(count%1000 == 0) {
@@ -285,6 +457,7 @@ public class ControlloreInserimentoCSV {
         return true;
     }
 
+    //method
     public boolean inserisciStelle(String nome, String path) {
 
         BufferedReader br = null;
@@ -292,46 +465,67 @@ public class ControlloreInserimentoCSV {
         String split = ",";
         int num = 0;
         int count = 0;
+
+        Stella stella = new Stella();
+        Punto punto = new Punto();
+
         DAOStella = DAOStelle.getInstance();
-    //    DAOPunto = DAOPunto.getInstance();
+        DAOPunto = DAOPunto.getInstance();
+        stampaTempo();
+
 
         try {
             br = new BufferedReader(new FileReader(path + "/" + nome));
-            Stella stella = new Stella();
-  //          Punto punto = new Punto();
+            DAOPunto.openConnection();
+
+            while ((line = br.readLine()) != null) {
+                count++;
+                ArrayList<String> values = new ArrayList<>(Arrays.asList(line.split(split, -1)));
+                if(num==1) {
+                    punto.setLonG(Float.valueOf(values.get(2)));
+                    punto.setLatG(Float.valueOf(values.get(3)));
+
+                    if ( !DAOPunto.findItemById(punto) ){
+                        DAOPunto.insertPunto(punto);
+                    }
+
+                }else if(equalsColoumnsNamesStella(values)){
+                    num++;
+                }
+                if(count%10000 == 0) {
+                    System.out.println(count);
+                }
+            }
             stampaTempo();
+            DAOPunto.closeConnection();
+            br.close();
+
+            num = 0;
+            count = 0;
+            br = new BufferedReader(new FileReader(path + "/" + nome));
             DAOStella.openConnection();
-//            DAOPunto.openConnection();
+
             while ((line = br.readLine()) != null) {
                 count++;
                 ArrayList<String> values = new ArrayList<>(Arrays.asList(line.split(split, -1)));
                 if(num==1) {
                     stella.setIdStella(Integer.valueOf(values.get(0)));
                     stella.setNomeStella(values.get(1));
-                    stella.setLonG(Double.valueOf(values.get(2)));
-                    stella.setLatG(Double.valueOf(values.get(3)));
+                    stella.setLonG(Float.valueOf(values.get(2)));
+                    stella.setLatG(Float.valueOf(values.get(3)));
                     stella.setValoreFlusso(Double.valueOf(values.get(4)));
                     stella.setTipoStella(values.get(5));
 
-                 //   punto.setLonG(Double.valueOf(values.get(2)));
-               //     punto.setLatG(Double.valueOf(values.get(3)));
-
-             //       DAOPunto.insertPunto(punto);
                     DAOStella.insertStella(stella);
-                }else if(values.get(0).equals("IDSTAR")&&
-                        values.get(1).equals("NAMESTAR")&&
-                        values.get(2).equals("GLON_ST")&&
-                        values.get(3).equals("GLAT_ST")&&
-                        values.get(4).equals("FLUX_ST")&&
-                        values.get(5).equals("TYPE_ST")){
+
+                }else if(equalsColoumnsNamesStella(values)){
                     num++;
                 }
-                if(count%1000 == 0) {
+                if(count%10000 == 0) {
                     System.out.println(count);
                 }
             }
             stampaTempo();
-           // DAOPunto.closeConnection();
             DAOStella.closeConnection();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -348,19 +542,74 @@ public class ControlloreInserimentoCSV {
                 }
             }
         }
+
         return true;
     }
 
+    //method
     public void stampaTempo(){
         System.out.println(Calendar.getInstance().get(Calendar.HOUR_OF_DAY)+":"
                 +Calendar.getInstance().get(Calendar.MINUTE)+":"
                 +Calendar.getInstance().get(Calendar.SECOND));
     }
 
+    //method
+    private boolean equalsColoumnsNamesContorno(ArrayList<String> values){
+        if(values.get(0).equals("IDFIL")&&values.get(1).equals("GLON_CONT")
+                &&values.get(2).equals("GLAT_CONT")) {
+            return true;
+        }
+        return false;
+    }
+
+    //method
+    private boolean equalsColoumnsNamesScheletro(ArrayList<String> values){
+        if(values.get(0).equals("IDFIL")&&
+                values.get(1).equals("IDBRANCH")&&
+                values.get(2).equals("TYPE")&&
+                values.get(3).equals("GLON_BR")&&
+                values.get(4).equals("GLAT_BR")&&
+                values.get(5).equals("N")&&
+                values.get(6).equals("FLUX")){
+            return true;
+        }
+        return false;
+    }
+
+    //method
+    private boolean equalsColoumnsNamesStella(ArrayList<String> values){
+        if(values.get(0).equals("IDSTAR")&&
+                values.get(1).equals("NAMESTAR")&&
+                values.get(2).equals("GLON_ST")&&
+                values.get(3).equals("GLAT_ST")&&
+                values.get(4).equals("FLUX_ST")&&
+                values.get(5).equals("TYPE_ST")){
+            return true;
+        }
+        return false;
+    }
+
+    //method
+    private boolean equalsColoumnsNamesFilamento(ArrayList<String> values){
+        if(values.get(0).equals("IDFIL")&&
+                values.get(1).equals("NAME")&&
+                values.get(2).equals("TOTAL_FLUX")&&
+                values.get(3).equals("MEAN_DENS")&&
+                values.get(4).equals("MEAN_TEMP")&&
+                values.get(5).equals("ELLIPTICITY")&&
+                values.get(6).equals("CONTRAST")&&
+                values.get(7).equals("SATELLITE")&&
+                values.get(8).equals("INSTRUMENT")) {
+            return true;
+        }
+        return false;
+    }
+
+
     public static void main(String args[]){
         ControlloreInserimentoCSV.getInstance().inserisciDatiCSV("filamenti_Herschel.csv","/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
         //ControlloreInserimentoCSV.getInstance().inserisciDatiCSV("scheletro_filamenti_Herschel.csv","/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
-        //ControlloreInserimentoCSV.getInstance().inserisciDatiCSV("stelle_Herschel.csv","/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
+        ControlloreInserimentoCSV.getInstance().inserisciDatiCSV("stelle_Herschel.csv","/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
         ControlloreInserimentoCSV.getInstance().inserisciDatiCSV("contorni_filamenti_Herschel.csv","/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
 
     }

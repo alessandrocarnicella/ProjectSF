@@ -7,6 +7,11 @@
         <element id="directory" name="classes">
           <element id="module-output" name="ProjectSF" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="org.jboss.spec.javax.el:jboss-el-api_2.2_spec:1.0.1.Final" />
+          <element id="library" level="project" name="org.jboss.spec.javax.xml.soap:jboss-saaj-api_1.3_spec:1.0.1.Final" />
+          <element id="library" level="project" name="org.ow2.petals:petals-sl-postgresql-9.4-1201-jdbc4:1.1.0" />
+        </element>
       </element>
     </root>
   </artifact>

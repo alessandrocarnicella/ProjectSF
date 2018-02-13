@@ -7,8 +7,8 @@ public class Stella {
 
     private int idStella;
     private String nomeStella;
-    private Double lonG;
-    private Double latG;
+    private Float lonG;
+    private Float latG;
     private Double valoreFlusso;
     private String tipoStella;
 
@@ -17,7 +17,7 @@ public class Stella {
     }
 
     //constructor
-    public Stella(int idStella, String nomeStella, Double lonG, Double latG, Double valoreFlusso, String tipoStella) {
+    public Stella(int idStella, String nomeStella, Float lonG, Float latG, Double valoreFlusso, String tipoStella) {
         this.idStella = idStella;
         this.nomeStella = nomeStella;
         this.lonG = lonG;
@@ -44,19 +44,19 @@ public class Stella {
         this.nomeStella = nomeStella;
     }
 
-    public Double getLonG() {
+    public Float getLonG() {
         return lonG;
     }
 
-    public void setLonG(Double lonG) {
+    public void setLonG(Float lonG) {
         this.lonG = lonG;
     }
 
-    public Double getLatG() {
+    public Float getLatG() {
         return latG;
     }
 
-    public void setLatG(Double latG) {
+    public void setLatG(Float latG) {
         this.latG = latG;
     }
 
