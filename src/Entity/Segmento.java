@@ -9,6 +9,10 @@ public class Segmento {
     private int idFilamento;
 
     //constructor
+    public Segmento() {
+        }
+
+    //constructor
     public Segmento(int idSegmento, int idFilamento) {
         this.idSegmento = idSegmento;
         this.idFilamento = idFilamento;

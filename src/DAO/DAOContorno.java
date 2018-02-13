@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class DAOContorno {
     private DataSource DataSource;
     private static DAOContorno instance;
-    private  Connection conn = null;
+    private Connection conn = null;
 
     protected DAOContorno() {
         this.DataSource = new DataSource();
@@ -30,6 +30,7 @@ public class DAOContorno {
     public void openConnection() {
         try {
             conn = this.DataSource.getConnection();
+            //conn.setAutoCommit(false);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -39,29 +40,32 @@ public class DAOContorno {
 
     public void closeConnection() {
         try {
+            //conn.commit();
             conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void insertPuntiContorno(Contorno contorno) {
+
+    public void insertContorno(Contorno contorno) {
 
         PreparedStatement stmt = null;
 
-
-        String insertQuery = "INSERT INTO punto(long,latg) VALUES (?,?)";
+        String insertQuery = "INSERT INTO contorno(idfilamento,long,latg) VALUES (?,?,?)";
 
         try {
             stmt = conn.prepareStatement(insertQuery);
-            stmt.setDouble(1, contorno.getLonG());
-            stmt.setDouble(2, contorno.getLatG());
+            stmt.setInt(1, contorno.getIdFilamento());
+            stmt.setFloat(2, contorno.getLonG());
+            stmt.setFloat(3, contorno.getLatG());
             stmt.executeUpdate();
+
         } catch (SQLException e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         } finally {
             // release resources
-            if (stmt != null) {
+            if (stmt !=null) {
                 try {
                     stmt.close();
                 } catch (SQLException e1) {
@@ -71,23 +75,27 @@ public class DAOContorno {
         }
     }
 
-    public void insertContorno(Contorno contorno) {
+    public boolean findItemById(Contorno contorno) {
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
 
-        insertPuntiContorno(contorno);
+        String selectQuery = "SELECT idfilamento,latg,long FROM contorno WHERE idfilamento=? AND long=? AND latg=?";
 
-        /*PreparedStatement stmt = null;
-
-        String insertQuery = "INSERT INTO contorno(idfilamento,long,latg) VALUES (?,?,?)";
+        // "select * from punto where punto.latg=? AND punto.long";
 
         try {
-            stmt = conn.prepareStatement(insertQuery);
+            stmt = conn.prepareStatement(selectQuery);
             stmt.setInt(1, contorno.getIdFilamento());
-            stmt.setDouble(2, contorno.getLonG());
-            stmt.setDouble(3, contorno.getLatG());
-            stmt.executeUpdate();
+            stmt.setFloat(2, contorno.getLatG());
+            stmt.setFloat(3, contorno.getLonG());
+            rs = stmt.executeQuery();
 
+            if(rs.next()) {
+                return true;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         } finally {
             // release resources
             if (stmt != null) {
@@ -98,6 +106,6 @@ public class DAOContorno {
                 }
             }
         }
-        */
+        return false;
     }
 }

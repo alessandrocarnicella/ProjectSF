@@ -16,7 +16,7 @@ public class DataSource {
     private String password = ConfigFile.DBPassword;
 
     public Connection getConnection() throws SQLException, ClassNotFoundException {
-        Class.forName("org.postgresql.Driver");
+        Class.forName(ConfigFile.DBDriver);
         Connection connection = DriverManager.getConnection(dbURI,user, password);
         return connection;
     }

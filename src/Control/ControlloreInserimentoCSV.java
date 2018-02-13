@@ -9,10 +9,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 
 import DAO.*;
-import Entity.Contorno;
-import Entity.Filamento;
-import Entity.Scheletro;
-import Entity.Stella;
+import Entity.*;
 
 /**
  * Created by alessandro on 09/02/18.
@@ -22,10 +19,11 @@ public class ControlloreInserimentoCSV {
 
     private static ControlloreInserimentoCSV instance;
     private DAOStelle DAOStella;
+    private DAOPunto DAOPunto;
     private DAOContorno DAOContorno;
     private DAOFilamento DAOFilamento;
     private DAOScheletro DAOScheletro;
-
+    private DAO.DAOSegmento DAOSegmento;
     protected ControlloreInserimentoCSV() {
     }
 
@@ -55,31 +53,61 @@ public class ControlloreInserimentoCSV {
             return false;
     }
 
-
     private boolean inserisciContornoFilamento(String nome, String path) {
         BufferedReader br = null;
         String line = "";
         String split = ",";
         int num = 0;
         int count = 0;
-
         DAOContorno = DAOContorno.getInstance();
+        DAOPunto = DAOPunto.getInstance();
+        DAOFilamento = DAOFilamento.getInstance();
         try {
             br = new BufferedReader(new FileReader(path + "/" + nome));
             Contorno contorno = new Contorno();
-            stampaTempo();
+            Punto punto = new Punto();
+            Filamento filamento = new Filamento();
 
+            stampaTempo();
+            DAOPunto.openConnection();
             DAOContorno.openConnection();
+            DAOFilamento.openConnection();
 
             while ((line = br.readLine()) != null) {
                 ArrayList<String> values = new ArrayList<>(Arrays.asList(line.split(split, -1)));
-                count++;
-                if (num == 1) {
-                    contorno.setIdFilamento(Integer.valueOf(values.get(0)));
-                    contorno.setLonG(Double.valueOf(values.get(1)));
-                    contorno.setLatG(Double.valueOf(values.get(2)));
 
-                    DAOContorno.insertContorno(contorno);
+                if (num == 1) {
+                    count++;
+
+                    contorno.setIdFilamento(Integer.valueOf(values.get(0)));
+                    contorno.setLonG(Float.valueOf(values.get(1)));
+                    contorno.setLatG(Float.valueOf(values.get(2)));
+
+
+                    punto.setLonG(Float.valueOf(values.get(1)));
+                    punto.setLatG(Float.valueOf(values.get(2)));
+
+                    filamento.setIdFilamento(Integer.valueOf(values.get(0)));
+
+                    filamento.setNome(null);
+                    filamento.setFlussoTotale(0.0);
+                    filamento.setDensitaMedia(0.0);
+                    filamento.setTemperaturaMedia(0.0);
+                    filamento.setEllitticita(0.0);
+                    filamento.setContrasto(0.0);
+                    filamento.setNomeSatellite(null);
+                    filamento.setNomeStrumento(null);
+
+                   if ( !DAOFilamento.findItemById(filamento) ){
+                        DAOFilamento.insertFilamento(filamento);
+                    }
+
+                    if ( !DAOPunto.findItemById(punto) ){
+                        DAOPunto.insertPunto(punto);
+                    }
+                    if ( !DAOContorno.findItemById(contorno) ) {
+                        DAOContorno.insertContorno(contorno);
+                    }
 
                 }else if(values.get(0).equals("IDFIL")&&values.get(1).equals("GLON_CONT")
                         &&values.get(2).equals("GLAT_CONT")){
@@ -89,7 +117,8 @@ public class ControlloreInserimentoCSV {
                     System.out.println(count);
                 }
             }
-
+            DAOPunto.closeConnection();
+            DAOFilamento.closeConnection();
             DAOContorno.closeConnection();
 
             stampaTempo();
@@ -188,10 +217,16 @@ public class ControlloreInserimentoCSV {
         stampaTempo();
 
         DAOScheletro = DAOScheletro.getInstance();
+        DAOPunto = DAOPunto.getInstance();
+        DAOSegmento = DAOSegmento.getInstance();
 
         try {
             br = new BufferedReader(new FileReader(path + "/" + nome));
             Scheletro scheletro = new Scheletro();
+            Segmento segmento = new Segmento();
+            Punto punto = new Punto();
+            DAOPunto.openConnection();
+            DAOSegmento.openConnection();
             DAOScheletro.openConnection();
             while ((line = br.readLine()) != null) {
                 ArrayList<String> values = new ArrayList<>(Arrays.asList(line.split(split, -1)));
@@ -205,6 +240,14 @@ public class ControlloreInserimentoCSV {
                     scheletro.setnProg(Integer.valueOf(values.get(5)));
                     scheletro.setFlussoMisurato(Double.valueOf(values.get(6)));
 
+                    segmento.setIdFilamento(Integer.valueOf(values.get(0)));
+                    segmento.setIdSegmento(Integer.valueOf(values.get(1)));
+
+                    punto.setLonG(Float.valueOf(values.get(3)));
+                    punto.setLatG(Float.valueOf(values.get(4)));
+
+                    DAOPunto.insertPunto(punto);
+                    DAOSegmento.insertSegmento(segmento);
                     DAOScheletro.insertScheletro(scheletro);
 
                 }else if(values.get(0).equals("IDFIL")&&
@@ -220,6 +263,8 @@ public class ControlloreInserimentoCSV {
                     System.out.println(count);
                 }
             }
+            DAOPunto.closeConnection();
+            DAOSegmento.closeConnection();
             DAOScheletro.closeConnection();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -248,11 +293,15 @@ public class ControlloreInserimentoCSV {
         int num = 0;
         int count = 0;
         DAOStella = DAOStelle.getInstance();
+    //    DAOPunto = DAOPunto.getInstance();
+
         try {
             br = new BufferedReader(new FileReader(path + "/" + nome));
             Stella stella = new Stella();
+  //          Punto punto = new Punto();
             stampaTempo();
             DAOStella.openConnection();
+//            DAOPunto.openConnection();
             while ((line = br.readLine()) != null) {
                 count++;
                 ArrayList<String> values = new ArrayList<>(Arrays.asList(line.split(split, -1)));
@@ -264,6 +313,10 @@ public class ControlloreInserimentoCSV {
                     stella.setValoreFlusso(Double.valueOf(values.get(4)));
                     stella.setTipoStella(values.get(5));
 
+                 //   punto.setLonG(Double.valueOf(values.get(2)));
+               //     punto.setLatG(Double.valueOf(values.get(3)));
+
+             //       DAOPunto.insertPunto(punto);
                     DAOStella.insertStella(stella);
                 }else if(values.get(0).equals("IDSTAR")&&
                         values.get(1).equals("NAMESTAR")&&
@@ -278,6 +331,7 @@ public class ControlloreInserimentoCSV {
                 }
             }
             stampaTempo();
+           // DAOPunto.closeConnection();
             DAOStella.closeConnection();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -304,9 +358,10 @@ public class ControlloreInserimentoCSV {
     }
 
     public static void main(String args[]){
-        ControlloreInserimentoCSV.getInstance().inserisciDatiCSV("scheletro_filamenti_Herschel.csv","/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
-        ControlloreInserimentoCSV.getInstance().inserisciDatiCSV("stelle_Herschel.csv","/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
         ControlloreInserimentoCSV.getInstance().inserisciDatiCSV("filamenti_Herschel.csv","/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
+        //ControlloreInserimentoCSV.getInstance().inserisciDatiCSV("scheletro_filamenti_Herschel.csv","/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
+        //ControlloreInserimentoCSV.getInstance().inserisciDatiCSV("stelle_Herschel.csv","/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
         ControlloreInserimentoCSV.getInstance().inserisciDatiCSV("contorni_filamenti_Herschel.csv","/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
+
     }
 }

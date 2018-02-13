@@ -40,13 +40,3 @@ INSERT INTO utente(nome, cognome, username, password, email, tipoUtente)
     ('usera','usera','usera','usera','@emaila','Amministratore');
 
 
-DELETE  FROM stella;
-
-DELETE FROM punto;
-
-DELETE FROM contorno;
-
-DELETE FROM filamento;
-
-DELETE FROM scheletro;
-

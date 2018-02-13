@@ -5,29 +5,34 @@ package Entity;
  */
 public class Punto {
 
-    private Double latG;
-    private Double lonG;
+    private Float latG;
+    private Float lonG;
+
 
     //constructor
-    public Punto(Double latG, Double lonG) {
+    public Punto() {
+    }
+
+    //constructor
+    public Punto(Float latG, Float lonG) {
         this.latG = latG;
         this.lonG = lonG;
     }
 
     //getter and setter
-    public Double getLatG() {
+    public Float getLatG() {
         return latG;
     }
 
-    public void setLatG(Double latG) {
+    public void setLatG(Float latG) {
         this.latG = latG;
     }
 
-    public Double getLonG() {
+    public Float getLonG() {
         return lonG;
     }
 
-    public void setLonG(Double lonG) {
+    public void setLonG(Float lonG) {
         this.lonG = lonG;
     }
 }

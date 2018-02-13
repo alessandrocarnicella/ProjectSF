@@ -5,15 +5,15 @@ package Entity;
  */
 public class Contorno {
     private int idFilamento;
-    private Double lonG;
-    private Double latG;
+    private Float lonG;
+    private Float latG;
 
     //constructor
     public Contorno() {
     }
 
     //constructor
-    public Contorno(int idFilamento, Double lonG, Double latG) {
+    public Contorno(int idFilamento, Float lonG, Float latG) {
         this.idFilamento = idFilamento;
         this.lonG = lonG;
         this.latG = latG;
@@ -28,19 +28,19 @@ public class Contorno {
         this.idFilamento = idFilamento;
     }
 
-    public Double getLonG() {
+    public Float getLonG() {
         return lonG;
     }
 
-    public void setLonG(Double lonG) {
+    public void setLonG(Float lonG) {
         this.lonG = lonG;
     }
 
-    public Double getLatG() {
+    public Float getLatG() {
         return latG;
     }
 
-    public void setLatG(Double latG) {
+    public void setLatG(Float latG) {
         this.latG = latG;
     }
 }

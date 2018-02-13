@@ -32,6 +32,7 @@ public class DAOStelle {
     public void openConnection() {
         try {
             conn = this.DataSource.getConnection();
+            conn.setAutoCommit(false);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -41,48 +42,33 @@ public class DAOStelle {
 
     public void closeConnection() {
         try {
+            conn.commit();
             conn.close();
         } catch (SQLException e) {
+            try {
+                conn.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
             e.printStackTrace();
         }
     }
 
-    public void insertPuntiStella(Stella stella) {
-
-        PreparedStatement stmt = null;
-
-
-        String insertQuery = "INSERT INTO punto(long,latg) VALUES (?,?)";
-
-        try {
-            stmt = conn.prepareStatement(insertQuery);
-            stmt.setDouble(1, stella.getLonG());
-            stmt.setDouble(2, stella.getLatG());
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            //e.printStackTrace();
-        } finally {
-            // release resources
-            if (stmt != null) {
-                try {
-                    stmt.close();
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
-                }
-            }
-        }
-    }
-
-
     public void insertStella(Stella stella) {
 
         PreparedStatement stmt = null;
-
-        insertPuntiStella(stella);
+        PreparedStatement stmt2 = null;
 
         String insertQuery = "INSERT INTO stella(idstella,nomestella,long,latg,valoreflusso,tipostella) VALUES (?,?,?,?,?,?)";
+        String insertQuery2 = "INSERT INTO punto(long,latg) VALUES (?,?)";
 
         try {
+
+            stmt2 = conn.prepareStatement(insertQuery2);
+            stmt2.setDouble(1, stella.getLonG());
+            stmt2.setDouble(2, stella.getLatG());
+            stmt2.executeUpdate();
+
             stmt = conn.prepareStatement(insertQuery);
             stmt.setInt(1, stella.getIdStella());
             stmt.setString(2, stella.getNomeStella());
@@ -92,13 +78,13 @@ public class DAOStelle {
             stmt.setString(6, stella.getTipoStella());
             stmt.executeUpdate();
 
-
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             // release resources
             if (stmt != null) {
                 try {
+                    stmt2.close();
                     stmt.close();
                 } catch (SQLException e1) {
                     e1.printStackTrace();

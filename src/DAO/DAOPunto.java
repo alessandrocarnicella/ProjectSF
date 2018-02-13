@@ -1,6 +1,5 @@
 package DAO;
 
-import Entity.Filamento;
 import Entity.Punto;
 import Entity.Stella;
 
@@ -10,23 +9,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Created by alessandro on 10/02/18.
+ * Created by alessandro on 12/02/18.
  */
-public class DAOFilamento {
+public class DAOPunto {
     private DataSource DataSource;
-    private static DAOFilamento instance;
+    private static DAOPunto instance;
     private Connection conn = null;
 
-    protected DAOFilamento() {
+    protected DAOPunto() {
         this.DataSource = new DataSource();
     }
 
     //singleton
-    public synchronized static DAOFilamento getInstance() {
-        if (DAOFilamento.instance == null)
-            DAOFilamento.instance = new DAOFilamento();
+    public synchronized static DAOPunto getInstance() {
+        if (DAOPunto.instance == null)
+            DAOPunto.instance = new DAOPunto();
         return instance;
     }
+
 
     public void openConnection() {
         try {
@@ -37,7 +37,6 @@ public class DAOFilamento {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
     }
 
     public void closeConnection() {
@@ -49,29 +48,20 @@ public class DAOFilamento {
         }
     }
 
-    public void insertFilamento(Filamento filamento) {
+    public void insertPunto(Punto punto) {
 
         PreparedStatement stmt = null;
 
-        String insertQuery = "INSERT INTO filamento(idfilamento,nome,flussototale,densitamedia,temperaturamedia,ellitticita,contrasto,nomesatellite,nomestrumento) VALUES (?,?,?,?,?,?,?,?,?)";
+        String insertQuery = "INSERT INTO punto(long,latg) VALUES (?,?)";
 
         try {
             stmt = conn.prepareStatement(insertQuery);
-            stmt.setInt(1, filamento.getIdFilamento());
-            stmt.setString(2, filamento.getNome());
-            stmt.setDouble(3, filamento.getFlussoTotale());
-            stmt.setDouble(4, filamento.getDensitaMedia());
-            stmt.setDouble(5, filamento.getTemperaturaMedia());
-            stmt.setDouble(6, filamento.getEllitticita());
-            stmt.setDouble(7, filamento.getContrasto());
-            stmt.setString(8, filamento.getNomeSatellite());
-            stmt.setString(9, filamento.getNomeStrumento());
+            stmt.setFloat(1, punto.getLonG());
+            stmt.setFloat(2, punto.getLatG());
             stmt.executeUpdate();
-
-
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             // release resources
             if (stmt != null) {
                 try {
@@ -83,19 +73,25 @@ public class DAOFilamento {
         }
     }
 
-    public boolean findItemById(Filamento filamento) {
+    public boolean findItemById(Punto punto) {
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        String selectQuery = "SELECT idfilamento FROM filamento WHERE idfilamento=?";
+        String selectQuery = "SELECT latg,long FROM public.punto WHERE long=? AND latg=?";
+
+               // "select * from punto where punto.latg=? AND punto.long";
 
         try {
             stmt = conn.prepareStatement(selectQuery);
-            stmt.setInt(1, filamento.getIdFilamento());
-
+            //System.out.println("Punto inserito Lon"+punto.getLonG());
+            //System.out.println("Punto inserito Lat"+punto.getLatG());
+            stmt.setFloat(1, punto.getLonG());
+            stmt.setFloat(2, punto.getLatG());
             rs = stmt.executeQuery();
-
-            if (rs.next()) {
+            boolean a ;
+            if (a = rs.next()) {
+                //System.out.println(" HO trovato un dup");
+                //System.out.println("Punto dup:"+a);
                 return true;
             }
         } catch (SQLException e) {
