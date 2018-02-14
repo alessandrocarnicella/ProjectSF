@@ -114,4 +114,36 @@ public class DAOFilamento {
         return false;
     }
 
+    public void updateFilamento(Filamento filamento) {
+
+        PreparedStatement stmt = null;
+
+        String insertQuery = "UPDATE public.filamento SET  nome=?, flussototale=?, densitamedia=?, temperaturamedia=?, ellitticita=?, contrasto=?, nomesatellite=?, nomestrumento=? WHERE idfilamento=?";
+
+        try {
+            stmt = conn.prepareStatement(insertQuery);
+            stmt.setString(1, filamento.getNome());
+            stmt.setDouble(2, filamento.getFlussoTotale());
+            stmt.setDouble(3, filamento.getDensitaMedia());
+            stmt.setDouble(4, filamento.getTemperaturaMedia());
+            stmt.setDouble(5, filamento.getEllitticita());
+            stmt.setDouble(6, filamento.getContrasto());
+            stmt.setString(7, filamento.getNomeSatellite());
+            stmt.setString(8, filamento.getNomeStrumento());
+            stmt.setInt(9, filamento.getIdFilamento());
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // release resources
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+    }
 }

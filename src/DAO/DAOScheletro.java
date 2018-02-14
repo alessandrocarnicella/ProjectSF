@@ -83,8 +83,8 @@ public class DAOScheletro {
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        String selectQuery = "SELECT idfilamento,idsegmento,tiporamo,long,latg,nprog,flussomisurato FROM public.scheletro WHERE idfilamento=? AND idsegmento=? " +
-                "AND tiporamo=? AND long=? AND latg=? AND nprog=? AND flussomisurato=?";
+        String selectQuery = "SELECT idfilamento,idsegmento, long,latg FROM public.scheletro WHERE idfilamento=? AND idsegmento=? " +
+                "AND long=? AND latg=? ";
 
 
         try {
@@ -92,15 +92,11 @@ public class DAOScheletro {
 
             stmt.setInt(1, scheletro.getIdFilamento());
             stmt.setInt(2, scheletro.getIdSegmento());
-            stmt.setString(3, scheletro.getTipoRamo());
-            stmt.setFloat(4, scheletro.getLonG());
-            stmt.setFloat(5, scheletro.getLatG());
-            stmt.setInt(6, scheletro.getnProg());
-            stmt.setDouble(7, scheletro.getFlussoMisurato());
+            stmt.setFloat(3, scheletro.getLonG());
+            stmt.setFloat(4, scheletro.getLatG());
 
             rs = stmt.executeQuery();
             if (rs.next()) {
-                System.out.println("scheletro duplicato");
                 return true;
             }
         } catch (SQLException e) {
@@ -120,9 +116,33 @@ public class DAOScheletro {
     }
 
 
+    public void updateScheletro(Scheletro scheletro) {
 
+        PreparedStatement stmt = null;
 
+        String insertQuery ="UPDATE public.scheletro SET  tiporamo=?, nprog=?, flussomisurato=? WHERE idfilamento=? AND idsegmento=? AND long=? AND latg=?";
+        try {
+            stmt = conn.prepareStatement(insertQuery);
+            stmt.setString(1, scheletro.getTipoRamo());
+            stmt.setInt(2, scheletro.getnProg());
+            stmt.setDouble(3, scheletro.getFlussoMisurato());
+            stmt.setInt(4, scheletro.getIdFilamento());
+            stmt.setInt(5, scheletro.getIdSegmento());
+            stmt.setFloat(6, scheletro.getLonG());
+            stmt.setFloat(7, scheletro.getLatG());
+            stmt.executeUpdate();
 
-
-
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // release resources
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+    }
 }

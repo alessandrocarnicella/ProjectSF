@@ -95,7 +95,6 @@ public class DAOSegmento {
             rs = stmt.executeQuery();
 
             if (rs.next()) {
-                System.out.println("segmento duplicato");
                 return true;
             }
         } catch (SQLException e) {

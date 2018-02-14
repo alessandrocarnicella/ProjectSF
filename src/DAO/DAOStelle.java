@@ -110,7 +110,35 @@ public class DAOStelle {
         return false;
     }
 
+    public void updateStella(Stella stella) {
 
+        PreparedStatement stmt = null;
+
+        String insertQuery = "UPDATE public.stella SET  nomestella=?, long=?, latg=?, valoreflusso=?, tipostella=? WHERE idstella=?";
+
+        try {
+            stmt = conn.prepareStatement(insertQuery);
+            stmt.setString(1, stella.getNomeStella());
+            stmt.setDouble(2, stella.getLonG());
+            stmt.setDouble(3, stella.getLatG());
+            stmt.setDouble(4, stella.getValoreFlusso());
+            stmt.setString(5, stella.getTipoStella());
+            stmt.setInt(6, stella.getIdStella());
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // release resources
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+    }
 
 
 }

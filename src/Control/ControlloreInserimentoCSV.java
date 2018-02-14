@@ -37,7 +37,7 @@ public class ControlloreInserimentoCSV {
     }
 
     //method
-    public boolean inserisciDatiCSV(String nome, String path) {
+    public boolean inserisciDatiCSVFromBean(String nome, String path) {
         if (nome.equals("stelle_Herschel.csv")) {
             return this.inserisciStelle(nome, path);
         } else if (nome.equals("contorni_filamenti_Herschel.csv")) {
@@ -355,8 +355,12 @@ public class ControlloreInserimentoCSV {
                     filamento.setNomeSatellite(values.get(7));
                     filamento.setNomeStrumento(values.get(8));
 
-                    DAOFilamento.insertFilamento(filamento);
+                    if ( !DAOFilamento.findItemById(filamento) ){
+                        DAOFilamento.insertFilamento(filamento);
 
+                    }else {
+                        DAOFilamento.updateFilamento(filamento);
+                    }
                 }else if(equalsColoumnsNamesFilamento(values)){
                     num++;
                 }
@@ -473,6 +477,8 @@ public class ControlloreInserimentoCSV {
 
                     if ( !DAOScheletro.findItemById(scheletro) ){
                         DAOScheletro.insertScheletro(scheletro);
+                    }else {
+                        DAOScheletro.updateScheletro(scheletro);
                     }
                 }else if(equalsColoumnsNamesScheletro(values)){
                     num++;
@@ -534,7 +540,6 @@ public class ControlloreInserimentoCSV {
                     if ( !DAOPunto.findItemById(punto) ){
                         DAOPunto.insertPunto(punto);
                     }
-
                 }else if(equalsColoumnsNamesStella(values)){
                     num++;
                 }
@@ -564,6 +569,8 @@ public class ControlloreInserimentoCSV {
 
                     if ( !DAOStella.findItemById(stella) ){
                         DAOStella.insertStella(stella);
+                    }else {
+                        DAOStella.updateStella(stella);
                     }
                 }else if(equalsColoumnsNamesStella(values)){
                     num++;
@@ -655,10 +662,10 @@ public class ControlloreInserimentoCSV {
 
 
     public static void main(String args[]){
-        //ControlloreInserimentoCSV.getInstance().inserisciDatiCSV("filamenti_Herschel.csv","C:\\Users\\Manuel\\Desktop\\Università\\BasiDiDati\\ProgettoBasiManuel_Alessandro\\ProgettoDb_TestDati");
-        //ControlloreInserimentoCSV.getInstance().inserisciDatiCSV("scheletro_filamenti_Herschel.csv","C:\\Users\\Manuel\\Desktop\\Università\\BasiDiDati\\ProgettoBasiManuel_Alessandro\\ProgettoDb_TestDati");
-        ControlloreInserimentoCSV.getInstance().inserisciDatiCSV("stelle_Herschel.csv","C:\\Users\\Manuel\\Desktop\\Università\\BasiDiDati\\ProgettoBasiManuel_Alessandro\\ProgettoDb_TestDati");
-        //ControlloreInserimentoCSV.getInstance().inserisciDatiCSV("contorni_filamenti_Herschel.csv","C:\\Users\\Manuel\\Desktop\\Università\\BasiDiDati\\ProgettoBasiManuel_Alessandro\\ProgettoDb_TestDati");
-
+        ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("filamenti_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
+        ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("scheletro_filamenti_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
+        //ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("stelle_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
+        //ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("contorni_filamenti_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
+        //ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("stelle_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
     }
 }

@@ -1,8 +1,6 @@
 package DAO;
 
 import Entity.Punto;
-import Entity.Stella;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -79,8 +77,6 @@ public class DAOPunto {
 
         String selectQuery = "SELECT latg,long FROM public.punto WHERE long=? AND latg=?";
 
-               // "select * from punto where punto.latg=? AND punto.long";
-
         try {
             stmt = conn.prepareStatement(selectQuery);
             stmt.setFloat(1, punto.getLonG());
@@ -104,5 +100,4 @@ public class DAOPunto {
         }
         return false;
     }
-
 }
