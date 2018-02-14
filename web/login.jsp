@@ -22,10 +22,10 @@
                     <br>
                     <!--prima riga:username-->
                     <label><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="username" required>
+                    <input type="text" placeholder="Enter Username" name="username" required maxlength="20" minlength="6">
                     <!--seconda riga:password-->
                     <label><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="password" required>
+                    <input type="password" placeholder="Enter Password" name="password" required maxlength="20" minlength="6">
                     <br>
                     <%
                         if(request.getParameter("verify")!= null){

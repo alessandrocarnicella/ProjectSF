@@ -8,17 +8,30 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<footer class = "mdl-mega-footer" style="background-color: #0f90cc">
-    <main class = "mdl-layout__content">
-    <div class = "mdl-mega-footer__bottom-section">
+<footer class="mdl-mega-footer" style="background: #0f90cc">
+    <div class="mdl-mega-footer__middle-section">
 
-        <div class = "footer-copyright">
-            <p style="text-align: left">© 2018 Copyright ProjectSF</p>
-            <p style="text-align: right"> University of Roma Tor Vergata</p>
+        <div class="mdl-mega-footer__drop-down-section">
+            <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+            <h1 class="mdl-mega-footer__heading" style="font-size: large">© 2018 Copyright ProjectSF</h1>
+        </div>
+
+        <div class="mdl-mega-footer__drop-down-section">
+            <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+            <h1 class="mdl-mega-footer__heading"></h1>
+        </div>
+
+        <div class="mdl-mega-footer__drop-down-section">
+            <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+            <h1 class="mdl-mega-footer__heading"></h1>
+        </div>
+
+        <div class="mdl-mega-footer__drop-down-section">
+            <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+            <h1 class="mdl-mega-footer__heading" style="font-size: large">University of Roma Tor Vergata</h1>
         </div>
 
     </div>
-    </main>
 </footer>
 </body>
 </html>

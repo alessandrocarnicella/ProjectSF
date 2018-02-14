@@ -519,10 +519,10 @@ public class ControlloreInserimentoCSV {
 
 
     public static void main(String args[]){
-        //ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("filamenti_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
-        //ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("scheletro_filamenti_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
-        //ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("stelle_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
-        //ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("contorni_filamenti_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
-        ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("stelle_Herschel.csv", "C:\\\\Users\\\\Manuel\\\\Desktop\\\\Università\\\\BasiDiDati\\\\ProgettoBasiManuel_Alessandro\\\\ProgettoDb_TestDati");
+        ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("filamenti_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
+        ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("scheletro_filamenti_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
+        ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("stelle_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
+        ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("contorni_filamenti_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
+        ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("stelle_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
     }
 }

@@ -12,30 +12,13 @@
     <link href='http://fonts.which is googleapis.com/css?family=Roboto:400,300,300italic,500,400italic,700,700italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//storage.googleapis.com/code.getmdl.io/1.0.1/material.teal-red.min.css" />
     <script src="//storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
+
+    <link rel="stylesheet" href="./material.min.css">
+    <script src="./material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 </head>
 <body>
 
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header" style="background-color: #0f90cc">
-        <div class="mdl-layout__header-row">
-            <span class="mdl-layout-title"><h4>ProjectSF</h4></span>
-            <div class="mdl-layout-spacer"></div>
-            <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="#">Home</a>
-                <a class="mdl-navigation__link" href="#">Profilo</a>
-                <a class="mdl-navigation__link" href="#">Logout</a>
-            </nav>
-        </div>
-    </header>
-    <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Menu</span>
-        <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="#">Products</a>
-            <a class="mdl-navigation__link" href="#">Services</a>
-            <a class="mdl-navigation__link" href="#">Portfolios</a>
-            <a class="mdl-navigation__link" href="#">Achievements</a>
-            <a class="mdl-navigation__link" href="#">Blog</a>
-        </nav>
-    </div>
-</div>
+
 
