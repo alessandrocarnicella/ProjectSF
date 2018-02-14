@@ -54,13 +54,13 @@ public class DAOStelle {
 
         PreparedStatement stmt = null;
 
-        String insertQuery = "INSERT INTO stella(idstella,nomestella,long,latg,valoreflusso,tipostella) VALUES (?,?,?,?,?,?)";
+        String insertQuery = "INSERT INTO public.stella(idstella,nomestella,long,latg,valoreflusso,tipostella) VALUES (?,?,?,?,?,?)";
         try {
             stmt = conn.prepareStatement(insertQuery);
             stmt.setInt(1, stella.getIdStella());
             stmt.setString(2, stella.getNomeStella());
-            stmt.setDouble(3, stella.getLonG());
-            stmt.setDouble(4, stella.getLatG());
+            stmt.setFloat(3, stella.getLonG());
+            stmt.setFloat(4, stella.getLatG());
             stmt.setDouble(5, stella.getValoreFlusso());
             stmt.setString(6, stella.getTipoStella());
             stmt.executeUpdate();
@@ -89,7 +89,7 @@ public class DAOStelle {
 
         try {
             stmt = conn.prepareStatement(selectQuery);
-            stmt.setFloat(1, stella.getIdStella());
+            stmt.setInt(1, stella.getIdStella());
             rs = stmt.executeQuery();
             if (rs.next()) {
                 return true;
@@ -119,8 +119,8 @@ public class DAOStelle {
         try {
             stmt = conn.prepareStatement(insertQuery);
             stmt.setString(1, stella.getNomeStella());
-            stmt.setDouble(2, stella.getLonG());
-            stmt.setDouble(3, stella.getLatG());
+            stmt.setFloat(2, stella.getLonG());
+            stmt.setFloat(3, stella.getLatG());
             stmt.setDouble(4, stella.getValoreFlusso());
             stmt.setString(5, stella.getTipoStella());
             stmt.setInt(6, stella.getIdStella());
