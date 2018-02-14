@@ -1,12 +1,7 @@
 package Control;
 
-import Bean.BeanSatellite;
-import Bean.BeanStrumento;
-import Bean.BeanUtente;
-import DAO.DAOAgenzia;
-import DAO.DAOSatellite;
-import DAO.DAOStrumento;
-import DAO.DAOUtente;
+import Bean.*;
+import DAO.*;
 
 import java.text.SimpleDateFormat;
 import java.sql.Date;
@@ -64,6 +59,29 @@ public class ControlloreInserimentoDati {
     }
 
     //method
+    public boolean insertNewBandaFromBean(BeanBanda beanBanda){
+        DAOBanda daoBanda= DAOBanda.getInstance();
+        boolean inserimento=daoBanda.insertNewBandaInDB(beanBanda);
+        if (inserimento==true)
+            return true;
+        else
+            return false;
+    }
+
+
+    //method
+    public boolean insertNewMisurazioneFromBean(BeanMisurazione beanMisurazione){
+        DAOMisurazione daoMisurazione= DAOMisurazione.getInstance();
+        boolean inserimento=daoMisurazione.insertNewMisurazioneInDB(beanMisurazione);
+        if (inserimento==true)
+            return true;
+        else
+            return false;
+    }
+
+
+
+    //method
     public ArrayList<String> selectSatellitiFromBean(){
         DAOSatellite daoSatellite=DAOSatellite.getInstance();
         ArrayList<String> satelliti= daoSatellite.selectSatellitiFromDB();
@@ -78,6 +96,7 @@ public class ControlloreInserimentoDati {
         ArrayList<String> agenzie= daoAgenzia.selectAgenziaFromDB();
         return agenzie;
     }
+
 
 
 
