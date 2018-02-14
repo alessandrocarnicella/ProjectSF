@@ -83,15 +83,10 @@ public class DAOPunto {
 
         try {
             stmt = conn.prepareStatement(selectQuery);
-            //System.out.println("Punto inserito Lon"+punto.getLonG());
-            //System.out.println("Punto inserito Lat"+punto.getLatG());
             stmt.setFloat(1, punto.getLonG());
             stmt.setFloat(2, punto.getLatG());
             rs = stmt.executeQuery();
-            boolean a ;
-            if (a = rs.next()) {
-                //System.out.println(" HO trovato un dup");
-                //System.out.println("Punto dup:"+a);
+            if (rs.next()) {
                 return true;
             }
         } catch (SQLException e) {

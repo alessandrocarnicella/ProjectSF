@@ -2,6 +2,7 @@ package DAO;
 
 import Entity.Contorno;
 import Entity.Scheletro;
+import Entity.Segmento;
 import Entity.Stella;
 
 import java.sql.Connection;
@@ -75,4 +76,53 @@ public class DAOScheletro {
             }
         }
     }
+
+
+    //method
+    public boolean findItemById(Scheletro scheletro) {
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        String selectQuery = "SELECT idfilamento,idsegmento,tiporamo,long,latg,nprog,flussomisurato FROM public.scheletro WHERE idfilamento=? AND idsegmento=? " +
+                "AND tiporamo=? AND long=? AND latg=? AND nprog=? AND flussomisurato=?";
+
+
+        try {
+            stmt = conn.prepareStatement(selectQuery);
+
+            stmt.setInt(1, scheletro.getIdFilamento());
+            stmt.setInt(2, scheletro.getIdSegmento());
+            stmt.setString(3, scheletro.getTipoRamo());
+            stmt.setFloat(4, scheletro.getLonG());
+            stmt.setFloat(5, scheletro.getLatG());
+            stmt.setInt(6, scheletro.getnProg());
+            stmt.setDouble(7, scheletro.getFlussoMisurato());
+
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                System.out.println("scheletro duplicato");
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            // release resources
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+        return false;
+    }
+
+
+
+
+
+
+
 }

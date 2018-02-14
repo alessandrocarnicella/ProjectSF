@@ -75,7 +75,7 @@ public class DAOContorno {
         }
     }
 
-    public boolean findItemById(Contorno contorno) {
+    public boolean  findItemById(Contorno contorno) {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         String selectQuery ="SELECT * FROM contorno WHERE idfilamento=?  AND long=?  AND latg=?";

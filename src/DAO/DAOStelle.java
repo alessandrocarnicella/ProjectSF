@@ -1,5 +1,6 @@
 package DAO;
 
+import Entity.Punto;
 import Entity.Stella;
 
 import java.sql.Connection;
@@ -77,4 +78,39 @@ public class DAOStelle {
             }
         }
     }
+
+
+    //method
+    public boolean findItemById(Stella stella) {
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        String selectQuery = "SELECT idstella FROM public.stella WHERE idstella=?";
+
+        try {
+            stmt = conn.prepareStatement(selectQuery);
+            stmt.setFloat(1, stella.getIdStella());
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            // release resources
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+        return false;
+    }
+
+
+
+
 }

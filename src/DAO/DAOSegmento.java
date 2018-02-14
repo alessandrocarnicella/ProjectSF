@@ -6,6 +6,7 @@ import Entity.Segmento;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -78,4 +79,45 @@ public class DAOSegmento {
             }
         }
     }
+
+    //method
+    public boolean findItemById(Segmento segmento) {
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        String selectQuery = "SELECT idsegmento,idfilamento FROM public.segmento WHERE idsegmento=? AND idfilamento=?";
+
+        try {
+            stmt = conn.prepareStatement(selectQuery);
+
+            stmt.setInt(1, segmento.getIdSegmento());
+            stmt.setInt(2, segmento.getIdFilamento());
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                System.out.println("segmento duplicato");
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            // release resources
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+        return false;
+    }
+
+
+
+
+
+
+
 }
