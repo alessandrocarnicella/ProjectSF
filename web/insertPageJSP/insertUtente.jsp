@@ -43,13 +43,13 @@
                     <form action="insertUtente.jsp">
                         <label style="margin-left: 30px;margin-top: 50px"> Inserisci Nome :</label>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="margin-left: 30px">
-                            <input class="mdl-textfield__input" type="text" id="sample1" name="nomeRegistrazione" required maxlength="20" minlength="6">
+                            <input class="mdl-textfield__input" type="text" id="sample1" name="nomeRegistrazione" required maxlength="20" >
                             <label class="mdl-textfield__label" for="sample3" > Nome </label>
                         </div>
                         <br>
                         <label style="margin-left: 30px;margin-top: 50px"> Inserisci Cognome :</label>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="margin-left: 30px">
-                            <input class="mdl-textfield__input" type="text" id="sample2" name="cognomeRegistrazione" required maxlength="20" minlength="6">
+                            <input class="mdl-textfield__input" type="text" id="sample2" name="cognomeRegistrazione" required maxlength="20" >
                             <label class="mdl-textfield__label" for="sample3"> Cognome </label>
                         </div>
                         <br>
@@ -85,6 +85,8 @@
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="width: 200px;margin-left: 30px;margin-top: 50px" type="submit" name="conferma">
                             Conferma
                         </button>
+
+                        <img style=" margin-left: 150px" src="../Images/alien2.png" >
 
                         <%  if(request.getParameter("conferma")!= null){
                             BeanRegistrazione.setUsername(request.getParameter("usernameRegistrazione"));

@@ -27,8 +27,8 @@
             <%if(BeanLogin.getTipoUtente().equals("Amministratore")){%>
             <a class="mdl-navigation__link" href="../insertPageJSP/insertUtente.jsp" style="font-size: medium">Registra utente</a>
             <a class="mdl-navigation__link" href="#" style="font-size: medium">Inserisci CSV</a>
-            <a class="mdl-navigation__link" href="#" style="font-size: medium">Inserisci dati satellite</a>
-            <a class="mdl-navigation__link" href="#" style="font-size: medium">inserisci dati strumenti</a>
+            <a class="mdl-navigation__link" href="../insertPageJSP/insertSatellite.jsp#" style="font-size: medium">Inserisci dati satellite</a>
+            <a class="mdl-navigation__link" href="../insertPageJSP/insertStrumento.jsp" style="font-size: medium">inserisci dati strumenti</a>
             <%}%>
             <a class="mdl-navigation__link" href="#" style="font-size: medium">Query varie</a>
             <a class="mdl-navigation__link" href="#" style="font-size: medium">Query varie</a>
