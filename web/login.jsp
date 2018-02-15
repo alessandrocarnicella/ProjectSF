@@ -32,9 +32,9 @@
                             BeanUtente.setUsername(request.getParameter("username"));
                             BeanUtente.setPassword(request.getParameter("password"));
                             //eseguo il metodo verify per controllare se l'utente è già presente nel DB
-                            Utente utente = BeanUtente.verifyLogin();
+                            boolean utenteTrovato = BeanUtente.verifyLogin();
                             //se l'utente è presente, allora procedo alla pagina Home.jsp altrimenti rieffettuo il Login
-                            if (utente != null) { %>
+                            if (utenteTrovato == true) { %>
                     <jsp:forward page="Home.jsp"/>
                     <% } else{ %>
 

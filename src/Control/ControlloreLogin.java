@@ -22,19 +22,23 @@ public class ControlloreLogin {
     }
 
 
-    public Utente verifyLoginFromBean(BeanUtente beanUtente) {
+    public boolean verifyLoginFromBean(BeanUtente beanUtente) {
         DAOLogin d = DAOLogin.getInstance();
         try {
             ArrayList<String> risultato= d.findUtente(beanUtente.getUsername());
             if (risultato != null ) {
                 if(beanUtente.getPassword().equals(risultato.get(3))) {
                     Utente utente = new Utente(risultato.get(0), risultato.get(1), risultato.get(2), risultato.get(3), risultato.get(4), risultato.get(5));
-                    return utente;
+                    beanUtente.setNome(utente.getNome());
+                    beanUtente.setCognome(utente.getCognome());
+                    beanUtente.setEmail(utente.getEmail());
+                    beanUtente.setTipoUtente(utente.getTipoUtente());
+                    return true;
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return false;
     }
 }

@@ -15,7 +15,7 @@ public class BeanUtente {
     private String password;
     private String email;
     private String tipoUtente;
-    private Utente utente;
+    private boolean utente;
 
 
     //getter and setter
@@ -67,21 +67,21 @@ public class BeanUtente {
         this.tipoUtente = tipoUtente;
     }
 
-    public Utente getUtente() {
+    public boolean getUtente() {
         return utente;
     }
 
-    public void setUtente(Utente utente) {
+    public void setUtente(boolean utente) {
         this.utente = utente;
     }
 
     //method
-    public Utente verifyLogin(){
+    public boolean verifyLogin(){
         this.utente=ControlloreLogin.getInstance().verifyLoginFromBean(this);
-        if (utente!= null)
-            return utente;
+        if (utente==true)
+            return true;
         else
-            return null;
+            return false;
 
     }
 
