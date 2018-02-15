@@ -1,12 +1,11 @@
 package DAO;
 
-import Bean.BeanUtente;
+import Bean.BeanLogin;
+import Bean.BeanRegistrazione;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 /**
  * Created by Manuel on 10/02/2018.
@@ -29,7 +28,7 @@ public class DAOUtente {
     }
 
 
-    public boolean insertNewUtenteInDB(BeanUtente beanUtente) {
+    public boolean insertNewUtenteInDB(BeanRegistrazione beanRegistrazione) {
 
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -41,12 +40,12 @@ public class DAOUtente {
             String query = "INSERT INTO utente(nome, cognome, username, password, email, tipoutente) " +
                     "VALUES (?,?,?,?,?,?)";
             stmt = conn.prepareStatement(query);
-            stmt.setString(1, beanUtente.getNome());
-            stmt.setString(2, beanUtente.getCognome());
-            stmt.setString(3, beanUtente.getUsername());
-            stmt.setString(4, beanUtente.getPassword());
-            stmt.setString(5, beanUtente.getEmail());
-            stmt.setString(6, beanUtente.getTipoUtente());
+            stmt.setString(1, beanRegistrazione.getNome());
+            stmt.setString(2, beanRegistrazione.getCognome());
+            stmt.setString(3, beanRegistrazione.getUsername());
+            stmt.setString(4, beanRegistrazione.getPassword());
+            stmt.setString(5, beanRegistrazione.getEmail());
+            stmt.setString(6, beanRegistrazione.getTipoUtente());
             stmt.executeUpdate();
 
         } catch (SQLException | ClassNotFoundException e) {

@@ -3,8 +3,6 @@ package Control;
 import Bean.*;
 import DAO.*;
 
-import java.text.SimpleDateFormat;
-import java.sql.Date;
 import java.util.ArrayList;
 
 /**
@@ -23,10 +21,10 @@ public class ControlloreInserimentoDati {
 
 
     //method
-    public boolean insertNewUserFromBean(BeanUtente beanUtente){
+    public boolean insertNewUserFromBean(BeanRegistrazione beanRegistrazione){
 
         DAOUtente daoUtente= DAOUtente.getInstance();
-        boolean inserimento= daoUtente.insertNewUtenteInDB(beanUtente);
+        boolean inserimento= daoUtente.insertNewUtenteInDB(beanRegistrazione);
         if (inserimento==true)
             return true;
         else

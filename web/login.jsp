@@ -6,8 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <jsp:include page="Include/header.jsp"/>
-<jsp:useBean id="BeanUtente" scope="session" class="Bean.BeanUtente"/>
-<jsp:setProperty property="*" name="BeanUtente"/>
+<jsp:useBean id="BeanLogin" scope="session" class="Bean.BeanLogin"/>
+<jsp:setProperty property="*" name="BeanLogin"/>
 
 
 <div class="container" style="height: 10%;width: 10%;margin-left: 70%">
@@ -29,10 +29,10 @@
                     <br>
                     <%
                         if(request.getParameter("verify")!= null){
-                            BeanUtente.setUsername(request.getParameter("username"));
-                            BeanUtente.setPassword(request.getParameter("password"));
+                            BeanLogin.setUsername(request.getParameter("username"));
+                            BeanLogin.setPassword(request.getParameter("password"));
                             //eseguo il metodo verify per controllare se l'utente è già presente nel DB
-                            boolean utenteTrovato = BeanUtente.verifyLogin();
+                            boolean utenteTrovato = BeanLogin.verifyLogin();
                             //se l'utente è presente, allora procedo alla pagina Home.jsp altrimenti rieffettuo il Login
                             if (utenteTrovato == true) { %>
                     <jsp:forward page="Home.jsp"/>

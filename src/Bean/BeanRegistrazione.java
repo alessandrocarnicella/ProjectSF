@@ -2,87 +2,75 @@ package Bean;
 
 import Control.ControlloreInserimentoDati;
 import Control.ControlloreLogin;
-import Entity.Utente;
 
 /**
- * Created by Manuel on 08/02/2018.
+ * Created by alessandro on 15/02/18.
  */
-public class BeanUtente {
-
-    private String nome;
-    private String cognome;
-    private String username;
-    private String password;
-    private String email;
-    private String tipoUtente;
-    private boolean utente;
+public class BeanRegistrazione {
+    private String nomeRegistrazione;
+    private String cognomeRegistrazione;
+    private String usernameRegistrazione;
+    private String passwordRegistrazione;
+    private String emailRegistrazione;
+    private String tipoUtenteRegistrazione;
+    private boolean utenteRegistrazione;
 
 
     //getter and setter
     public String getNome() {
-        return nome;
+        return nomeRegistrazione;
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nomeRegistrazione = nome;
     }
 
     public String getCognome() {
-        return cognome;
+        return cognomeRegistrazione;
     }
 
     public void setCognome(String cognome) {
-        this.cognome = cognome;
+        this.cognomeRegistrazione = cognome;
     }
 
     public String getUsername() {
-        return username;
+        return usernameRegistrazione;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.usernameRegistrazione = username;
     }
 
     public String getPassword() {
-        return password;
+        return passwordRegistrazione;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.passwordRegistrazione = password;
     }
 
     public String getEmail() {
-        return email;
+        return emailRegistrazione;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.emailRegistrazione = email;
     }
 
     public String getTipoUtente() {
-        return tipoUtente;
+        return tipoUtenteRegistrazione;
     }
 
     public void setTipoUtente(String tipoUtente) {
-        this.tipoUtente = tipoUtente;
+        this.tipoUtenteRegistrazione = tipoUtente;
     }
 
     public boolean getUtente() {
-        return utente;
+        return utenteRegistrazione;
     }
 
     public void setUtente(boolean utente) {
-        this.utente = utente;
-    }
-
-    //method
-    public boolean verifyLogin(){
-        this.utente=ControlloreLogin.getInstance().verifyLoginFromBean(this);
-        if (utente==true)
-            return true;
-        else
-            return false;
-
+        this.utenteRegistrazione = utente;
     }
 
     //method
@@ -94,6 +82,5 @@ public class BeanUtente {
         else
             return false;
     }
-
 
 }

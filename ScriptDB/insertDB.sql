@@ -35,8 +35,8 @@ INSERT INTO strumento(nome, nomesatellite)
 INSERT INTO utente(nome, cognome, username, password, email, tipoUtente)
   VALUES
     ('Franco','Gialli','FrancoG94','francobasi94','FrancoG94@gmail.com','utenteRegitrato'),
-    ('Marco','Rossi','MarcoR94','marcobasi94','MarcoR94@gmail.com','Amministartore'),
-    ('user','user','user','user','@email','utenteRegistrato'),
-    ('usera','usera','usera','usera','@emaila','Amministratore');
+    ('Marco','Rossi','MarcoR94','marcobasi94','MarcoR94@gmail.com','Amministratore'),
+    ('utente','utente','utente','utente','@email','utenteRegistrato'),
+    ('utentea','utentea','utentea','utentea','@emaila','Amministratore');
 
 

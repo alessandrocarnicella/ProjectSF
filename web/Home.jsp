@@ -6,8 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="BeanUtente" scope="session" class="Bean.BeanUtente"/>
-<jsp:setProperty property="*" name="BeanUtente"/>
+<jsp:useBean id="BeanLogin" scope="session" class="Bean.BeanLogin"/>
+<jsp:setProperty property="*" name="BeanLogin"/>
 
 <jsp:include page="Include/headerHome.jsp"/>
 <jsp:include page="Include/menu.jsp"/>
@@ -43,7 +43,7 @@
 
                 <div class="demo-card-wide2 mdl-card mdl-shadow--2dp">
                     <div class="demo-card-wide mdl-card__title">
-                        <h2 class="mdl-card__title-text">Welcome <%=BeanUtente.getNome()%></h2>
+                        <h2 class="mdl-card__title-text">Welcome <%=BeanLogin.getNome()%></h2>
                     </div>
                 </div>
                 <br><br>
@@ -81,5 +81,6 @@
             </div>
         </div>
     </div>
+</div>
     <jsp:include page="Include/footerHome.jsp"/>
 
