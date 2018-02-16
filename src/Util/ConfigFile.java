@@ -5,7 +5,8 @@ package Util;
  */
 public class ConfigFile {
     //TODO cambia path
-    public static String path = "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati";
+    //public static String path = "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati";
+    public static String path = "/ProjectSF/out/artifacts/ProjectSF_war_exploded";
     public static String DBName = "myDB";
     public static String DBUser = "postgres";
     public static String DBPassword = "postgresPSW";

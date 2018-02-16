@@ -8,8 +8,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 
+import Bean.BeanInserimentoCSV;
 import DAO.*;
 import Entity.*;
+import Util.ConfigFile;
 
 /**
  * Created by alessandro on 09/02/18.
@@ -517,7 +519,7 @@ public class ControlloreInserimentoCSV {
         return false;
     }
 
-
+    /*
     public static void main(String args[]){
         ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("filamenti_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
         ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("scheletro_filamenti_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
@@ -525,4 +527,5 @@ public class ControlloreInserimentoCSV {
         ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("contorni_filamenti_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
         ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("stelle_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
     }
+    */
 }

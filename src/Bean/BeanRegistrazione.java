@@ -7,6 +7,7 @@ import Control.ControlloreLogin;
  * Created by alessandro on 15/02/18.
  */
 public class BeanRegistrazione {
+
     private String nomeRegistrazione;
     private String cognomeRegistrazione;
     private String usernameRegistrazione;

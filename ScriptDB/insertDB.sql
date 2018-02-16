@@ -32,7 +32,7 @@ INSERT INTO strumento(nome, nomesatellite)
     ('MIPS','Spitzer');
 
 
-INSERT INTO utente(nome, cognome, username, password, email, tipoUtente)
+INSERT INTO utente(nome, cognome, username, password, email, tipoutente)
   VALUES
     ('Franco','Gialli','FrancoG94','francobasi94','FrancoG94@gmail.com','utenteRegitrato'),
     ('Marco','Rossi','MarcoR94','marcobasi94','MarcoR94@gmail.com','Amministratore'),
