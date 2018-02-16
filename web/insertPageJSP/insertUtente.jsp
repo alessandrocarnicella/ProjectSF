@@ -99,7 +99,7 @@
                         <%if(!BeanRegistrazione.insertNewUtente()){%>
                         <b class="red-text"> Errore inserimento dati! </b>
                        <% }else{%>
-                        <jsp:forward page="../Home.jsp"/>
+                        <jsp:forward page="/Home.jsp"/>
                        <%}
                         }%>
                     </form>

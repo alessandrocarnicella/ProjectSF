@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: Manuel
   Date: 15/02/2018
@@ -21,6 +21,19 @@
         height: 100px;
     }
 </style>
+
+<jsp:useBean id="BeanSatellite" scope="session" class="Bean.BeanSatellite"/>
+<jsp:setProperty property="*" name="BeanSatellite"/>
+
+<jsp:useBean id="BeanStrumento" scope="session" class="Bean.BeanStrumento"/>
+<jsp:setProperty property="*" name="BeanStrumento"/>
+
+<jsp:useBean id="BeanBanda" scope="session" class="Bean.BeanBanda"/>
+<jsp:setProperty property="*" name="BeanBanda"/>
+
+<jsp:useBean id="BeanMisurazione" scope="session" class="Bean.BeanMisurazione"/>
+<jsp:setProperty property="*" name="BeanMisurazione"/>
+
 <!--fine definizione parametri-->
 <div style="background: url(/Images/154876-OVJJF1-95.jpg);background-size: 1300px 1100px;">
     <br><br><br><br><br>
@@ -32,44 +45,64 @@
         <!--fine titolo-->
         <label style="margin-left: 30px;margin-top: 50px"> <b>Seleziona il satellite :</b></label>
         <!--select dei satellitti-->
-        <div class="input-field col s12" style="width: 500px;margin-left: 30px">
-            <br>
-            <select class="browser-default" style="width: 300px">
-                <option value="1">satellite1</option>
-                <option value="2">satellite2</option>
-                <option value="3">satellite3</option>
-            </select>
+        <form action="insertStrumento.jsp" method="post">
+            <div class="input-field col s12" style="width: 500px;margin-left: 30px">
+                <br>
+                <select class="browser-default" style="width: 300px" name="selectsatellite">
+                    <%ArrayList<String> satelliti=BeanSatellite.selectSatelliti();
+                        for(int i=0;i<satelliti.size();i++){%>
+                    <option value=<%=satelliti.get(i)%>><%=satelliti.get(i)%></option>
+                    <%}%>
+                </select>
+                <br><br>
+            </div>
+            <!--fine select-->
+            <label style="margin-left: 30px;margin-top: 30px"> <b>Inserisci nome strumento:</b></label>
             <br><br>
-        </div>
-        <!--fine select-->
-        <label style="margin-left: 30px;margin-top: 30px"> <b>Inserisci nome strumento:</b></label>
-        <br><br>
-        <!--inserimento del nome strumento-->
-        <form action="#">
+            <!--inserimento del nome strumento-->
+
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="margin-left: 30px">
-                <input class="mdl-textfield__input" type="text" id="sample3" required>
+                <input class="mdl-textfield__input" type="text" id="sample3" name="nomestrumento" required>
                 <label class="mdl-textfield__label" for="sample3"> nome </label>
             </div>
-        </form>
-        <!--fine inserimento-->
-        <br><br>
-        <label style="margin-left: 30px;margin-top: 30px"> <b>Inserisci lunghezza di banda:</b></label>
-        <br><br>
-        <!--inserimento della lunghezza-->
-        <form action="#">
+
+            <!--fine inserimento-->
+            <br><br>
+            <label style="margin-left: 30px;margin-top: 30px"> <b>Inserisci lunghezza di banda:</b></label>
+            <br><br>
+            <!--inserimento della lunghezza-->
+
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="margin-left: 30px">
-                <input class="mdl-textfield__input" type="text" id="sample4" required>
+                <input class="mdl-textfield__input" type="text" id="sample4" name="lunghezzabanda" required>
                 <label class="mdl-textfield__label" for="sample4"> lunghezza </label>
             </div>
+
+            <!--fine inserimento-->
+            <!--button-->
+            <div>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" name="confermainsertstrum" style="width: 200px;margin-left: 30px;margin-top: 40px">
+                    Conferma
+                </button>
+            </div>
+
+            <%
+                if (request.getParameter("confermainsertstrum")!=null){
+                    BeanStrumento.setNomeSatellite(request.getParameter("selectsatellite"));
+                    BeanStrumento.setNome(request.getParameter("nomestrumento"));
+                    BeanBanda.setLunghezza(Double.valueOf(request.getParameter("lunghezzabanda")));
+                    BeanMisurazione.setNomeStrumento(request.getParameter("nomestrumento"));
+                    BeanMisurazione.setBanda(Double.valueOf(request.getParameter("lunghezzabanda")));
+                    if(BeanStrumento.insertNewStrumento()&&BeanBanda.insertNewBanda()&&BeanMisurazione.insertNewMisurazione()){ %>
+            <label style="color: green;text-align: right" > <b>Strumento inserito correttamente!</b> </label>
+            <%} else {%>
+            <label style="color: red;text-align: right"> <b>Errore inserimento dati!</b> </label>
+            <%}
+            }%>
         </form>
-        <!--fine inserimento-->
-        <!--button-->
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="width: 200px;margin-left: 30px;margin-top: 40px">
-            Conferma
-        </button>
     </div>
     <br><br><br>
 </div>
+
 
 
 <jsp:include page="/Include/footerHome.jsp"/>

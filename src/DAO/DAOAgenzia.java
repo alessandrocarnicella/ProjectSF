@@ -35,16 +35,17 @@ public class DAOAgenzia {
 
         try {
             conn = this.DataSource.getConnection();
-            String query = "select * from agenzia";
+            String query = "SELECT nome FROM agenzia";
             stmt = conn.prepareStatement(query);
             rs = stmt.executeQuery();
 
-            if (rs.next()){
-                val.add(rs.getString(0));
-            }
-            else
+            if (!rs.isBeforeFirst() ) {
                 return null;
+            }
 
+            while (rs.next()){
+                val.add(rs.getString(1));
+            }
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
