@@ -86,6 +86,7 @@
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" name="confermainsertsat" style="width: 200px;margin-left: 30px;margin-top: 50px">
                     Conferma
                 </button>
+                <img style=" margin-left: 150px" src="../Images/alien2.png" >
             </div>
 
             <%
@@ -105,7 +106,6 @@
             }%>
 
         </form>
-        <img style=" margin-left: 130px" src="Images/img_satellite.jpg" >
         <br><br>
     </div>
     <br><br><br>

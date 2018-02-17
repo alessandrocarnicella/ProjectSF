@@ -43,6 +43,18 @@
     .none {
         display: none;
     }
+
+
+    #myProgress {
+        width: 100%;
+        background-color: #ddd;
+    }
+
+    #myBar {
+        width: 1%;
+        height: 30px;
+        background-color: #4CAF50;
+    }
 </style>
 
 
@@ -74,11 +86,15 @@
                         </div>
                         <br>
 
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="width: 200px;margin-left: 30px;margin-top: 50px" type="submit" name="confermaCSV">
+                        <button onclick="move()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="width: 200px;margin-left: 30px;margin-top: 50px" type="submit" name="confermaCSV">
                             Conferma
                         </button>
                         <img style=" margin-left: 150px" src="../Images/alien2.png" >
                     </form>
+
+                    <br><br>
+                    <div style=" width:80%; height: 5px;margin-left: 50px;" id="myBar" class="mdl-progress mdl-js-progress"></div>
+
 
 
 
@@ -120,6 +136,22 @@
         } else {
             if (fileInputTextDiv.classList.contains("is-focused")) {
                 fileInputTextDiv.classList.remove('is-focused');
+            }
+        }
+    }
+
+
+    function move() {
+        var elem = document.getElementById("myBar");
+        var width = 1;
+        var id = setInterval(frame, 100);
+        function frame() {
+            if (width >= 100) {
+                clearInterval(id);
+            } else {
+                width++;
+                elem.MaterialProgress.setProgress(width);
+                //elem.style.width = 100+'%';
             }
         }
     }
