@@ -1,5 +1,7 @@
 package DAO;
 
+import Bean.BeanContorno;
+import Bean.BeanSegmento;
 import Entity.Punto;
 import Entity.Scheletro;
 import Entity.Segmento;
@@ -40,6 +42,7 @@ public class DAOSegmento {
         }
     }
 
+    //method
     public void closeConnection() {
         try {
             conn.commit();
@@ -50,6 +53,7 @@ public class DAOSegmento {
     }
 
 
+    //method
     public void insertSegmento(Segmento segmento) {
 
         PreparedStatement stmt = null;
@@ -79,6 +83,8 @@ public class DAOSegmento {
             }
         }
     }
+
+
 
     //method
     public boolean findItemById(Segmento segmento) {
@@ -113,6 +119,60 @@ public class DAOSegmento {
         return false;
     }
 
+
+    //method
+    public int selectSegmentsFromFilamentFromDB(BeanSegmento beanSegmento){
+
+        int numSegments=0;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String selectQuery = "SELECT COUNT(*) FROM public.segmento WHERE idfilamento=?";
+        try {
+            stmt = conn.prepareStatement(selectQuery);
+            stmt.setInt(1, beanSegmento.getIdFilamento());
+
+            rs = stmt.executeQuery();
+            if (!rs.isBeforeFirst() ) {
+                return 0;
+            }
+
+            if (rs.next()){
+                numSegments=rs.getInt(1);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+            // release resources
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            // release resources
+            if(stmt != null){
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            // close connection
+            if(conn  != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return numSegments;
+
+
+    }
 
 
 

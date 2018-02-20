@@ -83,7 +83,10 @@ public class ControlloreInserimentoDati {
     public ArrayList<String> selectSatellitiFromBean(){
         DAOSatellite daoSatellite=DAOSatellite.getInstance();
         ArrayList<String> satelliti= daoSatellite.selectSatellitiFromDB();
-        return satelliti;
+        if (satelliti!= null)
+            return satelliti;
+        else
+            return null;
     }
 
 
@@ -92,14 +95,11 @@ public class ControlloreInserimentoDati {
     public ArrayList<String> selectAgenziaFromBean(){
         DAOAgenzia daoAgenzia=DAOAgenzia.getInstance();
         ArrayList<String> agenzie= daoAgenzia.selectAgenziaFromDB();
+        if(agenzie!=null)
         return agenzie;
+        else
+            return null;
     }
-
-
-
-
-
-
 
 
 }

@@ -63,7 +63,10 @@ public class BeanSatellite {
     //method
     public ArrayList<String> selectSatelliti() {
         ArrayList<String> satelliti = ControlloreInserimentoDati.getInstance().selectSatellitiFromBean();
-        return satelliti;
+        if (satelliti!=null)
+            return satelliti;
+        return null;
+
     }
 
 

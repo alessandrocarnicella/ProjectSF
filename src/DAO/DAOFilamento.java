@@ -148,41 +148,4 @@ public class DAOFilamento {
         }
     }
 
-
-
-    //method
-    public ArrayList<Integer> selectFilamenti(int idfilamento){
-
-        ArrayList<Integer> idfilamenti =new ArrayList<>();
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        String selectQuery = "SELECT idfilamento FROM filamento WHERE idfilamento=?";
-        try {
-            stmt = conn.prepareStatement(selectQuery);
-            stmt.setInt(1, idfilamento);
-            rs = stmt.executeQuery();
-
-            if (!rs.isBeforeFirst() ) {
-                return null;
-            }
-
-            while (rs.next()){
-                idfilamenti.add(rs.getInt(1));
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }finally {
-            // release resources
-            if (stmt != null) {
-                try {
-                    stmt.close();
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
-                }
-            }
-        }
-
-        return idfilamenti;
-    }
 }

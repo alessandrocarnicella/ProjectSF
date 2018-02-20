@@ -23,7 +23,10 @@ public class BeanAgenzia {
     //method
     public ArrayList<String> selectAgenzie(){
         ArrayList<String> agenzie= ControlloreInserimentoDati.getInstance().selectAgenziaFromBean();
+        if (agenzie!=null)
         return agenzie;
+        else
+            return null;
     }
 
 }

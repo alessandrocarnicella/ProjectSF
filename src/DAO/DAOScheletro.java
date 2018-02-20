@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * Created by alessandro on 10/02/18.
@@ -145,4 +146,7 @@ public class DAOScheletro {
             }
         }
     }
+
+
+
 }
