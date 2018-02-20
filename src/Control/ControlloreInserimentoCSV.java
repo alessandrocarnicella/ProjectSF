@@ -206,11 +206,11 @@ public class ControlloreInserimentoCSV {
                     count++;
                     filamento.setIdFilamento(Integer.valueOf(values.get(0)));
                     filamento.setNome(values.get(1));
-                    filamento.setFlussoTotale(Double.valueOf(values.get(2)));
-                    filamento.setDensitaMedia(Double.valueOf(values.get(3)));
-                    filamento.setTemperaturaMedia(Double.valueOf(values.get(4)));
-                    filamento.setEllitticita(Double.valueOf(values.get(5)));
-                    filamento.setContrasto(Double.valueOf(values.get(6)));
+                    filamento.setFlussoTotale(Float.valueOf(values.get(2)));
+                    filamento.setDensitaMedia(Float.valueOf(values.get(3)));
+                    filamento.setTemperaturaMedia(Float.valueOf(values.get(4)));
+                    filamento.setEllitticita(Float.valueOf(values.get(5)));
+                    filamento.setContrasto(Float.valueOf(values.get(6)));
                     filamento.setNomeSatellite(values.get(7));
                     filamento.setNomeStrumento(values.get(8));
 
@@ -527,5 +527,5 @@ public class ControlloreInserimentoCSV {
         ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("contorni_filamenti_Herschel.csv", "C:\\\\Users\\\\Manuel\\\\Desktop\\\\Università\\\\BasiDiDati\\\\ProgettoBasiManuel_Alessandro\\\\ProgettoDb_TestDati");
         ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("stelle_Herschel.csv", "C:\\\\Users\\\\Manuel\\\\Desktop\\\\Università\\\\BasiDiDati\\\\ProgettoBasiManuel_Alessandro\\\\ProgettoDb_TestDati");
     }
-    */
+  */
 }

@@ -7,11 +7,11 @@ public class Filamento {
 
     private String nome;
     private int idFilamento;
-    private double flussoTotale;
-    private double densitaMedia;
-    private double temperaturaMedia;
-    private double ellitticita;
-    private double contrasto;
+    private float flussoTotale;
+    private float densitaMedia;
+    private float temperaturaMedia;
+    private float ellitticita;
+    private float contrasto;
     private String nomeSatellite;
     private String nomeStrumento;
 
@@ -20,7 +20,7 @@ public class Filamento {
     }
 
     //constructor
-    public Filamento(String nome, int idFilamento, double flussoTotale, double densitaMedia, double temperaturaMedia, double ellitticita, double contrasto, String nomeSatellite, String nomeStrumento) {
+    public Filamento(String nome, int idFilamento, float flussoTotale, float densitaMedia, float temperaturaMedia, float ellitticita, float contrasto, String nomeSatellite, String nomeStrumento) {
         this.nome = nome;
         this.idFilamento = idFilamento;
         this.flussoTotale = flussoTotale;
@@ -49,43 +49,43 @@ public class Filamento {
         this.idFilamento = idFilamento;
     }
 
-    public double getFlussoTotale() {
+    public float getFlussoTotale() {
         return flussoTotale;
     }
 
-    public void setFlussoTotale(double flussoTotale) {
+    public void setFlussoTotale(float flussoTotale) {
         this.flussoTotale = flussoTotale;
     }
 
-    public double getDensitaMedia() {
+    public float getDensitaMedia() {
         return densitaMedia;
     }
 
-    public void setDensitaMedia(double densitaMedia) {
+    public void setDensitaMedia(float densitaMedia) {
         this.densitaMedia = densitaMedia;
     }
 
-    public double getTemperaturaMedia() {
+    public float getTemperaturaMedia() {
         return temperaturaMedia;
     }
 
-    public void setTemperaturaMedia(double temperaturaMedia) {
+    public void setTemperaturaMedia(float temperaturaMedia) {
         this.temperaturaMedia = temperaturaMedia;
     }
 
-    public double getEllitticita() {
+    public float getEllitticita() {
         return ellitticita;
     }
 
-    public void setEllitticita(double ellitticita) {
+    public void setEllitticita(float ellitticita) {
         this.ellitticita = ellitticita;
     }
 
-    public double getContrasto() {
+    public float getContrasto() {
         return contrasto;
     }
 
-    public void setContrasto(double contrasto) {
+    public void setContrasto(float contrasto) {
         this.contrasto = contrasto;
     }
 

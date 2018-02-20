@@ -17,7 +17,7 @@
 <style>
     .demo-card-wide2.mdl-card {
         width: 600px;
-        height: 700px;
+        height: 500px;
         background-color:rgba(255, 255, 255, 0.93);
     }
     .demo-card-wide > .mdl-card__title {
@@ -94,9 +94,6 @@
 
                     <br><br>
                     <div style=" width:80%; height: 5px;margin-left: 50px;" id="myBar" class="mdl-progress mdl-js-progress"></div>
-
-
-
 
                 </div>
                 <br><br>

@@ -60,11 +60,11 @@ public class DAOFilamento {
             stmt = conn.prepareStatement(insertQuery);
             stmt.setInt(1, filamento.getIdFilamento());
             stmt.setString(2, filamento.getNome());
-            stmt.setDouble(3, filamento.getFlussoTotale());
-            stmt.setDouble(4, filamento.getDensitaMedia());
-            stmt.setDouble(5, filamento.getTemperaturaMedia());
-            stmt.setDouble(6, filamento.getEllitticita());
-            stmt.setDouble(7, filamento.getContrasto());
+            stmt.setFloat(3, filamento.getFlussoTotale());
+            stmt.setFloat(4, filamento.getDensitaMedia());
+            stmt.setFloat(5, filamento.getTemperaturaMedia());
+            stmt.setFloat(6, filamento.getEllitticita());
+            stmt.setFloat(7, filamento.getContrasto());
             stmt.setString(8, filamento.getNomeSatellite());
             stmt.setString(9, filamento.getNomeStrumento());
             stmt.executeUpdate();
@@ -124,11 +124,11 @@ public class DAOFilamento {
         try {
             stmt = conn.prepareStatement(insertQuery);
             stmt.setString(1, filamento.getNome());
-            stmt.setDouble(2, filamento.getFlussoTotale());
-            stmt.setDouble(3, filamento.getDensitaMedia());
-            stmt.setDouble(4, filamento.getTemperaturaMedia());
-            stmt.setDouble(5, filamento.getEllitticita());
-            stmt.setDouble(6, filamento.getContrasto());
+            stmt.setFloat(2, filamento.getFlussoTotale());
+            stmt.setFloat(3, filamento.getDensitaMedia());
+            stmt.setFloat(4, filamento.getTemperaturaMedia());
+            stmt.setFloat(5, filamento.getEllitticita());
+            stmt.setFloat(6, filamento.getContrasto());
             stmt.setString(7, filamento.getNomeSatellite());
             stmt.setString(8, filamento.getNomeStrumento());
             stmt.setInt(9, filamento.getIdFilamento());
@@ -148,4 +148,86 @@ public class DAOFilamento {
         }
     }
 
+
+
+    //method
+    public ArrayList<Integer> selectFilamenti(int idfilamento){
+
+        ArrayList<Integer> idfilamenti =new ArrayList<>();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String selectQuery = "SELECT idfilamento FROM filamento WHERE idfilamento=?";
+        try {
+            stmt = conn.prepareStatement(selectQuery);
+            stmt.setInt(1, idfilamento);
+            rs = stmt.executeQuery();
+
+            if (!rs.isBeforeFirst() ) {
+                return null;
+            }
+
+            while (rs.next()){
+                idfilamenti.add(rs.getInt(1));
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            // release resources
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+
+        return idfilamenti;
+    }
+
+    public ArrayList<String> selectFilamentiFromDB(Float contrasto, Float minEllitticita, Float maxEllitticita) {
+        openConnection();
+
+        ArrayList<String> filamenti =new ArrayList<>();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String selectQuery = "SELECT * FROM filamento WHERE contrasto>=? AND ellitticita>=? AND ellitticita<=?";
+        try {
+            stmt = conn.prepareStatement(selectQuery);
+            stmt.setFloat(1, contrasto);
+            stmt.setFloat(2, minEllitticita);
+            stmt.setFloat(3, maxEllitticita);
+            rs = stmt.executeQuery();
+
+            if (!rs.isBeforeFirst() ) {
+                return null;
+            }
+
+            while (rs.next()){
+                filamenti.add(rs.getString(1));
+                filamenti.add(rs.getString(2));
+                filamenti.add(rs.getString(3));
+                filamenti.add(rs.getString(4));
+                filamenti.add(rs.getString(5));
+                filamenti.add(rs.getString(6));
+                filamenti.add(rs.getString(7));
+                filamenti.add(rs.getString(8));
+                filamenti.add(rs.getString(9));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            // release resources
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+        closeConnection();
+        return filamenti;
+    }
 }
