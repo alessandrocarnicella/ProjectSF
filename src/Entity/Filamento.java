@@ -20,7 +20,9 @@ public class Filamento {
     }
 
     //constructor
-    public Filamento(String nome, int idFilamento, float flussoTotale, float densitaMedia, float temperaturaMedia, float ellitticita, float contrasto, String nomeSatellite, String nomeStrumento) {
+    public Filamento(String nome, int idFilamento, float flussoTotale, float densitaMedia,
+                     float temperaturaMedia, float ellitticita, float contrasto,
+                     String nomeSatellite, String nomeStrumento) {
         this.nome = nome;
         this.idFilamento = idFilamento;
         this.flussoTotale = flussoTotale;

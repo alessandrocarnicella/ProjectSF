@@ -10,6 +10,19 @@ INSERT INTO satellite(nome,datainizio,datafine,nomeagenzia)
     ('Spitzer','2003-12-18','2009-05-15','NASA');
 
 
+INSERT INTO misurazione(nomestrumento, banda)
+  VALUES
+    ('PACS',70),
+    ('PACS',160),
+    ('SPIRE',250),
+    ('SPIRE',350),
+    ('SPIRE',500),
+    ('IRAC',3.6),
+    ('IRAC',5.8),
+    ('IRAC',8.0),
+    ('MIPS',24);
+
+
 INSERT INTO banda(lunghezza)
   VALUES
   (70),

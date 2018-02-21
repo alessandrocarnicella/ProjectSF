@@ -1,9 +1,11 @@
 package Control;
 
 import Bean.BeanBrillantezzaEllitticita;
+import Bean.BeanFilamento;
 import Bean.BeanInserimentoCSV;
 import DAO.DAOAgenzia;
 import DAO.DAOFilamento;
+import Entity.Filamento;
 import com.sun.xml.internal.bind.v2.TODO;
 
 import java.util.ArrayList;
@@ -34,20 +36,24 @@ public class ControlloreRContrastoEllittcita {
 
         ArrayList<String> filamenti = daoFilamento.selectFilamentiFromDB(contrasto,beanBE.getMinEllitticita(),beanBE.getMaxEllitticita());
 
-        System.out.print(filamenti);
-
-        //TODO rivedi stampe ed errore
         int i=0;
+        while (i<filamenti.size()) {
 
-        while (i<=filamenti.size()) {
-            System.out.print(filamenti.get(i)+" -- ");
-            System.out.print(filamenti.get(i + 5)+" -- ");
-            System.out.println(filamenti.get(i + 6));
-            i = i + 9;
+            Filamento filamento = new Filamento(filamenti.get(i+1), Integer.valueOf(filamenti.get(i)), Float.valueOf(filamenti.get(i+2)), Float.valueOf(filamenti.get(i+3)),Float.valueOf(filamenti.get(i+4)),Float.valueOf(filamenti.get(i+5)),Float.valueOf(filamenti.get(i+6)),filamenti.get(i+7),filamenti.get(i+8));
+            i=i+9;
+            System.out.println(filamento);
+            BeanFilamento beanFilamento = new BeanFilamento();
+            beanFilamento.setIdFilamento(filamento.getIdFilamento());
+            beanFilamento.setNome(filamento.getNome());
+            beanFilamento.setFlussoTotale(filamento.getFlussoTotale());
+            beanFilamento.setDensitaMedia(filamento.getDensitaMedia());
+            beanFilamento.setTemperaturaMedia(filamento.getTemperaturaMedia());
+            beanFilamento.setEllitticita(filamento.getEllitticita());
+            beanFilamento.setContrasto(filamento.getContrasto());
+            beanFilamento.setNomeSatellite(filamento.getNomeSatellite());
+            beanFilamento.setNomeSatellite(filamento.getNomeStrumento());
+            beanFilamento.setPagina(1);
         }
-
-
-
 
         if(filamenti!=null) {
             return filamenti;
@@ -62,11 +68,10 @@ public class ControlloreRContrastoEllittcita {
 
 
 
-
     public static void main(String args[]){
         BeanBrillantezzaEllitticita beanBE = new BeanBrillantezzaEllitticita();
-        beanBE.setBrillantezza((float) 1.1);
-        beanBE.setMinEllitticita((float) 4.0);
+        beanBE.setBrillantezza((float) 50);
+        beanBE.setMinEllitticita((float) 5.0);
         beanBE.setMaxEllitticita((float) 6.0);
         ControlloreRContrastoEllittcita.getInstance().selectFilamentoFromBean(beanBE);
 

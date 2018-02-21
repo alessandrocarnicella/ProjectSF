@@ -31,7 +31,7 @@
             <a class="mdl-navigation__link" href="../insertPageJSP/insertStrumento.jsp" style="font-size: medium">inserisci dati strumenti</a>
             <%}%>
             <a class="mdl-navigation__link" href="#" style="font-size: medium">Query varie</a>
-            <a class="mdl-navigation__link" href="#" style="font-size: medium">Query varie</a>
+            <a class="mdl-navigation__link" href="../ricerchePageJSP/ricercaBrillantezzaEllitticita.jsp" style="font-size: medium">Ricerca Filamento per contrasto ed ellitticita</a>
         </nav>
     </div>
 </div>
