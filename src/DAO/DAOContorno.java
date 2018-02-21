@@ -1,6 +1,7 @@
 package DAO;
 
 import Bean.BeanContorno;
+import Bean.BeanFilamento;
 import Entity.Contorno;
 import Entity.Stella;
 
@@ -118,23 +119,38 @@ public class DAOContorno {
 
 
     //method
-    public ArrayList<String> selectIdFilFromContornoFromDB(){
+    public ArrayList<String> selectForIdOrNameFilCentroidEstensionFromDB(BeanFilamento beanFilamento){
 
         ArrayList<String> val=new ArrayList<>();
         PreparedStatement stmt = null;
-        ResultSet rs = null;
+        ResultSet rs=null;
 
-        String selectQuery = "SELECT DISTINCT idfilamento FROM public.contorno";
+        String selectQuery = "SELECT  AVG(long) AS mediaLong, AVG(latg) AS mediaLatg, MIN(long) AS minLong, MAX(long) AS maxLong, MIN(latg) AS minLatg, MAX(latg) AS maxLatg, COUNT(DISTINCT(idsegmento))" +
+                " FROM contorno JOIN filamento  ON contorno.idfilamento = filamento.idfilamento JOIN segmento ON contorno.idfilamento = segmento.idfilamento" +
+                " WHERE contorno.idfilamento=? OR filamento.nome=?";
+
         try {
+
+            openConnection();
             stmt = conn.prepareStatement(selectQuery);
+            stmt.setInt(1,beanFilamento.getIdFilamento());
+            stmt.setString(2,beanFilamento.getNome());
             rs = stmt.executeQuery();
+
 
             if (!rs.isBeforeFirst() ) {
                 return null;
             }
 
             while (rs.next()){
+
                 val.add(rs.getString(1));
+                val.add(rs.getString(2));
+                val.add(rs.getString(3));
+                val.add(rs.getString(4));
+                val.add(rs.getString(5));
+                val.add(rs.getString(6));
+                val.add(rs.getString(7));
             }
 
         } catch (SQLException e) {
@@ -165,12 +181,14 @@ public class DAOContorno {
                 }
             }
         }
+
         return val;
 
     }
 
 
 
+    /*
     //method
     public ArrayList<Float> selectCentroidPositionFromDB(BeanContorno beanContorno){
 
@@ -289,7 +307,7 @@ public class DAOContorno {
 
 
 
-
+*/
 
 
 }

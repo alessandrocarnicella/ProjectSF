@@ -1,5 +1,9 @@
 package Bean;
 
+import Control.ControlloreRCentroideEstensione;
+
+import java.util.ArrayList;
+
 /**
  * Created by alessandro on 21/02/18.
  */
@@ -95,5 +99,16 @@ public class BeanFilamento {
 
     public void setNomeStrumento(String nomeStrumento) {
         this.nomeStrumento = nomeStrumento;
+    }
+
+
+    //method
+    public ArrayList<String> selectForIdOrNameFilCentroidEstension(){
+
+        ArrayList<String> val= ControlloreRCentroideEstensione.getInstance().selectForIdOrNameFilCentroidEstensionFromBean(this);
+        if ( val!=null)
+            return  val;
+        else
+            return null;
     }
 }

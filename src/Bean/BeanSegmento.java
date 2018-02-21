@@ -28,15 +28,5 @@ public class BeanSegmento {
     }
 
 
-    //method
-    public int selectSegmentsFromFilament(){
-        int numSegments= ControlloreRCentroideEstensione.getInstance().selectSegmentsFromFilamentFromBean(this);
-        if(numSegments!=0)
-            return numSegments;
-        else
-            return 0;
-
-    }
-
 
 }
