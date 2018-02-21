@@ -6,10 +6,10 @@ package Entity;
 public class Misurazione {
 
     private String nomeStrumento;
-    private double banda;
+    private float banda;
 
     //constructor
-    public Misurazione(String nomeStrumento, double banda) {
+    public Misurazione(String nomeStrumento, float banda) {
         this.nomeStrumento = nomeStrumento;
         this.banda = banda;
     }
@@ -23,11 +23,11 @@ public class Misurazione {
         this.nomeStrumento = nomeStrumento;
     }
 
-    public double getBanda() {
+    public float getBanda() {
         return banda;
     }
 
-    public void setBanda(double banda) {
+    public void setBanda(float banda) {
         this.banda = banda;
     }
 }

@@ -423,7 +423,7 @@ public class ControlloreInserimentoCSV {
                     stella.setNomeStella(values.get(1));
                     stella.setLonG(Float.valueOf(values.get(2)));
                     stella.setLatG(Float.valueOf(values.get(3)));
-                    stella.setValoreFlusso(Double.valueOf(values.get(4)));
+                    stella.setValoreFlusso(Float.valueOf(values.get(4)));
                     stella.setTipoStella(values.get(5));
 
                     if ( !DAOStella.findItemById(stella) ){

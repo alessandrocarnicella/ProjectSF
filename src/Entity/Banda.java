@@ -5,19 +5,19 @@ package Entity;
  */
 public class Banda {
 
-    private Double lunghezza;
+    private float lunghezza;
 
     //constructor
-    public Banda(Double lunghezza) {
+    public Banda(float lunghezza) {
         this.lunghezza = lunghezza;
     }
 
     //getter and setter
-    public Double getLunghezza() {
+    public float getLunghezza() {
         return lunghezza;
     }
 
-    public void setLunghezza(Double lunghezza) {
+    public void setLunghezza(float lunghezza) {
         this.lunghezza = lunghezza;
     }
 }

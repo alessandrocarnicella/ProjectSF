@@ -9,7 +9,7 @@ public class Stella {
     private String nomeStella;
     private Float lonG;
     private Float latG;
-    private Double valoreFlusso;
+    private Float valoreFlusso;
     private String tipoStella;
 
     //constructor
@@ -17,7 +17,7 @@ public class Stella {
     }
 
     //constructor
-    public Stella(int idStella, String nomeStella, Float lonG, Float latG, Double valoreFlusso, String tipoStella) {
+    public Stella(int idStella, String nomeStella, Float lonG, Float latG, Float valoreFlusso, String tipoStella) {
         this.idStella = idStella;
         this.nomeStella = nomeStella;
         this.lonG = lonG;
@@ -60,11 +60,11 @@ public class Stella {
         this.latG = latG;
     }
 
-    public Double getValoreFlusso() {
+    public Float getValoreFlusso() {
         return valoreFlusso;
     }
 
-    public void setValoreFlusso(Double valoreFlusso) {
+    public void setValoreFlusso(Float valoreFlusso) {
         this.valoreFlusso = valoreFlusso;
     }
 
