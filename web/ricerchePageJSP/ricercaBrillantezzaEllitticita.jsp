@@ -7,8 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<jsp:useBean id="BeanInserimentoCSV" scope="session" class="Bean.BeanInserimentoCSV"/>
-<jsp:setProperty property="*" name="BeanInserimentoCSV"/>
+<jsp:useBean id="BeanBrillantezzaEllitticita" scope="session" class="Bean.BeanBrillantezzaEllitticita"/>
+<jsp:setProperty property="*" name="BeanBrillantezzaEllitticita"/>
 
 <jsp:include page="/Include/headerHome.jsp"/>
 <jsp:include page="/Include/menu.jsp"/>
@@ -16,7 +16,7 @@
 
 <style>
     .demo-card-wide2.mdl-card {
-        width:1000px;
+        width: 600px;
         height: 500px;
         background-color:rgba(255, 255, 255, 0.93);
     }
@@ -62,28 +62,22 @@
                     <form >
                         <label style="margin-left: 30px;margin-top: 50px"> Inserisci la Percentuale di Brillantezza :</label>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"   style="margin-left: 30px; width: 50px" >
-                            <input class="mdl-textfield__input" type="number" min="0" id="sample1" name="nomeRegistrazione" required maxlength="20" >
+                            <input class="mdl-textfield__input" type="number" min="0" max="100" id="sample1" name="nomeRegistrazione" required maxlength="20" >
                             <label class="mdl-textfield__label" for="sample1" >  </label>
                         </div>
                         <label style="margin-left: 30px;margin-top: 50px">%</label>
                         <br>
 
-                        <div class="row">
-                            <p>on one hand</p>
-                            <div class="small-6 medium-2 columns">
-                                <input type="number" id="sliderOutput3">
-                            </div>
-                            <div class="small-6 medium-2 columns">
-                                <input type="number" id="sliderOutput4">
-                            </div>
-                            <div class="small-12 medium-8 columns">
-                                <div class="slider" data-slider data-initial-start="20000" data-start="0" data-initial-end="75000" data-end="100000" data-step="1000">
-                                    <span class="slider-handle" data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutput3"></span>
-                                    <span class="slider-fill" data-slider-fill></span>
-                                    <span class="slider-handle" data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutput4"></span>
-                                </div>
-                            </div>
+                        <label style="margin-left: 30px;margin-top: 50px"> Inserisci range Ellitticita :</label>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"   style="margin-left: 30px; width: 50px" >
+                            <input class="mdl-textfield__input" type="number" min="1" max="9" id="min" name="min" required maxlength="20" required>
+                            <label class="mdl-textfield__label" for="min" > min </label>
                         </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"   style="margin-left: 30px; width: 50px" >
+                            <input class="mdl-textfield__input" type="number" min="1" max="9" id="max" name="max" required maxlength="20" required>
+                            <label class="mdl-textfield__label" for="max" > max </label>
+                        </div>
+                        <br>
 
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="width: 200px;margin-left: 30px;margin-top: 50px" type="submit" name="conferma2">
                             Conferma
@@ -92,22 +86,26 @@
                         <img style=" margin-left: 150px" src="../Images/alien2.png" >
 
                         <%  if(request.getParameter("conferma2")!= null){
+                                float min = Float.valueOf(request.getParameter("min"));
+                                float max = Float.valueOf(request.getParameter("max"));
+                                if(BeanBrillantezzaEllitticita.ControlloMinMax(min,max)){
+                                    BeanBrillantezzaEllitticita.setMinEllitticita(Float.valueOf(request.getParameter("min")));
+                                    BeanBrillantezzaEllitticita.setMaxEllitticita(Float.valueOf(request.getParameter("max")));
+                                    BeanBrillantezzaEllitticita.setBrillantezza(Float.valueOf(request.getParameter("nomeRegistrazione")));
+                                    BeanBrillantezzaEllitticita.electFilamentoFromBean();
                         %>
-                        <%if(true){%>
-                        <b class="red-text"> Errore inserimento dati! </b>
-                        <% }else{%>
-                        <jsp:forward page="/Home.jsp"/>
-                        <%}
-                        }%>
+
+                                    <jsp:forward page="../ricerchePageJSP/resultBrillantezzaEllitticita.jsp"/><%
+                                } else{%>
+                                    <br>
+                                    <b class="red-text"> Errore inserimento max e min! </b><%
+                                }
+                            }%>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<script>
-    $(document).foundation();
-</script>
 
 <jsp:include page="/Include/footerHome.jsp"/>

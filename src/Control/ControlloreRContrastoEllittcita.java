@@ -35,6 +35,7 @@ public class ControlloreRContrastoEllittcita {
         Float contrasto = RicavaContrasto(beanBE.getBrillantezza());
 
         ArrayList<String> filamenti = daoFilamento.selectFilamentiFromDB(contrasto,beanBE.getMinEllitticita(),beanBE.getMaxEllitticita());
+        ArrayList<BeanFilamento> BeanFilamenti = new ArrayList<BeanFilamento>();
 
         int i=0;
         while (i<filamenti.size()) {
@@ -53,6 +54,7 @@ public class ControlloreRContrastoEllittcita {
             beanFilamento.setNomeSatellite(filamento.getNomeSatellite());
             beanFilamento.setNomeSatellite(filamento.getNomeStrumento());
             beanFilamento.setPagina(1);
+            BeanFilamenti.add(beanFilamento);
         }
 
         if(filamenti!=null) {
@@ -67,7 +69,7 @@ public class ControlloreRContrastoEllittcita {
     }
 
 
-
+/*
     public static void main(String args[]){
         BeanBrillantezzaEllitticita beanBE = new BeanBrillantezzaEllitticita();
         beanBE.setBrillantezza((float) 50);
@@ -76,6 +78,6 @@ public class ControlloreRContrastoEllittcita {
         ControlloreRContrastoEllittcita.getInstance().selectFilamentoFromBean(beanBE);
 
     }
-
+*/
 
 }

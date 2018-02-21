@@ -44,5 +44,12 @@ public class BeanBrillantezzaEllitticita {
         return filamento;
     }
 
+    public boolean ControlloMinMax(float min,float max){
+        if (min<max){
+            return true;
+        }
+        return false;
+    }
+
 
 }
