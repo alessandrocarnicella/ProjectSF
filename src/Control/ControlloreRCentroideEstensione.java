@@ -1,13 +1,9 @@
 package Control;
 
-import Bean.BeanContorno;
 import Bean.BeanFilamento;
-import Bean.BeanSegmento;
 import DAO.DAOContorno;
-import DAO.DAOSegmento;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by Manuel on 19/02/2018.
@@ -24,29 +20,22 @@ public class ControlloreRCentroideEstensione {
     }
 
 
-
-   //method
-    public ArrayList<String> selectForIdOrNameFilCentroidEstensionFromBean(BeanFilamento beanFilamento){
+    //method
+    public ArrayList<String> selectForIdOrNameFilCentroidExtensionFromBean(BeanFilamento beanFilamento){
         DAOContorno daoContorno=DAOContorno.getInstance();
-        ArrayList<String> val= daoContorno.selectForIdOrNameFilCentroidEstensionFromDB( beanFilamento);
-        if(val!=null)
+        ArrayList<String> val= daoContorno.selectForIdOrNameFilCentroidExtensionFromDB( beanFilamento);
+        if(val.get(0)!=null) {
+            String distanceMinMaxLong = String.valueOf(Math.hypot(Double.valueOf(val.get(2)), Double.valueOf(val.get(3))));
+            String distanceMinMaxLatg = String.valueOf(Math.hypot(Double.valueOf(val.get(4)), Double.valueOf(val.get(5))));
+            val.add(distanceMinMaxLong);
+            val.add(distanceMinMaxLatg);
             return val;
+        }
+
         else
-            return null;
+        return null;
     }
 
-
-
-    public static void main(String[] args){
-
-      BeanFilamento beanFilamento=new BeanFilamento();
-      beanFilamento.setIdFilamento(52);
-      String string= new String("HiGALFil013.8059-1.2194");
-      beanFilamento.setNome(string);
-      ArrayList<String> val=beanFilamento.selectForIdOrNameFilCentroidEstension();
-      System.out.println(val);
-
-    }
 
 
 }

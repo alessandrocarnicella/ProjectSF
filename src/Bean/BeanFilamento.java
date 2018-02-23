@@ -103,9 +103,9 @@ public class BeanFilamento {
 
 
     //method
-    public ArrayList<String> selectForIdOrNameFilCentroidEstension(){
+    public ArrayList<String> selectForIdOrNameFilCentroidExtension(){
 
-        ArrayList<String> val= ControlloreRCentroideEstensione.getInstance().selectForIdOrNameFilCentroidEstensionFromBean(this);
+        ArrayList<String> val= ControlloreRCentroideEstensione.getInstance().selectForIdOrNameFilCentroidExtensionFromBean(this);
         if ( val!=null)
             return  val;
         else

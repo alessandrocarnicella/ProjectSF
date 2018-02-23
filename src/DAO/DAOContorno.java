@@ -119,7 +119,7 @@ public class DAOContorno {
 
 
     //method
-    public ArrayList<String> selectForIdOrNameFilCentroidEstensionFromDB(BeanFilamento beanFilamento){
+    public ArrayList<String> selectForIdOrNameFilCentroidExtensionFromDB(BeanFilamento beanFilamento){
 
         ArrayList<String> val=new ArrayList<>();
         PreparedStatement stmt = null;
@@ -185,129 +185,5 @@ public class DAOContorno {
         return val;
 
     }
-
-
-
-    /*
-    //method
-    public ArrayList<Float> selectCentroidPositionFromDB(BeanContorno beanContorno){
-
-        ArrayList<Float> val =new ArrayList<>();
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
-        String selectQuery = "SELECT AVG (long),AVG (latg) FROM public.contorno WHERE idfilamento=?";
-
-        try {
-            stmt = conn.prepareStatement(selectQuery);
-            stmt.setInt(1, beanContorno.getIdFilamento());
-
-            rs = stmt.executeQuery();
-
-            if (!rs.isBeforeFirst() ) {
-                return null;
-            }
-
-            while (rs.next()){
-                val.add(rs.getFloat(1));
-                val.add(rs.getFloat(2));
-
-
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }finally{
-            // release resources
-            if(rs != null){
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            // release resources
-            if(stmt != null){
-                try {
-                    stmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            // close connection
-            if(conn  != null){
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return val;
-
-    }
-
-
-    //method: torna un arrayList di float con dentro min(long) max(long) min(latg) max(latg)
-    public ArrayList<Float> selectEstensionPositionFromDB(BeanContorno beanContorno){
-
-        ArrayList<Float> val =new ArrayList<>();
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        String selectQuery = "SELECT MIN(long),MAX(long),MIN(latg),MAX(latg)FROM public.contorno WHERE idfilamento=?";
-
-        try {
-            stmt = conn.prepareStatement(selectQuery);
-            stmt.setInt(1, beanContorno.getIdFilamento());
-
-            rs = stmt.executeQuery();
-            if (!rs.isBeforeFirst() ) {
-                return null;
-            }
-
-            while (rs.next()){
-                val.add(rs.getFloat(1));
-                val.add(rs.getFloat(2));
-                val.add(rs.getFloat(3));
-                val.add(rs.getFloat(4));
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }finally{
-            // release resources
-            if(rs != null){
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            // release resources
-            if(stmt != null){
-                try {
-                    stmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            // close connection
-            if(conn  != null){
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        return val;
-
-    }
-
-
-
-*/
-
 
 }
