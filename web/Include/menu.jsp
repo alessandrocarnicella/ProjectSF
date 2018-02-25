@@ -33,6 +33,7 @@
             <a class="mdl-navigation__link" href="#" style="font-size: medium">Query varie</a>
             <a class="mdl-navigation__link" href="../ricerchePageJSP/ricercaBrillantezzaEllitticita.jsp" style="font-size: medium">Ricerca Filamento per contrasto ed ellitticita</a>
             <a class="mdl-navigation__link" href="../ricerchePageJSP/searchesCentroidExtension.jsp" style="font-size: medium">Ricerca Centroide ed Estensione per Filamento</a>
+            <a class="mdl-navigation__link" href="../ricerchePageJSP/searchFilamentsBySegmentsRange.jsp" style="font-size: medium">Ricerca un Filamento in base al suo numero di segmenti </a>
         </nav>
     </div>
 </div>

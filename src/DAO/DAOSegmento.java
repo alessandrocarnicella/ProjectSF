@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * Created by alessandro on 12/02/18.
@@ -120,24 +121,35 @@ public class DAOSegmento {
     }
 
 
+
     //method
-    public int selectSegmentsFromFilamentFromDB(BeanSegmento beanSegmento){
+    public ArrayList<String> selectFilamentsBySegmentsNumberFromDB(int int1, int int2){
 
         int numSegments=0;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        String selectQuery = "SELECT COUNT(*) FROM public.segmento WHERE idfilamento=?";
+        ArrayList<String> val=new ArrayList<String>();
+
+        String selectQuery="SELECT segmento.idfilamento,nome,count(idsegmento)" +
+                "FROM segmento  JOIN filamento ON segmento.idfilamento = filamento.idfilamento" +
+                " GROUP BY segmento.idfilamento,nome" +
+                " HAVING count(idsegmento) BETWEEN ? AND ?";
+
         try {
+            openConnection();
             stmt = conn.prepareStatement(selectQuery);
-            stmt.setInt(1, beanSegmento.getIdFilamento());
+            stmt.setInt(1, int1);
+            stmt.setInt(2, int2);
 
             rs = stmt.executeQuery();
             if (!rs.isBeforeFirst() ) {
-                return 0;
+                return null;
             }
 
-            if (rs.next()){
-                numSegments=rs.getInt(1);
+            while(rs.next()){
+                val.add(rs.getString(1));
+                val.add(rs.getString(2));
+                val.add(rs.getString(3));
 
             }
         } catch (SQLException e) {
@@ -168,9 +180,7 @@ public class DAOSegmento {
                 }
             }
         }
-
-        return numSegments;
-
+        return val;
 
     }
 
