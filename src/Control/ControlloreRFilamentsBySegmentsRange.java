@@ -4,6 +4,7 @@ import Bean.BeanSegmento;
 import DAO.DAOSegmento;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by Manuel on 25/02/2018.
@@ -20,10 +21,10 @@ public class ControlloreRFilamentsBySegmentsRange {
     }
 
     //method
-    public ArrayList<String> selectFilamentsBySegmentsNumberFromBean(int int1,int int2){
+    public ArrayList<String[]> selectFilamentsBySegmentsNumberFromBean(int int1,int int2){
 
         DAOSegmento daoSegmento=DAOSegmento.getInstance();
-        ArrayList<String> val=daoSegmento.selectFilamentsBySegmentsNumberFromDB(int1,int2);
+        ArrayList<String[]> val=daoSegmento.selectFilamentsBySegmentsNumberFromDB(int1,int2);
         if (val!=null){
             return val;
         }else
@@ -31,11 +32,5 @@ public class ControlloreRFilamentsBySegmentsRange {
     }
 
 
-
-    public static void main(String[] args){
-        BeanSegmento beanSegmento=new BeanSegmento();
-        ArrayList<String> val= beanSegmento.selectFilamentsBySegmentsNumber(0,3);
-        System.out.println(val);
-    }
 
 }

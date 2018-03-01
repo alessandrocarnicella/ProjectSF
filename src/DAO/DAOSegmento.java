@@ -6,6 +6,7 @@ import Entity.Punto;
 import Entity.Scheletro;
 import Entity.Segmento;
 
+import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -123,12 +124,13 @@ public class DAOSegmento {
 
 
     //method
-    public ArrayList<String> selectFilamentsBySegmentsNumberFromDB(int int1, int int2){
+    public ArrayList<String[]> selectFilamentsBySegmentsNumberFromDB(int int1, int int2){
 
-        int numSegments=0;
+
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        ArrayList<String> val=new ArrayList<String>();
+        ArrayList<String[]> val=new ArrayList<String[]>();
+
 
         String selectQuery="SELECT segmento.idfilamento,nome,count(idsegmento)" +
                 "FROM segmento  JOIN filamento ON segmento.idfilamento = filamento.idfilamento" +
@@ -147,11 +149,13 @@ public class DAOSegmento {
             }
 
             while(rs.next()){
-                val.add(rs.getString(1));
-                val.add(rs.getString(2));
-                val.add(rs.getString(3));
-
+                String[] array=new String[3];
+                array[0]=rs.getString(1);
+                array[1]=rs.getString(2);
+                array[2]=rs.getString(3);
+                val.add(array);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }finally{

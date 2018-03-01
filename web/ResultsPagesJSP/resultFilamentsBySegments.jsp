@@ -1,4 +1,5 @@
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Arrays" %><%--
   Created by IntelliJ IDEA.
   User: Manuel
   Date: 25/02/2018
@@ -38,8 +39,35 @@
         </div>
         <!--fine titolo-->
 
-        <% ArrayList<String> filamentiBySegmentsNumber= BeanSegmento.selectFilamentsBySegmentsNumber(Integer.valueOf(request.getParameter("int1")),Integer.valueOf(request.getParameter("int2")));
-            System.out.println(filamentiBySegmentsNumber);%>
+        <% int count=0;
+            ArrayList<String[]> filamentiBySegmentsNumber= BeanSegmento.selectFilamentsBySegmentsNumber(Integer.valueOf(request.getParameter("int1")),Integer.valueOf(request.getParameter("int2")));
+            if (filamentiBySegmentsNumber!=null){
+
+                for(String[] s:filamentiBySegmentsNumber){
+                    System.out.println(Arrays.toString(s));
+                }%>
+
+        <main class = "mdl-layout__content" style="margin-top: 30px;">
+            <div class = "mdl-tabs mdl-js-tabs">
+                <div class = "mdl-tabs__tab-bar">
+                    <% for(int i=0;i<filamentiBySegmentsNumber.size();i++){
+                        if (i%20==0){
+                            count++;%>
+
+                    <a href = "<%=count%>" class = "mdl-tabs__tab is-active">pagina<%=count%></a>
+                </div>
+                <div class = "mdl-tabs__panel is-active" id = "<%=count%>" style="margin-left: 25px;margin-top: 25px">
+                    <p>Tab 1 Content</p>
+                </div>
+
+            </div>
+
+        </main>
+        <%}
+        }   } else {%>
+        <br>
+        <label style="margin-left: 30px;margin-top: 30px; color: #ff6244"> <b> NON ESISTONO RISULTATI PER QUESTA SPECIFICA RICERCA! </b></label><br><br><br>
+        <%}%>
 
     </form>
 

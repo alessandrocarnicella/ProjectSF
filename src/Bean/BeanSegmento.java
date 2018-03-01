@@ -32,8 +32,8 @@ public class BeanSegmento {
 
 
     //method
-    public ArrayList<String> selectFilamentsBySegmentsNumber(int int1,int int2){
-        ArrayList<String> val=ControlloreRFilamentsBySegmentsRange.getInstance().selectFilamentsBySegmentsNumberFromBean(int1,int2);
+    public ArrayList<String[]> selectFilamentsBySegmentsNumber(int int1,int int2){
+        ArrayList<String[]> val=ControlloreRFilamentsBySegmentsRange.getInstance().selectFilamentsBySegmentsNumberFromBean(int1,int2);
         if(val!=null) {
             return val;
         }
