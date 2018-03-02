@@ -35,26 +35,12 @@ public class ControlloreRContrastoEllittcita {
         Float contrasto = RicavaContrasto(beanBE.getBrillantezza());
 
         ArrayList<String> filamenti = daoFilamento.selectFilamentiFromDB(contrasto,beanBE.getMinEllitticita(),beanBE.getMaxEllitticita());
-        ArrayList<BeanFilamento> BeanFilamenti = new ArrayList<BeanFilamento>();
 
         int i=0;
         while (i<filamenti.size()) {
-
             Filamento filamento = new Filamento(filamenti.get(i+1), Integer.valueOf(filamenti.get(i)), Float.valueOf(filamenti.get(i+2)), Float.valueOf(filamenti.get(i+3)),Float.valueOf(filamenti.get(i+4)),Float.valueOf(filamenti.get(i+5)),Float.valueOf(filamenti.get(i+6)),filamenti.get(i+7),filamenti.get(i+8));
             i=i+9;
             System.out.println(filamento);
-            BeanFilamento beanFilamento = new BeanFilamento();
-            beanFilamento.setIdFilamento(filamento.getIdFilamento());
-            beanFilamento.setNome(filamento.getNome());
-            beanFilamento.setFlussoTotale(filamento.getFlussoTotale());
-            beanFilamento.setDensitaMedia(filamento.getDensitaMedia());
-            beanFilamento.setTemperaturaMedia(filamento.getTemperaturaMedia());
-            beanFilamento.setEllitticita(filamento.getEllitticita());
-            beanFilamento.setContrasto(filamento.getContrasto());
-            beanFilamento.setNomeSatellite(filamento.getNomeSatellite());
-            beanFilamento.setNomeSatellite(filamento.getNomeStrumento());
-            beanFilamento.setPagina(1);
-            BeanFilamenti.add(beanFilamento);
         }
 
         if(filamenti!=null) {
