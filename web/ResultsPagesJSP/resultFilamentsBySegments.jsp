@@ -21,7 +21,7 @@
 <!-- definisco i parametri della card -->
 <style>
     .demo-card-wide.mdl-card {
-        width: 750px;
+        width: 900px;
         height: 1100px;
         background-color:rgba(255, 255, 255, 0.93);
     }
@@ -67,7 +67,19 @@
             <main class="mdl-layout__content">
                 <!-- "is-active" class to set the default active tab -->
                 <section class="mdl-layout__tab-panel is-active" id="page1">
-                    <div class="page-content" style="margin-top: 25px">
+                    <div class="row" style="margin-left: 27px;margin-top: 15px">
+                        <b>id</b>
+                        <b style="margin-left: 55px">nome</b>
+                        <b style="margin-left: 85px">flussoTot</b>
+                        <b style="margin-left: 45px">densMedia</b>
+                        <b style="margin-left: 19px">tempMedia</b>
+                        <b style="margin-left: 13px">ellitct</b>
+                        <b style="margin-left: 40px">contr</b>
+                        <b style="margin-left: 19px">satelt</b>
+                        <b style="margin-left: 20px">strm</b>
+                        <b style="margin-left: 15px">n°</b>
+                    </div>
+                    <div class="page-content" style="margin-top: 10px;margin-left: 25px">
                         <%for(int j=0;j<20;j++){%>
                         <p><%=Arrays.toString(filamentiBySegmentsNumber.get(j))%></p>
                         <%}%>
@@ -77,7 +89,19 @@
                 <% int init=20;
                     for (int k=2;k<count;k++){%>
                 <section class="mdl-layout__tab-panel" id="page<%=k%>">
-                    <div class="page-content" style="margin-top: 25px">
+                    <div class="row" style="margin-left: 27px;margin-top: 15px">
+                        <b>id</b>
+                        <b style="margin-left: 55px">nome</b>
+                        <b style="margin-left: 85px">flussoTot</b>
+                        <b style="margin-left: 45px">densMedia</b>
+                        <b style="margin-left: 19px">tempMedia</b>
+                        <b style="margin-left: 13px">ellitct</b>
+                        <b style="margin-left: 40px">contr</b>
+                        <b style="margin-left: 19px">satelt</b>
+                        <b style="margin-left: 20px">strm</b>
+                        <b style="margin-left: 15px">n°</b>
+                    </div>
+                    <div class="page-content" style="margin-top: 10px;margin-left: 25px">
                         <%for(int w=init;w<init+20;w++){%>
                         <p><%=Arrays.toString(filamentiBySegmentsNumber.get(w))%></p>
                         <%}%>

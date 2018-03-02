@@ -132,9 +132,9 @@ public class DAOSegmento {
         ArrayList<String[]> val=new ArrayList<String[]>();
 
 
-        String selectQuery="SELECT segmento.idfilamento,nome,count(idsegmento)" +
+        String selectQuery="SELECT segmento.idfilamento,nome,flussototale,densitamedia,temperaturamedia,ellitticita,contrasto,nomesatellite,nomestrumento,count(idsegmento)" +
                 "FROM segmento  JOIN filamento ON segmento.idfilamento = filamento.idfilamento" +
-                " GROUP BY segmento.idfilamento,nome" +
+                " GROUP BY segmento.idfilamento,nome,flussototale,densitamedia,temperaturamedia,ellitticita,contrasto,nomesatellite,nomestrumento" +
                 " HAVING count(idsegmento) BETWEEN ? AND ?";
 
         try {
@@ -149,10 +149,17 @@ public class DAOSegmento {
             }
 
             while(rs.next()){
-                String[] array=new String[3];
+                String[] array=new String[10];
                 array[0]=rs.getString(1);
                 array[1]=rs.getString(2);
                 array[2]=rs.getString(3);
+                array[3]=rs.getString(4);
+                array[4]=rs.getString(5);
+                array[5]=rs.getString(6);
+                array[6]=rs.getString(7);
+                array[7]=rs.getString(8);
+                array[8]=rs.getString(9);
+                array[9]=rs.getString(10);
                 val.add(array);
             }
 
