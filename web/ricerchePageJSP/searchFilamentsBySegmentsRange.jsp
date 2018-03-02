@@ -64,11 +64,16 @@
             <img style=" margin-left: 150px" src="../Images/alien2.png" >
         </div>
 
-        <% if (request.getParameter("searchconfermasegmentsfilament")!=null){%>
+        <% if (request.getParameter("searchconfermasegmentsfilament")!=null){
+            if (BeanSegmento.controlloMinMax(Integer.valueOf(request.getParameter("int1")),Integer.valueOf(request.getParameter("int2")))){%>
 
         <jsp:forward page="/ResultsPagesJSP/resultFilamentsBySegments.jsp"/>
 
-        <% } %>
+        <% }else{ %>
+
+        <b style="color: #ff5516;margin-left: 20px;margin-top: 20px"> Errore inserimento max e min! </b>
+        
+        <%}}%>
 
     </form>
 
