@@ -2,6 +2,7 @@ package Bean;
 
 import Control.ControlloreLogin;
 import Control.ControlloreRContrastoEllittcita;
+import Entity.Filamento;
 
 import java.util.ArrayList;
 
@@ -39,9 +40,9 @@ public class BeanBrillantezzaEllitticita {
     }
 
     //method
-    public ArrayList<String> electFilamentoFromBean(){
-        ArrayList<String> filamento =ControlloreRContrastoEllittcita.getInstance().selectFilamentoFromBean(this);
-        return filamento;
+    public ArrayList<Filamento> selectFilamentoFromBean(){
+        ArrayList<Filamento> filamenti =ControlloreRContrastoEllittcita.getInstance().selectFilamentoFromBean(this);
+        return filamenti;
     }
 
     public boolean ControlloMinMax(float min,float max){

@@ -29,18 +29,17 @@ public class ControlloreRContrastoEllittcita {
 
 
     //method
-    public ArrayList<String> selectFilamentoFromBean(BeanBrillantezzaEllitticita beanBE){
+    public ArrayList<Filamento> selectFilamentoFromBean(BeanBrillantezzaEllitticita beanBE){
         DAOFilamento daoFilamento = DAOFilamento.getInstance();
-
         Float contrasto = RicavaContrasto(beanBE.getBrillantezza());
-
-        ArrayList<String> filamenti = daoFilamento.selectFilamentiFromDB(contrasto,beanBE.getMinEllitticita(),beanBE.getMaxEllitticita());
-
+        ArrayList<String> val = daoFilamento.selectFilamentiFromDB(contrasto,beanBE.getMinEllitticita(),beanBE.getMaxEllitticita());
+        ArrayList<Filamento> filamenti=new ArrayList<>();
         int i=0;
-        while (i<filamenti.size()) {
-            Filamento filamento = new Filamento(filamenti.get(i+1), Integer.valueOf(filamenti.get(i)), Float.valueOf(filamenti.get(i+2)), Float.valueOf(filamenti.get(i+3)),Float.valueOf(filamenti.get(i+4)),Float.valueOf(filamenti.get(i+5)),Float.valueOf(filamenti.get(i+6)),filamenti.get(i+7),filamenti.get(i+8));
+        while (i<val.size()) {
+            Filamento filamento = new Filamento(val.get(i+1), Integer.valueOf(val.get(i)), Float.valueOf(val.get(i+2)), Float.valueOf(val.get(i+3)),Float.valueOf(val.get(i+4)),Float.valueOf(val.get(i+5)),Float.valueOf(val.get(i+6)),val.get(i+7),val.get(i+8));
             i=i+9;
             System.out.println(filamento);
+            filamenti.add(filamento);
         }
 
         if(filamenti!=null) {

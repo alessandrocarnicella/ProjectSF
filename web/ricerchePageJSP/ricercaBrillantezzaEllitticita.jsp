@@ -92,7 +92,7 @@
                                     BeanBrillantezzaEllitticita.setMinEllitticita(Float.valueOf(request.getParameter("min")));
                                     BeanBrillantezzaEllitticita.setMaxEllitticita(Float.valueOf(request.getParameter("max")));
                                     BeanBrillantezzaEllitticita.setBrillantezza(Float.valueOf(request.getParameter("nomeRegistrazione")));
-                                    BeanBrillantezzaEllitticita.electFilamentoFromBean();
+                                    BeanBrillantezzaEllitticita.selectFilamentoFromBean();
                         %>
 
                                     <jsp:forward page="../ricerchePageJSP/resultBrillantezzaEllitticita.jsp"/><%
