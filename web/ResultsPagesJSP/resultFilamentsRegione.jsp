@@ -15,8 +15,7 @@
 <!-- definisco i parametri della card -->
 <style>
     .demo-card-wide.mdl-card {
-        width: 800px;
-
+        width: 1021px;
         background-color:rgba(255, 255, 255, 0.93);
     }
     .demo-card-wide > .mdl-card__title {
@@ -35,11 +34,42 @@
             <h2 class="mdl-card__title-text" style="margin-left: 20px;color: #1441e0"> RISULTATI RICERCA PER REGIONE </h2>
         </div>
         <!--fine titolo-->
+
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+            <thead>
+            <tr>
+                <!-- class "mdl-data-table__cell--non-numeric", align values to left -->
+                <th class="mdl-data-table__cell--non-numeric">ID Filamento</th>
+                <th class="mdl-data-table__cell--non-numeric">Nome</th>
+                <th class="mdl-data-table__cell--non-numeric">Flusso T</th>
+                <th class="mdl-data-table__cell--non-numeric">Densita M</th>
+                <th class="mdl-data-table__cell--non-numeric">Temeperatura M</th>
+                <th class="mdl-data-table__cell--non-numeric">Ellitticità</th>
+                <th class="mdl-data-table__cell--non-numeric">Contrasto</th>
+                <th class="mdl-data-table__cell--non-numeric">Satellite</th>
+                <th class="mdl-data-table__cell--non-numeric">Strumento</th>
+            </tr>
+            </thead>
+            <tbody>
+
             <%ArrayList<Filamento> val= BeanPosRaggioLato.selectFilamentoFromBean();%>
-           <% for(Filamento f:val){%>
-                    <p><%=f%></p>
-                    <br>
-               <% }%>
+            <% for(Filamento f:val){%>
+            <!-- Row 1 -->
+            <tr>
+                <!-- class "mdl-data-table__cell--non-numeric", align values to left -->
+                <td class="mdl-data-table__cell--non-numeric"><%=f.getIdFilamento()%></td>
+                <td class="mdl-data-table__cell--non-numeric"><%=f.getNome()%></td>
+                <td class="mdl-data-table__cell--non-numeric"><%=f.getFlussoTotale()%></td>
+                <td class="mdl-data-table__cell--non-numeric"><%=f.getDensitaMedia()%></td>
+                <td class="mdl-data-table__cell--non-numeric"><%=f.getTemperaturaMedia()%></td>
+                <td class="mdl-data-table__cell--non-numeric"><%=f.getEllitticita()%></td>
+                <td class="mdl-data-table__cell--non-numeric"><%=f.getContrasto()%></td>
+                <td class="mdl-data-table__cell--non-numeric"><%=f.getNomeSatellite()%></td>
+                <td class="mdl-data-table__cell--non-numeric"><%=f.getNomeStrumento()%></td>
+            </tr>
+            <% }%>
+            </tbody>
+        </table>
 
     </form>
 </div>
