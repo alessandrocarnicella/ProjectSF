@@ -38,18 +38,16 @@
         <!--fine titolo-->
 
         <!--inserimento del primo intero di range-->
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="margin-left: 30px;margin-top: 30px;width: 500px">
-            <label style="margin-left: 30px;margin-top: 30px"> <b>Inserisci il numero di segmenti minimo (compreso)</b></label>
-            <br><br>
+        <label style="margin-left: 30px;margin-top: 50px"> Inserisci il numero di segmenti minimo (compreso)</label>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"   style="margin-left: 30px; width: 50px" >
             <input class="mdl-textfield__input" type="number"  id="sample3" name="int1" required min="3">
             <label class="mdl-textfield__label"  for="sample3">min</label>
         </div>
         <!--fine inserimento-->
         <br><br>
         <!--inserimento del secondo intero di range-->
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="margin-left: 30px;margin-top: 20px;width: 500px">
-            <label style="margin-left: 30px;margin-top: 30px"> <b>Inserisci il numero di segmenti massimo (non compreso)</b></label>
-            <br><br>
+        <label style="margin-left: 30px;margin-top: 50px"> Inserisci il numero di segmenti massimo (non compreso)</label>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"   style="margin-left: 30px; width: 50px" >
             <input class="mdl-textfield__input" type="number"  id="sample4" name="int2" required>
             <label class="mdl-textfield__label" for="sample4">max</label>
         </div>

@@ -31,7 +31,7 @@
             <a class="mdl-navigation__link" href="../insertPageJSP/insertStrumento.jsp" style="font-size: medium">inserisci dati strumenti</a>
             <%}%>
             <a class="mdl-navigation__link" href="#" style="font-size: medium">Query varie</a>
-            <a class="mdl-navigation__link" href="../ricerchePageJSP/ricercaBrillantezzaEllitticita.jsp" style="font-size: medium">Ricerca Filamento per contrasto ed ellitticita</a>
+            <a class="mdl-navigation__link" href="../ricerchePageJSP/searchBrillantezzaEllitticita.jsp" style="font-size: medium">Ricerca Filamento per contrasto ed ellitticita</a>
             <a class="mdl-navigation__link" href="../ricerchePageJSP/searchesCentroidExtension.jsp" style="font-size: medium">Ricerca Centroide ed Estensione per Filamento</a>
             <a class="mdl-navigation__link" href="../ricerchePageJSP/searchFilamentsBySegmentsRange.jsp" style="font-size: medium">Ricerca un Filamento in base al suo numero di segmenti </a>
             <a class="mdl-navigation__link" href="../ricerchePageJSP/searchesRegione.jsp" style="font-size: medium">Ricerca un Filamento in base alla regione </a>

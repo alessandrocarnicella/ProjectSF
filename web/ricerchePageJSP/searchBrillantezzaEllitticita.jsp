@@ -95,7 +95,7 @@
                                     BeanBrillantezzaEllitticita.selectFilamentoFromBean();
                         %>
 
-                                    <jsp:forward page="../ricerchePageJSP/resultBrillantezzaEllitticita.jsp"/><%
+                                    <jsp:forward page="../ResultsPagesJSP/resultBrillantezzaEllitticita.jsp"/><%
                                 } else{%>
                                     <br>
                                     <b class="red-text"> Errore inserimento max e min! </b><%
