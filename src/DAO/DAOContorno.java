@@ -276,4 +276,60 @@ public class DAOContorno {
         return val;
 
     }
+
+
+    //method
+    public ArrayList<String> selectAllPerimeterPointsFromDB(BeanFilamento beanFilamento){
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        ArrayList<String> val=new ArrayList<>();
+        String selectQuery="SELECT latg,long FROM public.contorno WHERE idfilamento=?";
+
+        try {
+            openConnection();
+            stmt = conn.prepareStatement(selectQuery);
+            stmt.setInt(1,beanFilamento.getIdFilamento());
+
+            rs = stmt.executeQuery();
+            if (!rs.isBeforeFirst() ) {
+                return null;
+            }
+
+            while(rs.next()){
+                val.add(rs.getString(1));
+                val.add(rs.getString(2));
+
+            }
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+            // release resources
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            // release resources
+            if(stmt != null){
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            // close connection
+            if(conn  != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return val;
+    }
 }

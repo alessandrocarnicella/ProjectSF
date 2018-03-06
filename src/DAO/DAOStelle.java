@@ -1,5 +1,6 @@
 package DAO;
 
+import Bean.BeanFilamento;
 import Entity.Punto;
 import Entity.Stella;
 
@@ -139,6 +140,66 @@ public class DAOStelle {
             }
         }
     }
+
+
+    //method
+    public ArrayList<String> selectAllStarsFromDB(){
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        ArrayList<String> val=new ArrayList<>();
+        String selectQuery="SELECT* FROM stella";
+
+        try {
+            openConnection();
+            stmt = conn.prepareStatement(selectQuery);
+
+            rs = stmt.executeQuery();
+            if (!rs.isBeforeFirst() ) {
+                return null;
+            }
+
+            while(rs.next()){
+                val.add(rs.getString(1));
+                val.add(rs.getString(2));
+                val.add(rs.getString(3));
+                val.add(rs.getString(4));
+                val.add(rs.getString(5));
+                val.add(rs.getString(6));
+
+            }
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+            // release resources
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            // release resources
+            if(stmt != null){
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            // close connection
+            if(conn  != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return val;
+    }
+
 
 
 }

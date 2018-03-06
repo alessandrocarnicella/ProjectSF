@@ -1,5 +1,6 @@
 package DAO;
 
+import Bean.BeanFilamento;
 import Entity.Filamento;
 import Entity.Punto;
 import Entity.Stella;
@@ -230,4 +231,7 @@ public class DAOFilamento {
         closeConnection();
         return filamenti;
     }
+
+
+
 }
