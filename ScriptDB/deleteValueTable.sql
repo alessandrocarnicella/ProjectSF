@@ -9,4 +9,4 @@ DELETE FROM filamento;
 
 DELETE FROM scheletro;
 
-DELETE FROM contorno
+DELETE FROM contorno;

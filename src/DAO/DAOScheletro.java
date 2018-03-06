@@ -1,5 +1,6 @@
 package DAO;
 
+import Bean.BeanScheletro;
 import Entity.Contorno;
 import Entity.Scheletro;
 import Entity.Segmento;
@@ -148,5 +149,79 @@ public class DAOScheletro {
     }
 
 
+    public ArrayList<String> selectDistanceFromDB(BeanScheletro beanBS) {
 
+        ArrayList<String> val = new ArrayList<>();
+        PreparedStatement stmt = null;
+        ResultSet rs=null;
+
+        String selectQuery = "SELECT DISTINCT s1.idfilamento, idsegmento,nprog, s1.latg, s1.long, c1.latg, c1.long\n" +
+                "FROM scheletro as s1 JOIN contorno as c1 on s1.idfilamento=c1.idfilamento\n" +
+                "WHERE s1.idsegmento = ?\n" +
+                "      AND sqrt((s1.latg - c1.latg) ^ 2 + (s1.long - c1.long) ^ 2)\n" +
+                "          =\n" +
+                "          (SELECT min(sqrt((s1.latg - contorno.latg) ^ 2 + (s1.long -contorno.long) ^ 2))\n" +
+                "          FROM contorno\n" +
+                "          WHERE idfilamento = c1.idfilamento\n" +
+                ") AND (nprog = (SELECT max(nprog)\n" +
+                "                FROM scheletro\n" +
+                "                WHERE idsegmento = ?\n" +
+                "                GROUP BY idsegmento)\n" +
+                "       OR nprog = 1);";
+
+        try {
+
+            openConnection();
+            stmt = conn.prepareStatement(selectQuery);
+
+            stmt.setFloat(1,beanBS.getIdSegmento());
+            stmt.setFloat(2,beanBS.getIdSegmento());
+            rs = stmt.executeQuery();
+
+            if (!rs.isBeforeFirst() ) {
+                return null;
+            }
+
+            while (rs.next()){
+                val.add(rs.getString(1));
+                val.add(rs.getString(2));
+                val.add(rs.getString(3));
+                val.add(rs.getString(4));
+                val.add(rs.getString(5));
+                val.add(rs.getString(6));
+                val.add(rs.getString(7));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+            // release resources
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            // release resources
+            if(stmt != null){
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            // close connection
+            if(conn  != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return val;
+
+    }
 }

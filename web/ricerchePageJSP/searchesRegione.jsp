@@ -87,7 +87,7 @@
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" value="value1" id="div1" style="margin-left: 30px;visibility: hidden">
             <label style="margin-left: 30px;margin-top: 30px"> <b>Inserisci il lato della regione </b></label>
             <br><br>
-            <input class="mdl-textfield__input" type="number"  id="sample3" name="searchbylato">
+            <input class="mdl-textfield__input" type="number" min="0" id="sample3" name="searchbylato">
             <label class="mdl-textfield__label" for="sample3"></label>
         </div>
         <!--fine inserimento-->
@@ -96,7 +96,7 @@
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" value="value2" id="div2" style="margin-left: 30px;visibility: hidden">
             <label style="margin-left: 30px;margin-top: 30px"> <b>Inserisci il raggio della regione:</b></label>
             <br><br>
-            <input class="mdl-textfield__input" type="number"  id="sample4" name="searchbyraggio">
+            <input class="mdl-textfield__input" type="number" min="0"  id="sample4" name="searchbyraggio">
             <label class="mdl-textfield__label" for="sample4"></label>
         </div>
         <!--fine inserimento-->

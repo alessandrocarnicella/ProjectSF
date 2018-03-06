@@ -16,6 +16,11 @@ public class ControlloreRStelleInFilamento {
 
     // Singleton
     private static ControlloreRStelleInFilamento instance;
+    private int stelleTrovate=0;
+    private int stelleProtostellar=0;
+    private int stellePrestellar=0;
+    private int stelleUnbound=0;
+
 
     public static synchronized final ControlloreRStelleInFilamento getInstance() {
         if (instance == null)
@@ -26,11 +31,6 @@ public class ControlloreRStelleInFilamento {
 
     //method
     public ArrayList<String> searchStarsInFilamentFromBean(BeanFilamento beanFilamento){
-
-        int stelleTrovate=0;
-        int stelleProtostellar=0;
-        int stellePrestellar=0;
-        int stelleUnbound=0;
 
         ArrayList<String> val=new ArrayList<>();
 
@@ -49,41 +49,30 @@ public class ControlloreRStelleInFilamento {
             i=i+6;
             stelle.add(Stella);
         }
+
         while (j<strContorno.size()){
             Punto puntoContorno=new Punto(Float.valueOf(strContorno.get(j)),Float.valueOf(strContorno.get(j+1)));
             j=j+2;
             puntiContorno.add(puntoContorno);
         }
+
 int count=-1;
         for(Stella s: stelle){
-            System.out.println("stella= "+s+ " "+count++);
+            System.out.println("------------------------------ stella = "+count++);
             for(int k=0;k<puntiContorno.size()-1;k++){
                 System.out.println("k ="+k);
                 if(ArctanCondition(s, puntiContorno.get(k), puntiContorno.get(k + 1))){
-                    System.out.println("stella contenuta all'interno");
-                    stelleTrovate++;
-
-                    if (s.getTipoStella().equals("PROTOSTELLAR")){
-                        stelleProtostellar++;
-                    }
-                    else if (s.getTipoStella().equals("PRESTELLAR")){
-                        stellePrestellar++;
-                    }
-                    else if (s.getTipoStella().equals("UNBOUND")){
-                        stelleUnbound++;
-                    }
-
+                   break;
                 }
-                else
-                    System.out.println("stella non è cotenuta all'interno, condiz. non soddisfatta");
-
+                else {
+                    System.out.println("non cotenuta");
+                }
             }
-
-
-
         }
+
         System.out.println(stelle.size());
         System.out.println(puntiContorno.size());
+
         Float percentualePRO= ((float)stelleProtostellar/(float) stelleTrovate)*100;
         Float percentualePRE= ((float)stellePrestellar/(float) stelleTrovate)*100;;
         Float percentualeUNB= ((float)stelleUnbound/(float) stelleTrovate)*100;;
@@ -98,21 +87,43 @@ int count=-1;
 
     private boolean ArctanCondition(Stella s,Punto punto1,Punto punto2){
 
-        Double result= Math.atan((((punto1.getLonG()-s.getLonG())*(punto2.getLonG()- s.getLonG()))
-        +((punto1.getLatG()-s.getLatG())*(punto2.getLatG()-s.getLatG())))/(((punto1.getLonG()-s.getLonG())*(punto2.getLatG()-s.getLatG()))
-        -((punto1.getLatG()-s.getLatG())*(punto2.getLonG()-s.getLonG()))));
+        System.out.println("p1 lat: "+punto1.getLatG());
+        System.out.println("p1 lon: "+punto1.getLonG());
+        System.out.println("p2 lat: "+punto2.getLatG());
+        System.out.println("p2 llon: "+punto2.getLonG());
+        System.out.println("s lat: "+s.getLatG());
+        System.out.println("s lon: "+s.getLonG());
 
-        System.out.println("sto stampando result:"+result);
+        Double result= Math.atan(
+                (((punto1.getLonG()-s.getLonG())*(punto2.getLonG()-s.getLonG()))
+                +((punto1.getLatG()-s.getLatG())*(punto2.getLatG()-s.getLatG())))
+               /(((punto1.getLonG()-s.getLonG())*(punto2.getLatG()-s.getLatG()))
+                -((punto1.getLatG()-s.getLatG())*(punto2.getLonG()-s.getLonG())))
+                );
+
+        System.out.println("result:"+result);
         if(result>0.01){
+            System.out.println("contenuta");
+            stelleTrovate++;
+
+            if (s.getTipoStella().equals("PROTOSTELLAR")){
+                stelleProtostellar++;
+            }
+            else if (s.getTipoStella().equals("PRESTELLAR")){
+                stellePrestellar++;
+            }
+            else if (s.getTipoStella().equals("UNBOUND")){
+                stelleUnbound++;
+            }
            return true;
         }else
             return false;
     }
-
+/*
     public static void main(String[] args){
         BeanFilamento beanFilamento=new BeanFilamento();
         beanFilamento.setIdFilamento(45);
         System.out.println(ControlloreRStelleInFilamento.getInstance().searchStarsInFilamentFromBean(beanFilamento));
     }
-
+*/
 }

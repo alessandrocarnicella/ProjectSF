@@ -1,6 +1,7 @@
 package Bean;
 
 import Control.ControlloreInserimentoDati;
+import Control.ControlloreRDistanza;
 import DAO.DAOScheletro;
 
 import java.util.ArrayList;
@@ -75,5 +76,9 @@ public class BeanScheletro {
         this.flussoMisurato = flussoMisurato;
     }
 
+    public ArrayList<String> resultDistanceVertici() {
 
+        ArrayList<String> result = ControlloreRDistanza.getInstance().selectDistanceFromBean(this);
+        return result;
+    }
 }
