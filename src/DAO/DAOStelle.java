@@ -1,5 +1,7 @@
 package DAO;
 
+import Bean.BeanPosBaseAltezza;
+import Bean.BeanStella;
 import Entity.Stella;
 
 import java.sql.Connection;
@@ -146,7 +148,7 @@ public class DAOStelle {
     }
 
 
-    //method selezione di tutte le stelle form DB
+    //method: selezione di tutte le stelle from DB
     public ArrayList<String> selectAllStarsFromDB(){
 
         PreparedStatement stmt = null;
@@ -204,6 +206,72 @@ public class DAOStelle {
         return val;
     }
 
+
+    //method: ricerca tutte le stelle from DB in base a una regione
+    public ArrayList<String> searchStarsByRegionFromDB(BeanPosBaseAltezza beanPosBaseAltezza){
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        ArrayList<String> val=new ArrayList<>();
+
+        String selectQuery="SELECT stella.idstella,stella.nomestella,stella.long,stella.latg,stella.valoreflusso,stella.tipostella " +
+                "FROM public.stella " +
+                "WHERE stella.long> ? and stella.latg > ? and stella.long < ? and stella.latg < ?";
+
+        try {
+            openConnection();
+            stmt = conn.prepareStatement(selectQuery);
+
+            stmt.setFloat(1, beanPosBaseAltezza.getLonG()-beanPosBaseAltezza.getAltezza()/2);
+            stmt.setFloat(2, beanPosBaseAltezza.getLatG()-beanPosBaseAltezza.getBase()/2);
+            stmt.setFloat(3, beanPosBaseAltezza.getLonG()+beanPosBaseAltezza.getAltezza()/2);
+            stmt.setFloat(4, beanPosBaseAltezza.getLatG()+beanPosBaseAltezza.getBase()/2);
+
+            rs = stmt.executeQuery();
+
+            if (!rs.isBeforeFirst() ) {
+                return null;
+            }
+
+            while(rs.next()){
+                val.add(rs.getString(1));
+                val.add(rs.getString(2));
+                val.add(rs.getString(3));
+                val.add(rs.getString(4));
+                val.add(rs.getString(5));
+                val.add(rs.getString(6));
+            }
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+            // release resources
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            // release resources
+            if(stmt != null){
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            // close connection
+            if(conn  != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return val;
+    }
 
 
 }
