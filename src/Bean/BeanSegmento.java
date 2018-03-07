@@ -1,6 +1,5 @@
 package Bean;
 
-import Control.ControlloreRCentroideEstensione;
 import Control.ControlloreRFilamentsBySegmentsRange;
 
 import java.util.ArrayList;
@@ -17,7 +16,6 @@ public class BeanSegmento {
     public int getIdSegmento() {
         return idSegmento;
     }
-
     public void setIdSegmento(int idSegmento) {
         this.idSegmento = idSegmento;
     }
@@ -25,11 +23,9 @@ public class BeanSegmento {
     public int getIdFilamento() {
         return idFilamento;
     }
-
     public void setIdFilamento(int idFilamento) {
         this.idFilamento = idFilamento;
     }
-
 
     //method
     public ArrayList<String[]> selectFilamentsBySegmentsNumber(int int1,int int2){
@@ -41,7 +37,6 @@ public class BeanSegmento {
             return null;
     }
 
-
     //method
     public boolean controlloMinMax(int min,int max){
         if (min<max){
@@ -49,8 +44,4 @@ public class BeanSegmento {
         }
         return false;
     }
-
-
-
-
 }

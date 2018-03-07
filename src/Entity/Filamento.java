@@ -38,7 +38,6 @@ public class Filamento {
     public String getNome() {
         return nome;
     }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -46,7 +45,6 @@ public class Filamento {
     public int getIdFilamento() {
         return idFilamento;
     }
-
     public void setIdFilamento(int idFilamento) {
         this.idFilamento = idFilamento;
     }
@@ -54,7 +52,6 @@ public class Filamento {
     public float getFlussoTotale() {
         return flussoTotale;
     }
-
     public void setFlussoTotale(float flussoTotale) {
         this.flussoTotale = flussoTotale;
     }
@@ -62,7 +59,6 @@ public class Filamento {
     public float getDensitaMedia() {
         return densitaMedia;
     }
-
     public void setDensitaMedia(float densitaMedia) {
         this.densitaMedia = densitaMedia;
     }
@@ -70,7 +66,6 @@ public class Filamento {
     public float getTemperaturaMedia() {
         return temperaturaMedia;
     }
-
     public void setTemperaturaMedia(float temperaturaMedia) {
         this.temperaturaMedia = temperaturaMedia;
     }
@@ -78,7 +73,6 @@ public class Filamento {
     public float getEllitticita() {
         return ellitticita;
     }
-
     public void setEllitticita(float ellitticita) {
         this.ellitticita = ellitticita;
     }
@@ -86,7 +80,6 @@ public class Filamento {
     public float getContrasto() {
         return contrasto;
     }
-
     public void setContrasto(float contrasto) {
         this.contrasto = contrasto;
     }
@@ -94,7 +87,6 @@ public class Filamento {
     public String getNomeSatellite() {
         return nomeSatellite;
     }
-
     public void setNomeSatellite(String nomeSatellite) {
         this.nomeSatellite = nomeSatellite;
     }
@@ -102,7 +94,6 @@ public class Filamento {
     public String getNomeStrumento() {
         return nomeStrumento;
     }
-
     public void setNomeStrumento(String nomeStrumento) {
         this.nomeStrumento = nomeStrumento;
     }

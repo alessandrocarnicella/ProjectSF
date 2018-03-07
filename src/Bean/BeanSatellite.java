@@ -15,12 +15,10 @@ public class BeanSatellite {
     private Date dataFine;
     private String nomeAgenzia;
 
-
     //getter and setter
     public String getNome() {
         return nome;
     }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -28,7 +26,6 @@ public class BeanSatellite {
     public Date getDataInizio() {
         return dataInizio;
     }
-
     public void setDataInizio(Date dataInizio) {
         this.dataInizio = dataInizio;
     }
@@ -36,7 +33,6 @@ public class BeanSatellite {
     public Date getDataFine() {
         return dataFine;
     }
-
     public void setDataFine(Date dataFine) {
         this.dataFine = dataFine;
     }
@@ -44,11 +40,9 @@ public class BeanSatellite {
     public String getNomeAgenzia() {
         return nomeAgenzia;
     }
-
     public void setNomeAgenzia(String nomeAgenzia) {
         this.nomeAgenzia = nomeAgenzia;
     }
-
 
     //method
     public boolean insertNewSatellite(){
@@ -68,8 +62,4 @@ public class BeanSatellite {
         return null;
 
     }
-
-
-
-
 }

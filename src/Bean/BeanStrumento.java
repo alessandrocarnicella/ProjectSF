@@ -10,12 +10,10 @@ public class BeanStrumento {
     private String nome;
     private String nomeSatellite;
 
-
     //getter and setter
     public String getNome() {
         return nome;
     }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -23,11 +21,9 @@ public class BeanStrumento {
     public String getNomeSatellite() {
         return nomeSatellite;
     }
-
     public void setNomeSatellite(String nomeSatellite) {
         this.nomeSatellite = nomeSatellite;
     }
-
 
     //method
     public boolean insertNewStrumento(){
@@ -38,8 +34,4 @@ public class BeanStrumento {
         else
             return false;
     }
-
-
-
-
 }

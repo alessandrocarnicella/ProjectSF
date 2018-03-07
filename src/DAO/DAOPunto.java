@@ -26,9 +26,13 @@ public class DAOPunto {
     }
 
 
+    //method open connection
     public void openConnection() {
         try {
             conn = this.DataSource.getConnection();
+            /* l'autocommit viene settato a null,
+                verra' effettuato un unica volta
+                alla chiusura della connessione  */
             conn.setAutoCommit(false);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -37,6 +41,7 @@ public class DAOPunto {
         }
     }
 
+    //method close connection
     public void closeConnection() {
         try {
             conn.commit();
@@ -46,6 +51,7 @@ public class DAOPunto {
         }
     }
 
+    //method inserimento punto in DB
     public void insertPunto(Punto punto) {
 
         PreparedStatement stmt = null;
@@ -71,6 +77,7 @@ public class DAOPunto {
         }
     }
 
+    //method ricerca presenza punto in DB
     public boolean findItemById(Punto punto) {
         PreparedStatement stmt = null;
         ResultSet rs = null;

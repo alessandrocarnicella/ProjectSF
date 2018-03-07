@@ -10,10 +10,10 @@ public class BeanInserimentoCSV {
     private String nome;
     private String path;
 
+    //getter and setter
     public String getNome() {
         return nome;
     }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -21,11 +21,11 @@ public class BeanInserimentoCSV {
     public String getPath() {
         return path;
     }
-
     public void setPath(String path) {
         this.path = path;
     }
 
+    //method
     public boolean inserisciDatiCSV(String nome, String path){
         boolean inserimento= ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean(nome,path);
         if (inserimento==true){
@@ -33,5 +33,4 @@ public class BeanInserimentoCSV {
         }
         return false;
     }
-
 }

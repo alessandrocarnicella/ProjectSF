@@ -16,7 +16,6 @@ public class Banda {
     public float getLunghezza() {
         return lunghezza;
     }
-
     public void setLunghezza(float lunghezza) {
         this.lunghezza = lunghezza;
     }

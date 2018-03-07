@@ -5,6 +5,7 @@ package Util;
  */
 public class ConfigFile {
 
+    // parametri di configurazione del DB
     public static String DBName = "myDB";
     public static String DBUser = "postgres";
     public static String DBPassword = "postgresPSW";

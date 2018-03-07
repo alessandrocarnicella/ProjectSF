@@ -26,6 +26,7 @@ public class DAOAgenzia {
         return instance;
     }
 
+    //method selezione agenzie from DB
     public ArrayList<String> selectAgenziaFromDB(){
 
         Connection conn = null;
@@ -77,6 +78,5 @@ public class DAOAgenzia {
         }
 
     return val;
-
     }
 }

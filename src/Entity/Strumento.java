@@ -18,7 +18,6 @@ public class Strumento {
     public String getNome() {
         return nome;
     }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -26,7 +25,6 @@ public class Strumento {
     public String getNomeSatellite() {
         return nomeSatellite;
     }
-
     public void setNomeSatellite(String nomeSatellite) {
         this.nomeSatellite = nomeSatellite;
     }

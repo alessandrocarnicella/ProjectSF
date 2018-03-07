@@ -32,7 +32,6 @@ public class Scheletro {
     public int getIdFilamento() {
         return idFilamento;
     }
-
     public void setIdFilamento(int idFilamento) {
         this.idFilamento = idFilamento;
     }
@@ -40,7 +39,6 @@ public class Scheletro {
     public int getIdSegmento() {
         return idSegmento;
     }
-
     public void setIdSegmento(int idSegmento) {
         this.idSegmento = idSegmento;
     }
@@ -48,7 +46,6 @@ public class Scheletro {
     public String getTipoRamo() {
         return tipoRamo;
     }
-
     public void setTipoRamo(String tipoRamo) {
         this.tipoRamo = tipoRamo;
     }
@@ -56,7 +53,6 @@ public class Scheletro {
     public Float getLonG() {
         return lonG;
     }
-
     public void setLonG(Float lonG) {
         this.lonG = lonG;
     }
@@ -64,7 +60,6 @@ public class Scheletro {
     public Float getLatG() {
         return latG;
     }
-
     public void setLatG(Float latG) {
         this.latG = latG;
     }
@@ -72,7 +67,6 @@ public class Scheletro {
     public int getnProg() {
         return nProg;
     }
-
     public void setnProg(int nProg) {
         this.nProg = nProg;
     }
@@ -80,7 +74,6 @@ public class Scheletro {
     public Double getFlussoMisurato() {
         return flussoMisurato;
     }
-
     public void setFlussoMisurato(Double flussoMisurato) {
         this.flussoMisurato = flussoMisurato;
     }

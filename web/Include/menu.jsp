@@ -37,6 +37,8 @@
             <a class="mdl-navigation__link" href="../ricerchePageJSP/searchesRegione.jsp" style="font-size: medium">Ricerca un Filamento in base alla regione </a>
             <a class="mdl-navigation__link" href="../ricerchePageJSP/searchDistanceVertici.jsp" style="font-size: medium">Ricerca Distanza vertici segmento</a>
             <a class="mdl-navigation__link" href="../ricerchePageJSP/searchStelleInRegione.jsp" style="font-size: medium">Ricerca Stelle in base alla regione</a>
+            <a class="mdl-navigation__link" href="../ricerchePageJSP/searchPosition.jsp" style="font-size: medium">Ricerca posizione stella rispetto a spina dorsale</a>
+            <a class="mdl-navigation__link" href="../ricerchePageJSP/searchStelleinFilamento.jsp" style="font-size: medium">Ricerca stelle contenute in un filamento</a>
         </nav>
     </div>
 </div>

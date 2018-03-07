@@ -14,7 +14,6 @@ public class BeanMisurazione {
     public String getNomeStrumento() {
         return nomeStrumento;
     }
-
     public void setNomeStrumento(String nomeStrumento) {
         this.nomeStrumento = nomeStrumento;
     }
@@ -22,12 +21,9 @@ public class BeanMisurazione {
     public double getBanda() {
         return banda;
     }
-
     public void setBanda(double banda) {
         this.banda = banda;
     }
-
-
 
     //method
     public boolean insertNewMisurazione(){
@@ -37,6 +33,4 @@ public class BeanMisurazione {
         else
             return false;
     }
-
-
 }

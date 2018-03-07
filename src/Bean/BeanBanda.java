@@ -13,7 +13,6 @@ public class BeanBanda {
     public Double getLunghezza() {
         return lunghezza;
     }
-
     public void setLunghezza(Double lunghezza) {
         this.lunghezza = lunghezza;
     }

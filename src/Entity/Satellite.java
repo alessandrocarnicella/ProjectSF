@@ -24,7 +24,6 @@ public class Satellite {
     public String getNome() {
         return nome;
     }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -32,7 +31,6 @@ public class Satellite {
     public Date getDataInizio() {
         return dataInizio;
     }
-
     public void setDataInizio(Date dataInizio) {
         this.dataInizio = dataInizio;
     }
@@ -40,7 +38,6 @@ public class Satellite {
     public Date getDataFine() {
         return dataFine;
     }
-
     public void setDataFine(Date dataFine) {
         this.dataFine = dataFine;
     }
@@ -48,9 +45,7 @@ public class Satellite {
     public String getNomeAgenzia() {
         return nomeAgenzia;
     }
-
     public void setNomeAgenzia(String nomeAgenzia) {
         this.nomeAgenzia = nomeAgenzia;
     }
-
 }

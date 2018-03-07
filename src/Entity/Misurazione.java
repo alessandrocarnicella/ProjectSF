@@ -18,7 +18,6 @@ public class Misurazione {
     public String getNomeStrumento() {
         return nomeStrumento;
     }
-
     public void setNomeStrumento(String nomeStrumento) {
         this.nomeStrumento = nomeStrumento;
     }
@@ -26,7 +25,6 @@ public class Misurazione {
     public float getBanda() {
         return banda;
     }
-
     public void setBanda(float banda) {
         this.banda = banda;
     }

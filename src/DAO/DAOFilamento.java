@@ -1,10 +1,6 @@
 package DAO;
 
-import Bean.BeanFilamento;
 import Entity.Filamento;
-import Entity.Punto;
-import Entity.Stella;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +11,7 @@ import java.util.ArrayList;
  * Created by alessandro on 10/02/18.
  */
 public class DAOFilamento {
+
     private DataSource DataSource;
     private static DAOFilamento instance;
     private Connection conn = null;
@@ -30,18 +27,22 @@ public class DAOFilamento {
         return instance;
     }
 
+    //method open connection
     public void openConnection() {
         try {
             conn = this.DataSource.getConnection();
+            /* l'autocommit viene settato a null,
+                verra' effettuato un unica volta
+                alla chiusura della connessione  */
             conn.setAutoCommit(false);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
     }
 
+    //method close connection
     public void closeConnection() {
         try {
             conn.commit();
@@ -51,10 +52,10 @@ public class DAOFilamento {
         }
     }
 
+    // method inserimento filamento in DB
     public void insertFilamento(Filamento filamento) {
 
         PreparedStatement stmt = null;
-
         String insertQuery = "INSERT INTO filamento(idfilamento,nome,flussototale,densitamedia,temperaturamedia,ellitticita,contrasto,nomesatellite,nomestrumento) VALUES (?,?,?,?,?,?,?,?,?)";
 
         try {
@@ -85,10 +86,11 @@ public class DAOFilamento {
         }
     }
 
+    //method ricerca filamento in DB
     public boolean findItemById(Filamento filamento) {
+
         PreparedStatement stmt = null;
         ResultSet rs = null;
-
         String selectQuery = "SELECT idfilamento FROM filamento WHERE idfilamento=?";
 
         try {
@@ -116,10 +118,10 @@ public class DAOFilamento {
         return false;
     }
 
+    //method aggiornamento filamento in DB
     public void updateFilamento(Filamento filamento) {
 
         PreparedStatement stmt = null;
-
         String insertQuery = "UPDATE public.filamento SET  nome=?, flussototale=?, densitamedia=?, temperaturamedia=?, ellitticita=?, contrasto=?, nomesatellite=?, nomestrumento=? WHERE idfilamento=?";
 
         try {
@@ -151,7 +153,7 @@ public class DAOFilamento {
 
 
 
-    //method
+    //method selezione id filamento from DB
     public ArrayList<Integer> selectFilamenti(int idfilamento){
 
         ArrayList<Integer> idfilamenti =new ArrayList<>();
@@ -183,10 +185,10 @@ public class DAOFilamento {
                 }
             }
         }
-
         return idfilamenti;
     }
 
+    //method selezione filamenti from DB
     public ArrayList<String> selectFilamentiFromDB(Float contrasto, Float minEllitticita, Float maxEllitticita) {
         openConnection();
 
@@ -231,7 +233,4 @@ public class DAOFilamento {
         closeConnection();
         return filamenti;
     }
-
-
-
 }

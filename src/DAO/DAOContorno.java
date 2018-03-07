@@ -1,10 +1,8 @@
 package DAO;
 
-import Bean.BeanContorno;
 import Bean.BeanFilamento;
 import Bean.BeanPosRaggioLato;
 import Entity.Contorno;
-import Entity.Stella;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -33,10 +31,13 @@ public class DAOContorno {
     }
 
 
-    //method
+    //method apertura connessione
     public void openConnection() {
         try {
             conn = this.DataSource.getConnection();
+            /* l'autocommit viene settato a null,
+                verra' effettuato un unica volta
+                alla chiusura della connessione  */
             conn.setAutoCommit(false);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -46,9 +47,10 @@ public class DAOContorno {
     }
 
 
-    //method
+    //method chiusura connessione
     public void closeConnection() {
         try {
+            //unico commit
             conn.commit();
             conn.close();
         } catch (SQLException e) {
@@ -57,7 +59,7 @@ public class DAOContorno {
     }
 
 
-    //method
+    //method inserimento contorni in DB
     public void insertContorno(Contorno contorno) {
 
         PreparedStatement stmt = null;

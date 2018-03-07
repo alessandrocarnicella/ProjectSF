@@ -26,6 +26,7 @@ public class DAOBanda {
         return instance;
     }
 
+    //method inserimento nuova banda in DB
     public boolean insertNewBandaInDB(BeanBanda beanBanda) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -62,9 +63,6 @@ public class DAOBanda {
             }
         }
         return true;
-
     }
-
-
 }
 

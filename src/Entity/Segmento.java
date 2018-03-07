@@ -22,7 +22,6 @@ public class Segmento {
     public int getIdSegmento() {
         return idSegmento;
     }
-
     public void setIdSegmento(int idSegmento) {
         this.idSegmento = idSegmento;
     }
@@ -30,7 +29,6 @@ public class Segmento {
     public int getIdFilamento() {
         return idFilamento;
     }
-
     public void setIdFilamento(int idFilamento) {
         this.idFilamento = idFilamento;
     }

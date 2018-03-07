@@ -23,7 +23,6 @@ public class Contorno {
     public int getIdFilamento() {
         return idFilamento;
     }
-
     public void setIdFilamento(int idFilamento) {
         this.idFilamento = idFilamento;
     }
@@ -31,7 +30,6 @@ public class Contorno {
     public Float getLonG() {
         return lonG;
     }
-
     public void setLonG(Float lonG) {
         this.lonG = lonG;
     }
@@ -39,7 +37,6 @@ public class Contorno {
     public Float getLatG() {
         return latG;
     }
-
     public void setLatG(Float latG) {
         this.latG = latG;
     }

@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-
+<!-- footer -->
 <footer class="mdl-mega-footer" style="background: #0f90cc">
     <div class="mdl-mega-footer__middle-section">
 

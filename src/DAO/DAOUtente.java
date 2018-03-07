@@ -1,6 +1,5 @@
 package DAO;
 
-import Bean.BeanLogin;
 import Bean.BeanRegistrazione;
 
 import java.sql.Connection;
@@ -15,7 +14,6 @@ public class DAOUtente {
     private DataSource DataSource;
     private static DAOUtente instance;
 
-
     protected DAOUtente() {
         this.DataSource = new DataSource();
     }
@@ -27,7 +25,7 @@ public class DAOUtente {
         return instance;
     }
 
-
+    //method inserimento utente in DB
     public boolean insertNewUtenteInDB(BeanRegistrazione beanRegistrazione) {
 
         Connection conn = null;
@@ -69,9 +67,6 @@ public class DAOUtente {
                 }
             }
         }
-
         return true;
-
-
     }
 }

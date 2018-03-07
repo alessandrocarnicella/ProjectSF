@@ -30,6 +30,7 @@ public class DAOSatellite {
     }
 
 
+    //method inserimento satellite in DB
     public boolean insertNewSatelliteInDB(BeanSatellite beanSatellite) {
 
         Connection conn = null;
@@ -71,11 +72,10 @@ public class DAOSatellite {
             }
         }
         return true;
-
     }
 
 
-    //method
+    //method selezione stellite from DB
     public ArrayList<String> selectSatellitiFromDB(){
 
         Connection conn = null;
@@ -127,17 +127,7 @@ public class DAOSatellite {
         }
 
         return val;
-
     }
-
-
-
-
-
-
-
-
-
 }
 
 

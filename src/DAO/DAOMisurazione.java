@@ -14,7 +14,6 @@ public class DAOMisurazione {
     private DataSource DataSource;
     private static  DAOMisurazione instance;
 
-
     protected  DAOMisurazione() {
         this.DataSource = new DataSource();
     }
@@ -26,7 +25,7 @@ public class DAOMisurazione {
         return instance;
     }
 
-
+    //method inserimento misurazione in DB
     public boolean insertNewMisurazioneInDB(BeanMisurazione beanMisurazione) {
 
         Connection conn = null;

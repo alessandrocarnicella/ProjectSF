@@ -16,7 +16,6 @@ public class BeanStella {
     public int getIdStella() {
         return idStella;
     }
-
     public void setIdStella(int idStella) {
         this.idStella = idStella;
     }
@@ -24,7 +23,6 @@ public class BeanStella {
     public String getNomeStella() {
         return nomeStella;
     }
-
     public void setNomeStella(String nomeStella) {
         this.nomeStella = nomeStella;
     }
@@ -32,7 +30,6 @@ public class BeanStella {
     public Float getLonG() {
         return lonG;
     }
-
     public void setLonG(Float lonG) {
         this.lonG = lonG;
     }
@@ -40,7 +37,6 @@ public class BeanStella {
     public Float getLatG() {
         return latG;
     }
-
     public void setLatG(Float latG) {
         this.latG = latG;
     }
@@ -48,7 +44,6 @@ public class BeanStella {
     public Float getValoreFlusso() {
         return valoreFlusso;
     }
-
     public void setValoreFlusso(Float valoreFlusso) {
         this.valoreFlusso = valoreFlusso;
     }
@@ -56,10 +51,7 @@ public class BeanStella {
     public String getTipoStella() {
         return tipoStella;
     }
-
     public void setTipoStella(String tipoStella) {
         this.tipoStella = tipoStella;
     }
-
-
 }

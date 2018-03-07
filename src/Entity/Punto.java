@@ -23,7 +23,6 @@ public class Punto {
     public Float getLatG() {
         return latG;
     }
-
     public void setLatG(Float latG) {
         this.latG = latG;
     }
@@ -31,7 +30,6 @@ public class Punto {
     public Float getLonG() {
         return lonG;
     }
-
     public void setLonG(Float lonG) {
         this.lonG = lonG;
     }

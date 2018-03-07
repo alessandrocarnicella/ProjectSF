@@ -5,8 +5,7 @@
   Time: 15:51
   To change this template use File | Settings | File Templates.
 --%>
-
-
+<!-- footer -->
 <footer class="page-footer" style="background:  #0f90cc">
     <div class="container" >
         <div class="row">
@@ -32,8 +31,6 @@
         </div>
     </div>
 </footer>
-
-
 
 </body>
 </html>

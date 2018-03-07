@@ -1,21 +1,23 @@
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.sql.Date" %>
-<%@ page import="java.text.ParseException" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Manuel
   Date: 15/02/2018
   Time: 16:45
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page import="java.sql.Date" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<!-- header -->
 <jsp:include page="/Include/headerHome.jsp"/>
+<!-- menu -->
 <jsp:include page="/Include/menu.jsp"/>
-<!-- definisco i parametri della card -->
+
+<!-- CSS style -->
 <style>
     .demo-card-wide.mdl-card {
         width: 600px;
-        height: 850px;
         background-color:rgba(255, 255, 255, 0.93);
     }
     .demo-card-wide > .mdl-card__title {
@@ -86,7 +88,7 @@
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" name="confermainsertsat" style="width: 200px;margin-left: 30px;margin-top: 50px">
                     Conferma
                 </button>
-                <img style=" margin-left: 150px" src="../Images/alien2.png" >
+                <img style=" margin-left: 150px" src="../Images/satellite.png" >
             </div>
 
             <%

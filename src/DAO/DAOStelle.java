@@ -1,7 +1,5 @@
 package DAO;
 
-import Bean.BeanFilamento;
-import Entity.Punto;
 import Entity.Stella;
 
 import java.sql.Connection;
@@ -30,10 +28,13 @@ public class DAOStelle {
         return instance;
     }
 
-
+    //method open connection
     public void openConnection() {
         try {
             conn = this.DataSource.getConnection();
+            /* l'autocommit viene settato a null,
+                verra' effettuato un unica volta
+                alla chiusura della connessione  */
             conn.setAutoCommit(false);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -42,6 +43,7 @@ public class DAOStelle {
         }
     }
 
+    //method close connection
     public void closeConnection() {
         try {
             conn.commit();
@@ -51,6 +53,7 @@ public class DAOStelle {
         }
     }
 
+    //method inserimento setlla in DB
     public void insertStella(Stella stella) {
 
         PreparedStatement stmt = null;
@@ -81,7 +84,7 @@ public class DAOStelle {
     }
 
 
-    //method
+    //method ricerca presenza stella in DB
     public boolean findItemById(Stella stella) {
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -111,6 +114,7 @@ public class DAOStelle {
         return false;
     }
 
+    //method aggiornamneto stella in DB
     public void updateStella(Stella stella) {
 
         PreparedStatement stmt = null;
@@ -142,7 +146,7 @@ public class DAOStelle {
     }
 
 
-    //method
+    //method selezione di tutte le stelle form DB
     public ArrayList<String> selectAllStarsFromDB(){
 
         PreparedStatement stmt = null;

@@ -1,12 +1,7 @@
 package DAO;
 
-import Bean.BeanContorno;
-import Bean.BeanSegmento;
-import Entity.Punto;
-import Entity.Scheletro;
 import Entity.Segmento;
 
-import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,10 +27,13 @@ public class DAOSegmento {
         return instance;
     }
 
-
+    //method open connection
     public void openConnection() {
         try {
             conn = this.DataSource.getConnection();
+            /* l'autocommit viene settato a null,
+                verra' effettuato un unica volta
+                alla chiusura della connessione  */
             conn.setAutoCommit(false);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -44,7 +42,7 @@ public class DAOSegmento {
         }
     }
 
-    //method
+    //method close connection
     public void closeConnection() {
         try {
             conn.commit();
@@ -55,7 +53,7 @@ public class DAOSegmento {
     }
 
 
-    //method
+    //method inserimento segmento
     public void insertSegmento(Segmento segmento) {
 
         PreparedStatement stmt = null;
@@ -88,7 +86,7 @@ public class DAOSegmento {
 
 
 
-    //method
+    //method ricerca presenza segmento in DB
     public boolean findItemById(Segmento segmento) {
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -123,7 +121,7 @@ public class DAOSegmento {
 
 
 
-    //method
+    //method selezione del filamento from DB con numero di segmenti specificato
     public ArrayList<String[]> selectFilamentsBySegmentsNumberFromDB(int int1, int int2){
 
 
@@ -194,10 +192,4 @@ public class DAOSegmento {
         return val;
 
     }
-
-
-
-
-
-
 }

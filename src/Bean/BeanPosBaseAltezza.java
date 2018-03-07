@@ -1,11 +1,5 @@
 package Bean;
 
-import Control.ControlloreRCerchioQuadrato;
-import Control.ControlloreRContrastoEllittcita;
-import Entity.Filamento;
-
-import java.util.ArrayList;
-
 /**
  * Created by alessandro on 01/03/18.
  */
@@ -16,10 +10,10 @@ public class BeanPosBaseAltezza {
     private Float base;
     private Float altezza;
 
+    //getter and setter
     public Float getLonG() {
         return lonG;
     }
-
     public void setLonG(Float lonG) {
         this.lonG = lonG;
     }
@@ -27,7 +21,6 @@ public class BeanPosBaseAltezza {
     public Float getLatG() {
         return latG;
     }
-
     public void setLatG(Float latG) {
         this.latG = latG;
     }
@@ -35,7 +28,6 @@ public class BeanPosBaseAltezza {
     public Float getBase() {
         return base;
     }
-
     public void setBase(Float base) {
         this.base = base;
     }
@@ -43,9 +35,7 @@ public class BeanPosBaseAltezza {
     public Float getAltezza() {
         return altezza;
     }
-
     public void setAltezza(Float altezza) {
         this.altezza = altezza;
     }
-
 }

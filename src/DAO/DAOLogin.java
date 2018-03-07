@@ -11,7 +11,6 @@ public class DAOLogin {
     private DataSource DataSource;
     private static DAOLogin instance;
 
-
     protected DAOLogin() {
         this.DataSource = new DataSource();
     }
@@ -23,6 +22,7 @@ public class DAOLogin {
         return instance;
     }
 
+    //method ricerca utente in DB
     public ArrayList<String> findUtente(String userName) throws SQLException {
 
         Connection conn = null;

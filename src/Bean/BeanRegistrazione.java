@@ -16,12 +16,10 @@ public class BeanRegistrazione {
     private String tipoUtenteRegistrazione;
     private boolean utenteRegistrazione;
 
-
     //getter and setter
     public String getNome() {
         return nomeRegistrazione;
     }
-
     public void setNome(String nome) {
         this.nomeRegistrazione = nome;
     }
@@ -29,7 +27,6 @@ public class BeanRegistrazione {
     public String getCognome() {
         return cognomeRegistrazione;
     }
-
     public void setCognome(String cognome) {
         this.cognomeRegistrazione = cognome;
     }
@@ -37,7 +34,6 @@ public class BeanRegistrazione {
     public String getUsername() {
         return usernameRegistrazione;
     }
-
     public void setUsername(String username) {
         this.usernameRegistrazione = username;
     }
@@ -45,7 +41,6 @@ public class BeanRegistrazione {
     public String getPassword() {
         return passwordRegistrazione;
     }
-
     public void setPassword(String password) {
         this.passwordRegistrazione = password;
     }
@@ -53,7 +48,6 @@ public class BeanRegistrazione {
     public String getEmail() {
         return emailRegistrazione;
     }
-
     public void setEmail(String email) {
         this.emailRegistrazione = email;
     }
@@ -61,7 +55,6 @@ public class BeanRegistrazione {
     public String getTipoUtente() {
         return tipoUtenteRegistrazione;
     }
-
     public void setTipoUtente(String tipoUtente) {
         this.tipoUtenteRegistrazione = tipoUtente;
     }
@@ -69,7 +62,6 @@ public class BeanRegistrazione {
     public boolean getUtente() {
         return utenteRegistrazione;
     }
-
     public void setUtente(boolean utente) {
         this.utenteRegistrazione = utente;
     }
@@ -83,5 +75,4 @@ public class BeanRegistrazione {
         else
             return false;
     }
-
 }

@@ -1,8 +1,6 @@
 package Bean;
 
-import Control.ControlloreInserimentoDati;
 import Control.ControlloreRDistanza;
-import DAO.DAOScheletro;
 
 import java.util.ArrayList;
 
@@ -23,7 +21,6 @@ public class BeanScheletro {
     public int getIdFilamento() {
         return idFilamento;
     }
-
     public void setIdFilamento(int idFilamento) {
         this.idFilamento = idFilamento;
     }
@@ -31,7 +28,6 @@ public class BeanScheletro {
     public int getIdSegmento() {
         return idSegmento;
     }
-
     public void setIdSegmento(int idSegmento) {
         this.idSegmento = idSegmento;
     }
@@ -39,7 +35,6 @@ public class BeanScheletro {
     public String getTipoRamo() {
         return tipoRamo;
     }
-
     public void setTipoRamo(String tipoRamo) {
         this.tipoRamo = tipoRamo;
     }
@@ -47,7 +42,6 @@ public class BeanScheletro {
     public Float getLonG() {
         return lonG;
     }
-
     public void setLonG(Float lonG) {
         this.lonG = lonG;
     }
@@ -55,7 +49,6 @@ public class BeanScheletro {
     public Float getLatG() {
         return latG;
     }
-
     public void setLatG(Float latG) {
         this.latG = latG;
     }
@@ -63,7 +56,6 @@ public class BeanScheletro {
     public int getnProg() {
         return nProg;
     }
-
     public void setnProg(int nProg) {
         this.nProg = nProg;
     }
@@ -71,13 +63,12 @@ public class BeanScheletro {
     public Double getFlussoMisurato() {
         return flussoMisurato;
     }
-
     public void setFlussoMisurato(Double flussoMisurato) {
         this.flussoMisurato = flussoMisurato;
     }
 
+    //method
     public ArrayList<String> resultDistanceVertici() {
-
         ArrayList<String> result = ControlloreRDistanza.getInstance().selectDistanceFromBean(this);
         return result;
     }

@@ -1,8 +1,6 @@
 package Bean;
 
-import Control.ControlloreInserimentoDati;
 import Control.ControlloreLogin;
-import Entity.Utente;
 
 /**
  * Created by Manuel on 08/02/2018.
@@ -22,7 +20,6 @@ public class BeanLogin {
     public String getNome() {
         return nome;
     }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -30,7 +27,6 @@ public class BeanLogin {
     public String getCognome() {
         return cognome;
     }
-
     public void setCognome(String cognome) {
         this.cognome = cognome;
     }
@@ -38,7 +34,6 @@ public class BeanLogin {
     public String getUsername() {
         return username;
     }
-
     public void setUsername(String username) {
         this.username = username;
     }
@@ -46,7 +41,6 @@ public class BeanLogin {
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -54,7 +48,6 @@ public class BeanLogin {
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -62,7 +55,6 @@ public class BeanLogin {
     public String getTipoUtente() {
         return tipoUtente;
     }
-
     public void setTipoUtente(String tipoUtente) {
         this.tipoUtente = tipoUtente;
     }
@@ -70,7 +62,6 @@ public class BeanLogin {
     public boolean getUtente() {
         return utente;
     }
-
     public void setUtente(boolean utente) {
         this.utente = utente;
     }
@@ -82,7 +73,5 @@ public class BeanLogin {
             return true;
         else
             return false;
-
     }
-
 }

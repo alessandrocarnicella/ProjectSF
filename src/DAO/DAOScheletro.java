@@ -1,10 +1,7 @@
 package DAO;
 
 import Bean.BeanScheletro;
-import Entity.Contorno;
 import Entity.Scheletro;
-import Entity.Segmento;
-import Entity.Stella;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -31,9 +28,13 @@ public class DAOScheletro {
         return instance;
     }
 
+    //method open connection
     public void openConnection() {
         try {
             conn = this.DataSource.getConnection();
+            /* l'autocommit viene settato a null,
+                verra' effettuato un unica volta
+                alla chiusura della connessione  */
             conn.setAutoCommit(false);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -42,6 +43,7 @@ public class DAOScheletro {
         }
     }
 
+    //method close connection
     public void closeConnection() {
         try {
             conn.commit();
@@ -51,7 +53,7 @@ public class DAOScheletro {
         }
     }
 
-
+    //method inserimento schelero in DB
     public void insertScheletro(Scheletro scheletro) {
 
         String insertQuery = "INSERT INTO scheletro(idfilamento,idsegmento,tiporamo,long,latg,nprog,flussomisurato) VALUES (?,?,?,?,?,?,?)";
@@ -80,7 +82,7 @@ public class DAOScheletro {
     }
 
 
-    //method
+    //method ricerca presenza scheletro from DB
     public boolean findItemById(Scheletro scheletro) {
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -118,6 +120,7 @@ public class DAOScheletro {
     }
 
 
+    //method aggiornamento scheleyro in DB
     public void updateScheletro(Scheletro scheletro) {
 
         PreparedStatement stmt = null;
@@ -149,6 +152,7 @@ public class DAOScheletro {
     }
 
 
+    //method selezione vertici e punti con distanza minima from DB
     public ArrayList<String> selectDistanceFromDB(BeanScheletro beanBS) {
 
         ArrayList<String> val = new ArrayList<>();
@@ -220,8 +224,6 @@ public class DAOScheletro {
                 }
             }
         }
-
         return val;
-
     }
 }

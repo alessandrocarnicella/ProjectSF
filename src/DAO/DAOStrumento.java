@@ -1,6 +1,5 @@
 package DAO;
 
-import Bean.BeanSatellite;
 import Bean.BeanStrumento;
 
 import java.sql.Connection;
@@ -28,13 +27,11 @@ public class DAOStrumento {
         return instance;
     }
 
-
-    //method
+    //method inserimento strumento in DB
     public boolean insertNewStrumentoInDB(BeanStrumento beanStrumento) {
 
         Connection conn = null;
         PreparedStatement stmt = null;
-
 
         try {
 
@@ -72,5 +69,4 @@ public class DAOStrumento {
         return true;
 
     }
-
 }

@@ -1,9 +1,5 @@
 package Bean;
 
-import Control.ControlloreRCentroideEstensione;
-
-import java.util.ArrayList;
-
 /**
  * Created by Manuel on 19/02/2018.
  */
@@ -13,12 +9,10 @@ public class BeanContorno {
     private Float lonG;
     private Float latG;
 
-
     //getter and setter
     public int getIdFilamento() {
         return idFilamento;
     }
-
     public void setIdFilamento(int idFilamento) {
         this.idFilamento = idFilamento;
     }
@@ -26,7 +20,6 @@ public class BeanContorno {
     public Float getLonG() {
         return lonG;
     }
-
     public void setLonG(Float lonG) {
         this.lonG = lonG;
     }
@@ -34,10 +27,8 @@ public class BeanContorno {
     public Float getLatG() {
         return latG;
     }
-
     public void setLatG(Float latG) {
         this.latG = latG;
     }
-
 
 }
