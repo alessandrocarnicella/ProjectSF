@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: alessandro
   Date: 07/03/18
@@ -61,7 +61,7 @@
 
                     <form >
                         <label style="margin-left: 30px;margin-top: 50px"> Inserisci l'identificativo del filamento :</label>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"   style="margin-left: 30px; width: 200px" >
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"  style="margin-left: 30px; width: 200px" >
                             <input class="mdl-textfield__input" type="number" id="sample1" name="idfilamento" required maxlength="20" >
                             <label class="mdl-textfield__label" for="sample1" >id filamento</label>
                         </div>
@@ -76,8 +76,7 @@
                         <%  if(request.getParameter("confermaidfilamento")!= null) {
                             BeanFilamento.setIdFilamento(Integer.valueOf(request.getParameter("idfilamento")));
                         %>
-
-                        <jsp:forward page="../ResultsPagesJSP/resultStelleinFilamentojsp"/>
+                        <jsp:forward page="/ResultsPagesJSP/resultStelleInFilamento.jsp"/>
                         <%}%>
                     </form>
                 </div>

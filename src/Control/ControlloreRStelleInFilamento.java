@@ -1,7 +1,6 @@
 package Control;
 
 import Bean.BeanFilamento;
-import Bean.BeanStella;
 import DAO.DAOContorno;
 import DAO.DAOStelle;
 import Entity.Punto;
@@ -14,14 +13,13 @@ import java.util.ArrayList;
  */
 public class ControlloreRStelleInFilamento {
 
-    // Singleton
-    private static ControlloreRStelleInFilamento instance;
     private int stelleTrovate=0;
-    private int stellenontrovate=0;
     private int stelleProtostellar=0;
     private int stellePrestellar=0;
     private int stelleUnbound=0;
 
+    // Singleton
+    private static ControlloreRStelleInFilamento instance;
 
     public static synchronized final ControlloreRStelleInFilamento getInstance() {
         if (instance == null)
@@ -36,11 +34,11 @@ public class ControlloreRStelleInFilamento {
         ArrayList<String> val=new ArrayList<>();
 
         ArrayList<String> strStelle= DAOStelle.getInstance().selectAllStarsFromDB();
-        //System.out.println("strStelle:"+strStelle);
-
         ArrayList<String> strContorno= DAOContorno.getInstance().selectAllPerimeterPointsFromDB(beanFilamento);
-        //System.out.println("strContorno:"+strContorno);
 
+        if(strContorno==null){
+            return null;
+        }
         ArrayList<Stella> stelle=new ArrayList<>();
         ArrayList<Punto> puntiContorno=new ArrayList<>();
 
@@ -58,23 +56,23 @@ public class ControlloreRStelleInFilamento {
             puntiContorno.add(puntoContorno);
         }
 
-int count=0;
-        for(int r=0;r<stelle.size()/100;r++){
-            System.out.println("------------------------------ stella = "+count++);
-            for(int k=0;k<puntiContorno.size()-1;k++){
-                System.out.println("k ="+k);
-                if(ArctanCondition(stelle.get(r), puntiContorno.get(k), puntiContorno.get(k + 1))){
-                   break;
-                }
-                else {
-                    System.out.println("non cotenuta");
-                }
+        int count=0;
+        Double result=0.0;
+        for(int r=0;r<stelle.size();r++){
+            for(int k=0;k<puntiContorno.size()-2;k++){
+                result= result+ Math.atan(
+                        (((puntiContorno.get(k).getLonG()-stelle.get(r).getLonG())*(puntiContorno.get(k+1).getLatG()-stelle.get(r).getLatG()))
+                                -((puntiContorno.get(k).getLatG()-stelle.get(r).getLatG())*(puntiContorno.get(k+1).getLonG()-stelle.get(r).getLonG())))
+                                /(((puntiContorno.get(k).getLonG()-stelle.get(r).getLonG())*(puntiContorno.get(k+1).getLonG()-stelle.get(r).getLonG()))
+                                +((puntiContorno.get(k).getLatG()-stelle.get(r).getLatG())*(puntiContorno.get(k+1).getLatG()-stelle.get(r).getLatG())))
+                );
             }
+
+            if (Math.abs(Math.toRadians(result))>=0.01){
+                foundStars(stelle.get(r));
+            }else
+                System.out.println("stella non contenuta");
         }
-
-        System.out.println(stelle.size());
-        System.out.println(puntiContorno.size());
-
         Float percentualePRO= ((float)stelleProtostellar/(float) stelleTrovate)*100;
         Float percentualePRE= ((float)stellePrestellar/(float) stelleTrovate)*100;;
         Float percentualeUNB= ((float)stelleUnbound/(float) stelleTrovate)*100;;
@@ -87,44 +85,28 @@ int count=0;
     }
 
 
-    private boolean ArctanCondition(Stella s,Punto punto1,Punto punto2){
+    private void foundStars(Stella s){
 
-        Double result= Math.atan(
-                (((punto1.getLonG()-s.getLonG())*(punto2.getLonG()-s.getLonG()))
-                +((punto1.getLatG()-s.getLatG())*(punto2.getLatG()-s.getLatG())))
-               /(((punto1.getLonG()-s.getLonG())*(punto2.getLatG()-s.getLatG()))
-                -((punto1.getLatG()-s.getLatG())*(punto2.getLonG()-s.getLonG())))
-                );
+        stelleTrovate++;
 
-
-        System.out.println("result:"+result);
-        System.out.println("result radianti:"+Math.toRadians(result));
-        if( Math.toRadians(result)>=0.01){
-            System.out.println("contenuta");
-            stelleTrovate++;
-            System.out.println(stelleTrovate);
-
-            if (s.getTipoStella().equals("PROTOSTELLAR")){
-                stelleProtostellar++;
-            }
-            else if (s.getTipoStella().equals("PRESTELLAR")){
-                stellePrestellar++;
-            }
-            else if (s.getTipoStella().equals("UNBOUND")){
-                stelleUnbound++;
-            }
-           return true;
-        } else {
-            stellenontrovate++;
-            System.out.println(stellenontrovate);
-            return false;
+        if (s.getTipoStella().equals("PROTOSTELLAR")){
+            stelleProtostellar++;
+        }
+        else if (s.getTipoStella().equals("PRESTELLAR")){
+            stellePrestellar++;
+        }
+        else if (s.getTipoStella().equals("UNBOUND")){
+            stelleUnbound++;
         }
     }
 
-    public static void main(String[] args){
+
+    /*public static void main(String[] args){
         BeanFilamento beanFilamento=new BeanFilamento();
-        beanFilamento.setIdFilamento(45);
+        beanFilamento.setIdFilamento(1013661);
         System.out.println(ControlloreRStelleInFilamento.getInstance().searchStarsInFilamentFromBean(beanFilamento));
-    }
+
+
+    }*/
 
 }

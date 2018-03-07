@@ -1,6 +1,7 @@
 package Bean;
 
 import Control.ControlloreRCentroideEstensione;
+import Control.ControlloreRStelleInFilamento;
 
 import java.util.ArrayList;
 
@@ -19,20 +20,11 @@ public class BeanFilamento {
     private String nomeSatellite;
     private String nomeStrumento;
 
-    private int  pagina;
 
-    public int getPagina() {
-        return pagina;
-    }
-
-    public void setPagina(int pagina) {
-        this.pagina = pagina;
-    }
-
+    //getter and setter
     public String getNome() {
         return nome;
     }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -40,7 +32,6 @@ public class BeanFilamento {
     public int getIdFilamento() {
         return idFilamento;
     }
-
     public void setIdFilamento(int idFilamento) {
         this.idFilamento = idFilamento;
     }
@@ -48,7 +39,6 @@ public class BeanFilamento {
     public float getFlussoTotale() {
         return flussoTotale;
     }
-
     public void setFlussoTotale(float flussoTotale) {
         this.flussoTotale = flussoTotale;
     }
@@ -56,7 +46,6 @@ public class BeanFilamento {
     public float getDensitaMedia() {
         return densitaMedia;
     }
-
     public void setDensitaMedia(float densitaMedia) {
         this.densitaMedia = densitaMedia;
     }
@@ -64,7 +53,6 @@ public class BeanFilamento {
     public float getTemperaturaMedia() {
         return temperaturaMedia;
     }
-
     public void setTemperaturaMedia(float temperaturaMedia) {
         this.temperaturaMedia = temperaturaMedia;
     }
@@ -72,7 +60,6 @@ public class BeanFilamento {
     public float getEllitticita() {
         return ellitticita;
     }
-
     public void setEllitticita(float ellitticita) {
         this.ellitticita = ellitticita;
     }
@@ -80,7 +67,6 @@ public class BeanFilamento {
     public float getContrasto() {
         return contrasto;
     }
-
     public void setContrasto(float contrasto) {
         this.contrasto = contrasto;
     }
@@ -88,7 +74,6 @@ public class BeanFilamento {
     public String getNomeSatellite() {
         return nomeSatellite;
     }
-
     public void setNomeSatellite(String nomeSatellite) {
         this.nomeSatellite = nomeSatellite;
     }
@@ -96,7 +81,6 @@ public class BeanFilamento {
     public String getNomeStrumento() {
         return nomeStrumento;
     }
-
     public void setNomeStrumento(String nomeStrumento) {
         this.nomeStrumento = nomeStrumento;
     }
@@ -104,11 +88,21 @@ public class BeanFilamento {
 
     //method
     public ArrayList<String> selectForIdOrNameFilCentroidExtension(){
-
         ArrayList<String> val= ControlloreRCentroideEstensione.getInstance().selectForIdOrNameFilCentroidExtensionFromBean(this);
         if ( val!=null)
             return  val;
         else
             return null;
     }
+
+
+    //method
+    public ArrayList<String> searchStarsInFilament(){
+        ArrayList<String> val= ControlloreRStelleInFilamento.getInstance().searchStarsInFilamentFromBean(this);
+        if (val!= null){
+            return val;
+        }else
+            return null;
+    }
+
 }
