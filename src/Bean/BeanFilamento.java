@@ -1,6 +1,7 @@
 package Bean;
 
 import Control.ControlloreRCentroideEstensione;
+import Control.ControlloreRDistanceStelleSpinaDorsale;
 import Control.ControlloreRStelleInFilamento;
 
 import java.util.ArrayList;
@@ -105,4 +106,12 @@ public class BeanFilamento {
             return null;
     }
 
+    //method
+    public ArrayList<String[]> searchDistance(){
+        ArrayList<String[]> val= ControlloreRDistanceStelleSpinaDorsale.getInstance().searchDistanceStelleSpinaDorsaleFromBean(this);
+        if (val!= null){
+            return val;
+        }else
+            return null;
+    }
 }

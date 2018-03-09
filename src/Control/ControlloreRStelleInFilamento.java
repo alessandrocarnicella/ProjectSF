@@ -70,8 +70,11 @@ public class ControlloreRStelleInFilamento {
 
             if (Math.abs(Math.toRadians(result))>=0.01){
                 foundStars(stelle.get(r));
+                //System.out.println("contenuta");
+                result = 0.0;
             }else
-                System.out.println("stella non contenuta");
+                //System.out.println("stella non contenuta");
+                result = 0.0;
         }
         Float percentualePRO= ((float)stelleProtostellar/(float) stelleTrovate)*100;
         Float percentualePRE= ((float)stellePrestellar/(float) stelleTrovate)*100;;
@@ -87,6 +90,7 @@ public class ControlloreRStelleInFilamento {
 
     private void foundStars(Stella s){
 
+        System.out.println(s.getIdStella());
         stelleTrovate++;
 
         if (s.getTipoStella().equals("PROTOSTELLAR")){
@@ -101,12 +105,10 @@ public class ControlloreRStelleInFilamento {
     }
 
 
-    /*public static void main(String[] args){
+    public static void main(String[] args){
         BeanFilamento beanFilamento=new BeanFilamento();
         beanFilamento.setIdFilamento(1013661);
         System.out.println(ControlloreRStelleInFilamento.getInstance().searchStarsInFilamentFromBean(beanFilamento));
-
-
-    }*/
+    }
 
 }

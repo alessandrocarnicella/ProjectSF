@@ -43,9 +43,11 @@
         <!--fine titolo-->
             <% int count=1;
             ArrayList<String[]> filamentiBySegmentsNumber= BeanSegmento.selectFilamentsBySegmentsNumber(Integer.valueOf(request.getParameter("int1")),Integer.valueOf(request.getParameter("int2")));
-            for(String[] g:filamentiBySegmentsNumber){
+
+            /*for(String[] g:filamentiBySegmentsNumber){
             System.out.println(Arrays.toString(g));
             }
+            */
             if (filamentiBySegmentsNumber!=null){%>
 
         <!-- MDL Fixed Layout Container -->
@@ -55,7 +57,7 @@
                 <!-- Tab Bar Container , and Tab links -->
                 <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
                     <a href="#page1" class="mdl-layout__tab is-active">pagina1</a>
-                    <% for(int i=1;i<filamentiBySegmentsNumber.size();i++){%>
+                    <% for(int i=1;i<=filamentiBySegmentsNumber.size();i++){%>
                     <% if(i%20==0){
                         count++;%>
                     <a href="#page<%=count%>" class="mdl-layout__tab">pagina<%=count%></a>
@@ -85,7 +87,13 @@
                         </thead>
                         <tbody>
                         <div class="page-content" style="margin-top: 10px;margin-left: 25px">
-                            <%for(int j=0;j<20;j++){
+                            <%int num=0;
+                                if(filamentiBySegmentsNumber.size()>=20){
+                                    num=20;
+                                }else {
+                                    num=filamentiBySegmentsNumber.size();
+                                }
+                                for(int j=0;j<num;j++){
                                 String[] val = filamentiBySegmentsNumber.get(j);%>
                             <tr>
                                 <!-- class "mdl-data-table__cell--non-numeric", align values to left -->
@@ -127,7 +135,13 @@
                         </thead>
                         <tbody>
                         <div class="page-content" style="margin-top: 10px;margin-left: 25px">
-                            <%for(int j=init;j<init+20;j++){
+                            <%int num2=0;
+                                if(filamentiBySegmentsNumber.size()-init>20){
+                                    num2 = 20;
+                                }else{
+                                    num2 = filamentiBySegmentsNumber.size()-init;
+                                }
+                                for(int j=init;j<init+num2;j++){
                                 String[] val = filamentiBySegmentsNumber.get(j);%>
                             <tr>
                                 <!-- class "mdl-data-table__cell--non-numeric", align values to left -->

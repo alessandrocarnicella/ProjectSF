@@ -274,4 +274,74 @@ public class DAOStelle {
     }
 
 
+    public ArrayList<String> selectMinDistanceFromDB(Stella s,int id) {
+        ArrayList<String> val = new ArrayList<>();
+        PreparedStatement stmt = null;
+        ResultSet rs=null;
+
+        String selectQuery = "SELECT s2.idfilamento,idsegmento,nprog, tiporamo, s2.latg, s2.long\n" +
+                "FROM scheletro as s2\n" +
+                "WHERE sqrt((? - s2.latg) ^ 2 + (? - s2.long) ^ 2)\n" +
+                "          =\n" +
+                "          (SELECT min(sqrt((? - scheletro.latg) ^ 2 + (? -scheletro.long) ^ 2))\n" +
+                "          FROM scheletro\n" +
+                "          WHERE scheletro.idfilamento = ? AND scheletro.tiporamo='S'\n" +
+                ") AND s2.tiporamo='S'\n";
+
+        try {
+
+            openConnection();
+            stmt = conn.prepareStatement(selectQuery);
+
+            stmt.setFloat(1,s.getLatG());
+            stmt.setFloat(2,s.getLonG());
+            stmt.setFloat(3,s.getLatG());
+            stmt.setFloat(4,s.getLonG());
+            stmt.setInt(5,id);
+
+            rs = stmt.executeQuery();
+
+            if (!rs.isBeforeFirst() ) {
+                return null;
+            }
+
+            while (rs.next()){
+                val.add(rs.getString(1));
+                val.add(rs.getString(2));
+                val.add(rs.getString(3));
+                val.add(rs.getString(4));
+                val.add(rs.getString(5));
+                val.add(rs.getString(6));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+            // release resources
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            // release resources
+            if(stmt != null){
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            // close connection
+            if(conn  != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return val;
+    }
 }

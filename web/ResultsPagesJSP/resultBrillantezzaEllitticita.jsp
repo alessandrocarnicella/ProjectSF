@@ -41,7 +41,6 @@
         <!--fine titolo-->
             <% int count=1;
             ArrayList<Filamento> filamenti= BeanBrillantezzaEllitticita.selectFilamentoFromBean();
-
             if (filamenti!=null){%>
 
         <!-- MDL Fixed Layout Container -->
@@ -51,7 +50,7 @@
                 <!-- Tab Bar Container , and Tab links -->
                 <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
                     <a href="#page1" class="mdl-layout__tab is-active">pagina1</a>
-                    <% for(int i=1;i<filamenti.size();i++){%>
+                    <% for(int i=1;i<=filamenti.size();i++){%>
                     <% if(i%20==0){
                         count++;%>
                     <a href="#page<%=count%>" class="mdl-layout__tab">pagina<%=count%></a>
@@ -82,7 +81,13 @@
                         <tbody>
 
                         <div class="page-content" style="margin-top: 10px;margin-left: 25px">
-                            <%for(int j=0;j<20;j++){%>
+                            <%int num=0;
+                                if(filamenti.size()>=20){
+                                    num=20;
+                                }else {
+                                    num=filamenti.size();
+                                }
+                                for(int j=0;j<20;j++){%>
                             <tr>
                                 <!-- class "mdl-data-table__cell--non-numeric", align values to left -->
                                 <td class="mdl-data-table__cell--non-numeric"><%=filamenti.get(j).getIdFilamento()%></td>
@@ -122,7 +127,13 @@
                         <tbody>
 
                         <div class="page-content" style="margin-top: 10px;margin-left: 25px">
-                            <%for(int j=init;j<init+20;j++){%>
+                            <%int num2=0;
+                                if(filamenti.size()-init>20){
+                                    num2 = 20;
+                                }else{
+                                    num2 = filamenti.size()-init;
+                                }
+                                for(int j=init;j<init+num2;j++){%>
                             <tr>
                                 <!-- class "mdl-data-table__cell--non-numeric", align values to left -->
                                 <td class="mdl-data-table__cell--non-numeric"><%=filamenti.get(j).getIdFilamento()%></td>
