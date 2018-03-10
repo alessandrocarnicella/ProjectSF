@@ -23,23 +23,21 @@ public class ControlloreInserimentoDati {
     //method
     public boolean insertNewUserFromBean(BeanRegistrazione beanRegistrazione){
 
-        DAOUtente daoUtente= DAOUtente.getInstance();
-        boolean inserimento= daoUtente.insertNewUtenteInDB(beanRegistrazione);
-        if (inserimento==true)
+        DAOUtente daoUtente = DAOUtente.getInstance();
+        boolean inserimento = daoUtente.insertNewUtenteInDB(beanRegistrazione);
+        if (inserimento == true)
             return true;
         else
             return false;
-
-
     }
 
 
     //method
     public boolean insertNewSatelliteFromBean(BeanSatellite beanSatellite){
 
-        DAOSatellite daoSatellite= DAOSatellite.getInstance();
-        boolean inserimento= daoSatellite.insertNewSatelliteInDB(beanSatellite);
-        if (inserimento==true)
+        DAOSatellite daoSatellite = DAOSatellite.getInstance();
+        boolean inserimento = daoSatellite.insertNewSatelliteInDB(beanSatellite);
+        if (inserimento == true)
             return true;
         else
             return false;
@@ -48,9 +46,9 @@ public class ControlloreInserimentoDati {
 
     //method
     public boolean insertNewStrumentoFromBean(BeanStrumento beanStrumento){
-        DAOStrumento daoStrumento= DAOStrumento.getInstance();
-        boolean inserimento=daoStrumento.insertNewStrumentoInDB(beanStrumento);
-        if (inserimento==true)
+        DAOStrumento daoStrumento = DAOStrumento.getInstance();
+        boolean inserimento = daoStrumento.insertNewStrumentoInDB(beanStrumento);
+        if (inserimento == true)
             return true;
         else
             return false;
@@ -60,7 +58,7 @@ public class ControlloreInserimentoDati {
     public boolean insertNewBandaFromBean(BeanBanda beanBanda){
         DAOBanda daoBanda= DAOBanda.getInstance();
         boolean inserimento=daoBanda.insertNewBandaInDB(beanBanda);
-        if (inserimento==true)
+        if (inserimento == true)
             return true;
         else
             return false;
@@ -78,7 +76,6 @@ public class ControlloreInserimentoDati {
     }
 
 
-
     //method
     public ArrayList<String> selectSatellitiFromBean(){
         DAOSatellite daoSatellite=DAOSatellite.getInstance();
@@ -90,7 +87,6 @@ public class ControlloreInserimentoDati {
     }
 
 
-
     //method
     public ArrayList<String> selectAgenziaFromBean(){
         DAOAgenzia daoAgenzia=DAOAgenzia.getInstance();
@@ -100,6 +96,4 @@ public class ControlloreInserimentoDati {
         else
             return null;
     }
-
-
 }

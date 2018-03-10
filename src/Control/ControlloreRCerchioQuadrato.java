@@ -1,6 +1,5 @@
 package Control;
 
-import Bean.BeanFilamento;
 import Bean.BeanPosRaggioLato;
 import DAO.DAOContorno;
 import Entity.Filamento;
@@ -23,23 +22,20 @@ public class ControlloreRCerchioQuadrato {
 
     //method
     public ArrayList<Filamento> selectForRegionePosSpazialeFromBean(BeanPosRaggioLato beanPosRaggioLato){
-        DAOContorno daoContorno=DAOContorno.getInstance();
-        ArrayList<String> val= daoContorno.selectForRegionePosSpazialeFromDB(beanPosRaggioLato);
+        DAOContorno daoContorno = DAOContorno.getInstance();
+        ArrayList<String> val = daoContorno.selectForRegionePosSpazialeFromDB(beanPosRaggioLato);
         ArrayList<Filamento> filamenti = new ArrayList<Filamento>();
         if(val != null) {
-            int i=0;
-            while (i<val.size()) {
+            int i = 0;
+            while (i < val.size()) {
                 Filamento filamento = new Filamento(val.get(i+1), Integer.valueOf(val.get(i)), Float.valueOf(val.get(i+2)), Float.valueOf(val.get(i+3)),Float.valueOf(val.get(i+4)),Float.valueOf(val.get(i+5)),Float.valueOf(val.get(i+6)),val.get(i+7),val.get(i+8));
-                i=i+9;
-                System.out.println(filamento.getIdFilamento()+" "+filamento.getNome());
+                i = i+9;
                 filamenti.add(filamento);
             }
-
-            System.out.println(val.size()/9);
             return filamenti;
-        }
-        else
+        } else {
             return null;
+        }
     }
 /*
     public static void main(String args[]){

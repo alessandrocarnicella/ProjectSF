@@ -44,7 +44,7 @@
                 <!-- Card con dati del Profilo Utente -->
                 <div class="demo-card-wide2 mdl-card mdl-shadow--2dp">
                     <div class="demo-card-wide mdl-card__title">
-                        <h2 class="mdl-card__title-text">Welcome <%=BeanLogin.getUsername()%></h2>
+                        <h2 class="mdl-card__title-text">Welcome <%=BeanLogin.getUsername()%></h2><img style="margin-left:45px;width: 60px;height: 60px;" src="Images/img_people.png" >
                     </div>
 
                     <div class="row" style="margin-top: 35px">

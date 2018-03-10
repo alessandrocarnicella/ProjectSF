@@ -76,7 +76,6 @@ public class DAOAgenzia {
                 }
             }
         }
-
-    return val;
+        return val;
     }
 }

@@ -228,7 +228,7 @@ public class DAOContorno {
                 stmt.setFloat(7, 0);
             }
 
-           rs = stmt.executeQuery();
+            rs = stmt.executeQuery();
 
             if (!rs.isBeforeFirst() ) {
                 return null;

@@ -1,11 +1,7 @@
 package Control;
 
-import Bean.*;
-import DAO.DAOAgenzia;
-import DAO.DAOFilamento;
+import Bean.BeanScheletro;
 import DAO.DAOScheletro;
-import Entity.Filamento;
-import com.sun.xml.internal.bind.v2.TODO;
 
 import java.util.ArrayList;
 

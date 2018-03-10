@@ -274,7 +274,7 @@ public class DAOStelle {
         return val;
     }
 
-
+    //method
     public ArrayList<String> selectMinDistanceFromDB(Stella s,int id) {
         ArrayList<String> val = new ArrayList<>();
         PreparedStatement stmt = null;
@@ -346,6 +346,7 @@ public class DAOStelle {
         return val;
     }
 
+    //method
     public ArrayList<String[]> orderByFluxFromDB() {
         ArrayList<String[]> val1=new ArrayList<String[]>();
         PreparedStatement stmt = null;
@@ -410,10 +411,7 @@ public class DAOStelle {
         return val1;
     }
 
-
-
-
-
+    //method
     public ArrayList<String[]> orderByDistanceFromDB() {
 
         ArrayList<String[]> val1=new ArrayList<String[]>();
@@ -479,9 +477,7 @@ public class DAOStelle {
         return val1;
     }
 
-
-
-
+    //method
     public void insertValue(String[] val) {
         PreparedStatement stmt = null;
 
@@ -516,6 +512,7 @@ public class DAOStelle {
         }
     }
 
+    //method
     public void createTableOrdinamento() {
         PreparedStatement stmt = null;
 
@@ -560,6 +557,7 @@ public class DAOStelle {
         }
     }
 
+    //method
     public void deleteTableOrdinamento() {
         openConnection();
         PreparedStatement stmt = null;

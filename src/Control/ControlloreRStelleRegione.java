@@ -26,12 +26,12 @@ public class ControlloreRStelleRegione {
         if(val!=null){
             return val;
         }
-        else
+        else {
             return null;
-
+        }
     }
 
-
+/*
     public static void main(String[] args){
         BeanPosBaseAltezza beanPosBaseAltezza=new BeanPosBaseAltezza();
         beanPosBaseAltezza.setAltezza((float)100);
@@ -40,5 +40,5 @@ public class ControlloreRStelleRegione {
         beanPosBaseAltezza.setLonG((float) 0.0);
         System.out.println(ControlloreRStelleRegione.getInstance().searchStarsByRegionFromBean(beanPosBaseAltezza));
     }
-
+*/
 }

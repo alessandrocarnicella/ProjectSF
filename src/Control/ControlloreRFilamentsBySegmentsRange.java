@@ -1,10 +1,8 @@
 package Control;
 
-import Bean.BeanSegmento;
 import DAO.DAOSegmento;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by Manuel on 25/02/2018.
@@ -23,14 +21,12 @@ public class ControlloreRFilamentsBySegmentsRange {
     //method
     public ArrayList<String[]> selectFilamentsBySegmentsNumberFromBean(int int1,int int2){
 
-        DAOSegmento daoSegmento=DAOSegmento.getInstance();
-        ArrayList<String[]> val=daoSegmento.selectFilamentsBySegmentsNumberFromDB(int1,int2);
-        if (val!=null){
+        DAOSegmento daoSegmento = DAOSegmento.getInstance();
+        ArrayList<String[]> val = daoSegmento.selectFilamentsBySegmentsNumberFromDB(int1,int2);
+        if (val != null){
             return val;
-        }else
+        }else {
             return null;
+        }
     }
-
-
-
 }

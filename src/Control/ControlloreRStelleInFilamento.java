@@ -32,31 +32,19 @@ public class ControlloreRStelleInFilamento {
     public ArrayList<String> searchStarsInFilamentFromBean(BeanFilamento beanFilamento){
 
         ArrayList<String> val=new ArrayList<>();
-
         ArrayList<String> strStelle= DAOStelle.getInstance().selectAllStarsFromDB();
         ArrayList<String> strContorno= DAOContorno.getInstance().selectAllPerimeterPointsFromDB(beanFilamento);
+        ArrayList<Stella> stelle=new ArrayList<>();
+        ArrayList<Punto> puntiContorno=new ArrayList<>();
 
         if(strContorno==null){
             return null;
         }
-        ArrayList<Stella> stelle=new ArrayList<>();
-        ArrayList<Punto> puntiContorno=new ArrayList<>();
 
-        int i=0;
-        int j=0;
-        while (i<strStelle.size()){
-            Stella Stella=new Stella(Integer.valueOf(strStelle.get(i)),String.valueOf(strStelle.get(i+1)),Float.valueOf(strStelle.get(i+2)), Float.valueOf(strStelle.get(i+3)),Float.valueOf(strStelle.get(i+4)),strStelle.get(i+5));
-            i=i+6;
-            stelle.add(Stella);
-        }
+        arrayStelle(strStelle,stelle);
 
-        while (j<strContorno.size()){
-            Punto puntoContorno=new Punto(Float.valueOf(strContorno.get(j)),Float.valueOf(strContorno.get(j+1)));
-            j=j+2;
-            puntiContorno.add(puntoContorno);
-        }
+        arrayContorni(strContorno,puntiContorno);
 
-        int count=0;
         Double result=0.0;
         for(int r=0;r<stelle.size();r++){
             for(int k=0;k<puntiContorno.size()-2;k++){
@@ -70,15 +58,17 @@ public class ControlloreRStelleInFilamento {
 
             if (Math.abs(Math.toRadians(result))>=0.01){
                 foundStars(stelle.get(r));
-                //System.out.println("contenuta");
+
                 result = 0.0;
             }else
-                //System.out.println("stella non contenuta");
                 result = 0.0;
         }
-        Float percentualePRO = ((float)stelleProtostellar/(float) stelleTrovate)*100;
-        Float percentualePRE = ((float)stellePrestellar/(float) stelleTrovate)*100;;
-        Float percentualeUNB = ((float)stelleUnbound/(float) stelleTrovate)*100;;
+
+        //calcolo percentuali
+        Float percentualePRO = calcolaPercentuale(stelleProtostellar, stelleTrovate);
+        Float percentualePRE = calcolaPercentuale(stellePrestellar, stelleTrovate);
+        Float percentualeUNB = calcolaPercentuale(stelleUnbound, stelleTrovate);
+
         val.add(String.valueOf(stelleTrovate));
         val.add(String.valueOf(percentualePRO));
         val.add(String.valueOf(percentualePRE));
@@ -91,6 +81,33 @@ public class ControlloreRStelleInFilamento {
 
         return val;
 
+    }
+
+    //method
+    private float calcolaPercentuale(int s, int sT){
+        float result = ((float)s/(float) sT)*100;
+        return result;
+    }
+
+    //method
+    private void arrayContorni( ArrayList<String> strContorno,ArrayList<Punto> puntiContorno){
+        int j = 0;
+        while (j<strContorno.size()){
+            Punto puntoContorno=new Punto(Float.valueOf(strContorno.get(j)),Float.valueOf(strContorno.get(j+1)));
+            j=j+2;
+            puntiContorno.add(puntoContorno);
+        }
+    }
+
+
+    //method
+    private void arrayStelle(ArrayList<String> strStelle,ArrayList<Stella> stelle){
+        int i=0;
+        while (i<strStelle.size()){
+            Stella Stella=new Stella(Integer.valueOf(strStelle.get(i)),String.valueOf(strStelle.get(i+1)),Float.valueOf(strStelle.get(i+2)), Float.valueOf(strStelle.get(i+3)),Float.valueOf(strStelle.get(i+4)),strStelle.get(i+5));
+            i=i+6;
+            stelle.add(Stella);
+        }
     }
 
 

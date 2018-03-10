@@ -1,5 +1,8 @@
 package Control;
 
+import DAO.*;
+import Entity.*;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -7,11 +10,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-
-import Bean.BeanInserimentoCSV;
-import DAO.*;
-import Entity.*;
-import Util.ConfigFile;
 
 /**
  * Created by alessandro on 09/02/18.
@@ -68,48 +66,11 @@ public class ControlloreInserimentoCSV {
 
         Contorno contorno = new Contorno();
         Punto punto = new Punto();
-        //Filamento filamento = new Filamento();
 
         DAOContorno = DAOContorno.getInstance();
         DAOPunto = DAOPunto.getInstance();
-        //DAOFilamento = DAOFilamento.getInstance();
-        //DAOFilamento.openConnection();
 
         try {
-            /*
-            br = new BufferedReader(new FileReader(path + "/" + nome));
-            stampaTempo();
-            while ((line = br.readLine()) != null) {
-                ArrayList<String> values = new ArrayList<>(Arrays.asList(line.split(split, -1)));
-
-                if (num == 1) {
-                    count++;
-
-                    filamento.setIdFilamento(Integer.valueOf(values.get(0)));
-                    filamento.setNome(null);
-                    filamento.setFlussoTotale(0.0);
-                    filamento.setDensitaMedia(0.0);
-                    filamento.setTemperaturaMedia(0.0);
-                    filamento.setEllitticita(0.0);
-                    filamento.setContrasto(0.0);
-                    filamento.setNomeSatellite(null);
-                    filamento.setNomeStrumento(null);
-
-                    if ( !DAOFilamento.findItemById(filamento) ){
-                        DAOFilamento.insertFilamento(filamento);
-                    }
-                }else if(equalsColoumnsNamesContorno(values)){
-                    num++;
-                }
-                if(count%10000 == 0) {
-                    System.out.println(count);
-                }
-            }
-
-            DAOFilamento.closeConnection();
-            stampaTempo();
-            br.close();
-            */
             DAOPunto.openConnection();
             num = 0;
             count = 0;
