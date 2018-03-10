@@ -1,5 +1,9 @@
 package Bean;
 
+import Control.ControlloreRStelleRegione;
+
+import java.util.ArrayList;
+
 /**
  * Created by alessandro on 01/03/18.
  */
@@ -38,4 +42,15 @@ public class BeanPosBaseAltezza {
     public void setAltezza(Float altezza) {
         this.altezza = altezza;
     }
+
+
+    //method
+    public ArrayList<String> searchStarsByRegion(){
+        ArrayList<String> val= ControlloreRStelleRegione.getInstance().searchStarsByRegionFromBean(this);
+        if(val!=null){
+            return val;
+        }else
+            return null;
+    }
+
 }

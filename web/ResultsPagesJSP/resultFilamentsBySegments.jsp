@@ -162,7 +162,7 @@
                     </table>
                 </section>
                 <%init=init+20;
-                }%>
+                } %>
             </main>
         </div>
             <%} else {%>

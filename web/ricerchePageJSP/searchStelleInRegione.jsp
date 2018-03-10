@@ -24,7 +24,7 @@
     }
     .demo-card-wide > .mdl-card__title {
         color: #0c2121;
-        height: 100px;
+        height: 80px;
     }
 </style>
 <!--fine definizione parametri-->
@@ -36,7 +36,7 @@
 
         <!--titolo della card-->
         <div class="mdl-card__title" style="margin-bottom: 50px">
-            <h2 class="mdl-card__title-text" style="margin-left: 20px;color: #1441e0"> RICERCA FILAMENTO IN REGIONE</h2>
+            <h2 class="mdl-card__title-text" style="margin-left: 20px;color: #1441e0"> RICERCA STELLE IN REGIONE </h2>
         </div>
         <!--fine titolo-->
 
@@ -53,7 +53,7 @@
         <br>
         <!--fine inserimento-->
         <!--inserimento base della regione-->
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" value="value1" id="div1" style="margin-left: 30px; required">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" value="value1" id="div1" style="margin-left: 30px" required>
             <label style="margin-left: 30px;margin-top: 30px"> <b>Inserisci base della regione </b></label>
             <br><br>
             <input class="mdl-textfield__input" type="number" min="0" id="sample3" name="base">
@@ -62,7 +62,7 @@
         <!--fine inserimento-->
         <br><br>
         <!--inserimento altezza della regione-->
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" value="value1"  id="div1" style="margin-left: 30px; required">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" value="value1"  id="div1" style="margin-left: 30px" required>
             <label style="margin-left: 30px;margin-top: 30px"> <b>Inserisci l'altezza della regione </b></label>
             <br><br>
             <input class="mdl-textfield__input" type="number" min="0" id="sample5" name="altezza">
@@ -88,7 +88,7 @@
             BeanPosBaseAltezza.setAltezza(Float.valueOf(request.getParameter("altezza")));
         %>
 
-        <jsp:forward page="/ResultsPagesJSP/resultFilamentsRegione.jsp"/>
+        <jsp:forward page="/ResultsPagesJSP/resultStelleRegione.jsp"/>
 
         <%}%>
 
@@ -96,7 +96,5 @@
 
     <br><br><br><br><br>
 </div>
-
-
 
 <jsp:include page="/Include/footerHome.jsp"/>
