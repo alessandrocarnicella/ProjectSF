@@ -10,3 +10,5 @@ DELETE FROM filamento;
 DELETE FROM scheletro;
 
 DELETE FROM contorno;
+
+DROP TABLE ordinamento;

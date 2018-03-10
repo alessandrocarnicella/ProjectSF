@@ -59,7 +59,7 @@
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" name="searchconfermasegmentsfilament" style="width: 200px;margin-left: 30px;margin-top: 50px">
                 Effettua la ricerca
             </button>
-            <img style=" margin-left: 150px" src="../Images/alien2.png" >
+            <img style=" margin-left: 150px" src="../Images/img_alien2.png" >
         </div>
 
         <% if (request.getParameter("searchconfermasegmentsfilament")!=null){

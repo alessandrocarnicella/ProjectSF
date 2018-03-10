@@ -37,29 +37,35 @@
             <h2 class="mdl-card__title-text" style="margin-left: 20px;color: #1441e0"> RISULTATI NUMERO DI STELLE PRESENTI IN UN FILAMENTO</h2>
         </div>
         <!--fine titolo-->
+        <%ArrayList<String> val= BeanFilamento.searchStarsInFilament();
+        if(val!=null){%>
 
-    <% ArrayList<String> val= BeanFilamento.searchStarsInFilament();
-        if (val!=null){%>
-    <table class="mdl-data-table mdl-js-data-table mdl-shadow--4dp">
-        <thead>
-        <tr>
-            <th> n°stelle trovate</th>
-            <th> % Protostelle</th>
-            <th> % Prestelle</th>
-            <th> % Unbound</th>
-        </tr>
-        </thead>
-        <tbody>
-        <!-- Row 1 -->
-        <tr>
-            <td><%=val.get(0)%></td>
-            <td><%=val.get(1)%></td>
-            <td><%=val.get(2)%></td>
-            <td><%=val.get(3)%></td>
-        </tr>
-        </tbody>
-    </table>
-    <%} else {%>
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+            <thead>
+            <tr>
+                <!-- class "mdl-data-table__cell--non-numeric", align values to left -->
+                <th class="mdl-data-table__cell--non-numeric">n°stelle trovate</th>
+                <th class="mdl-data-table__cell--non-numeric">% Protostelle</th>
+                <th class="mdl-data-table__cell--non-numeric">% Prestelle</th>
+                <th class="mdl-data-table__cell--non-numeric">% Unbound</th>
+
+            </tr>
+            </thead>
+            <tbody>
+
+            <!-- Row 1 -->
+            <tr>
+                <!-- class "mdl-data-table__cell--non-numeric", align values to left -->
+                <td class="mdl-data-table__cell--non-numeric"><%=val.get(0)%></td>
+                <td class="mdl-data-table__cell--non-numeric"><%=val.get(1)%></td>
+                <td class="mdl-data-table__cell--non-numeric"><%=val.get(2)%></td>
+                <td class="mdl-data-table__cell--non-numeric"><%=val.get(3)%></td>
+            </tr>
+            </tbody>
+        </table>
+
+    <%
+    } else {%>
     <br>
     <label style="margin-left: 30px;margin-top: 30px; color: #ff6244"> <b> NON ESISTONO RISULTATI PER QUESTO ID FILAMENTO! </b></label><br>
     <%}%>

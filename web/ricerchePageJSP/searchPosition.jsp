@@ -60,6 +60,8 @@
 
 
                     <form >
+
+
                         <label style="margin-left: 30px;margin-top: 50px"> Inserisci l'identificativo del filamento :</label>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"   style="margin-left: 30px; width: 200px" >
                             <input class="mdl-textfield__input" type="number" id="sample1" name="idfilamento" required maxlength="20" >
@@ -67,14 +69,34 @@
                         </div>
                         <br>
 
+                        <!--radiobutton-->
+                        <table  style="margin-left: 25px;margin-top: 30px" >
+                            <tr>
+                                <td>
+                                    <label class = "mdl-radio mdl-js-radio" for = "option1">
+                                        <input type = "radio" id = "option1" name = "radio" value="orddistanza" class = "mdl-radio__button" onclick="foo();" required>
+                                        <span class = "mdl-radio__label"> Ordina per distanza crescente</span>
+                                    </label>
+                                </td>
+
+                                <td>
+                                    <label class = "mdl-radio mdl-js-radio mdl-js-ripple-effect" style="margin-left: 25px" for = "option2">
+                                        <input type = "radio" id = "option2" name = "radio" value="ordflusso" class = "mdl-radio__button"  onclick="foo2();" required>
+                                        <span class = "mdl-radio__label"> Ordina per flusso screscente</span>
+                                    </label>
+                                </td>
+                            </tr>
+                        </table>
+                        <!--fine radiobutton-->
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="width: 200px;margin-left: 30px;margin-top: 50px" type="submit" name="confermaidfilamento">
                             Conferma
                         </button>
 
-                        <img style=" margin-left: 150px" src="../Images/alien2.png" >
+                        <img style=" margin-left: 150px" src="../Images/img_alien2.png" >
 
                         <%  if(request.getParameter("confermaidfilamento")!= null) {
                             BeanFilamento.setIdFilamento(Integer.valueOf(request.getParameter("idfilamento")));
+                             BeanFilamento.setOrdinamento(String.valueOf(request.getParameter("radio")));
                         %>
 
                         <jsp:forward page="../ResultsPagesJSP/resultPosition.jsp"/>

@@ -83,7 +83,7 @@
                             Conferma
                         </button>
 
-                        <img style=" margin-left: 150px" src="../Images/alien2.png" >
+                        <img style=" margin-left: 150px" src="../Images/img_alien2.png" >
 
                         <%  if(request.getParameter("conferma2")!= null){
                                 float min = Float.valueOf(request.getParameter("min"));

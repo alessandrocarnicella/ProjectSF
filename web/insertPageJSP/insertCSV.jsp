@@ -88,7 +88,7 @@
                         <button onclick="move()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="width: 200px;margin-left: 30px;margin-top: 50px" type="submit" name="confermaCSV">
                             Conferma
                         </button>
-                        <img style=" margin-left: 150px" src="../Images/csv.png" >
+                        <img style=" margin-left: 150px" src="../Images/img_csv.png" >
                     </form>
                     <br><br>
                     <!-- progress bar -->

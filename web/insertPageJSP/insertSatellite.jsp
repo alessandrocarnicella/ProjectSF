@@ -88,7 +88,7 @@
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" name="confermainsertsat" style="width: 200px;margin-left: 30px;margin-top: 50px">
                     Conferma
                 </button>
-                <img style=" margin-left: 150px" src="../Images/satellite.png" >
+                <img style=" margin-left: 150px" src="../Images/img_satellite.png" >
             </div>
 
             <%

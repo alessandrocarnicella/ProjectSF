@@ -86,7 +86,7 @@
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" name="confermainsertstrum" style="width: 200px;margin-left: 30px;margin-top: 40px">
                     Conferma
                 </button>
-                <img style=" margin-left: 150px" src="../Images/settings.png" >
+                <img style=" margin-left: 150px" src="../Images/img_settings.png" >
             </div>
 
             <%

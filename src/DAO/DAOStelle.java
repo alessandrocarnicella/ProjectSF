@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by alessandro on 09/02/18.
@@ -343,5 +344,244 @@ public class DAOStelle {
             }
         }
         return val;
+    }
+
+    public ArrayList<String[]> orderByFluxFromDB() {
+        ArrayList<String[]> val1=new ArrayList<String[]>();
+        PreparedStatement stmt = null;
+        ResultSet rs=null;
+
+        String selectQuery = "SELECT * FROM ordinamento ORDER BY flusso ASC ";
+
+        try {
+            conn = this.DataSource.getConnection();
+
+            stmt = conn.prepareStatement(selectQuery);
+            rs = stmt.executeQuery();
+
+            if (!rs.isBeforeFirst() ) {
+                return null;
+            }
+
+            while (rs.next()){
+                String[] val = new String[9];
+                val[0]=(rs.getString(1));
+                val[1]=(rs.getString(2));
+                val[2]=(rs.getString(3));
+                val[3]=(rs.getString(4));
+                val[4]=(rs.getString(5));
+                val[5]=(rs.getString(6));
+                val[6]=(rs.getString(7));
+                val[7]=(rs.getString(8));
+                val[8]=(rs.getString(9));
+                val1.add(val);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally{
+            // release resources
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            // release resources
+            if(stmt != null){
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            // close connection
+            if(conn  != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return val1;
+    }
+
+
+
+
+
+    public ArrayList<String[]> orderByDistanceFromDB() {
+
+        ArrayList<String[]> val1=new ArrayList<String[]>();
+        PreparedStatement stmt = null;
+        ResultSet rs=null;
+
+        String selectQuery = "SELECT * FROM ordinamento ORDER BY distance ASC ";
+
+        try {
+            conn = this.DataSource.getConnection();
+
+            stmt = conn.prepareStatement(selectQuery);
+            rs = stmt.executeQuery();
+
+            if (!rs.isBeforeFirst() ) {
+                return null;
+            }
+
+            while (rs.next()){
+                String[] val = new String[9];
+                val[0]=(rs.getString(1));
+                val[1]=(rs.getString(2));
+                val[2]=(rs.getString(3));
+                val[3]=(rs.getString(4));
+                val[4]=(rs.getString(5));
+                val[5]=(rs.getString(6));
+                val[6]=(rs.getString(7));
+                val[7]=(rs.getString(8));
+                val[8]=(rs.getString(9));
+                val1.add(val);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally{
+            // release resources
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            // release resources
+            if(stmt != null){
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            // close connection
+            if(conn  != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return val1;
+    }
+
+
+
+
+    public void insertValue(String[] val) {
+        PreparedStatement stmt = null;
+
+        String insertQuery = "INSERT INTO ordinamento(idfilamento,idstella,nomestella,flusso,latstella,lonstella,latdorsale,londorsale,distance) VALUES (?,?,?,?,?,?,?,?,?)";
+
+        try {
+            openConnection();
+            stmt = conn.prepareStatement(insertQuery);
+            stmt.setInt(1,Integer.valueOf(val[0]));
+            stmt.setInt(2,Integer.valueOf(val[1]));
+            stmt.setString(3, val[2]);
+            stmt.setFloat(4, Float.valueOf(val[3]));
+            stmt.setFloat(5, Float.valueOf(val[4]));
+            stmt.setFloat(6, Float.valueOf(val[5]));
+            stmt.setFloat(7, Float.valueOf(val[6]));
+            stmt.setFloat(8, Float.valueOf(val[7]));
+            stmt.setFloat(9, Float.valueOf(val[8]));
+
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // release resources
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                    closeConnection();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void createTableOrdinamento() {
+        PreparedStatement stmt = null;
+
+        String insertQuery = "CREATE TABLE public.ordinamento\n" +
+                "(\n" +
+                "    idfilamento INTEGER,\n" +
+                "    idstella INTEGER NOT NULL,\n" +
+                "    nomestella VARCHAR(50),\n" +
+                "    flusso REAL,\n" +
+                "    latstella REAL,\n" +
+                "    lonstella REAL,\n" +
+                "    latdorsale REAL,\n" +
+                "    londorsale REAL,\n" +
+                "    distance REAL,\n" +
+                "    CONSTRAINT ordinamento_pkey PRIMARY KEY (idstella)\n" +
+                ")\n" +
+                "WITH (\n" +
+                "    OIDS = FALSE\n" +
+                ")\n" +
+                "TABLESPACE pg_default;\n" +
+                "\n" +
+                "ALTER TABLE public.ordinamento\n" +
+                "    OWNER TO postgres;";
+
+        try {
+            openConnection();
+            stmt = conn.prepareStatement(insertQuery);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // release resources
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                    closeConnection();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void deleteTableOrdinamento() {
+        openConnection();
+        PreparedStatement stmt = null;
+
+        String insertQuery = "DROP TABLE ordinamento";
+
+        try {
+            stmt = conn.prepareStatement(insertQuery);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // release resources
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                    closeConnection();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
     }
 }

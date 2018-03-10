@@ -13,10 +13,10 @@ import java.util.ArrayList;
  */
 public class ControlloreRStelleInFilamento {
 
-    private int stelleTrovate=0;
-    private int stelleProtostellar=0;
-    private int stellePrestellar=0;
-    private int stelleUnbound=0;
+    private int stelleTrovate = 0;
+    private int stelleProtostellar = 0;
+    private int stellePrestellar = 0;
+    private int stelleUnbound = 0;
 
     // Singleton
     private static ControlloreRStelleInFilamento instance;
@@ -76,13 +76,19 @@ public class ControlloreRStelleInFilamento {
                 //System.out.println("stella non contenuta");
                 result = 0.0;
         }
-        Float percentualePRO= ((float)stelleProtostellar/(float) stelleTrovate)*100;
-        Float percentualePRE= ((float)stellePrestellar/(float) stelleTrovate)*100;;
-        Float percentualeUNB= ((float)stelleUnbound/(float) stelleTrovate)*100;;
+        Float percentualePRO = ((float)stelleProtostellar/(float) stelleTrovate)*100;
+        Float percentualePRE = ((float)stellePrestellar/(float) stelleTrovate)*100;;
+        Float percentualeUNB = ((float)stelleUnbound/(float) stelleTrovate)*100;;
         val.add(String.valueOf(stelleTrovate));
         val.add(String.valueOf(percentualePRO));
         val.add(String.valueOf(percentualePRE));
         val.add(String.valueOf(percentualeUNB));
+
+        stelleTrovate = 0;
+        stellePrestellar = 0;
+        stelleProtostellar = 0;
+        stelleUnbound = 0;
+
         return val;
 
     }
@@ -104,11 +110,11 @@ public class ControlloreRStelleInFilamento {
         }
     }
 
-
+/*
     public static void main(String[] args){
         BeanFilamento beanFilamento=new BeanFilamento();
         beanFilamento.setIdFilamento(1013661);
         System.out.println(ControlloreRStelleInFilamento.getInstance().searchStarsInFilamentFromBean(beanFilamento));
     }
-
+*/
 }

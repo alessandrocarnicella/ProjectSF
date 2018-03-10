@@ -20,6 +20,7 @@ public class BeanFilamento {
     private float contrasto;
     private String nomeSatellite;
     private String nomeStrumento;
+    private String ordinamento;
 
 
     //getter and setter
@@ -86,6 +87,12 @@ public class BeanFilamento {
         this.nomeStrumento = nomeStrumento;
     }
 
+    public String getOrdinamento() {
+        return ordinamento;
+    }
+    public void setOrdinamento(String ordinamento) {
+        this.ordinamento = ordinamento;
+    }
 
     //method
     public ArrayList<String> selectForIdOrNameFilCentroidExtension(){

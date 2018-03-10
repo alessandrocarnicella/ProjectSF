@@ -71,7 +71,7 @@
                             Conferma
                         </button>
 
-                        <img style=" margin-left: 150px" src="../Images/alien2.png" >
+                        <img style=" margin-left: 150px" src="../Images/img_alien2.png" >
 
                         <%  if(request.getParameter("confermaidfilamento")!= null) {
                             BeanFilamento.setIdFilamento(Integer.valueOf(request.getParameter("idfilamento")));
