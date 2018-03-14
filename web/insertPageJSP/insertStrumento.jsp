@@ -8,6 +8,10 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<jsp:useBean id="BeanLogin" scope="session" class="Bean.BeanLogin"/>
+<jsp:setProperty property="*" name="BeanLogin"/>
+
+<%if (BeanLogin.getUtente()&&(BeanLogin.getTipoUtente().equals("Amministratore"))){%>
 <!-- header -->
 <jsp:include page="/Include/headerHome.jsp"/>
 <!-- menu -->
@@ -48,7 +52,7 @@
         <!--fine titolo-->
         <label style="margin-left: 30px;margin-top: 50px"> <b>Seleziona il satellite :</b></label>
         <!--select dei satellitti-->
-        <form action="insertStrumento.jsp" method="post">
+        <form method="post" >
             <div class="input-field col s12" style="width: 500px;margin-left: 30px">
                 <br>
                 <select class="browser-default" style="width: 300px" name="selectsatellite">
@@ -76,14 +80,14 @@
             <!--inserimento della lunghezza-->
 
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="margin-left: 30px">
-                <input class="mdl-textfield__input" type="text" id="sample4" name="lunghezzabanda" required>
+                <input class="mdl-textfield__input" type="number" step="0.01"  id="sample4" name="lunghezzabanda" required>
                 <label class="mdl-textfield__label" for="sample4"> lunghezza </label>
             </div>
 
             <!--fine inserimento-->
             <!--button-->
             <div>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" name="confermainsertstrum" style="width: 200px;margin-left: 30px;margin-top: 40px">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" name="confermainsertstrum" style="width: 200px;margin-left: 30px;margin-top: 40px" >
                     Conferma
                 </button>
                 <img style=" margin-left: 150px" src="../Images/img_settings.png" >
@@ -93,11 +97,12 @@
                 if (request.getParameter("confermainsertstrum")!=null){
                     BeanStrumento.setNomeSatellite(request.getParameter("selectsatellite"));
                     BeanStrumento.setNome(request.getParameter("nomestrumento"));
-                    BeanBanda.setLunghezza(Double.valueOf(request.getParameter("lunghezzabanda")));
+
+                    BeanBanda.setLunghezza(Float.valueOf(request.getParameter("lunghezzabanda")));
                     BeanMisurazione.setNomeStrumento(request.getParameter("nomestrumento"));
-                    BeanMisurazione.setBanda(Double.valueOf(request.getParameter("lunghezzabanda")));
+                    BeanMisurazione.setBanda(Float.valueOf(request.getParameter("lunghezzabanda")));
                     if(BeanStrumento.insertNewStrumento()&&BeanBanda.insertNewBanda()&&BeanMisurazione.insertNewMisurazione()){ %>
-            <label style="color: green;text-align: right" > <b>Strumento inserito correttamente!</b> </label>
+            <jsp:forward page="../ResultsPagesJSP/resultCorrectInsert.jsp"/>
             <%} else {%>
             <label style="color: red;text-align: right"> <b>Errore inserimento dati!</b> </label>
             <%}
@@ -109,4 +114,7 @@
 
 <!-- footer -->
 <jsp:include page="/Include/footerHome.jsp"/>
-
+<%}
+else {%>
+<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<%}%>

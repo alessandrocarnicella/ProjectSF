@@ -9,6 +9,11 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<jsp:useBean id="BeanLogin" scope="session" class="Bean.BeanLogin"/>
+<jsp:setProperty property="*" name="BeanLogin"/>
+
+<%if (BeanLogin.getUtente()&&(BeanLogin.getTipoUtente().equals("Amministratore"))){%>
+
 <!-- header -->
 <jsp:include page="/Include/headerHome.jsp"/>
 <!-- menu -->
@@ -40,7 +45,7 @@
         <div class="mdl-card__title" style="margin-bottom: 50px">
             <h2 class="mdl-card__title-text" style="margin-left: 20px;color: #1441e0">INSERISCI UN NUOVO SATELLITE</h2>
         </div>
-        <form method="post" action="insertSatellite.jsp">
+        <form method="post" action="../ResultsPagesJSP/resultCorrectInsert.jsp">
             <!--fine titolo-->
             <label style="margin-left: 30px"> <b>Seleziona l'agenzia associata:</b></label>
             <!--select delle agenzie associate-->
@@ -100,7 +105,7 @@
                     BeanSatellite.setDataFine(Date.valueOf(request.getParameter("datafine")));
                     if(BeanSatellite.insertNewSatellite()){ %>
             <br><br>
-            <label style="color: green" > <b>Satellite inserito correttamente!</b> </label>
+            <jsp:forward page="../ResultsPagesJSP/resultCorrectInsert.jsp"/>
             <%} else {%>
             <br><br>
             <label style="color: red"> <b>Errore inserimento dati!</b> </label>
@@ -115,3 +120,9 @@
 
 
 <jsp:include page="/Include/footerHome.jsp"/>
+
+<%}
+else {%>
+<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<%}%>
+

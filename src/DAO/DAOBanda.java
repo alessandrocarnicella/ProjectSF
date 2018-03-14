@@ -1,10 +1,13 @@
 package DAO;
 
 import Bean.BeanBanda;
+import Entity.Punto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.zip.CheckedOutputStream;
 
 /**
  * Created by Manuel on 14/02/2018.
@@ -24,6 +27,49 @@ public class DAOBanda {
         if (DAOBanda.instance == null)
             DAOBanda.instance = new DAOBanda();
         return instance;
+    }
+
+
+
+    //method ricerca presenza banda in DB
+    public boolean findItemById(BeanBanda beanBanda) {
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Connection conn = null;
+
+
+        String selectQuery = "SELECT * FROM banda WHERE lunghezza = ?;";
+
+        try {
+            conn = this.DataSource.getConnection();
+            stmt = conn.prepareStatement(selectQuery);
+            stmt.setFloat(1, beanBanda.getLunghezza());
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                return true;
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            // release resources
+            if(stmt != null){
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            // close connection
+            if(conn  != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return false;
     }
 
     //method inserimento nuova banda in DB

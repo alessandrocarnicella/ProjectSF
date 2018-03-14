@@ -38,7 +38,7 @@ public class DAOMisurazione {
                     "VALUES (?,?)";
             stmt = conn.prepareStatement(query);
             stmt.setString(1,beanMisurazione.getNomeStrumento());
-            stmt.setDouble(2,beanMisurazione.getBanda());
+            stmt.setFloat(2,beanMisurazione.getBanda());
             stmt.executeUpdate();
 
         } catch (SQLException | ClassNotFoundException e) {

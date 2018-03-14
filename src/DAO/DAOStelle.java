@@ -216,7 +216,7 @@ public class DAOStelle {
 
         String selectQuery="SELECT stella.idstella,stella.nomestella,stella.long,stella.latg,stella.valoreflusso,stella.tipostella " +
                 "FROM public.stella " +
-                "WHERE stella.long> ? and stella.latg > ? and stella.long < ? and stella.latg < ?";
+                "WHERE stella.long> ? and stella.latg > ? and stella.long < ? and stella.latg < ? ORDER BY idstella ASC ";
 
         try {
             openConnection();

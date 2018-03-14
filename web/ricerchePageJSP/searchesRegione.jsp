@@ -1,7 +1,9 @@
-<%@ page import="com.sun.xml.internal.messaging.saaj.packaging.mime.util.BEncoderStream" %>
 <%@ page import="java.util.Objects" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="BeanLogin" scope="session" class="Bean.BeanLogin"/>
+<jsp:setProperty property="*" name="BeanLogin"/>
 
+<%if (BeanLogin.getUtente()){%>
 <jsp:useBean id="BeanPosRaggioLato" scope="session" class="Bean.BeanPosRaggioLato"/>
 <jsp:setProperty property="*" name="BeanPosRaggioLato"/>
 
@@ -148,3 +150,9 @@
 
 
 <jsp:include page="/Include/footerHome.jsp"/>
+
+
+<%}
+    else {%>
+<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<%}%>

@@ -13,7 +13,7 @@ public class BeanLogin {
     private String password;
     private String email;
     private String tipoUtente;
-    private boolean utente;
+    private boolean utente = false;
 
 
     //getter and setter

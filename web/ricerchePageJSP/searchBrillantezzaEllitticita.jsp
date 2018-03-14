@@ -7,6 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<jsp:useBean id="BeanLogin" scope="session" class="Bean.BeanLogin"/>
+<jsp:setProperty property="*" name="BeanLogin"/>
+
+<%if (BeanLogin.getUtente()){%>
 <jsp:useBean id="BeanBrillantezzaEllitticita" scope="session" class="Bean.BeanBrillantezzaEllitticita"/>
 <jsp:setProperty property="*" name="BeanBrillantezzaEllitticita"/>
 
@@ -109,3 +113,8 @@
 </div>
 
 <jsp:include page="/Include/footerHome.jsp"/>
+<%}
+    else {%>
+<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<%}%>
+

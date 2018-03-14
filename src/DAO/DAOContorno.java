@@ -342,7 +342,7 @@ public class DAOContorno {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         ArrayList<String> val=new ArrayList<>();
-        String selectQuery="SELECT * FROM public.contorno";
+        String selectQuery="SELECT * FROM public.contorno ORDER BY idfilamento";
 
         try {
             openConnection();

@@ -28,7 +28,7 @@
             <a class="mdl-navigation__link" href="../insertPageJSP/insertUtente.jsp" style="font-size: medium">Registra utente</a>
             <a class="mdl-navigation__link" href=../insertPageJSP/insertCSV.jsp style="font-size: medium">Inserisci CSV</a>
             <a class="mdl-navigation__link" href="../insertPageJSP/insertSatellite.jsp#" style="font-size: medium">Inserisci dati satellite</a>
-            <a class="mdl-navigation__link" href="../insertPageJSP/insertStrumento.jsp" style="font-size: medium">inserisci dati strumenti</a>
+            <a class="mdl-navigation__link" href="../insertPageJSP/insertStrumento.jsp" style="font-size: medium">Inserisci dati strumenti</a>
             <%}%>
             <a class="mdl-navigation__link" href="../ricerchePageJSP/searchBrillantezzaEllitticita.jsp" style="font-size: medium">Ricerca Filamento per contrasto ed ellitticita</a>
             <a class="mdl-navigation__link" href="../ricerchePageJSP/searchesCentroidExtension.jsp" style="font-size: medium">Ricerca Centroide ed Estensione per Filamento</a>

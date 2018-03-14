@@ -6,7 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="BeanLogin" scope="session" class="Bean.BeanLogin"/>
+<jsp:setProperty property="*" name="BeanLogin"/>
 
+<%if (BeanLogin.getUtente()){%>
 <jsp:useBean id="BeanFilamento" scope="session" class="Bean.BeanFilamento"/>
 <jsp:setProperty property="*" name="BeanFilamento"/>
 
@@ -109,3 +112,8 @@
 </div>
 
 <jsp:include page="/Include/footerHome.jsp"/>
+
+<%}
+    else {%>
+<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<%}%>

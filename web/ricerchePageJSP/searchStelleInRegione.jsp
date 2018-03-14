@@ -5,10 +5,11 @@
   Time: 12.02
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="com.sun.xml.internal.messaging.saaj.packaging.mime.util.BEncoderStream" %>
-<%@ page import="java.util.Objects" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="BeanLogin" scope="session" class="Bean.BeanLogin"/>
+<jsp:setProperty property="*" name="BeanLogin"/>
 
+<%if (BeanLogin.getUtente()){%>
 <jsp:useBean id="BeanPosBaseAltezza" scope="session" class="Bean.BeanPosBaseAltezza"/>
 <jsp:setProperty property="*" name="BeanPosBaseAltezza"/>
 
@@ -98,3 +99,8 @@
 </div>
 
 <jsp:include page="/Include/footerHome.jsp"/>
+
+<%}
+    else {%>
+<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<%}%>

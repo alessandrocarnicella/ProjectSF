@@ -56,8 +56,12 @@ public class ControlloreInserimentoDati {
 
     //method
     public boolean insertNewBandaFromBean(BeanBanda beanBanda){
-        DAOBanda daoBanda= DAOBanda.getInstance();
-        boolean inserimento=daoBanda.insertNewBandaInDB(beanBanda);
+        DAOBanda daoBanda = DAOBanda.getInstance();
+        boolean inserimento = true;
+
+        if ( !daoBanda.findItemById(beanBanda) ) {
+            inserimento = daoBanda.insertNewBandaInDB(beanBanda);
+        }
         if (inserimento == true)
             return true;
         else

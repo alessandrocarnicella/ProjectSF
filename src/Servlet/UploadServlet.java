@@ -33,7 +33,7 @@ public class UploadServlet extends HttpServlet {
 
         boolean isMultipart;
         String filePath;
-        int maxFileSize = 5000*1024;
+        int maxFileSize = 50000*1024;
         int maxMemSize = 50*1024;
        // filePath=getServletContext().getInitParameter("file_upload");
         filePath = request.getServletContext().getRealPath("");
@@ -78,7 +78,7 @@ public class UploadServlet extends HttpServlet {
             System.out.println("Errore: " + ex.getMessage());
         } finally {
 
-            request.getRequestDispatcher("/Home.jsp").forward(request, response);
+            request.getRequestDispatcher("/ResultsPagesJSP/resultCorrectInsert.jsp").forward(request, response);
             //out.close();
         }
 

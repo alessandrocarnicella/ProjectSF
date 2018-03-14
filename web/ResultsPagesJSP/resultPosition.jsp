@@ -1,3 +1,5 @@
+<%@ page import="java.util.ArrayList" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--
   Created by IntelliJ IDEA.
   User: alessandro
@@ -5,10 +7,10 @@
   Time: 16.33
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.Arrays" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="BeanLogin" scope="session" class="Bean.BeanLogin"/>
+<jsp:setProperty property="*" name="BeanLogin"/>
 
+<%if (BeanLogin.getUtente()){%>
 <jsp:useBean id="BeanFilamento" scope="session" class="Bean.BeanFilamento"/>
 <jsp:setProperty property="*" name="BeanFilamento"/>
 
@@ -173,3 +175,7 @@
 </div>
 
 <jsp:include page="/Include/footerHome.jsp"/>
+<%}
+    else {%>
+<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<%}%>

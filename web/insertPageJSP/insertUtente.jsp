@@ -7,6 +7,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+
+<jsp:useBean id="BeanLogin" scope="session" class="Bean.BeanLogin"/>
+<jsp:setProperty property="*" name="BeanLogin"/>
+
+<%if (BeanLogin.getUtente()&&(BeanLogin.getTipoUtente().equals("Amministratore"))){%>
+
 <jsp:useBean id="BeanRegistrazione" scope="session" class="Bean.BeanRegistrazione"/>
 <jsp:setProperty property="*" name="BeanRegistrazione"/>
 
@@ -39,7 +45,7 @@
                     <div class="demo-card-wide mdl-card__title">
                         <h2 class="mdl-card__title-text">Registra utente</h2>
                     </div>
-                    <form action="insertUtente.jsp">
+                    <form method="post" action="/ResultsPagesJSP/resultCorrectInsert.jsp">
                         <!-- inserimento nome -->
                         <label style="margin-left: 30px;margin-top: 50px"> Inserisci Nome :</label>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="margin-left: 30px; width: 500px">
@@ -102,9 +108,9 @@
                             BeanRegistrazione.setTipoUtente(request.getParameter("tipoRegistrazione"));
                             %>
                         <%if(!BeanRegistrazione.insertNewUtente()){%>
-                        <b class="red-text"> Errore inserimento dati! </b>
+                        <br><b class="red-text" style=" color: #ff6244" >Errore inserimento dati! </b>
                        <% }else{%>
-                        <jsp:forward page="/Home.jsp"/>
+                        <jsp:forward page="/ResultsPagesJSP/resultCorrectInsert.jsp"/>
                        <%}
                         }%>
                     </form>
@@ -117,3 +123,8 @@
 
 <!--footer-->
 <jsp:include page="/Include/footerHome.jsp"/>
+
+<%}
+else {%>
+<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<%}%>

@@ -27,8 +27,8 @@ public class BeanStrumento {
 
     //method
     public boolean insertNewStrumento(){
-        boolean inserimento= ControlloreInserimentoDati.getInstance().insertNewStrumentoFromBean(this);
-        if (inserimento==true){
+        boolean inserimento = ControlloreInserimentoDati.getInstance().insertNewStrumentoFromBean(this);
+        if (inserimento){
             return true;
         }
         else

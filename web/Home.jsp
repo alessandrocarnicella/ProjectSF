@@ -9,6 +9,8 @@
 <jsp:useBean id="BeanLogin" scope="session" class="Bean.BeanLogin"/>
 <jsp:setProperty property="*" name="BeanLogin"/>
 
+<%if (BeanLogin.getUtente()){%>
+
 <!-- header -->
 <jsp:include page="Include/headerHome.jsp"/>
 <!-- menu -->
@@ -107,3 +109,9 @@
 <!-- foother -->
 <jsp:include page="Include/footerHome.jsp"/>
 
+<%}
+else {%>
+
+<jsp:forward page="ResultsPagesJSP/resultError.jsp"/>
+
+<%}%>

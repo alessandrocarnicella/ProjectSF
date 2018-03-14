@@ -7,13 +7,13 @@ import Control.ControlloreInserimentoDati;
  */
 public class BeanBanda {
 
-    private Double lunghezza;
+    private float lunghezza;
 
     //getter and setter
-    public Double getLunghezza() {
+    public float getLunghezza() {
         return lunghezza;
     }
-    public void setLunghezza(Double lunghezza) {
+    public void setLunghezza(float lunghezza) {
         this.lunghezza = lunghezza;
     }
 

@@ -8,7 +8,7 @@ import Control.ControlloreInserimentoDati;
 public class BeanMisurazione {
 
     private String nomeStrumento;
-    private double banda;
+    private float banda;
 
     //getter and setter
     public String getNomeStrumento() {
@@ -18,16 +18,16 @@ public class BeanMisurazione {
         this.nomeStrumento = nomeStrumento;
     }
 
-    public double getBanda() {
+    public float getBanda() {
         return banda;
     }
-    public void setBanda(double banda) {
+    public void setBanda(float banda) {
         this.banda = banda;
     }
 
     //method
     public boolean insertNewMisurazione(){
-        boolean inserimento= ControlloreInserimentoDati.getInstance().insertNewMisurazioneFromBean(this);
+        boolean inserimento = ControlloreInserimentoDati.getInstance().insertNewMisurazioneFromBean(this);
         if (inserimento==true)
         return true;
         else

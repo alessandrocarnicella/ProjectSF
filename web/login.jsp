@@ -8,17 +8,17 @@
 
 <jsp:useBean id="BeanLogin" scope="session" class="Bean.BeanLogin"/>
 <jsp:setProperty property="*" name="BeanLogin"/>
-
+<%BeanLogin.setUtente(false);%>
 <!-- header-->
 <jsp:include page="Include/header.jsp"/>
 
 <div class="container" style="height: 10%;width: 10%;margin-left: 70%">
-    <form>
+    <form method="post" >
         <div class="row">
             <div class="col s12 m6" style="width: 200%;height: 20%; margin-top: 10%">
                 <div class="card-panel">
                     <!-- immagine -->
-                    <img src="Images/img_logoLogin.jpg" style="width: 55%;height: 65%;margin-left: 25%" alt="Avatar" class="avatar">
+                    <img src="Images/img_logoLogin.jpg" style="width: 55%;height: 65%;margin-left: 25%">
                     <br><br><br>
                     <!-- prima riga:username -->
                     <label><b>Username</b></label>
@@ -46,7 +46,7 @@
                     } %>
 
                     <!-- bottone login -->
-                    <button type="submit" name="verify" style="background-color: #4CAF50;height: 10%;width: 30%">Login</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" name="verify" style="height: 10%;width: 30%">Login</button>
                 </div>
             </div>
         </div>

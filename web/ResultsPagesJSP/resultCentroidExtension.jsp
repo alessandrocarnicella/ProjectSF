@@ -1,12 +1,16 @@
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--
   Created by IntelliJ IDEA.
   User: Manuel
   Date: 22/02/2018
   Time: 12:18
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="BeanLogin" scope="session" class="Bean.BeanLogin"/>
+<jsp:setProperty property="*" name="BeanLogin"/>
 
+<%if (BeanLogin.getUtente()){%>
 <jsp:useBean id="BeanFilamento" scope="session" class="Bean.BeanFilamento"/>
 <jsp:setProperty property="*" name="BeanFilamento"/>
 
@@ -47,19 +51,19 @@
         if (val!=null){%>
 
         <div class="row">
-            <label style="margin-left: 30px;margin-top: 30px"> <b> Posizione del centroide del contorno :</b></label><br><br><br>
+            <label style="margin-left: 30px;margin-top: 30px"> <b> POSIZIONE DEL CENTROIDE DEL CONTORNO :</b></label><br><br><br>
             <label style="margin-left: 30px"> <b style="color:#1c9d32">long :</b> <%=val.get(0)%> </label>
             <label style="margin-left: 20px"> <b style="color:#1c9d32">latg :</b> <%=val.get(1)%> </label>
         </div>
 
         <div style="margin-top: 60px">
-            <label style="margin-left: 30px;margin-top: 30px"> <b> Estensione del contorno :</b></label><br><br><br>
+            <label style="margin-left: 30px;margin-top: 30px"> <b> ESTENSIONE DEL CONTORNO :</b></label><br><br><br>
             <label style="margin-left: 30px"> <b style="color:#1c9d32">distanza posizioni long :</b> <%=val.get(7)%> </label>
             <label style="margin-left: 20px"> <b style="color:#1c9d32">distanza posizioni latg :</b> <%=val.get(8)%> </label>
         </div>
 
         <div class="row" style="margin-top: 60px">
-            <label style="margin-left: 30px;margin-top: 30px"> <b> numero di segmenti del filamento :</b></label><br><br><br>
+            <label style="margin-left: 30px;margin-top: 30px"> <b> NUMERO DEI SEGMENTI DEL FILAMENTO :</b></label><br><br><br>
             <label style="margin-left: 30px"> <b style="color:#1c9d32"> segementi presenti :</b> <%=val.get(6)%> </label>
         </div>
 
@@ -71,3 +75,7 @@
 
 
 <jsp:include page="/Include/footerHome.jsp"/>
+<%}
+    else {%>
+<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<%}%>
