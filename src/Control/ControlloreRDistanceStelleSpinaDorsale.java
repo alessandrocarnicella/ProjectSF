@@ -51,6 +51,9 @@ public class ControlloreRDistanceStelleSpinaDorsale {
         ordinamento(beanFilamento);
 
         DAOStelle.getInstance().deleteTableOrdinamento();
+
+
+
         return val;
     }
 
@@ -140,6 +143,7 @@ public class ControlloreRDistanceStelleSpinaDorsale {
         v[8] = (String.valueOf(distance));
 
         DAOStelle.getInstance().insertValue(v);
+
     }
 
 /*

@@ -156,10 +156,10 @@
             speed = 1.6;
         }
         if (input.value ===  'scheletro_filamenti_Herschel.csv'){
-            speed = 0.02;
+            speed = 0.06;
         }
         if (input.value === 'scheletro_filamenti_Spitzer.csv'){
-            speed = 0.01;
+            speed = 0.05;
         }
 
         function frame() {

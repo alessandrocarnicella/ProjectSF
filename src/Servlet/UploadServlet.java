@@ -33,7 +33,7 @@ public class UploadServlet extends HttpServlet {
 
         boolean isMultipart;
         String filePath;
-        int maxFileSize = 50000*1024;
+        int maxFileSize = 500000*1024;
         int maxMemSize = 50*1024;
        // filePath=getServletContext().getInitParameter("file_upload");
         filePath = request.getServletContext().getRealPath("");
