@@ -20,7 +20,7 @@
 <style>
     .demo-card-wide.mdl-card {
         width: 600px;
-        height: 500px;
+        height: 450px;
         background-color:rgba(255, 255, 255, 0.93);
     }
     .demo-card-wide > .mdl-card__title {
@@ -49,13 +49,13 @@
                 Conferma
             </button>
 
-            <img style=" margin-left: 150px" src="../Images/img_alien2.png" >
+            <img style=" margin-left: 110px;width: 180px;height: 150px;margin-bottom: -80px;margin-top: 60px" src="/Images/img_distanzaVertici.png" >
 
             <%  if(request.getParameter("confermaidsegmento")!= null) {
                 BeanScheletro.setIdSegmento(Integer.valueOf(request.getParameter("idsegmento")));
             %>
 
-            <jsp:forward page="../ResultsPagesJSP/resultDistanceVertici.jsp"/>
+            <jsp:forward page="/ResultsPagesJSP/resultDistanceVertici.jsp"/>
             <%}%>
         </form>
     </div>
@@ -65,5 +65,5 @@
 
 <%}
 else {%>
-<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<jsp:forward page="/ResultsPagesJSP/resultError.jsp"/>
 <%}%>

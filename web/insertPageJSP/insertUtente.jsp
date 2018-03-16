@@ -109,7 +109,7 @@
                 Conferma
             </button>
 
-            <img style=" margin-left: 150px" src="../Images/img_alien2.png" >
+            <img style=" margin-left: 210px;margin-bottom: 20px; width: 90px; height: 90px" src="/Images/img_people.png" >
 
         </form>
     </div>
@@ -121,5 +121,5 @@
 
 <%}
 else {%>
-<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<jsp:forward page="/ResultsPagesJSP/resultError.jsp"/>
 <%}%>

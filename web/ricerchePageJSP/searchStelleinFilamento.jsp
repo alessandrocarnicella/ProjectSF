@@ -51,7 +51,7 @@
                 Conferma
             </button>
 
-            <img style=" margin-left: 150px" src="../Images/img_alien2.png" >
+            <img style=" margin-left: 150px;margin-top: 50px;width: 120px;height: 120px" src="/Images/img_stelleInFilamento.png" >
 
             <%  if(request.getParameter("confermaidfilamento")!= null) {
                 BeanFilamento.setIdFilamento(Integer.valueOf(request.getParameter("idfilamento")));
@@ -65,5 +65,5 @@
 <jsp:include page="/Include/footerHome.jsp"/>
 <%}
 else {%>
-<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<jsp:forward page="/ResultsPagesJSP/resultError.jsp"/>
 <%}%>

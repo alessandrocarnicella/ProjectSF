@@ -442,6 +442,8 @@ public class DAOStelle {
                 val[7]=(rs.getString(8));
                 val[8]=(rs.getString(9));
                 val1.add(val);
+
+
             }
 
         } catch (SQLException e) {

@@ -47,11 +47,6 @@
         <!--fine titolo-->
             <% int count=1;
             ArrayList<String[]> val = BeanFilamento.searchDistance();
-
-           /* for(String[] g:val){
-            System.out.println(Arrays.toString(g));
-            }
-            */
             if (val!=null){%>
 
         <!-- MDL Fixed Layout Container -->
@@ -61,11 +56,13 @@
                 <!-- Tab Bar Container , and Tab links -->
                 <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
                     <a href="#page1" class="mdl-layout__tab is-active">pagina1</a>
-                    <% for(int i=1;i<=val.size();i++){%>
+                    <%  if(val.size()>20){
+                        for(int i=1;i<=val.size();i++){%>
                     <% if(i%20==0){
                         count++;%>
                     <a href="#page<%=count%>" class="mdl-layout__tab">pagina<%=count%></a>
                     <%}
+                    }
                     }%>
                 </div>
             </header>
@@ -90,8 +87,6 @@
                         </thead>
                         <tbody>
                         <div class="page-content" style="margin-top: 10px;margin-left: 25px">
-
-
                             <%
                                 int num=0;
                                 if(val.size()>=20){
@@ -177,5 +172,5 @@
 <jsp:include page="/Include/footerHome.jsp"/>
 <%}
     else {%>
-<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<jsp:forward page="/ResultsPagesJSP/resultError.jsp"/>
 <%}%>

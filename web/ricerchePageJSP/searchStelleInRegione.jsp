@@ -20,7 +20,7 @@
 <style>
     .demo-card-wide.mdl-card {
         width: 600px;
-        height: 850px;
+        height: 750px;
         background-color:rgba(255, 255, 255, 0.93);
     }
     .demo-card-wide > .mdl-card__title {
@@ -78,7 +78,7 @@
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" name="searchconfermaregione2" style="width: 200px;margin-left: 30px;margin-top: 50px">
                 Effettua la ricerca
             </button>
-            <img style=" margin-left: 150px" src="../Images/img_alien2.png" >
+            <img style=" margin-left: 390px;width: 130px;height: 130px;margin-bottom: 30px" src="/Images/img_stelleInRegione.png" >
         </div>
 
 
@@ -102,5 +102,5 @@
 
 <%}
     else {%>
-<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<jsp:forward page="/ResultsPagesJSP/resultError.jsp"/>
 <%}%>

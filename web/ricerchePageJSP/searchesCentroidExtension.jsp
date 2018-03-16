@@ -99,12 +99,12 @@
 
         <br><br>
         <!--button-->
-        <div>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" name="searchconfermacentroidextension" style="width: 200px;margin-left: 30px;margin-top: 50px">
-                Effettua la ricerca
-            </button>
-            <img style=" margin-left: 150px" src="../Images/img_alien2.png" >
-        </div>
+
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" name="searchconfermacentroidextension" style="width: 200px;height:60px;margin-left: 30px;margin-top: 40px">
+            Effettua la ricerca
+        </button>
+        <img style=" margin-left: 400px;margin-bottom: 55px;width: 120px;height: 110px" src="${pageContext.request.contextPath}/Images/img_centroidExtension.png" >
+
 
 
         <% if (request.getParameter("searchconfermacentroidextension")!=null) {
@@ -120,11 +120,11 @@
 
         <%}
 
-            else if (!Objects.equals(request.getParameter("searchbyidfil"), "")){
+        else if (!Objects.equals(request.getParameter("searchbyidfil"), "")){
 
-                BeanFilamento.setIdFilamento(Integer.valueOf(request.getParameter("searchbyidfil")));
-                BeanFilamento.setNome(null);
-                //System.out.println(BeanFilamento.getIdFilamento());%>
+            BeanFilamento.setIdFilamento(Integer.valueOf(request.getParameter("searchbyidfil")));
+            BeanFilamento.setNome(null);
+            //System.out.println(BeanFilamento.getIdFilamento());%>
 
         <jsp:forward page="/ResultsPagesJSP/resultCentroidExtension.jsp"/>
 
@@ -146,6 +146,6 @@
 
 
 <%}
-    else {%>
-<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+else {%>
+<jsp:forward page="/ResultsPagesJSP/resultError.jsp"/>
 <%}%>

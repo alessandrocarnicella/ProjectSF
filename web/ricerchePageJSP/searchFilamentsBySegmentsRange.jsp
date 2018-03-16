@@ -62,7 +62,7 @@
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" name="searchconfermasegmentsfilament" style="width: 200px;margin-left: 30px;margin-top: 50px">
                 Effettua la ricerca
             </button>
-            <img style=" margin-left: 150px" src="../Images/img_alien2.png" >
+            <img style=" margin-left: 280px;width: 120px;height: 120px" src="/Images/img_numeroSegmentiFilamento.png" >
         </div>
 
         <% if (request.getParameter("searchconfermasegmentsfilament")!=null){
@@ -84,5 +84,5 @@
 <jsp:include page="/Include/footerHome.jsp"/>
 <%}
 else {%>
-<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<jsp:forward page="/ResultsPagesJSP/resultError.jsp"/>
 <%}%>

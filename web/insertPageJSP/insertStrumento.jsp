@@ -90,7 +90,7 @@
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" name="confermainsertstrum" style="width: 200px;margin-left: 30px;margin-top: 40px" >
                     Conferma
                 </button>
-                <img style=" margin-left: 150px" src="../Images/img_settings.png" >
+                <img style=" margin-left: 180px;margin-bottom: 20px;width: 120px;height: 120px" src="../Images/img_settings.png" >
             </div>
 
             <%
@@ -102,7 +102,7 @@
                     BeanMisurazione.setNomeStrumento(request.getParameter("nomestrumento"));
                     BeanMisurazione.setBanda(Float.valueOf(request.getParameter("lunghezzabanda")));
                     if(BeanStrumento.insertNewStrumento()&&BeanBanda.insertNewBanda()&&BeanMisurazione.insertNewMisurazione()){ %>
-            <jsp:forward page="../ResultsPagesJSP/resultCorrectInsert.jsp"/>
+            <jsp:forward page="/ResultsPagesJSP/resultCorrectInsert.jsp"/>
             <%} else {%>
             <label style="color: red;text-align: right"> <b>Errore inserimento dati!</b> </label>
             <%}
@@ -116,5 +116,5 @@
 <jsp:include page="/Include/footerHome.jsp"/>
 <%}
 else {%>
-<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<jsp:forward page="/ResultsPagesJSP/resultError.jsp"/>
 <%}%>

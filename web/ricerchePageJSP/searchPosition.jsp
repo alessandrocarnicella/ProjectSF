@@ -70,14 +70,14 @@
                 Conferma
             </button>
 
-            <img style=" margin-left: 150px" src="../Images/img_alien2.png" >
+            <img style=" margin-left: 130px;margin-top: 60px;width: 150px;height: 130px" src="/Images/img_distanzaSpinaDorsale.png" >
 
             <%  if(request.getParameter("confermaidfilamento")!= null) {
                 BeanFilamento.setIdFilamento(Integer.valueOf(request.getParameter("idfilamento")));
                 BeanFilamento.setOrdinamento(String.valueOf(request.getParameter("radio")));
             %>
 
-            <jsp:forward page="../ResultsPagesJSP/resultPosition.jsp"/>
+            <jsp:forward page="/ResultsPagesJSP/resultPosition.jsp"/>
             <%}%>
         </form>
     </div>
@@ -87,5 +87,5 @@
 
 <%}
 else {%>
-<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<jsp:forward page="/ResultsPagesJSP/resultError.jsp"/>
 <%}%>

@@ -81,7 +81,7 @@
                 Conferma
             </button>
 
-            <img style=" margin-left: 150px" src="../Images/img_alien2.png" >
+            <img style=" margin-left: 170px;margin-top: 20px;height: 120px;width: 120px" src="${pageContext.request.contextPath}/Images/img_brillanza.png" >
 
             <%  if(request.getParameter("conferma2")!= null){
                 float min = Float.valueOf(request.getParameter("min"));
@@ -93,7 +93,7 @@
                     BeanBrillantezzaEllitticita.selectFilamentoFromBean();
             %>
 
-            <jsp:forward page="../ResultsPagesJSP/resultBrillantezzaEllitticita.jsp"/><%
+            <jsp:forward page="/ResultsPagesJSP/resultBrillantezzaEllitticita.jsp"/><%
         } else{%>
             <br>
             <b class="red-text" style="color: #ff6244;margin-left: 20px"> Errore inserimento max e min! </b><%
@@ -107,6 +107,6 @@
 <jsp:include page="/Include/footerHome.jsp"/>
 <%}
 else {%>
-<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<jsp:forward page="/ResultsPagesJSP/resultError.jsp"/>
 <%}%>
 

@@ -100,7 +100,7 @@
                     if(BeanSatellite.ControlloData(Date.valueOf(request.getParameter("datainizio")),Date.valueOf(request.getParameter("datafine")))){
                         if(BeanSatellite.insertNewSatellite()){ %>
             <br><br>
-            <jsp:forward page="../ResultsPagesJSP/resultCorrectInsert.jsp"/>
+            <jsp:forward page="/ResultsPagesJSP/resultCorrectInsert.jsp"/>
             <%} else {%>
             <br><br>
             <label style="color: red; margin-left: 20px" > <b>Errore inserimento dati!</b> </label>
@@ -116,7 +116,7 @@
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" name="confermainsertsat" style="width: 200px;margin-left: 30px;margin-top: 50px">
                     Conferma
                 </button>
-                <img style=" margin-left: 150px" src="../Images/img_satellite.png" >
+                <img style=" margin-left: 180px;margin-bottom: 20px;width: 110px;height: 110px" src="../Images/img_satellite.png" >
             </div>
         </form>
         <br><br>
@@ -129,6 +129,6 @@
 
 <%}
 else {%>
-<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<jsp:forward page="/ResultsPagesJSP/resultError.jsp"/>
 <%}%>
 

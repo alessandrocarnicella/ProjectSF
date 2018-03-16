@@ -53,11 +53,13 @@
                 <!-- Tab Bar Container , and Tab links -->
                 <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
                     <a href="#page1" class="mdl-layout__tab is-active">pagina1</a>
-                    <% for(int i=1;i<=filamenti.size();i++){%>
+                    <% if(filamenti.size()>20){
+                        for(int i=1;i<=filamenti.size();i++){%>
                     <% if(i%20==0){
                         count++;%>
                     <a href="#page<%=count%>" class="mdl-layout__tab">pagina<%=count%></a>
                     <%}
+                    }
                     }%>
                 </div>
             </header>
@@ -84,13 +86,14 @@
                         <tbody>
 
                         <div class="page-content" style="margin-top: 10px;margin-left: 25px">
-                            <%int num=0;
+                            <%
+                                int num=0;
                                 if(filamenti.size()>=20){
                                     num=20;
                                 }else {
                                     num=filamenti.size();
                                 }
-                                for(int j=0;j<20;j++){%>
+                                for(int j=0;j<num;j++){%>
                             <tr>
                                 <!-- class "mdl-data-table__cell--non-numeric", align values to left -->
                                 <td class="mdl-data-table__cell--non-numeric"><%=filamenti.get(j).getIdFilamento()%></td>
@@ -110,7 +113,7 @@
                 </section>
 
                 <% int init=20;
-                    for (int k=2;k<count;k++){%>
+                    for (int k=2;k<=count;k++){%>
                 <section class="mdl-layout__tab-panel" id="page<%=k%>">
                     <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                         <thead>
@@ -167,5 +170,5 @@
 <jsp:include page="/Include/footerHome.jsp"/>
 <%}
     else {%>
-<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<jsp:forward page="/ResultsPagesJSP/resultError.jsp"/>
 <%}%>

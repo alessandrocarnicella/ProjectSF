@@ -48,12 +48,7 @@
         <!--fine titolo-->
             <% int count=1;
             ArrayList<String[]> filamentiBySegmentsNumber= BeanSegmento.selectFilamentsBySegmentsNumber(Integer.valueOf(request.getParameter("int1")),Integer.valueOf(request.getParameter("int2")));
-
-            /*for(String[] g:filamentiBySegmentsNumber){
-            System.out.println(Arrays.toString(g));
-            }
-            */
-            if (filamentiBySegmentsNumber!=null){%>
+            if (filamentiBySegmentsNumber!=null){ System.out.println(filamentiBySegmentsNumber.size());%>
 
         <!-- MDL Fixed Layout Container -->
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" style="margin-top: 160px">
@@ -62,11 +57,13 @@
                 <!-- Tab Bar Container , and Tab links -->
                 <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
                     <a href="#page1" class="mdl-layout__tab is-active">pagina1</a>
-                    <% for(int i=1;i<=filamentiBySegmentsNumber.size();i++){%>
+                    <%  if(filamentiBySegmentsNumber.size()>20){
+                        for(int i=1;i<=filamentiBySegmentsNumber.size();i++){%>
                     <% if(i%20==0){
                         count++;%>
                     <a href="#page<%=count%>" class="mdl-layout__tab">pagina<%=count%></a>
                     <%}
+                    }
                     }%>
                 </div>
             </header>
@@ -120,7 +117,7 @@
                 </section>
 
                 <% int init=20;
-                    for (int k=2;k<count;k++){%>
+                    for (int k=2;k<=count;k++){%>
                 <section class="mdl-layout__tab-panel" id="page<%=k%>">
                     <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                         <thead>
@@ -179,5 +176,5 @@
 <jsp:include page="/Include/footerHome.jsp"/>
 <%}
     else {%>
-<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<jsp:forward page="/ResultsPagesJSP/resultError.jsp"/>
 <%}%>
