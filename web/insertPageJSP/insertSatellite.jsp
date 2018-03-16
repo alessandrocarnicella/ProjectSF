@@ -22,9 +22,9 @@
 <!-- CSS style -->
 <style>
     .demo-card-wide.mdl-card {
-        width: 600px;
-        background-color:rgba(255, 255, 255, 0.93);
-    }
+            width: 600px;
+            background-color:rgba(255, 255, 255, 0.93);
+        }
     .demo-card-wide > .mdl-card__title {
         color: #0c2121;
         height: 100px;
@@ -45,7 +45,7 @@
         <div class="mdl-card__title" style="margin-bottom: 50px">
             <h2 class="mdl-card__title-text" style="margin-left: 20px;color: #1441e0">INSERISCI UN NUOVO SATELLITE</h2>
         </div>
-        <form method="post" action="../ResultsPagesJSP/resultCorrectInsert.jsp">
+        <form method="post" >
             <!--fine titolo-->
             <label style="margin-left: 30px"> <b>Seleziona l'agenzia associata:</b></label>
             <!--select delle agenzie associate-->
@@ -84,17 +84,11 @@
             <br><br>
             <!-- inserimento data fine-->
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="margin-left: 30px">
-                <input class="mdl-textfield__input" type="date" name="datafine" id="sample5" required>
+                <input class="mdl-textfield__input" type="date"  name="datafine" id="sample5" required>
                 <label class="mdl-textfield__label" for="sample5"></label>
             </div>
             <!--fine inserimento-->
-            <!--button-->
-            <div>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" name="confermainsertsat" style="width: 200px;margin-left: 30px;margin-top: 50px">
-                    Conferma
-                </button>
-                <img style=" margin-left: 150px" src="../Images/img_satellite.png" >
-            </div>
+
 
             <%
                 if (request.getParameter("confermainsertsat")!=null){
@@ -103,15 +97,27 @@
                     BeanSatellite.setNome(request.getParameter("nomesatellite"));
                     BeanSatellite.setDataInizio(Date.valueOf(request.getParameter("datainizio")));
                     BeanSatellite.setDataFine(Date.valueOf(request.getParameter("datafine")));
-                    if(BeanSatellite.insertNewSatellite()){ %>
+                    if(BeanSatellite.ControlloData(Date.valueOf(request.getParameter("datainizio")),Date.valueOf(request.getParameter("datafine")))){
+                        if(BeanSatellite.insertNewSatellite()){ %>
             <br><br>
             <jsp:forward page="../ResultsPagesJSP/resultCorrectInsert.jsp"/>
             <%} else {%>
             <br><br>
-            <label style="color: red"> <b>Errore inserimento dati!</b> </label>
+            <label style="color: red; margin-left: 20px" > <b>Errore inserimento dati!</b> </label>
             <%}
-            }%>
+            }else {%>
+            <br><br>
+            <label style="color: red; margin-left: 20px"> <b>Errore inserimento data!</b> </label>
+            <%}
 
+            }%>
+            <!--button-->
+            <div>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" name="confermainsertsat" style="width: 200px;margin-left: 30px;margin-top: 50px">
+                    Conferma
+                </button>
+                <img style=" margin-left: 150px" src="../Images/img_satellite.png" >
+            </div>
         </form>
         <br><br>
     </div>

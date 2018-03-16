@@ -30,14 +30,16 @@
             <a class="mdl-navigation__link" href="../insertPageJSP/insertSatellite.jsp#" style="font-size: medium">Inserisci dati satellite</a>
             <a class="mdl-navigation__link" href="../insertPageJSP/insertStrumento.jsp" style="font-size: medium">Inserisci dati strumenti</a>
             <%}%>
-            <a class="mdl-navigation__link" href="../ricerchePageJSP/searchBrillantezzaEllitticita.jsp" style="font-size: medium">Ricerca Filamento per contrasto ed ellitticita</a>
+
             <a class="mdl-navigation__link" href="../ricerchePageJSP/searchesCentroidExtension.jsp" style="font-size: medium">Ricerca Centroide ed Estensione per Filamento</a>
+            <a class="mdl-navigation__link" href="../ricerchePageJSP/searchBrillantezzaEllitticita.jsp" style="font-size: medium">Ricerca Filamento per brillanza ed ellitticita</a>
             <a class="mdl-navigation__link" href="../ricerchePageJSP/searchFilamentsBySegmentsRange.jsp" style="font-size: medium">Ricerca un Filamento in base al suo numero di segmenti </a>
             <a class="mdl-navigation__link" href="../ricerchePageJSP/searchesRegione.jsp" style="font-size: medium">Ricerca un Filamento in base alla regione </a>
-            <a class="mdl-navigation__link" href="../ricerchePageJSP/searchDistanceVertici.jsp" style="font-size: medium">Ricerca Distanza vertici segmento</a>
-            <a class="mdl-navigation__link" href="../ricerchePageJSP/searchStelleInRegione.jsp" style="font-size: medium">Ricerca Stelle in base alla regione</a>
-            <a class="mdl-navigation__link" href="../ricerchePageJSP/searchPosition.jsp" style="font-size: medium">Ricerca posizione stella rispetto a spina dorsale</a>
             <a class="mdl-navigation__link" href="../ricerchePageJSP/searchStelleinFilamento.jsp" style="font-size: medium">Ricerca stelle contenute in un filamento</a>
+            <a class="mdl-navigation__link" href="../ricerchePageJSP/searchStelleInRegione.jsp" style="font-size: medium">Ricerca Stelle in base alla regione</a>
+            <a class="mdl-navigation__link" href="../ricerchePageJSP/searchDistanceVertici.jsp" style="font-size: medium">Ricerca Distanza vertici segmento</a>
+            <a class="mdl-navigation__link" href="../ricerchePageJSP/searchPosition.jsp" style="font-size: medium">Ricerca posizione stella rispetto a spina dorsale</a>
+
         </nav>
     </div>
 </div>

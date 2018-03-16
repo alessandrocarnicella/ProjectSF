@@ -39,7 +39,7 @@ public class BeanSegmento {
 
     //method
     public boolean controlloMinMax(int min,int max){
-        if (min<max){
+        if (min<=max){
             return true;
         }
         return false;

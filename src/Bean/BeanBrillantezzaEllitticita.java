@@ -44,7 +44,7 @@ public class BeanBrillantezzaEllitticita {
 
     //method
     public boolean ControlloMinMax(float min,float max){
-        if (min<max){
+        if (min<=max){
             return true;
         }
         return false;

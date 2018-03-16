@@ -21,9 +21,8 @@
 
 <!-- CSS style -->
 <style>
-    .demo-card-wide2.mdl-card {
+    .demo-card-wide.mdl-card {
         width: 600px;
-        height: 400px;
         background-color:rgba(255, 255, 255, 0.93);
     }
     .demo-card-wide > .mdl-card__title {
@@ -63,46 +62,40 @@
     }
 </style>
 
-<div style="background: url(/Images/154876-OVJJF1-95.jpg);background-size: 1300px 1000px;">
-    <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--6-col">
-            <div  style=" margin-left: 20%;">
-                <br><br><br><br><br>
-                <div class="demo-card-wide2 mdl-card mdl-shadow--2dp">
-                    <!-- Titolo -->
-                    <div class="demo-card-wide mdl-card__title">
-                        <h2 class="mdl-card__title-text">Inserisci CSV</h2>
-                    </div>
-                    <!-- inserimento CSV -->
-                    <form enctype="multipart/form-data" action="/upload" method="post" >
-                        <div class="file_input_div" style="margin-right:330px;margin-top:20px">
-                            <div class="file_input">
-                                <label class="image_input_button mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
-                                    <i class="material-icons">file_upload</i>
-                                    <input id="file_input_file" class="none" type="file" name="FileUpload" accept=".csv" />
-                                </label>
-                            </div>
-                            <div id="file_input_text_div" class="mdl-textfield mdl-js-textfield textfield-demo">
-                                <input class="file_input_text mdl-textfield__input" type="text" name="file_input_text" disabled readonly id="file_input_text" />
-                                <label class="mdl-textfield__label" for="file_input_text"></label>
-                            </div>
-                        </div>
-                        <br>
-                        <!-- button conferma inserimento CSV -->
-                        <button onclick="move();foo3()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="width: 200px;margin-left: 30px;margin-top: 50px" type="submit" name="confermaCSV">
-                            Conferma
-                        </button>
-                        <img style=" margin-left: 150px" src="../Images/img_csv.png" >
-                        <br><br>
-                        <label id="caricamento" style="visibility: hidden;margin-left: 30px">Caricamento in corso...</label>
-                    </form>
-                    <br><br>
-                    <div style=" width:80%; height: 5px;margin-left: 50px;" id="myBar" class="mdl-progress mdl-js-progress"></div>
-                </div>
-                <br><br>
-            </div>
+<div style="background: url(/Images/154876-OVJJF1-95.jpg);background-size: 1300px 1100px;">
+    <br><br><br><br><br>
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 10%">
+        <!--titolo della card-->
+        <div class="mdl-card__title" style="margin-bottom: 50px">
+            <h2 class="mdl-card__title-text" style="margin-left: 20px;color: #1441e0">INSERISCI CSV</h2>
         </div>
+        <!-- inserimento CSV -->
+        <form enctype="multipart/form-data" action="/upload" method="post" >
+            <div class="file_input_div" style="margin-right:330px;margin-top:20px">
+                <div class="file_input">
+                    <label class="image_input_button mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
+                        <i class="material-icons">file_upload</i>
+                        <input id="file_input_file" class="none" type="file" name="FileUpload" accept=".csv" />
+                    </label>
+                </div>
+                <div id="file_input_text_div" class="mdl-textfield mdl-js-textfield textfield-demo">
+                    <input class="file_input_text mdl-textfield__input" type="text" name="file_input_text" disabled readonly id="file_input_text" />
+                    <label class="mdl-textfield__label" for="file_input_text"></label>
+                </div>
+            </div>
+            <br>
+            <!-- button conferma inserimento CSV -->
+            <button onclick="move();foo3()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="width: 200px;margin-left: 30px;margin-top: 50px" type="submit" name="confermaCSV">
+                Conferma
+            </button>
+            <img style=" margin-left: 150px;width: 90px;height: 100px" src="../Images/img_csv.png" >
+            <br><br>
+            <label id="caricamento" style="visibility: hidden;margin-left: 30px">Caricamento in corso...</label>
+        </form>
+        <br><br>
+        <div style=" width:80%; height: 5px;margin-left: 50px;" id="myBar" class="mdl-progress mdl-js-progress"></div>
     </div>
+    <br><br>
 </div>
 
 <!-- script JS -->
@@ -194,6 +187,6 @@
 
 <%}
 else {%>
-        <jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
 <%}%>
 

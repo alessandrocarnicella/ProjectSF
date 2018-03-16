@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--
   Created by IntelliJ IDEA.
   User: Manuel
@@ -5,7 +6,6 @@
   Time: 15:06
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="BeanLogin" scope="session" class="Bean.BeanLogin"/>
 <jsp:setProperty property="*" name="BeanLogin"/>
 
@@ -32,7 +32,7 @@
 
 <div style="background: url(/Images/154876-OVJJF1-95.jpg);background-size: 1300px 1100px;">
     <br><br><br><br><br>
-    <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 10%">
+    <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 10%" method="post">
 
         <!--titolo della card-->
         <div class="mdl-card__title" style="margin-top: 50px">
@@ -41,7 +41,7 @@
         <!--fine titolo-->
 
         <!--inserimento del primo intero di range-->
-        <label style="margin-left: 30px;margin-top: 50px"> Inserisci il numero di segmenti minimo (compreso)</label>
+        <label style="margin-left: 30px;margin-top: 50px"><b> Inserisci il numero di segmenti minimo (compreso): </b></label>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"   style="margin-left: 30px; width: 50px" >
             <input class="mdl-textfield__input" type="number"  id="sample3" name="int1" required min="3">
             <label class="mdl-textfield__label"  for="sample3"></label>
@@ -49,9 +49,9 @@
         <!--fine inserimento-->
         <br><br>
         <!--inserimento del secondo intero di range-->
-        <label style="margin-left: 30px;margin-top: 50px"> Inserisci il numero di segmenti massimo (non compreso)</label>
+        <label style="margin-left: 30px;margin-top: 50px"><b>Inserisci il numero di segmenti massimo (non compreso):</b></label>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"   style="margin-left: 30px; width: 50px" >
-            <input class="mdl-textfield__input" type="number"  id="sample4" name="int2" required>
+            <input class="mdl-textfield__input" type="number"  id="sample4" name="int2" required min="3">
             <label class="mdl-textfield__label" for="sample4"></label>
         </div>
         <!--fine inserimento-->
@@ -73,8 +73,9 @@
         <% }else{ %>
 
         <b style="color: #ff5516;margin-left: 20px;margin-top: 20px"> Errore inserimento max e min! </b>
-        
-        <%}}%>
+
+        <%}
+        }%>
 
     </form>
 
@@ -82,6 +83,6 @@
 
 <jsp:include page="/Include/footerHome.jsp"/>
 <%}
-    else {%>
+else {%>
 <jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
 <%}%>

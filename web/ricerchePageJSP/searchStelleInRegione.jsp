@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--
   Created by IntelliJ IDEA.
   User: alessandro
@@ -5,7 +6,6 @@
   Time: 12.02
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="BeanLogin" scope="session" class="Bean.BeanLogin"/>
 <jsp:setProperty property="*" name="BeanLogin"/>
 
@@ -33,7 +33,7 @@
 
 <div style="background: url(/Images/154876-OVJJF1-95.jpg);background-size: 1300px 1100px;">
     <br><br><br><br><br>
-    <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 10%">
+    <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 10%" method="post">
 
         <!--titolo della card-->
         <div class="mdl-card__title" style="margin-bottom: 50px">
@@ -42,13 +42,13 @@
         <!--fine titolo-->
 
         <!--inserimento posizione spaziale-->
-        <label style="margin-left: 30px;margin-top: 50px"> Inserisci posizione spaziale :</label>
+        <label style="margin-left: 30px"><b> Inserisci posizione spaziale :</b></label>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"   style="margin-left: 30px; width: 50px" >
-            <input class="mdl-textfield__input" type="number"  id="latS" name="latS" required maxlength="20" required>
+            <input class="mdl-textfield__input" type="number"  id="latS" step="0.0001" name="latS" required maxlength="20" required style="width: 100px">
             <label class="mdl-textfield__label" for="latS" > lat </label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"   style="margin-left: 30px; width: 50px" >
-            <input class="mdl-textfield__input" type="number"  id="lonS" name="lonS" required maxlength="20" required>
+            <input class="mdl-textfield__input" type="number"  id="lonS" step="0.0001" name="lonS" required maxlength="20" required style="width: 100px">
             <label class="mdl-textfield__label" for="lonS" > lon </label>
         </div>
         <br>
@@ -57,7 +57,7 @@
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" value="value1" id="div1" style="margin-left: 30px" required>
             <label style="margin-left: 30px;margin-top: 30px"> <b>Inserisci base della regione </b></label>
             <br><br>
-            <input class="mdl-textfield__input" type="number" min="0" id="sample3" name="base">
+            <input class="mdl-textfield__input" type="number" min="0.01"  step="0.01" id="sample3" name="base">
             <label class="mdl-textfield__label" for="sample3"></label>
         </div>
         <!--fine inserimento-->
@@ -66,7 +66,7 @@
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" value="value1"  id="div1" style="margin-left: 30px" required>
             <label style="margin-left: 30px;margin-top: 30px"> <b>Inserisci l'altezza della regione </b></label>
             <br><br>
-            <input class="mdl-textfield__input" type="number" min="0" id="sample5" name="altezza">
+            <input class="mdl-textfield__input" type="number" min="0.01"  step="0.01" id="sample5" name="altezza">
             <label class="mdl-textfield__label" for="sample5"></label>
         </div>
         <!--fine inserimento-->

@@ -28,7 +28,7 @@
 
 <div style="background: url(/Images/154876-OVJJF1-95.jpg);background-size: 1300px 1100px;">
     <br><br><br><br><br>
-    <form class="demo-card-wide mdl-card mdl-shadow--2dp"  style="margin-left: 10%">
+    <form class="demo-card-wide mdl-card mdl-shadow--2dp"  style="margin-left: 10%" method="post">
 
         <!--titolo della card-->
         <div class="mdl-card__title" style="margin-bottom: 50px">
@@ -36,6 +36,8 @@
         </div>
         <!--fine titolo-->
 
+        <%ArrayList<Filamento> val= BeanPosRaggioLato.selectFilamentoFromBean();%>
+        <%if (val!=null){%>
         <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
             <thead>
             <tr>
@@ -53,7 +55,7 @@
             </thead>
             <tbody>
 
-            <%ArrayList<Filamento> val= BeanPosRaggioLato.selectFilamentoFromBean();%>
+
             <% for(Filamento f:val){%>
             <!-- Row 1 -->
             <tr>
@@ -71,8 +73,13 @@
             <% }%>
             </tbody>
         </table>
-
     </form>
+    <%} else {%>
+    <br>
+    <div style="height: 500px">
+    <label style="margin-left: 30px;margin-top: 30px; color: #ff6244;margin-bottom: 100px"> <b> NON ESISTONO RISULTATI PER QUESTA SPECIFICA RICERCA! </b></label><br><br><br>
+    </div>
+        <%}%>
 </div>
 
 

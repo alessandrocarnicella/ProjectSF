@@ -54,6 +54,14 @@ public class BeanSatellite {
             return false;
     }
 
+
+    //method
+    public boolean ControlloData(Date min,Date max){
+        if(!min.after(max)) {
+        return true;
+        }
+        return false;
+    }
     //method
     public ArrayList<String> selectSatelliti() {
         ArrayList<String> satelliti = ControlloreInserimentoDati.getInstance().selectSatellitiFromBean();

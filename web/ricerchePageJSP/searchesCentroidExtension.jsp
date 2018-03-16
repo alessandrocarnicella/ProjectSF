@@ -1,4 +1,5 @@
 <%@ page import="java.util.Objects" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--
   Created by IntelliJ IDEA.
   User: Manuel
@@ -6,7 +7,6 @@
   Time: 15:32
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="BeanLogin" scope="session" class="Bean.BeanLogin"/>
 <jsp:setProperty property="*" name="BeanLogin"/>
 
@@ -52,7 +52,7 @@
 
 <div style="background: url(/Images/154876-OVJJF1-95.jpg);background-size: 1300px 1100px;">
     <br><br><br><br><br>
-    <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 10%">
+    <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 10%" method="post">
 
         <!--titolo della card-->
         <div class="mdl-card__title" style="margin-bottom: 50px">
@@ -114,7 +114,7 @@
                 BeanFilamento.setIdFilamento(-1);
                 // l'ho impostato settato a -1 in modo da non trovare mai un id corrispondente
                 //da intendere come un null
-                System.out.println(BeanFilamento.getNome()); %>
+                //System.out.println(BeanFilamento.getNome()); %>
 
         <jsp:forward page="/ResultsPagesJSP/resultCentroidExtension.jsp"/>
 
@@ -124,7 +124,7 @@
 
                 BeanFilamento.setIdFilamento(Integer.valueOf(request.getParameter("searchbyidfil")));
                 BeanFilamento.setNome(null);
-                System.out.println(BeanFilamento.getIdFilamento());%>
+                //System.out.println(BeanFilamento.getIdFilamento());%>
 
         <jsp:forward page="/ResultsPagesJSP/resultCentroidExtension.jsp"/>
 

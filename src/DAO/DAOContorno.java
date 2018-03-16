@@ -201,7 +201,7 @@ public class DAOContorno {
                 "              FROM  contorno as c2\n" +
                 "              WHERE ((sqrt((c2.long-?)^2+(c2.latg-?)^2) < ?)\n" +
                 "                     OR (c2.long> ? and c2.latg > ? and c2.long < ? and c2.latg < ?))\n" +
-                "                    AND (c1.idfilamento = c2.idfilamento))";
+                "                    AND (c1.idfilamento = c2.idfilamento)) ORDER BY  idfilamento asc";
 
         try {
 

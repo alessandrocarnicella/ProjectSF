@@ -40,7 +40,7 @@
 
 <div style="background: url(/Images/154876-OVJJF1-95.jpg);background-size: 1300px 1100px;">
     <br><br><br><br><br>
-    <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 4%">
+    <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 4%" method="post">
         <!--titolo della card-->
         <div class="mdl-card__title" style="margin-top: 50px">
             <h2 class="mdl-card__title-text" style="margin-left: 20px;color: #1441e0"> RISULTATI DI UN FILAMENTO CON NUMERO DI SEGMENTI COMPRESO TRA <%=request.getParameter("int1")%> E <%=request.getParameter("int2")%></h2>
