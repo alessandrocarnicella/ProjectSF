@@ -67,8 +67,11 @@ public class ControlloreInserimentoCSV {
         Contorno contorno = new Contorno();
         Punto punto = new Punto();
 
+        Filamento filamento = new Filamento();
+
         DAOContorno = DAOContorno.getInstance();
         DAOPunto = DAOPunto.getInstance();
+        DAOFilamento = DAOFilamento.getInstance();
 
         try {
             DAOPunto.openConnection();
@@ -98,6 +101,42 @@ public class ControlloreInserimentoCSV {
             DAOPunto.closeConnection();
             stampaTempo();
             br.close();
+
+            DAOFilamento.openConnection();
+            num = 0;
+            count = 0;
+            br = new BufferedReader(new FileReader(path + "/" + nome));
+            stampaTempo();
+            while ((line = br.readLine()) != null) {
+                ArrayList<String> values = new ArrayList<>(Arrays.asList(line.split(split, -1)));
+                if (num == 1) {
+                    count++;
+
+                    filamento.setIdFilamento(Integer.valueOf(values.get(0)));
+                    filamento.setNome(String.valueOf(""));
+                    filamento.setFlussoTotale(Float.valueOf(0));
+                    filamento.setDensitaMedia(Float.valueOf(0));
+                    filamento.setTemperaturaMedia(Float.valueOf(0));
+                    filamento.setEllitticita(Float.valueOf(0));
+                    filamento.setContrasto(Float.valueOf(0));
+                    filamento.setNomeSatellite(String.valueOf("Herschel"));
+                    filamento.setNomeStrumento(String.valueOf("PACS"));
+
+                    if ( !DAOFilamento.findItemById(filamento) ) {
+                        DAOFilamento.insertFilamento(filamento);
+
+                    }
+                }else if(equalsColoumnsNamesContorno(values)){
+                    num++;
+                }
+                if(count%10000 == 0) {
+                    System.out.println(count);
+                }
+            }
+            DAOFilamento.closeConnection();
+            stampaTempo();
+            br.close();
+
 
             DAOContorno.openConnection();
             num = 0;
@@ -144,6 +183,8 @@ public class ControlloreInserimentoCSV {
         DAOContorno.closeConnection();
         return true;
     }
+
+
 
 
     //method
@@ -221,10 +262,12 @@ public class ControlloreInserimentoCSV {
         Punto punto = new Punto();
         Segmento segmento = new Segmento();
         Scheletro scheletro = new Scheletro();
+        Filamento filamento = new Filamento();
 
         DAOPunto = DAOPunto.getInstance();
         DAOSegmento = DAOSegmento.getInstance();
         DAOScheletro = DAOScheletro.getInstance();
+        DAOFilamento = DAOFilamento.getInstance();
 
         try {
             br = new BufferedReader(new FileReader(path + "/" + nome));
@@ -244,11 +287,46 @@ public class ControlloreInserimentoCSV {
                 }else if(equalsColoumnsNamesScheletro(values)){
                     num++;
                 }
-                if(count%1000 == 0) {
+                if(count%10000 == 0) {
                     System.out.println(count);
                 }
             }
             DAOPunto.closeConnection();
+            stampaTempo();
+            br.close();
+
+            DAOFilamento.openConnection();
+            num = 0;
+            count = 0;
+            br = new BufferedReader(new FileReader(path + "/" + nome));
+            stampaTempo();
+            while ((line = br.readLine()) != null) {
+                ArrayList<String> values = new ArrayList<>(Arrays.asList(line.split(split, -1)));
+                if (num == 1) {
+                    count++;
+
+                    filamento.setIdFilamento(Integer.valueOf(values.get(0)));
+                    filamento.setNome(String.valueOf(" "));
+                    filamento.setFlussoTotale(Float.valueOf(0));
+                    filamento.setDensitaMedia(Float.valueOf(0));
+                    filamento.setTemperaturaMedia(Float.valueOf(0));
+                    filamento.setEllitticita(Float.valueOf(0));
+                    filamento.setContrasto(Float.valueOf(0));
+                    filamento.setNomeSatellite(String.valueOf("Herschel"));
+                    filamento.setNomeStrumento(String.valueOf("PACS"));
+
+                    if ( !DAOFilamento.findItemById(filamento) ) {
+                        DAOFilamento.insertFilamento(filamento);
+
+                    }
+                }else if(equalsColoumnsNamesScheletro(values)){
+                    num++;
+                }
+                if(count%10000 == 0) {
+                    System.out.println(count);
+                }
+            }
+            DAOFilamento.closeConnection();
             stampaTempo();
             br.close();
 
@@ -270,7 +348,7 @@ public class ControlloreInserimentoCSV {
                 }else if(equalsColoumnsNamesScheletro(values)){
                     num++;
                 }
-                if(count%1000 == 0) {
+                if(count%10000 == 0) {
                     System.out.println(count);
                 }
             }
@@ -303,7 +381,7 @@ public class ControlloreInserimentoCSV {
                 }else if(equalsColoumnsNamesScheletro(values)){
                     num++;
                 }
-                if(count%1000 == 0) {
+                if(count%10000 == 0) {
                     System.out.println(count);
                 }
             }
@@ -419,8 +497,6 @@ public class ControlloreInserimentoCSV {
         return true;
     }
 
-
-
     //method
     public void stampaTempo(){
         System.out.println(Calendar.getInstance().get(Calendar.HOUR_OF_DAY)+":"
@@ -479,18 +555,33 @@ public class ControlloreInserimentoCSV {
         }
         return false;
     }
-/*
-///home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati
+
+    ///home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati
     public static void main(String args[]){
-        System.out.println("filamenti");
-        ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("filamenti_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
-        System.out.println("contorni");
-        ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("contorni_filamenti_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
-        System.out.println("scheletro");
+
+        System.out.println("scheletro HER ");
         ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("scheletro_filamenti_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
+
+        System.out.println("filamenti HER");
+        ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("filamenti_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
+
+        System.out.println("contorni HER");
+        ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("contorni_filamenti_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
+
         System.out.println("stelle");
         ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("stelle_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
 
+        System.out.println("contorni SPR");
+        ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("contorni_filamenti_Spitzer.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
+
+        System.out.println("scheletro HER ");
+        ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("scheletro_filamenti_Herschel.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
+
+        System.out.println("filamenti SPR");
+        ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("filamenti_Spitzer.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
+
+        System.out.println("scheletro SPR ");
+        ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("scheletro_filamenti_Spitzer.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
     }
-*/
+
 }
