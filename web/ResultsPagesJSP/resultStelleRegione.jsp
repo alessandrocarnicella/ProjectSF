@@ -22,8 +22,8 @@
 <!-- definisco i parametri della card -->
 <style>
     .demo-card-wide.mdl-card {
-        width: 500px;
-        height: 500px;
+        width: 570px;
+        height: 440px;
         background-color:rgba(255, 255, 255, 0.93);
     }
     .demo-card-wide > .mdl-card__title {
@@ -33,9 +33,9 @@
 </style>
 <!--fine definizione parametri-->
 
-<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;">
+<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;height: 640px">
     <br><br><br><br><br>
-    <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 4%" method="post">
+    <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 4%;margin-bottom: -10px;margin-top: 50px" method="post">
         <!--titolo della card-->
         <div class="mdl-card__title" style="margin-top: 50px">
             <h2 class="mdl-card__title-text" style="margin-left: 20px;color: #1441e0"> RISULTATI STELLE PRESENTI IN UN FILAMENTO IN BASE A UNA REGIONE </h2>
@@ -44,7 +44,7 @@
 
         <% ArrayList<String> val= BeanPosBaseAltezza.searchStarsByRegion();
             if (val!=null){%>
-        <table class="mdl-data-table mdl-js-data-table mdl-shadow--4dp">
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--4dp" style="margin-left: 40px;margin-top: 30px">
             <thead>
             <tr>
                 <th> n°stelle trovate</th>
@@ -63,7 +63,7 @@
             </tr>
             </tbody>
         </table>
-        <table class="mdl-data-table mdl-js-data-table mdl-shadow--4dp" style="margin-top: 20px">
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--4dp" style="margin-left: 30px;margin-top: 40px">
             <thead>
             <tr>
                 <th> n°stelle NON trovate</th>

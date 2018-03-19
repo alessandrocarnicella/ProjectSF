@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <!-- footer -->
-<footer class="page-footer" style="background:  #0f90cc">
+<footer class="page-footer" style="background:  #2b66b5">
     <div class="container" >
         <div class="row">
             <div class="col l6 s12">

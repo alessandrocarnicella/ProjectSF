@@ -20,7 +20,7 @@
     <title>ProjectSF</title>
 </head>
 <body>
-<nav style="background: #0f90cc">
+<nav style="background: #2b66b5">
     <div class="nav-wrapper">
         <a href="#" class="brand-logo"> Welcome to ProjectSF </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">

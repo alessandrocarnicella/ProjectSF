@@ -11,7 +11,7 @@
 
 
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header" style="background-color: #0f90cc">
+    <header class="mdl-layout__header" style="background-color:#2b66b5">
         <div class="mdl-layout__header-row">
             <span class="mdl-layout-title"><h4>ProjectSF</h4></span>
             <div class="mdl-layout-spacer"></div>

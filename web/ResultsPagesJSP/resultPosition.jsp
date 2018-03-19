@@ -25,8 +25,8 @@
 <!-- definisco i parametri della card -->
 <style>
     .demo-card-wide.mdl-card {
-        width: 1169px;
-        height: 1300px;
+        width: 1050px;
+        height: 1220px;
         background-color:rgba(255, 255, 255, 0.93);
     }
     .demo-card-wide > .mdl-card__title {
@@ -37,11 +37,11 @@
 <!--fine definizione parametri-->
 
 
-<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;">
+<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;height: 1460px">
     <br><br><br><br><br>
-    <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 4%" method="post">
+    <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 4%;margin-top: 50px;margin-bottom: -10px" method="post">
         <!--titolo della card-->
-        <div class="mdl-card__title" style="margin-top: 50px">
+        <div class="mdl-card__title">
             <h2 class="mdl-card__title-text" style="margin-left: 20px;color: #1441e0"> RISULTATI RICERCA DISTANZA STELLE DA SPINA DORSALE</h2>
         </div>
         <!--fine titolo-->
@@ -50,7 +50,7 @@
             if (val!=null){%>
 
         <!-- MDL Fixed Layout Container -->
-        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" style="margin-top: 160px">
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" style="margin-top: 130px">
             <!-- Header Container -->
             <header class="mdl-layout__header">
                 <!-- Tab Bar Container , and Tab links -->

@@ -23,8 +23,8 @@
 <!-- definisco i parametri della card -->
 <style>
     .demo-card-wide.mdl-card {
-        width: 454px;
-        height: 500px;
+        width: 500px;
+        height:300px;
         background-color:rgba(255, 255, 255, 0.93);
     }
     .demo-card-wide > .mdl-card__title {
@@ -34,9 +34,9 @@
 </style>
 <!--fine definizione parametri-->
 
-<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;">
+<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;height: 540px">
     <br><br><br><br><br>
-    <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 4%" method="post">
+    <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 4%;margin-top: 50px;margin-bottom: -10px" method="post">
         <!--titolo della card-->
         <div class="mdl-card__title" style="margin-top: 50px">
             <h2 class="mdl-card__title-text" style="margin-left: 20px;color: #1441e0"> RISULTATI NUMERO DI STELLE PRESENTI IN UN FILAMENTO</h2>
@@ -45,7 +45,7 @@
         <%ArrayList<String> val= BeanFilamento.searchStarsInFilament();
         if(val!=null){%>
 
-        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="margin-left:20px;margin-top:35px">
             <thead>
             <tr>
                 <!-- class "mdl-data-table__cell--non-numeric", align values to left -->

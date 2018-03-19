@@ -22,7 +22,7 @@
 <style>
     .demo-card-wide.mdl-card {
         width: 995px;
-        height: 1300px;
+        height: 1220px;
         background-color:rgba(255, 255, 255, 0.93);
     }
     .demo-card-wide > .mdl-card__title {
@@ -34,11 +34,11 @@
 
 
 
-<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;">
+<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;height:1470px">
     <br><br><br><br><br>
-    <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 10%" method="post">
+    <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 10%;margin-top: 50px;margin-bottom: -10px" method="post">
         <!--titolo della card-->
-        <div class="mdl-card__title" style="margin-top: 50px">
+        <div class="mdl-card__title" style="margin-top:10px">
             <h2 class="mdl-card__title-text" style="margin-left: 20px;color: #1441e0"> RISULTATI RICERCA PER CONTRASTO ED ELLITTICITA'</h2>
         </div>
         <!--fine titolo-->
@@ -47,7 +47,7 @@
             if (filamenti!=null){%>
 
         <!-- MDL Fixed Layout Container -->
-        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" style="margin-top: 160px">
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" style="margin-top: 140px">
             <!-- Header Container -->
             <header class="mdl-layout__header">
                 <!-- Tab Bar Container , and Tab links -->

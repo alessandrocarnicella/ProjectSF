@@ -21,8 +21,8 @@
 
 <style>
     .demo-card-wide.mdl-card {
-        width: 900px;
-        height: 500px;
+        width: 960px;
+        height: 300px;
         background-color:rgba(255, 255, 255, 0.93);
     }
     .demo-card-wide > .mdl-card__title {
@@ -34,17 +34,17 @@
 
 
 
-<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;">
+<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;height: 530px">
     <br><br><br><br><br>
-    <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 10%" method="post">
+    <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 10%;margin-bottom: -10px;margin-top: 50px" method="post">
         <!--titolo della card-->
-        <div class="mdl-card__title" style="margin-top: 50px">
+        <div class="mdl-card__title">
             <h2 class="mdl-card__title-text" style="margin-left: 20px;color: #1441e0"> RISULTATI RICERCA DISTANZA VERTICI'</h2>
         </div>
         <!--fine titolo-->
             <%ArrayList<String> result = BeanScheletro.resultDistanceVertici();
             if (result!=null){%>
-        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="margin-left: 25px">
             <thead>
             <tr>
                 <!-- class "mdl-data-table__cell--non-numeric", align values to left -->
@@ -110,5 +110,5 @@
 <jsp:include page="/Include/footerHome.jsp"/>
 <%}
     else {%>
-<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<jsp:forward page="/ResultsPagesJSP/resultError.jsp"/>
 <%}%>
