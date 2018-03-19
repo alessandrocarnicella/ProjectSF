@@ -31,13 +31,13 @@
 <!--fine definizione parametri-->
 
 
-<div style="background: url(/Images/154876-OVJJF1-95.jpg);background-size: 1300px 1100px;">
+<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;height: 990px">
     <br><br><br><br><br>
-    <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 10%" method="post">
+    <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 10%;margin-top: 50px" method="post">
 
         <!--titolo della card-->
         <div class="mdl-card__title" style="margin-bottom: 50px">
-            <h2 class="mdl-card__title-text" style="margin-left: 20px;color: #1441e0"> RICERCA STELLE IN REGIONE </h2>
+            <h2 class="mdl-card__title-text" style="margin-left: 20px;color: #1441e0"> RICERCA STELLE IN BASE ALLA REGIONE </h2>
         </div>
         <!--fine titolo-->
 

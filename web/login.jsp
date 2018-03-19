@@ -12,6 +12,7 @@
 <!-- header-->
 <jsp:include page="Include/header.jsp"/>
 
+<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1200px;">
 <div class="container" style="height: 10%;width: 10%;margin-left: 70%">
     <form method="post" >
         <div class="row">
@@ -52,6 +53,6 @@
         </div>
     </form>
 </div>
-
+</div>
 <!-- footer-->
 <jsp:include page="Include/footer.jsp"/>

@@ -28,8 +28,8 @@
 <jsp:include page="/Include/menu.jsp"/>
 
 
-<div style="background: url(/Images/154876-OVJJF1-95.jpg);background-size: 1300px 1100px;">
-    <form class="demo-card-wide mdl-card mdl-shadow--2dp"  style="margin-left: 10%" method="post" action="../Home.jsp">
+<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;">
+    <form class="demo-card-wide mdl-card mdl-shadow--2dp"  style="margin-left: 10%" method="post" action="/Home.jsp">
         <!--titolo della card-->
         <div class="mdl-card__title" style="margin-bottom: 50px"></div>
         <h2 class="mdl-card__title-text" style="margin-left: 20px;color: #1441e0">L'INSERIMENTO DEI DATI E'STATO EFFETTUATO CORRRETTAMENTE!</h2>
@@ -37,11 +37,11 @@
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" name="aaa" style="width: 200px;margin-left: 30px;margin-top: 40px" >
                 torna alla Home
             </button>
-            <img style=" margin-left: 80px" src="../Images/img_checkedInsert.png" >
+            <img style=" margin-left: 80px" src="/Images/img_checkedInsert.png" >
         </div>
 
         <% if (request.getParameter("aaa") != null){%>
-        <jsp:forward page="../Home.jsp"/>
+        <jsp:forward page="/Home.jsp"/>
         <%}%>
     </form>
 
@@ -49,5 +49,5 @@
 <jsp:include page="/Include/footerHome.jsp"/>
 <%}
     else {%>
-<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<jsp:forward page="/ResultsPagesJSP/resultError.jsp"/>
 <%}%>

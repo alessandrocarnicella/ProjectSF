@@ -34,7 +34,7 @@
 </style>
 <!--fine definizione parametri-->
 
-<div style="background: url(/Images/154876-OVJJF1-95.jpg);background-size: 1300px 1100px;">
+<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;">
     <br><br><br><br><br>
     <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 4%" method="post">
         <!--titolo della card-->
@@ -80,5 +80,5 @@
 <jsp:include page="/Include/footerHome.jsp"/>
 <%}
     else {%>
-<jsp:forward page="../ResultsPagesJSP/resultError.jsp"/>
+<jsp:forward page="/ResultsPagesJSP/resultError.jsp"/>
 <%}%>

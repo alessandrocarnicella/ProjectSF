@@ -38,7 +38,7 @@
     }
 </style>
 
-<div style="background: url(/Images/154876-OVJJF1-95.jpg);background-size: 1300px 1000px;">
+<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1000px;">
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--6-col">
             <div  style=" margin-left: 20%;">

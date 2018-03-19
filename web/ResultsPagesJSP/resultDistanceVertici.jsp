@@ -34,7 +34,7 @@
 
 
 
-<div style="background: url(/Images/154876-OVJJF1-95.jpg);background-size: 1300px 1100px;">
+<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;">
     <br><br><br><br><br>
     <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 10%" method="post">
         <!--titolo della card-->

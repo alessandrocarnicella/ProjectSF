@@ -38,9 +38,9 @@
 <jsp:setProperty property="*" name="BeanSatellite"/>
 
 
-<div style="background: url(/Images/154876-OVJJF1-95.jpg);background-size: 1300px 1100px;">
+<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;height: 980px">
     <br><br><br><br><br>
-    <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 10%">
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 10%;margin-top: 50px">
         <!--titolo della card-->
         <div class="mdl-card__title" style="margin-bottom: 50px">
             <h2 class="mdl-card__title-text" style="margin-left: 20px;color: #1441e0">INSERISCI UN NUOVO SATELLITE</h2>

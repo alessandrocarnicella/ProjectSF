@@ -50,14 +50,14 @@
 
 
 
-<div style="background: url(/Images/154876-OVJJF1-95.jpg);background-size: 1300px 1100px;">
+<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;height: 750px">
     <br><br><br><br><br>
-    <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 10%">
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 10%;margin-top: 50px">
         <!--titolo della card-->
         <div class="mdl-card__title" style="margin-bottom: 50px">
             <h2 class="mdl-card__title-text" style="margin-left: 20px;color: #1441e0">RICERCA FILAMENTO PER BRILLANZA ED ELLITTICITA'</h2>
         </div>
-        <form method="post">
+        <form method="post" style="margin-top: 5px">
             <label style="margin-left: 30px;margin-top: 50px"><b> Inserisci la Percentuale di Brillantezza :</b></label>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"   style="margin-left: 30px; width: 50px" >
                 <input class="mdl-textfield__input" type="number" min="0" max="100" id="sample1" name="nomeRegistrazione" required maxlength="20" >
