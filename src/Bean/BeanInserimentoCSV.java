@@ -40,6 +40,7 @@ public class BeanInserimentoCSV {
         if (inserimento == true) {
             return true;
         }
+
         return false;
     }
 }

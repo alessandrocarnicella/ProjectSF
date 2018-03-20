@@ -54,7 +54,8 @@ public class ControlloreInserimentoCSV {
             return this.inserisciFilamento(nome, path);
         } else if (controllo3.equals("scheletro_")) {
             return this.inserisciScheletroFilamento(nome, path);
-        }  else {
+        } else {
+
             return false;
         }
     }

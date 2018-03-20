@@ -31,6 +31,7 @@ public class UploadServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        boolean b=false;
         boolean isMultipart;
         String filePath;
         int maxFileSize = 500000*1024;
@@ -70,7 +71,7 @@ public class UploadServlet extends HttpServlet {
                     fi.write(file);
 
                     BeanInserimentoCSV inserimentoCSV = new BeanInserimentoCSV();
-                    inserimentoCSV.inserisciDatiCSV(fileName,filePath);
+                    b=inserimentoCSV.inserisciDatiCSV(fileName,filePath);
                     //out.println("file Uploaded : "+fileName);
                 }
             }
@@ -78,8 +79,12 @@ public class UploadServlet extends HttpServlet {
             System.out.println("Errore: " + ex.getMessage());
         } finally {
 
-            request.getRequestDispatcher("/ResultsPagesJSP/resultCorrectInsert.jsp").forward(request, response);
-            //out.close();
+            if(b) {
+                request.getRequestDispatcher("/ResultsPagesJSP/resultCorrectInsert.jsp").forward(request, response);
+                //out.close();
+            }else {
+                request.getRequestDispatcher("/ResultsPagesJSP/resultErrorCSVFormat.jsp").forward(request, response);
+            }
         }
 
     }
