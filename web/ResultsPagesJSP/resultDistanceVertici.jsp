@@ -42,8 +42,10 @@
             <h2 class="mdl-card__title-text" style="margin-left: 20px;color: #1441e0"> RISULTATI RICERCA DISTANZA VERTICI'</h2>
         </div>
         <!--fine titolo-->
-            <%ArrayList<String> result = BeanScheletro.resultDistanceVertici();
-            if (result!=null){%>
+        <%ArrayList<String> result = BeanScheletro.resultDistanceVertici();
+            if (result!=null){
+                System.out.println(result);%>
+
         <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="margin-left: 25px">
             <thead>
             <tr>
@@ -101,14 +103,77 @@
             </div>
             </tbody>
         </table>
-            <%} else {%>
+
+        <% if(result.size()>14){%>
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="margin-left: 25px">
+            <thead>
+            <tr>
+                <!-- class "mdl-data-table__cell--non-numeric", align values to left -->
+                <th class="mdl-data-table__cell--non-numeric">ID Filamento</th>
+                <th class="mdl-data-table__cell--non-numeric">ID Segmento</th>
+                <th class="mdl-data-table__cell--non-numeric">N prog</th>
+                <th class="mdl-data-table__cell--non-numeric">Lat vertice1</th>
+                <th class="mdl-data-table__cell--non-numeric">Lon vertice2</th>
+                <th class="mdl-data-table__cell--non-numeric">Lat punto</th>
+                <th class="mdl-data-table__cell--non-numeric">Lon punto</th>
+                <th class="mdl-data-table__cell--non-numeric">Distanza</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <div class="page-content" style="margin-top: 10px;margin-left: 25px">
+
+                <tr>
+                    <!-- class "mdl-data-table__cell--non-numeric", align values to left -->
+                    <td class="mdl-data-table__cell--non-numeric"><%=result.get(14)%></td>
+                    <td class="mdl-data-table__cell--non-numeric"><%=result.get(15)%></td>
+                    <td class="mdl-data-table__cell--non-numeric"><%=result.get(16)%></td>
+                    <td class="mdl-data-table__cell--non-numeric"><%=result.get(17)%></td>
+                    <td class="mdl-data-table__cell--non-numeric"><%=result.get(18)%></td>
+                    <td class="mdl-data-table__cell--non-numeric"><%=result.get(19)%></td>
+                    <td class="mdl-data-table__cell--non-numeric"><%=result.get(20)%></td>
+
+                    <%  double lonv3 = Double.valueOf(result.get(17));
+                        double latv3 = Double.valueOf(result.get(18));
+                        double lonp3 = Double.valueOf(result.get(19));
+                        double latp3 = Double.valueOf(result.get(20));
+                        double distance3 = Math.sqrt(((lonv3-lonp3)*(lonv3-lonp3)+(latv3-latp3)*(latv3-latp3)));
+                    %>
+
+                    <td class="mdl-data-table__cell--non-numeric"><%=distance3%></td>
+                </tr>
+                <tr>
+                    <!-- class "mdl-data-table__cell--non-numeric", align values to left -->
+                    <td class="mdl-data-table__cell--non-numeric"><%=result.get(21)%></td>
+                    <td class="mdl-data-table__cell--non-numeric"><%=result.get(22)%></td>
+                    <td class="mdl-data-table__cell--non-numeric"><%=result.get(23)%></td>
+                    <td class="mdl-data-table__cell--non-numeric"><%=result.get(24)%></td>
+                    <td class="mdl-data-table__cell--non-numeric"><%=result.get(25)%></td>
+                    <td class="mdl-data-table__cell--non-numeric"><%=result.get(26)%></td>
+                    <td class="mdl-data-table__cell--non-numeric"><%=result.get(27)%></td>
+                    <%  double lonv2 = Double.valueOf(result.get(24));
+                        double latv2 = Double.valueOf(result.get(25));
+                        double lonp2 = Double.valueOf(result.get(26));
+                        double latp2 = Double.valueOf(result.get(27));
+                        double distance2 = Math.sqrt(((lonv2-lonp2)*(lonv2-lonp2)+(latv2-latp2)*(latv2-latp2)));
+                    %>
+                    <td class="mdl-data-table__cell--non-numeric"><%=distance2%></td>
+                </tr>
+            </div>
+            </tbody>
+        </table>
+        <%}%>
+
+
+        <%} else {%>
         <br>
         <label style="margin-left: 30px;margin-top: 30px; color: #ff6244"> <b> NON ESISTONO RISULTATI PER QUESTA SPECIFICA RICERCA! </b></label><br><br><br>
-            <%}%>
+        <%}%>
+    </form>
 </div>
 
 <jsp:include page="/Include/footerHome.jsp"/>
 <%}
-    else {%>
+else {%>
 <jsp:forward page="/ResultsPagesJSP/resultError.jsp"/>
 <%}%>

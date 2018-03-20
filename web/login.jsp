@@ -12,11 +12,11 @@
 <!-- header-->
 <jsp:include page="Include/header.jsp"/>
 
-<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1200px">
+<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1200px;height: 550px;margin-bottom: -20px">
     <div class="container" style="height: 10%;width: 10%;margin-left: 70%;margin-bottom: -20px">
         <form method="post" >
             <div class="row">
-                <div class="col s12 m6" style="width: 200%;height: 20%; margin-top: 10%">
+                <div class="col s12 m6" style="width: 200%;height: 20%; margin-top: 50px">
                     <div class="card-panel">
                         <!-- immagine -->
                         <img src="Images/img_logoLogin.jpg" style="width: 55%;height: 65%;margin-left: 25%">

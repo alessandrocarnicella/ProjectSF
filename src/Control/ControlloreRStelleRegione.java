@@ -40,32 +40,32 @@ public class ControlloreRStelleRegione {
     //method
     public ArrayList<String> searchStarsByRegionFromBean(BeanPosBaseAltezza beanPosBaseAltezza){
 
-        ArrayList<String> val=new ArrayList<>();
-        ArrayList<Stella> stelle=new ArrayList<>();
-        ArrayList<Contorno> puntiContorno=new ArrayList<>();
+        ArrayList<String> val= new ArrayList<>();
+        ArrayList<Stella> stelle = new ArrayList<>();
+        ArrayList<Contorno> puntiContorno = new ArrayList<>();
 
-        ArrayList<String> strStelle= DAOStelle.getInstance().searchStarsByRegionFromDB(beanPosBaseAltezza);
-        ArrayList<String> strContorno= DAOContorno.getInstance().selectAllPointsFromDB();
+        ArrayList<String> strStelle = DAOStelle.getInstance().searchStarsByRegionFromDB(beanPosBaseAltezza);
+        ArrayList<String> strContorno = DAOContorno.getInstance().selectAllPointsFromDB();
 
-        if(strStelle==null||strContorno==null){
+        if(strStelle == null || strContorno == null){
             return null;
         }
 
-        int i=0;
-        int j=0;
-        Double result=0.0;
-        int num=0;
+        int i = 0;
+        int j = 0;
+        Double result = 0.0;
+        int num = 0;
 
 
-        while (i<strStelle.size()){
-            Stella Stella=new Stella(Integer.valueOf(strStelle.get(i)),String.valueOf(strStelle.get(i+1)),Float.valueOf(strStelle.get(i+2)), Float.valueOf(strStelle.get(i+3)),Float.valueOf(strStelle.get(i+4)),strStelle.get(i+5));
-            i=i+6;
+        while (i < strStelle.size()){
+            Stella Stella = new Stella(Integer.valueOf(strStelle.get(i)),String.valueOf(strStelle.get(i+1)),Float.valueOf(strStelle.get(i+2)), Float.valueOf(strStelle.get(i+3)),Float.valueOf(strStelle.get(i+4)),strStelle.get(i+5));
+            i = i+6;
             stelle.add(Stella);
         }
         System.out.println(stelle.size());
-        while (j<strContorno.size()){
-            Contorno singoloPuntoContorno=new Contorno(Integer.valueOf(strContorno.get(j)),Float.valueOf(strContorno.get(j+1)),Float.valueOf(strContorno.get(j+2)));
-            j=j+3;
+        while (j < strContorno.size()){
+            Contorno singoloPuntoContorno = new Contorno(Integer.valueOf(strContorno.get(j)),Float.valueOf(strContorno.get(j+1)),Float.valueOf(strContorno.get(j+2)));
+            j = j+3;
             puntiContorno.add(singoloPuntoContorno);
         }
 
@@ -108,16 +108,14 @@ public class ControlloreRStelleRegione {
             System.out.println("----");
         }
 */
-        int a=0;
-        int b=0;
+        int a = 0;
+        int b = 0;
         //verifica presenza di una stella nei punti di un controno
-        for (int x=0; x<stelle.size();x++) {
+        for (int x = 0; x < stelle.size();x++) {
             if (!trovaStella(stelle.get(x),tuttiContorni)){
                 notFoundStars(stelle.get(x));
-                a++;
                // System.out.println("non"+a);
             } else {
-                b++;
                 // System.out.println("si "+b);
             }
             a++;
