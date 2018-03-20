@@ -169,9 +169,9 @@ public class DAOScheletro {
                 "          WHERE idfilamento = c1.idfilamento\n" +
                 ") AND (nprog = (SELECT max(nprog)\n" +
                 "                FROM scheletro\n" +
-                "                WHERE idsegmento = ?\n" +
+                "                WHERE idsegmento = ? AND scheletro.idfilamento=c1.idfilamento\n" +
                 "                GROUP BY idsegmento)\n" +
-                "       OR nprog = 1);";
+                "       OR nprog = 1)ORDER BY idfilamento;";
 
         try {
 
