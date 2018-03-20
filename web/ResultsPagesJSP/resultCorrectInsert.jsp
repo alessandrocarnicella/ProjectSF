@@ -60,6 +60,8 @@
 <jsp:useBean id="BeanLogin" scope="session" class="Bean.BeanLogin"/>
 <jsp:setProperty property="*" name="BeanLogin"/>
 
+<jsp:useBean id="BeanInserimentoCSV" scope="session" class="Bean.BeanInserimentoCSV"/>
+<jsp:setProperty property="*" name="BeanInserimentoCSV"/>
 
 <%if (BeanLogin.getUtente()){%>
 <!-- definisco i parametri della card -->
@@ -86,7 +88,7 @@
         <div class="mdl-card__title" style="margin-top: 20px"><br>
             <h2 class="mdl-card__title-text" style="margin-left:30px;color: #25793d">L'inserimento dei dati è stato effettutato correttamente!</h2>
         </div>
-
+        <%%>
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" name="comebackhome" style="width: 200px;margin-left: 90px;margin-top: 80px" >
                 torna alla Home
             </button>

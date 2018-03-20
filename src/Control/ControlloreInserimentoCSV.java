@@ -1,7 +1,9 @@
 package Control;
 
+import Bean.BeanInserimentoCSV;
 import DAO.*;
 import Entity.*;
+import com.sun.deploy.util.SyncAccess;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -38,22 +40,23 @@ public class ControlloreInserimentoCSV {
 
     //method
     public boolean inserisciDatiCSVFromBean(String nome, String path) {
-        if (nome.equals("stelle_Herschel.csv")) {
+        String controllo = nome.substring(0,7);
+        System.out.println(controllo);
+        String controllo2 = nome.substring(0,9);
+        System.out.println(controllo2);
+        String controllo3 = nome.substring(0,10);
+        System.out.println(controllo3);
+        if (controllo.equals("stelle_")) {
             return this.inserisciStelle(nome, path);
-        } else if (nome.equals("contorni_filamenti_Herschel.csv")) {
+        } else if (controllo2.equals("contorni_")) {
             return this.inserisciContornoFilamento(nome, path);
-        } else if (nome.equals("contorni_filamenti_Spitzer.csv")) {
-            return this.inserisciContornoFilamento(nome, path);
-        } else if (nome.equals("filamenti_Herschel.csv")) {
+        } else if (controllo3.equals("filamenti_")) {
             return this.inserisciFilamento(nome, path);
-        } else if (nome.equals("filamenti_Spitzer.csv")) {
-            return this.inserisciFilamento(nome, path);
-        } else if (nome.equals("scheletro_filamenti_Herschel.csv")) {
+        } else if (controllo3.equals("scheletro_")) {
             return this.inserisciScheletroFilamento(nome, path);
-        } else if (nome.equals("scheletro_filamenti_Spitzer.csv")) {
-            return this.inserisciScheletroFilamento(nome, path);
-        } else
+        }  else {
             return false;
+        }
     }
 
     //method
@@ -555,7 +558,7 @@ public class ControlloreInserimentoCSV {
         }
         return false;
     }
-
+/*
     ///home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati
     public static void main(String args[]){
 
@@ -583,5 +586,5 @@ public class ControlloreInserimentoCSV {
         System.out.println("scheletro SPR ");
         ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean("scheletro_filamenti_Spitzer.csv", "/home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati");
     }
-
+*/
 }

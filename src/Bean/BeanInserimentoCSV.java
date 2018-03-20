@@ -9,6 +9,7 @@ public class BeanInserimentoCSV {
 
     private String nome;
     private String path;
+    private boolean errore = false;
 
     //getter and setter
     public String getNome() {
@@ -25,10 +26,18 @@ public class BeanInserimentoCSV {
         this.path = path;
     }
 
+    public boolean getErrore() {
+        return errore;
+    }
+    public void setErrore(boolean errore) {
+        this.errore = errore;
+    }
+
+
     //method
-    public boolean inserisciDatiCSV(String nome, String path){
-        boolean inserimento= ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean(nome,path);
-        if (inserimento==true){
+    public boolean inserisciDatiCSV(String nome, String path) {
+        boolean inserimento = ControlloreInserimentoCSV.getInstance().inserisciDatiCSVFromBean(nome, path);
+        if (inserimento == true) {
             return true;
         }
         return false;
