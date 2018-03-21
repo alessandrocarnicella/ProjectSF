@@ -68,7 +68,7 @@ public class BeanLogin {
 
     //method
     public boolean verifyLogin(){
-        this.utente=ControlloreLogin.getInstance().verifyLoginFromBean(this);
+        this.utente = ControlloreLogin.getInstance().verifyLoginFromBean(this);
         if (utente==true)
             return true;
         else
