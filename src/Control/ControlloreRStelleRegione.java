@@ -68,6 +68,7 @@ public class ControlloreRStelleRegione {
             j = j+3;
             puntiContorno.add(singoloPuntoContorno);
         }
+        System.out.println("punti contorno: "+puntiContorno.size());
 
         ArrayList<ArrayList<Contorno>> tuttiContorni = new ArrayList<>();
 
@@ -90,12 +91,13 @@ public class ControlloreRStelleRegione {
                 w = w+1;
             }
             count++;
-            //System.out.println(count);
+            System.out.println(count);
             k = k + singoloContorno.size();
             tuttiContorni.add(singoloContorno);
         }
-        //System.out.println(tuttiContorni.size());
-        //System.out.println(puntiContorno.size());
+
+        System.out.println(tuttiContorni.size());
+        System.out.println(count);
 /*
         for (int n=0; n<tuttiContorni.size();n++ ){
             int cont = 0;
