@@ -21,8 +21,8 @@
 
 <style>
     .demo-card-wide.mdl-card {
-        width: 995px;
-        height: 1220px;
+        width: 1050px;
+        height: 1230px;
         background-color:rgba(255, 255, 255, 0.93);
     }
     .demo-card-wide > .mdl-card__title {
@@ -68,7 +68,7 @@
             <main class="mdl-layout__content">
                 <!-- "is-active" class to set the default active tab -->
                 <section class="mdl-layout__tab-panel is-active" id="page1">
-                    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="margin-left: 20px">
                         <thead>
                         <tr>
                             <!-- class "mdl-data-table__cell--non-numeric", align values to left -->
