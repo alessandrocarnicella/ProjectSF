@@ -25,10 +25,16 @@ public class ControlloreRCentroideEstensione {
         DAOContorno daoContorno = DAOContorno.getInstance();
         ArrayList<String> val = daoContorno.selectForIdOrNameFilCentroidExtensionFromDB(beanFilamento);
         if(val.get(0)!= null) {
-            String distanceMinMaxLong = String.valueOf(Math.hypot(Float.valueOf(val.get(2)), Float.valueOf(val.get(3))));
-            String distanceMinMaxLatg = String.valueOf(Math.hypot(Float.valueOf(val.get(4)), Float.valueOf(val.get(5))));
+
+            float MinMaxLong = (float)(Math.hypot(Float.valueOf(val.get(2)), Float.valueOf(val.get(3))));
+            float MinMaxLatg = (float)(Math.hypot(Float.valueOf(val.get(4)), Float.valueOf(val.get(5))));
+
+            String distanceMinMaxLong = String.valueOf(MinMaxLong);
+            String distanceMinMaxLatg = String.valueOf(MinMaxLatg);
+
             val.add(distanceMinMaxLong);
             val.add(distanceMinMaxLatg);
+            System.out.println(val);
             return val;
         } else {
             return null;

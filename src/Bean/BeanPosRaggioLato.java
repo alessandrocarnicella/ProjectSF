@@ -12,8 +12,8 @@ public class BeanPosRaggioLato {
 
     private Float lonG;
     private Float latG;
-    private Float raggio;
-    private Float lato;
+    private Float raggio = 0f;
+    private Float lato = 0f;
 
     //getter and setter
     public Float getLonG() {
