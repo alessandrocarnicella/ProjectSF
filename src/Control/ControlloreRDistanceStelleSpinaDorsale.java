@@ -52,8 +52,6 @@ public class ControlloreRDistanceStelleSpinaDorsale {
 
         DAOStelle.getInstance().deleteTableOrdinamento();
 
-
-
         return val;
     }
 
