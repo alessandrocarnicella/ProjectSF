@@ -1,24 +1,20 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Manuel
-  Date: 22/02/2018
-  Time: 12:18
-  To change this template use File | Settings | File Templates.
---%>
+
 <jsp:useBean id="BeanLogin" scope="session" class="Bean.BeanLogin"/>
 <jsp:setProperty property="*" name="BeanLogin"/>
 
+<!-- Controllo su utente loggato -->
 <%if (BeanLogin.getUtente()){%>
 <jsp:useBean id="BeanFilamento" scope="session" class="Bean.BeanFilamento"/>
 <jsp:setProperty property="*" name="BeanFilamento"/>
 
-
+<!-- header -->
 <jsp:include page="/Include/headerHome.jsp"/>
+<!-- menu -->
 <jsp:include page="/Include/menu.jsp"/>
 
-<!-- definisco i parametri della card -->
+<!-- CSS style -->
 <style>
     .demo-card-wide.mdl-card {
         width: 800px;
@@ -30,10 +26,8 @@
         height: 100px;
     }
 </style>
-<!--fine definizione parametri-->
 
-<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;height: 840px">
-    <br><br><br><br><br>
+<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;height: 840px"><br><br><br><br><br>
     <form class="demo-card-wide mdl-card mdl-shadow--2dp"  style="margin-left: 10%;margin-top: 50px" method="post">
 
         <!--titolo della card-->
@@ -69,9 +63,12 @@
     <%}%>
 </div>
 
-
+<!--footer-->
 <jsp:include page="/Include/footerHome.jsp"/>
-<%}
-    else {%>
+<%
+}
+else {%>
+<!-- Pagina di errore per utente non loggato -->
 <jsp:forward page="/ResultsPagesJSP/resultError.jsp"/>
-<%}%>
+<%
+    }%>

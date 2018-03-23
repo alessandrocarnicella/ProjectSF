@@ -1,19 +1,22 @@
 <%@ page import="Entity.Filamento" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <jsp:useBean id="BeanLogin" scope="session" class="Bean.BeanLogin"/>
 <jsp:setProperty property="*" name="BeanLogin"/>
 
+<!-- Controllo su utente loggato -->
 <%if (BeanLogin.getUtente()){%>
 
 <jsp:useBean id="BeanPosRaggioLato" scope="session" class="Bean.BeanPosRaggioLato"/>
 <jsp:setProperty property="*" name="BeanPosRaggioLato"/>
 
-
+<!-- header -->
 <jsp:include page="/Include/headerHome.jsp"/>
+<!-- menu -->
 <jsp:include page="/Include/menu.jsp"/>
 
-<!-- definisco i parametri della card -->
+<!-- CSS style -->
 <style>
     .demo-card-wide.mdl-card {
         width: 1045px;
@@ -26,17 +29,14 @@
         height: 100px;
     }
 </style>
-<!--fine definizione parametri-->
 
-<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;height: 980px">
-    <br><br><br><br><br>
+<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;height: 980px"><br><br><br><br><br>
     <form class="demo-card-wide mdl-card mdl-shadow--2dp"  style="margin-left: 10%;margin-top: 50px;margin-bottom: -10px" method="post">
 
         <!--titolo della card-->
         <div class="mdl-card__title">
             <h2 class="mdl-card__title-text" style="margin-left: 20px;color: #1441e0"> RISULTATI RICERCA PER REGIONE </h2>
         </div>
-        <!--fine titolo-->
 
         <%ArrayList<Filamento> val= BeanPosRaggioLato.selectFilamentoFromBean();%>
         <%if (val!=null){%>
@@ -84,9 +84,14 @@
         <%}%>
 </div>
 
-
+<!--footer-->
 <jsp:include page="/Include/footerHome.jsp"/>
-<%}
-    else {%>
+<%
+}
+else {%>
+<!-- Pagina di errore per utente non loggato -->
 <jsp:forward page="/ResultsPagesJSP/resultError.jsp"/>
-<%}%>
+<%
+}%>
+
+

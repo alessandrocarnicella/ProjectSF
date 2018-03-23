@@ -1,7 +1,6 @@
 package Bean;
 
 import Control.ControlloreInserimentoDati;
-import Control.ControlloreLogin;
 
 /**
  * Created by alessandro on 15/02/18.

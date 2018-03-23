@@ -1,24 +1,23 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Manuel
-  Date: 16/02/2017
-  Time: 15:51
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html>
+
 <head>
-    <!--Import CSS from main.css-->
+    <!-- import CSS from main.css -->
     <link rel="stylesheet" href="CSS/main.css">
-    <!--Import materialize.css-->
+
+    <!-- import materialize.css -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--Import Google Icon Font-->
+
+    <!-- import Google Icon Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
-    <!-- nome Progetto -->
+
+    <!-- nome progetto -->
     <title>ProjectSF</title>
 </head>
+
 <body>
 <nav style="background: #2b66b5">
     <div class="nav-wrapper">

@@ -113,7 +113,6 @@ public class ControlloreRStelleInFilamento {
 
     private void foundStars(Stella s){
 
-        System.out.println(s.getIdStella());
         stelleTrovate++;
 
         if (s.getTipoStella().equals("PROTOSTELLAR")){

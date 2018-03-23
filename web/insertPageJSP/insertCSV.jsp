@@ -1,19 +1,14 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: alessandro
-  Date: 16/02/18
-  Time: 10.57
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <jsp:useBean id="BeanLogin" scope="session" class="Bean.BeanLogin"/>
 <jsp:setProperty property="*" name="BeanLogin"/>
 
+<!-- controllo su utente loggato e tipo di utente -->
 <%if (BeanLogin.getUtente()&&(BeanLogin.getTipoUtente().equals("Amministratore"))){%>
 
 <jsp:useBean id="BeanInserimentoCSV" scope="session" class="Bean.BeanInserimentoCSV"/>
 <jsp:setProperty property="*" name="BeanInserimentoCSV"/>
+
 <!-- header -->
 <jsp:include page="/Include/headerHome.jsp"/>
 <!-- menu -->
@@ -62,19 +57,20 @@
     }
 </style>
 
+
 <div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;height: 630px">
     <br><br><br><br><br>
     <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 10%;margin-top: 50px">
+
         <!--titolo della card-->
         <div class="mdl-card__title" style="margin-bottom: 50px">
             <h2 class="mdl-card__title-text" style="margin-left: 20px;color: #1441e0">INSERISCI CSV</h2>
         </div>
+
         <!-- inserimento CSV -->
         <form enctype="multipart/form-data" action="/upload" method="post" >
-            <label style="margin-left: 30px"> <b>Il formato accettato è: tipo_Nomefile</b></label>
-            <br>
-            <label style="margin-left: 30px"> <b>(ex. filamenti_Spitzer, stelle_Herschel ecc ) </b></label>
-            <br>
+            <label style="margin-left: 30px"> <b>Il formato accettato è: tipo_Nomefile</b></label><br>
+            <label style="margin-left: 30px"> <b>(ex. filamenti_Spitzer, stelle_Herschel ecc ) </b></label><br>
             <div class="file_input_div" style="margin-right:330px;margin-top:20px">
                 <div class="file_input">
                     <label class="image_input_button mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored" onclick="foo4()">
@@ -86,20 +82,22 @@
                     <input class="file_input_text mdl-textfield__input" type="text" name="file_input_text" disabled readonly id="file_input_text" />
                     <label class="mdl-textfield__label" for="file_input_text"></label>
                 </div>
-            </div>
-            <br>
+            </div><br>
+
             <!-- button conferma inserimento CSV -->
             <button onclick="move();foo3()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="width: 200px;margin-left: 30px;margin-top: 50px"  type="submit" name="confermaCSV">
                 Conferma
             </button>
+
+            <!-- immagine inserimenti csv-->
             <img style=" margin-left: 150px;width: 90px;height: 100px" src="../Images/img_csv.png" >
             <br><br>
             <label id="caricamento" style="visibility: hidden;margin-left: 30px">Caricamento in corso...</label>
-        </form>
-        <br><br>
+        </form><br><br>
+
+        <!-- barra di caricamento -->
         <div style=" width:80%; height: 5px;margin-left: 50px;" id="myBar" class="mdl-progress mdl-js-progress"></div>
-    </div>
-    <br><br>
+    </div><br><br>
 </div>
 
 <!-- script JS -->
@@ -184,9 +182,12 @@
 
 <!-- footer -->
 <jsp:include page="/Include/footerHome.jsp"/>
-
-<%}
+<%
+}
 else {%>
-<jsp:forward page="/ResultsPagesJSP/resultError.jsp"/>
-<%}%>
+
+    <!-- Pagina di errore per utente non loggato -->
+    <jsp:forward page="/ResultsPagesJSP/resultError.jsp"/>
+<%
+}%>
 

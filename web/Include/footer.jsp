@@ -1,10 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Manuel
-  Date: 16/02/2017
-  Time: 15:51
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!-- footer -->
 <footer class="page-footer" style="background:  #2b66b5">
     <div class="container" >
@@ -16,10 +11,10 @@
             <div class="col l4 offset-l2 s12">
                 <h5 class="white-text"></h5>
                 <ul>
-                    <li><a class="grey-text text-lighten-3" href="#!"></a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!"></a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!"></a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!"></a></li>
+                    <li><a class="grey-text text-lighten-3"></a></li>
+                    <li><a class="grey-text text-lighten-3"></a></li>
+                    <li><a class="grey-text text-lighten-3"></a></li>
+                    <li><a class="grey-text text-lighten-3"></a></li>
                 </ul>
             </div>
         </div>

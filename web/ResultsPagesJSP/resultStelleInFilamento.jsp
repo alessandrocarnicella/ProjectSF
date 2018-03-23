@@ -1,26 +1,20 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Manuel
-  Date: 07/03/2018
-  Time: 12:29
-  To change this template use File | Settings | File Templates.
---%>
 
 <jsp:useBean id="BeanLogin" scope="session" class="Bean.BeanLogin"/>
 <jsp:setProperty property="*" name="BeanLogin"/>
 
+<!-- Controllo su utente loggato -->
 <%if (BeanLogin.getUtente()){%>
 <jsp:useBean id="BeanFilamento" scope="session" class="Bean.BeanFilamento"/>
 <jsp:setProperty property="*" name="BeanFilamento"/>
 
-
+<!-- header -->
 <jsp:include page="/Include/headerHome.jsp"/>
+<!-- menu -->
 <jsp:include page="/Include/menu.jsp"/>
 
-
-<!-- definisco i parametri della card -->
+<!-- CSS style -->
 <style>
     .demo-card-wide.mdl-card {
         width: 500px;
@@ -32,16 +26,16 @@
         height: 70px;
     }
 </style>
-<!--fine definizione parametri-->
 
 <div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;height: 600px">
     <br><br><br><br><br>
     <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 4%;margin-top: 50px;margin-bottom: -10px" method="post">
+
         <!--titolo della card-->
         <div class="mdl-card__title" style="margin-top: 50px">
             <h2 class="mdl-card__title-text" style="margin-left: 20px;color: #1441e0"> RISULTATI NUMERO DI STELLE PRESENTI IN UN FILAMENTO</h2>
         </div>
-        <!--fine titolo-->
+
         <%ArrayList<String> val= BeanFilamento.searchStarsInFilament();
         if(val!=null){%>
 
@@ -68,17 +62,20 @@
             </tr>
             </tbody>
         </table>
-
     <%
     } else {%>
     <br>
     <label style="margin-left: 30px;margin-top: 30px; color: #ff6244"> <b> NON ESISTONO RISULTATI PER QUESTO ID FILAMENTO! </b></label><br>
     <%}%>
-
     </form>
 </div>
+
+<!--footer-->
 <jsp:include page="/Include/footerHome.jsp"/>
-<%}
-    else {%>
+<%
+}
+else {%>
+<!-- Pagina di errore per utente non loggato -->
 <jsp:forward page="/ResultsPagesJSP/resultError.jsp"/>
-<%}%>
+<%
+}%>

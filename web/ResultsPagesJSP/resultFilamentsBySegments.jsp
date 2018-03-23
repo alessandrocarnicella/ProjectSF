@@ -1,21 +1,18 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Manuel
-  Date: 25/02/2018
-  Time: 16:59
-  To change this template use File | Settings | File Templates.
---%>
 
 <jsp:useBean id="BeanLogin" scope="session" class="Bean.BeanLogin"/>
 <jsp:setProperty property="*" name="BeanLogin"/>
 
+<!-- Controllo su utente loggato -->
 <%if (BeanLogin.getUtente()){%>
+
 <jsp:useBean id="BeanSegmento" scope="session" class="Bean.BeanSegmento"/>
 <jsp:setProperty property="*" name="BeanSegmento"/>
 
+<!-- header -->
 <jsp:include page="/Include/headerHome.jsp"/>
+<!-- menu -->
 <jsp:include page="/Include/menu.jsp"/>
 
 <!-- MDL for tabs pagination-->
@@ -23,7 +20,7 @@
 <link rel="stylesheet"
       href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.red-purple.min.css" />
 
-<!-- definisco i parametri della card -->
+<!-- CSS style -->
 <style>
     .demo-card-wide.mdl-card {
         width: 1180px;
@@ -35,25 +32,24 @@
         height: 100px;
     }
 </style>
-<!--fine definizione parametri-->
 
-
-<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;height: 1480px">
-    <br><br><br><br><br>
+<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;height: 1480px"><br><br><br><br><br>
     <form class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 4%;margin-top: 50px;margin-bottom: -10px" method="post">
+
         <!--titolo della card-->
         <div class="mdl-card__title" style="margin-top: 10px">
             <h2 class="mdl-card__title-text" style="margin-left: 20px;color: #1441e0"> RISULTATI DI UN FILAMENTO CON NUMERO DI SEGMENTI COMPRESO TRA <%=request.getParameter("int1")%> E <%=request.getParameter("int2")%></h2>
         </div>
-        <!--fine titolo-->
-            <% int count=1;
+         <% int count=1;
             ArrayList<String[]> filamentiBySegmentsNumber= BeanSegmento.selectFilamentsBySegmentsNumber(Integer.valueOf(request.getParameter("int1")),Integer.valueOf(request.getParameter("int2")));
             if (filamentiBySegmentsNumber!=null){ System.out.println(filamentiBySegmentsNumber.size());%>
 
         <!-- MDL Fixed Layout Container -->
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" style="margin-top: 140px">
+
             <!-- Header Container -->
             <header class="mdl-layout__header">
+
                 <!-- Tab Bar Container , and Tab links -->
                 <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
                     <a href="#page1" class="mdl-layout__tab is-active">pagina1</a>
@@ -69,6 +65,7 @@
             </header>
 
             <main class="mdl-layout__content">
+
                 <!-- "is-active" class to set the default active tab -->
                 <section class="mdl-layout__tab-panel is-active" id="page1">
                     <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
@@ -173,8 +170,14 @@
             <%}%>
 </div>
 
+<!--footer-->
 <jsp:include page="/Include/footerHome.jsp"/>
-<%}
-    else {%>
+<%
+}
+else {%>
+<!-- Pagina di errore per utente non loggato -->
 <jsp:forward page="/ResultsPagesJSP/resultError.jsp"/>
-<%}%>
+<%
+}%>
+
+
