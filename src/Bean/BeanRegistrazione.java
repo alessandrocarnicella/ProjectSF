@@ -2,9 +2,7 @@ package Bean;
 
 import Control.ControlloreInserimentoDati;
 
-/**
- * Created by alessandro on 15/02/18.
- */
+
 public class BeanRegistrazione {
 
     private String nomeRegistrazione;
@@ -14,6 +12,7 @@ public class BeanRegistrazione {
     private String emailRegistrazione;
     private String tipoUtenteRegistrazione;
     private boolean utenteRegistrazione;
+
 
     //getter and setter
     public String getNome() {
@@ -65,6 +64,7 @@ public class BeanRegistrazione {
         this.utenteRegistrazione = utente;
     }
 
+
     //method
     public boolean insertNewUtente(){
         boolean inserimento= ControlloreInserimentoDati.getInstance().insertNewUserFromBean(this);
@@ -74,4 +74,5 @@ public class BeanRegistrazione {
         else
             return false;
     }
+
 }

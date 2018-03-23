@@ -8,9 +8,7 @@ import Entity.Stella;
 
 import java.util.ArrayList;
 
-/**
- * Created by Manuel on 05/03/2018.
- */
+
 public class ControlloreRStelleInFilamento {
 
     private int stelleTrovate = 0;
@@ -42,7 +40,6 @@ public class ControlloreRStelleInFilamento {
         }
 
         arrayStelle(strStelle,stelle);
-
         arrayContorni(strContorno,puntiContorno);
 
         Double result=0.0;
@@ -83,11 +80,13 @@ public class ControlloreRStelleInFilamento {
 
     }
 
+
     //method
     private float calcolaPercentuale(int s, int sT){
         float result = ((float)s/(float) sT)*100;
         return result;
     }
+
 
     //method
     private void arrayContorni( ArrayList<String> strContorno,ArrayList<Punto> puntiContorno){

@@ -1,8 +1,5 @@
 package Bean;
 
-/**
- * Created by Manuel on 05/03/2018.
- */
 public class BeanStella {
 
     private int idStella;
@@ -54,4 +51,5 @@ public class BeanStella {
     public void setTipoStella(String tipoStella) {
         this.tipoStella = tipoStella;
     }
+
 }

@@ -1,8 +1,5 @@
 package Entity;
 
-/**
- * Created by alessandro on 08/02/18.
- */
 public class Misurazione {
 
     private String nomeStrumento;
@@ -13,6 +10,7 @@ public class Misurazione {
         this.nomeStrumento = nomeStrumento;
         this.banda = banda;
     }
+
 
     //getter and setter
     public String getNomeStrumento() {
@@ -28,4 +26,5 @@ public class Misurazione {
     public void setBanda(float banda) {
         this.banda = banda;
     }
+
 }

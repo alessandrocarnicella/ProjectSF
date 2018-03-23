@@ -5,15 +5,13 @@ import DAO.DAOScheletro;
 
 import java.util.ArrayList;
 
-/**
- * Created by alessandro on 19/02/18.
- */
 public class ControlloreRDistanza{
     private static ControlloreRDistanza instance;
 
     //constructor
     protected ControlloreRDistanza() {
     }
+
 
     // singleton
     public static synchronized final ControlloreRDistanza getInstance() {
@@ -33,4 +31,5 @@ public class ControlloreRDistanza{
             return null;
         }
     }
+
 }

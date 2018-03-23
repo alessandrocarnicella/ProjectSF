@@ -2,9 +2,7 @@ package Entity;
 
 import java.sql.Date;
 
-/**
- * Created by alessandro on 08/02/18.
- */
+
 public class Satellite {
 
     private String nome;
@@ -19,6 +17,7 @@ public class Satellite {
         this.dataFine = dataFine;
         this.nomeAgenzia = nomeAgenzia;
     }
+
 
     //getter and setter
     public String getNome() {
@@ -48,4 +47,5 @@ public class Satellite {
     public void setNomeAgenzia(String nomeAgenzia) {
         this.nomeAgenzia = nomeAgenzia;
     }
+
 }

@@ -5,9 +5,7 @@ import Entity.Filamento;
 
 import java.util.ArrayList;
 
-/**
- * Created by alessandro on 01/03/18.
- */
+
 public class BeanPosRaggioLato {
 
     private Float lonG;
@@ -44,9 +42,11 @@ public class BeanPosRaggioLato {
         this.lato = lato;
     }
 
+
     //method
     public ArrayList<Filamento> selectFilamentoFromBean(){
         ArrayList<Filamento> filamento = ControlloreRCerchioQuadrato.getInstance().selectForRegionePosSpazialeFromBean(this);
         return filamento;
     }
+
 }

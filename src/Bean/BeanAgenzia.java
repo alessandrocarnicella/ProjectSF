@@ -4,9 +4,7 @@ import Control.ControlloreInserimentoDati;
 
 import java.util.ArrayList;
 
-/**
- * Created by Manuel on 10/02/2018.
- */
+
 public class BeanAgenzia {
 
     private String nome;

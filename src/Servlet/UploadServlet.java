@@ -1,6 +1,5 @@
 package Servlet;
 
-
 import Bean.BeanInserimentoCSV;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -17,14 +16,10 @@ import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * Created by alessandro on 16/02/18.
- */
+
 @WebServlet(name = "UploadServlet")
 public class UploadServlet extends HttpServlet {
     private File file;
-
-
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

@@ -6,9 +6,7 @@ import Control.ControlloreRStelleInFilamento;
 
 import java.util.ArrayList;
 
-/**
- * Created by alessandro on 21/02/18.
- */
+
 public class BeanFilamento {
 
     private String nome;
@@ -94,6 +92,7 @@ public class BeanFilamento {
         this.ordinamento = ordinamento;
     }
 
+
     //method
     public ArrayList<String> selectForIdOrNameFilCentroidExtension(){
         ArrayList<String> val= ControlloreRCentroideEstensione.getInstance().selectForIdOrNameFilCentroidExtensionFromBean(this);
@@ -113,6 +112,7 @@ public class BeanFilamento {
             return null;
     }
 
+
     //method
     public ArrayList<String[]> searchDistance(){
         ArrayList<String[]> val= ControlloreRDistanceStelleSpinaDorsale.getInstance().searchDistanceStelleSpinaDorsaleFromBean(this);
@@ -121,4 +121,5 @@ public class BeanFilamento {
         }else
             return null;
     }
+
 }

@@ -2,9 +2,7 @@ package Bean;
 
 import Control.ControlloreLogin;
 
-/**
- * Created by Manuel on 08/02/2018.
- */
+
 public class BeanLogin {
 
     private String nome;
@@ -66,6 +64,7 @@ public class BeanLogin {
         this.utente = utente;
     }
 
+
     //method
     public boolean verifyLogin(){
         this.utente = ControlloreLogin.getInstance().verifyLoginFromBean(this);
@@ -74,4 +73,5 @@ public class BeanLogin {
         else
             return false;
     }
+
 }

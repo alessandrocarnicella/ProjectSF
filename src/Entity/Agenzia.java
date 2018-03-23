@@ -1,8 +1,5 @@
 package Entity;
 
-/**
- * Created by Manuel on 08/02/2018.
- */
 public class Agenzia {
 
     private String nome;
@@ -12,6 +9,7 @@ public class Agenzia {
         this.nome = nome;
     }
 
+
     //getter and setter
     public String getNome() {
         return nome;
@@ -19,4 +17,5 @@ public class Agenzia {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
 }

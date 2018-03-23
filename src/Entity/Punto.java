@@ -1,15 +1,12 @@
 package Entity;
 
-/**
- * Created by Manuel on 08/02/2018.
- */
+
 public class Punto {
 
     private Float latG;
     private Float lonG;
 
-
-    //constructor
+    //default constructor
     public Punto() {
     }
 
@@ -18,6 +15,7 @@ public class Punto {
         this.latG = latG;
         this.lonG = lonG;
     }
+
 
     //getter and setter
     public Float getLatG() {

@@ -6,14 +6,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-/**
- * Created by Manuel on 10/02/2018.
- */
 public class DAOUtente {
 
     private DataSource DataSource;
     private static DAOUtente instance;
 
+    //constructor
     protected DAOUtente() {
         this.DataSource = new DataSource();
     }
@@ -25,12 +23,12 @@ public class DAOUtente {
         return instance;
     }
 
+
     //method inserimento utente in DB
     public boolean insertNewUtenteInDB(BeanRegistrazione beanRegistrazione) {
 
         Connection conn = null;
         PreparedStatement stmt = null;
-
 
         try {
             conn = this.DataSource.getConnection();
@@ -69,4 +67,5 @@ public class DAOUtente {
         }
         return true;
     }
+
 }

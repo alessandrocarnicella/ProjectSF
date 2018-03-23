@@ -1,8 +1,6 @@
 package Entity;
 
-/**
- * Created by Manuel on 08/02/2018.
- */
+
 public class Stella {
 
     private int idStella;
@@ -12,7 +10,7 @@ public class Stella {
     private Float valoreFlusso;
     private String tipoStella;
 
-    //constructor
+    //default constructor
     public Stella() {
     }
 
@@ -69,4 +67,5 @@ public class Stella {
     public void setTipoStella(String tipoStella) {
         this.tipoStella = tipoStella;
     }
+
 }

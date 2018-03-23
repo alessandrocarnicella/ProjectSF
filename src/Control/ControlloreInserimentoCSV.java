@@ -11,9 +11,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 
-/**
- * Created by alessandro on 09/02/18.
- */
 
 public class ControlloreInserimentoCSV {
 
@@ -38,12 +35,11 @@ public class ControlloreInserimentoCSV {
 
     //method
     public boolean inserisciDatiCSVFromBean(String nome, String path) {
+
         String controllo = nome.substring(0,7);
-        System.out.println(controllo);
         String controllo2 = nome.substring(0,9);
-        System.out.println(controllo2);
         String controllo3 = nome.substring(0,10);
-        System.out.println(controllo3);
+
         if (controllo.equals("stelle_")) {
             return this.inserisciStelle(nome, path);
         } else if (controllo2.equals("contorni_")) {
@@ -53,10 +49,10 @@ public class ControlloreInserimentoCSV {
         } else if (controllo3.equals("scheletro_")) {
             return this.inserisciScheletroFilamento(nome, path);
         } else {
-
             return false;
         }
     }
+
 
     //method
     private boolean inserisciContornoFilamento(String nome, String path) {
@@ -96,9 +92,11 @@ public class ControlloreInserimentoCSV {
                 }else if(equalsColoumnsNamesContorno(values)){
                     num++;
                 }
+                /*
                 if(count%10000 == 0) {
                     System.out.println(count);
                 }
+                */
             }
             DAOPunto.closeConnection();
             stampaTempo();
@@ -126,19 +124,19 @@ public class ControlloreInserimentoCSV {
 
                     if ( !DAOFilamento.findItemById(filamento) ) {
                         DAOFilamento.insertFilamento(filamento);
-
                     }
                 }else if(equalsColoumnsNamesContorno(values)){
                     num++;
                 }
+                /*
                 if(count%10000 == 0) {
                     System.out.println(count);
                 }
+                */
             }
             DAOFilamento.closeConnection();
             stampaTempo();
             br.close();
-
 
             DAOContorno.openConnection();
             num = 0;
@@ -162,9 +160,11 @@ public class ControlloreInserimentoCSV {
                 }else if(equalsColoumnsNamesContorno(values)){
                     num++;
                 }
+                /*
                 if(count%10000 == 0) {
                     System.out.println(count);
                 }
+                */
             }
             stampaTempo();
         } catch (FileNotFoundException e) {
@@ -185,8 +185,6 @@ public class ControlloreInserimentoCSV {
         DAOContorno.closeConnection();
         return true;
     }
-
-
 
 
     //method
@@ -227,9 +225,11 @@ public class ControlloreInserimentoCSV {
                 }else if(equalsColoumnsNamesFilamento(values)){
                     num++;
                 }
+                /*
                 if(count%1000 == 0) {
                     System.out.println(count);
                 }
+               */
             }
             stampaTempo();
             DAOFilamento.closeConnection();
@@ -251,6 +251,7 @@ public class ControlloreInserimentoCSV {
         }
         return true;
     }
+
 
     //method
     private boolean inserisciScheletroFilamento(String nome, String path) {
@@ -289,9 +290,11 @@ public class ControlloreInserimentoCSV {
                 }else if(equalsColoumnsNamesScheletro(values)){
                     num++;
                 }
+                /*
                 if(count%10000 == 0) {
                     System.out.println(count);
                 }
+                */
             }
             DAOPunto.closeConnection();
             stampaTempo();
@@ -319,14 +322,15 @@ public class ControlloreInserimentoCSV {
 
                     if ( !DAOFilamento.findItemById(filamento) ) {
                         DAOFilamento.insertFilamento(filamento);
-
                     }
                 }else if(equalsColoumnsNamesScheletro(values)){
                     num++;
                 }
+                /*
                 if(count%10000 == 0) {
                     System.out.println(count);
                 }
+                */
             }
             DAOFilamento.closeConnection();
             stampaTempo();
@@ -350,9 +354,11 @@ public class ControlloreInserimentoCSV {
                 }else if(equalsColoumnsNamesScheletro(values)){
                     num++;
                 }
+                /*
                 if(count%10000 == 0) {
                     System.out.println(count);
                 }
+                */
             }
             DAOSegmento.closeConnection();
             stampaTempo();
@@ -383,9 +389,11 @@ public class ControlloreInserimentoCSV {
                 }else if(equalsColoumnsNamesScheletro(values)){
                     num++;
                 }
+                /*
                 if(count%10000 == 0) {
                     System.out.println(count);
                 }
+                */
             }
             DAOScheletro.closeConnection();
             stampaTempo();
@@ -443,9 +451,11 @@ public class ControlloreInserimentoCSV {
                 }else if(equalsColoumnsNamesStella(values)){
                     num++;
                 }
+                /*
                 if(count%10000 == 0) {
                     System.out.println(count);
                 }
+                */
             }
             stampaTempo();
             DAOPunto.closeConnection();
@@ -475,9 +485,11 @@ public class ControlloreInserimentoCSV {
                 }else if(equalsColoumnsNamesStella(values)){
                     num++;
                 }
+                /*
                 if(count%10000 == 0) {
                     System.out.println(count);
                 }
+                */
             }
             stampaTempo();
             DAOStella.closeConnection();
@@ -499,12 +511,14 @@ public class ControlloreInserimentoCSV {
         return true;
     }
 
+
     //method
     public void stampaTempo(){
         System.out.println(Calendar.getInstance().get(Calendar.HOUR_OF_DAY)+":"
                 +Calendar.getInstance().get(Calendar.MINUTE)+":"
                 +Calendar.getInstance().get(Calendar.SECOND));
     }
+
 
     //method
     private boolean equalsColoumnsNamesContorno(ArrayList<String> values){
@@ -514,6 +528,7 @@ public class ControlloreInserimentoCSV {
         }
         return false;
     }
+
 
     //method
     private boolean equalsColoumnsNamesScheletro(ArrayList<String> values){
@@ -529,6 +544,7 @@ public class ControlloreInserimentoCSV {
         return false;
     }
 
+
     //method
     private boolean equalsColoumnsNamesStella(ArrayList<String> values){
         if(values.get(0).equals("IDSTAR")&&
@@ -541,6 +557,7 @@ public class ControlloreInserimentoCSV {
         }
         return false;
     }
+
 
     //method
     private boolean equalsColoumnsNamesFilamento(ArrayList<String> values){
@@ -559,6 +576,7 @@ public class ControlloreInserimentoCSV {
     }
 /*
     ///home/alessandro/Scrivania/ProgettoBasiDati/ProgettoDb_TestDati
+    //C:\Users\Manuel\Desktop\Università\BasiDiDati\ProgettoBasiManuel_Alessandro\ProgettoDb_TestDati
     public static void main(String args[]){
 
         System.out.println("scheletro HER ");

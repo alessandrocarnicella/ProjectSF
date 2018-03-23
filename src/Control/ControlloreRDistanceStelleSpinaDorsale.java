@@ -8,9 +8,6 @@ import Entity.Stella;
 
 import java.util.ArrayList;
 
-/**
- * Created by Manuel on 05/03/2018.
- */
 public class ControlloreRDistanceStelleSpinaDorsale {
 
     private ArrayList<String[]> val = new ArrayList<>();
@@ -40,7 +37,6 @@ public class ControlloreRDistanceStelleSpinaDorsale {
         }
 
         arrayStelle(strStelle,stelle);
-
         arrayContorni(strContorno,puntiContorno);
 
         //verifica presenza di una stella nei punti di un controno
@@ -77,6 +73,7 @@ public class ControlloreRDistanceStelleSpinaDorsale {
         }
     }
 
+
     //method
     private void ordinamento(BeanFilamento beanFilamento){
         if(beanFilamento.getOrdinamento().equals("ordflusso")){
@@ -86,6 +83,7 @@ public class ControlloreRDistanceStelleSpinaDorsale {
             val = DAOStelle.getInstance().orderByDistanceFromDB();
         }
     }
+
 
     //method
     private void trovaStella (ArrayList<Stella> stelle, ArrayList<Punto> puntiContorno,BeanFilamento beanFilamento){
@@ -109,6 +107,7 @@ public class ControlloreRDistanceStelleSpinaDorsale {
             }
         }
     }
+
 
     //method
     private void foundStars(Stella s, int id){

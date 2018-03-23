@@ -9,15 +9,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- * Created by alessandro on 09/02/18.
- */
+
 public class DAOStelle {
 
     private DataSource DataSource;
     private static DAOStelle instance;
     private Connection conn = null;
 
+    //constructor
     protected DAOStelle() {
         this.DataSource = new DataSource();
     }
@@ -28,6 +27,7 @@ public class DAOStelle {
             DAOStelle.instance = new DAOStelle();
         return instance;
     }
+
 
     //method open connection
     public void openConnection() {
@@ -44,6 +44,7 @@ public class DAOStelle {
         }
     }
 
+
     //method close connection
     public void closeConnection() {
         try {
@@ -53,6 +54,7 @@ public class DAOStelle {
             e.printStackTrace();
         }
     }
+
 
     //method inserimento setlla in DB
     public void insertStella(Stella stella) {
@@ -115,6 +117,7 @@ public class DAOStelle {
         return false;
     }
 
+
     //method aggiornamneto stella in DB
     public void updateStella(Stella stella) {
 
@@ -171,7 +174,6 @@ public class DAOStelle {
                 val.add(rs.getString(4));
                 val.add(rs.getString(5));
                 val.add(rs.getString(6));
-
             }
 
         }catch (SQLException e) {
@@ -344,6 +346,7 @@ public class DAOStelle {
         return val;
     }
 
+
     //method
     public ArrayList<String[]> orderByFluxFromDB() {
         ArrayList<String[]> val1=new ArrayList<String[]>();
@@ -409,6 +412,7 @@ public class DAOStelle {
         return val1;
     }
 
+
     //method
     public ArrayList<String[]> orderByDistanceFromDB() {
 
@@ -440,10 +444,7 @@ public class DAOStelle {
                 val[7]=(rs.getString(8));
                 val[8]=(rs.getString(9));
                 val1.add(val);
-
-
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -477,8 +478,10 @@ public class DAOStelle {
         return val1;
     }
 
+
     //method
     public void insertValue(String[] val) {
+
         PreparedStatement stmt = null;
 
         String insertQuery = "INSERT INTO ordinamento(idfilamento,idstella,nomestella,flusso,latstella,lonstella,latdorsale,londorsale,distance) VALUES (?,?,?,?,?,?,?,?,?)";
@@ -511,6 +514,7 @@ public class DAOStelle {
             }
         }
     }
+
 
     //method
     public void createTableOrdinamento() {
@@ -557,8 +561,10 @@ public class DAOStelle {
         }
     }
 
+
     //method
     public void deleteTableOrdinamento() {
+
         openConnection();
         PreparedStatement stmt = null;
 
@@ -582,4 +588,5 @@ public class DAOStelle {
             }
         }
     }
+
 }

@@ -6,14 +6,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-/**
- * Created by Manuel on 14/02/2018.
- */
+
 public class DAOMisurazione {
 
     private DataSource DataSource;
     private static  DAOMisurazione instance;
 
+    //constructor
     protected  DAOMisurazione() {
         this.DataSource = new DataSource();
     }
@@ -24,6 +23,7 @@ public class DAOMisurazione {
             DAOMisurazione.instance = new  DAOMisurazione();
         return instance;
     }
+
 
     //method inserimento misurazione in DB
     public boolean insertNewMisurazioneInDB(BeanMisurazione beanMisurazione) {
@@ -63,7 +63,7 @@ public class DAOMisurazione {
             }
         }
         return true;
-
     }
+
 }
 

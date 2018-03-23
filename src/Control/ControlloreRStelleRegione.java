@@ -8,9 +8,6 @@ import Entity.Stella;
 
 import java.util.ArrayList;
 
-/**
- * Created by Manuel on 07/03/2018.
- */
 public class ControlloreRStelleRegione {
 
     private int stelleTrovate=0;
@@ -22,6 +19,7 @@ public class ControlloreRStelleRegione {
     private int st_ProtNonTrov=0;
     private int st_PretNonTrov=0;
     private int st_UnbNonTrov=0;
+
 
     // Singleton
     private static ControlloreRStelleRegione instance;
@@ -58,13 +56,12 @@ public class ControlloreRStelleRegione {
             i = i+6;
             stelle.add(Stella);
         }
-        System.out.println(stelle.size());
+
         while (j < strContorno.size()){
             Contorno singoloPuntoContorno = new Contorno(Integer.valueOf(strContorno.get(j)),Float.valueOf(strContorno.get(j+1)),Float.valueOf(strContorno.get(j+2)));
             j = j+3;
             puntiContorno.add(singoloPuntoContorno);
         }
-        System.out.println("punti contorno: "+puntiContorno.size());
 
         ArrayList<ArrayList<Contorno>> tuttiContorni = new ArrayList<>();
 
@@ -74,52 +71,29 @@ public class ControlloreRStelleRegione {
             int w = k;
             ArrayList<Contorno> singoloContorno = new ArrayList<>();
             singoloContorno.add(puntiContorno.get(k));
+
             while (w < puntiContorno.size() - 1) {
                 if((puntiContorno.get(k).getIdFilamento() == puntiContorno.get(w+1).getIdFilamento())){
-                    //if(puntiContorno.get(k).getIdFilamento() == puntiContorno.get(w+1).getIdFilamento()){
                     singoloContorno.add(puntiContorno.get(w+1));
-                    //System.out.println(puntiContorno.get(w+1).getIdFilamento());
                 }
                 else{
-                    //System.out.println("break");
                     break;
                 }
                 w = w+1;
             }
             count++;
-            System.out.println(count);
             k = k + singoloContorno.size();
             tuttiContorni.add(singoloContorno);
         }
 
-        System.out.println(tuttiContorni.size());
-        System.out.println(count);
-/*
-        for (int n=0; n<tuttiContorni.size();n++ ){
-            int cont = 0;
-            for (int m=0; m<tuttiContorni.get(n).size();m++ ){
-                    System.out.println((tuttiContorni.get(n).get(m).getIdFilamento()));
-
-                cont++;
-            }
-            System.out.println("cont: "+cont);
-            System.out.println("----");
-        }
-*/
-        int a = 0;
-        int b = 0;
         //verifica presenza di una stella nei punti di un controno
         for (int x = 0; x < stelle.size();x++) {
             if (!trovaStella(stelle.get(x),tuttiContorni)){
                 notFoundStars(stelle.get(x));
-               // System.out.println("non"+a);
             } else {
-                // System.out.println("si "+b);
-            }
-            a++;
-             System.out.println("st: "+a);
-        }
 
+            }
+        }
 
         Float perPROTrov = ((float)st_ProtTrov/(float) stelleTrovate)*100;
         Float perPRETrov = ((float)st_PretTrov/(float) stelleTrovate)*100;
@@ -147,13 +121,9 @@ public class ControlloreRStelleRegione {
     //method
     private boolean trovaStella (Stella stella, ArrayList<ArrayList<Contorno>> tuttiContorni ){
 
-
         boolean trovata = false;
-
         for(int k = 0; k < tuttiContorni.size(); k++){
-
             Double result=0.0;
-
             for(int j = 0; j < tuttiContorni.get(k).size()-1;j++) {
 
                 result = result + Math.atan(
@@ -162,33 +132,8 @@ public class ControlloreRStelleRegione {
                                 / (((tuttiContorni.get(k).get(j).getLonG() - stella.getLonG()) * (tuttiContorni.get(k).get(j+1).getLonG() - stella.getLonG()))
                                 + ((tuttiContorni.get(k).get(j).getLatG() - stella.getLatG()) * (tuttiContorni.get(k).get(j+1).getLatG() - stella.getLatG())))
                 );
-                /*
-                result = result + Math.atan(
-                        ((
-                                (tuttiContorni.get(k).get(j).getLonG() - stella.getLonG())
-                                        * (tuttiContorni.get(k).get(j + 1).getLatG() - stella.getLatG())
-                        )
-                                -
-                                (
-                                        (tuttiContorni.get(k).get(j).getLatG() - stella.getLatG())
-                                                * (tuttiContorni.get(k).get(j + 1).getLonG() - stella.getLonG())
-                                ))
-                                /
-
-                                ((
-                                        (tuttiContorni.get(k).get(j).getLonG() - stella.getLonG())
-                                                * (tuttiContorni.get(k).get(j + 1).getLonG() - stella.getLonG())
-                                )
-                                        +
-                                        (
-                                                (tuttiContorni.get(k).get(j).getLatG() - stella.getLatG())
-                                                        * (tuttiContorni.get(k).get(j + 1).getLatG() - stella.getLatG())
-                                        ))
-                );
-                */
             }
 
-            //System.out.println(Math.toRadians(result));
             if (Math.abs(Math.toRadians(result)) >= 0.01){
                 foundStars(stella);
                 result = 0.0;
@@ -198,14 +143,12 @@ public class ControlloreRStelleRegione {
                 result = 0.0;
             }
         }
-
         if (trovata){
             return true;
         }else{
             return false;
         }
     }
-
 
 
     //method
@@ -241,23 +184,7 @@ public class ControlloreRStelleRegione {
         }
     }
 
-    /*
-
-    //method
-    private double arctanCondition(Double res,int r, ArrayList<Contorno> val, ArrayList<Stella> stelle){
-        for (int k = 0; k < val.size() - 2; k++) {
-            res = res + Math.atan(
-                    (((val.get(k).getLonG() - stelle.get(r).getLonG()) * (val.get(k + 1).getLatG() - stelle.get(r).getLatG()))
-                            - ((val.get(k).getLatG() - stelle.get(r).getLatG()) * (val.get(k + 1).getLonG() - stelle.get(r).getLonG())))
-                            / (((val.get(k).getLonG() - stelle.get(r).getLonG()) * (val.get(k + 1).getLonG() - stelle.get(r).getLonG()))
-                            + ((val.get(k).getLatG() - stelle.get(r).getLatG()) * (val.get(k + 1).getLatG() - stelle.get(r).getLatG())))
-            );
-        }
-        return res;
-    }
-
-
-*/
+/*
     public static void main(String[] args){
         BeanPosBaseAltezza beanPosBaseAltezza = new BeanPosBaseAltezza();
         beanPosBaseAltezza.setAltezza((float)100000);
@@ -266,5 +193,6 @@ public class ControlloreRStelleRegione {
         beanPosBaseAltezza.setLonG((float) 0.0);
         System.out.println(ControlloreRStelleRegione.getInstance().searchStarsByRegionFromBean(beanPosBaseAltezza));
     }
+    */
 
 }

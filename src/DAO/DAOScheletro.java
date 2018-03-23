@@ -9,14 +9,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- * Created by alessandro on 10/02/18.
- */
+
 public class DAOScheletro {
+
     private DataSource DataSource;
     private static DAOScheletro instance;
     private Connection conn = null;
     private PreparedStatement stmt = null;
+
+    //constructor
     protected DAOScheletro() {
         this.DataSource = new DataSource();
     }
@@ -27,6 +28,7 @@ public class DAOScheletro {
             DAOScheletro.instance = new DAOScheletro();
         return instance;
     }
+
 
     //method open connection
     public void openConnection() {
@@ -43,6 +45,7 @@ public class DAOScheletro {
         }
     }
 
+
     //method close connection
     public void closeConnection() {
         try {
@@ -52,6 +55,7 @@ public class DAOScheletro {
             e.printStackTrace();
         }
     }
+
 
     //method inserimento schelero in DB
     public void insertScheletro(Scheletro scheletro) {
@@ -89,7 +93,6 @@ public class DAOScheletro {
 
         String selectQuery = "SELECT idfilamento,idsegmento, long,latg FROM public.scheletro WHERE idfilamento=? AND idsegmento=? " +
                 "AND long=? AND latg=? ";
-
 
         try {
             stmt = conn.prepareStatement(selectQuery);
@@ -226,4 +229,5 @@ public class DAOScheletro {
         }
         return val;
     }
+
 }

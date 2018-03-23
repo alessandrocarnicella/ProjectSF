@@ -10,15 +10,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- * Created by alessandro on 10/02/18.
- */
 public class DAOContorno {
 
     private DataSource DataSource;
     private static DAOContorno instance;
     private Connection conn = null;
 
+    //constructor
     protected DAOContorno() {
         this.DataSource = new DataSource();
     }
@@ -120,7 +118,6 @@ public class DAOContorno {
     }
 
 
-
     //method
     public ArrayList<String> selectForIdOrNameFilCentroidExtensionFromDB(BeanFilamento beanFilamento){
 
@@ -186,9 +183,10 @@ public class DAOContorno {
         }
 
         return val;
-
     }
 
+
+    //method
     public ArrayList<String> selectForRegionePosSpazialeFromDB(BeanPosRaggioLato beanPosRaggioLato) {
 
         ArrayList<String> val=new ArrayList<>();
@@ -391,4 +389,5 @@ public class DAOContorno {
         }
         return val;
     }
+
 }

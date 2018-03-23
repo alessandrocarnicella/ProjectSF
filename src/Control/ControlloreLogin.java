@@ -3,13 +3,10 @@ package Control;
 import Bean.BeanLogin;
 import DAO.DAOLogin;
 import Entity.Utente;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- * Created by Manuel on 08/02/2018.
- */
+
 public class ControlloreLogin {
 
     // Singleton
@@ -20,6 +17,7 @@ public class ControlloreLogin {
             instance = new ControlloreLogin();
         return instance;
     }
+
 
     //method
     public boolean verifyLoginFromBean(BeanLogin beanLogin) {
@@ -41,4 +39,5 @@ public class ControlloreLogin {
         }
         return false;
     }
+
 }

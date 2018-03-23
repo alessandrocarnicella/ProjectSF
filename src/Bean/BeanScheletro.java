@@ -4,9 +4,7 @@ import Control.ControlloreRDistanza;
 
 import java.util.ArrayList;
 
-/**
- * Created by Manuel on 19/02/2018.
- */
+
 public class BeanScheletro {
 
     private int idFilamento;
@@ -67,9 +65,11 @@ public class BeanScheletro {
         this.flussoMisurato = flussoMisurato;
     }
 
+
     //method
     public ArrayList<String> resultDistanceVertici() {
         ArrayList<String> result = ControlloreRDistanza.getInstance().selectDistanceFromBean(this);
         return result;
     }
+
 }

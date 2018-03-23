@@ -6,14 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- * Created by alessandro on 08/02/18.
- */
+
 public class DAOLogin {
 
     private DataSource DataSource;
     private static DAOLogin instance;
 
+    //constructor
     protected DAOLogin() {
         this.DataSource = new DataSource();
     }
@@ -24,6 +23,7 @@ public class DAOLogin {
             DAOLogin.instance = new DAOLogin();
         return instance;
     }
+
 
     //method ricerca utente in DB
     public ArrayList<String> findUtente(String userName) throws SQLException {
@@ -70,5 +70,6 @@ public class DAOLogin {
         }
         return val;
     }
+
 }
 

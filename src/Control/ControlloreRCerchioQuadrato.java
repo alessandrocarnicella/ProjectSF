@@ -6,9 +6,6 @@ import Entity.Filamento;
 
 import java.util.ArrayList;
 
-/**
- * Created by alessandro on 01/03/18.
- */
 public class ControlloreRCerchioQuadrato {
 
     // Singleton
@@ -19,6 +16,7 @@ public class ControlloreRCerchioQuadrato {
             instance = new ControlloreRCerchioQuadrato();
         return instance;
     }
+
 
     //method
     public ArrayList<Filamento> selectForRegionePosSpazialeFromBean(BeanPosRaggioLato beanPosRaggioLato){

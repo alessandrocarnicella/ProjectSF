@@ -2,9 +2,6 @@ package Bean;
 
 import Control.ControlloreInserimentoCSV;
 
-/**
- * Created by Manuel on 14/02/2018.
- */
 public class BeanInserimentoCSV {
 
     private String nome;
@@ -43,4 +40,5 @@ public class BeanInserimentoCSV {
 
         return false;
     }
+
 }

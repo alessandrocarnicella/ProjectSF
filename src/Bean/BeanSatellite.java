@@ -5,9 +5,6 @@ import Control.ControlloreInserimentoDati;
 import java.sql.Date;
 import java.util.ArrayList;
 
-/**
- * Created by Manuel on 10/02/2018.
- */
 public class BeanSatellite {
 
     private String nome;
@@ -44,6 +41,7 @@ public class BeanSatellite {
         this.nomeAgenzia = nomeAgenzia;
     }
 
+
     //method
     public boolean insertNewSatellite(){
         boolean inserimento= ControlloreInserimentoDati.getInstance().insertNewSatelliteFromBean(this);
@@ -62,6 +60,8 @@ public class BeanSatellite {
         }
         return false;
     }
+
+
     //method
     public ArrayList<String> selectSatelliti() {
         ArrayList<String> satelliti = ControlloreInserimentoDati.getInstance().selectSatellitiFromBean();
@@ -70,4 +70,5 @@ public class BeanSatellite {
         return null;
 
     }
+
 }

@@ -1,8 +1,5 @@
 package Entity;
 
-/**
- * Created by Manuel on 08/02/2018.
- */
 public class Scheletro {
 
     private int idFilamento;
@@ -13,7 +10,7 @@ public class Scheletro {
     private int nProg;
     private Double flussoMisurato;
 
-    //constructor
+    //default constructor
     public Scheletro() {
     }
 
@@ -27,6 +24,7 @@ public class Scheletro {
         this.nProg = nProg;
         this.flussoMisurato = flussoMisurato;
     }
+
 
     //getter and setter
     public int getIdFilamento() {
@@ -77,4 +75,5 @@ public class Scheletro {
     public void setFlussoMisurato(Double flussoMisurato) {
         this.flussoMisurato = flussoMisurato;
     }
+
 }

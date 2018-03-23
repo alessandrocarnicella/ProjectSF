@@ -1,8 +1,5 @@
 package Entity;
 
-/**
- * Created by alessandro on 08/02/18.
- */
 public class Filamento {
 
     private String nome;
@@ -15,7 +12,7 @@ public class Filamento {
     private String nomeSatellite;
     private String nomeStrumento;
 
-    //constructor
+    //default constructor
     public Filamento() {
     }
 
@@ -33,6 +30,7 @@ public class Filamento {
         this.nomeSatellite = nomeSatellite;
         this.nomeStrumento = nomeStrumento;
     }
+
 
     //getter and setter
     public String getNome() {
@@ -97,4 +95,5 @@ public class Filamento {
     public void setNomeStrumento(String nomeStrumento) {
         this.nomeStrumento = nomeStrumento;
     }
+
 }

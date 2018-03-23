@@ -8,14 +8,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- * Created by alessandro on 12/02/18.
- */
 public class DAOSegmento {
     private DataSource DataSource;
     private static DAOSegmento instance;
     private Connection conn = null;
 
+    //constructor
     protected DAOSegmento() {
         this.DataSource = new DataSource();
     }
@@ -26,6 +24,7 @@ public class DAOSegmento {
             DAOSegmento.instance = new DAOSegmento();
         return instance;
     }
+
 
     //method open connection
     public void openConnection() {
@@ -41,6 +40,7 @@ public class DAOSegmento {
             e.printStackTrace();
         }
     }
+
 
     //method close connection
     public void closeConnection() {
@@ -85,9 +85,9 @@ public class DAOSegmento {
     }
 
 
-
     //method ricerca presenza segmento in DB
     public boolean findItemById(Segmento segmento) {
+
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -120,15 +120,12 @@ public class DAOSegmento {
     }
 
 
-
     //method selezione del filamento from DB con numero di segmenti specificato
     public ArrayList<String[]> selectFilamentsBySegmentsNumberFromDB(int int1, int int2){
-
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
         ArrayList<String[]> val=new ArrayList<String[]>();
-
 
         String selectQuery="SELECT segmento.idfilamento,nome,flussototale,densitamedia,temperaturamedia,ellitticita,contrasto,nomesatellite,nomestrumento,count(idsegmento)" +
                 "FROM segmento  JOIN filamento ON segmento.idfilamento = filamento.idfilamento" +
@@ -190,6 +187,6 @@ public class DAOSegmento {
             }
         }
         return val;
-
     }
+
 }

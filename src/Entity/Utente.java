@@ -1,8 +1,5 @@
 package Entity;
 
-/**
- * Created by Manuel on 08/02/2018.
- */
 public class Utente {
 
     private String nome;
@@ -21,6 +18,7 @@ public class Utente {
         this.email = email;
         this.tipoUtente = tipoUtente;
     }
+
 
     //getter and setter
     public String getNome() {
@@ -64,4 +62,5 @@ public class Utente {
     public void setTipoUtente(String tipoUtente) {
         this.tipoUtente = tipoUtente;
     }
+
 }

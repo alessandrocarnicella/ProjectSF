@@ -2,9 +2,7 @@ package Bean;
 
 import Control.ControlloreInserimentoDati;
 
-/**
- * Created by Manuel on 10/02/2018.
- */
+
 public class BeanStrumento {
 
     private String nome;
@@ -25,6 +23,7 @@ public class BeanStrumento {
         this.nomeSatellite = nomeSatellite;
     }
 
+
     //method
     public boolean insertNewStrumento(){
         boolean inserimento = ControlloreInserimentoDati.getInstance().insertNewStrumentoFromBean(this);
@@ -34,4 +33,5 @@ public class BeanStrumento {
         else
             return false;
     }
+
 }

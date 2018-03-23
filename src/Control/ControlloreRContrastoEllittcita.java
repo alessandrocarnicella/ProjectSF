@@ -6,9 +6,7 @@ import Entity.Filamento;
 
 import java.util.ArrayList;
 
-/**
- * Created by alessandro on 19/02/18.
- */
+
 public class ControlloreRContrastoEllittcita {
     private static ControlloreRContrastoEllittcita instance;
 
@@ -36,7 +34,6 @@ public class ControlloreRContrastoEllittcita {
             i = i+9;
             filamenti.add(filamento);
         }
-
         if(filamenti != null) {
             return filamenti;
         } else{

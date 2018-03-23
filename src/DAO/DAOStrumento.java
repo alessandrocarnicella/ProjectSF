@@ -7,15 +7,12 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 
-/**
- * Created by Manuel on 10/02/2018.
- */
 public class DAOStrumento {
 
     private DataSource DataSource;
     private static DAOStrumento instance;
 
-
+    //constructor
     protected DAOStrumento() {
         this.DataSource = new DataSource();
     }
@@ -27,6 +24,7 @@ public class DAOStrumento {
         return instance;
     }
 
+
     //method inserimento strumento in DB
     public boolean insertNewStrumentoInDB(BeanStrumento beanStrumento) {
 
@@ -34,7 +32,6 @@ public class DAOStrumento {
         PreparedStatement stmt = null;
 
         try {
-
             conn = this.DataSource.getConnection();
 
             String query = "INSERT INTO strumento(nome, nomesatellite) " +
@@ -67,6 +64,6 @@ public class DAOStrumento {
             }
         }
         return true;
-
     }
+
 }

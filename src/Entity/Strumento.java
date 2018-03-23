@@ -1,8 +1,6 @@
 package Entity;
 
-/**
- * Created by alessandro on 08/02/18.
- */
+
 public class Strumento {
 
     private String nome;
@@ -28,4 +26,5 @@ public class Strumento {
     public void setNomeSatellite(String nomeSatellite) {
         this.nomeSatellite = nomeSatellite;
     }
+
 }

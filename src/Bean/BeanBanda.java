@@ -2,9 +2,6 @@ package Bean;
 
 import Control.ControlloreInserimentoDati;
 
-/**
- * Created by Manuel on 14/02/2018.
- */
 public class BeanBanda {
 
     private float lunghezza;
@@ -25,7 +22,5 @@ public class BeanBanda {
         else
             return false;
     }
-
-
 
 }

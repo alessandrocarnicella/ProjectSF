@@ -1,14 +1,13 @@
 package Entity;
 
-/**
- * Created by Manuel on 08/02/2018.
- */
+
 public class Contorno {
+
     private int idFilamento;
     private Float lonG;
     private Float latG;
 
-    //constructor
+    //default constructor
     public Contorno() {
     }
 
@@ -18,6 +17,7 @@ public class Contorno {
         this.lonG = lonG;
         this.latG = latG;
     }
+
 
     //getter and setter
     public int getIdFilamento() {
@@ -40,4 +40,5 @@ public class Contorno {
     public void setLatG(Float latG) {
         this.latG = latG;
     }
+
 }

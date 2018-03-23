@@ -7,14 +7,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- * Created by alessandro on 12/02/18.
- */
+
 public class DAOPunto {
     private DataSource DataSource;
     private static DAOPunto instance;
     private Connection conn = null;
 
+    //constructor
     protected DAOPunto() {
         this.DataSource = new DataSource();
     }
@@ -42,6 +41,7 @@ public class DAOPunto {
         }
     }
 
+
     //method close connection
     public void closeConnection() {
         try {
@@ -51,6 +51,7 @@ public class DAOPunto {
             e.printStackTrace();
         }
     }
+
 
     //method inserimento punto in DB
     public void insertPunto(Punto punto) {
@@ -77,6 +78,7 @@ public class DAOPunto {
             }
         }
     }
+
 
     //method ricerca presenza punto in DB
     public boolean findItemById(Punto punto) {
@@ -108,4 +110,5 @@ public class DAOPunto {
         }
         return false;
     }
+
 }

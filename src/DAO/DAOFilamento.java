@@ -8,15 +8,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- * Created by alessandro on 10/02/18.
- */
+
 public class DAOFilamento {
 
     private DataSource DataSource;
     private static DAOFilamento instance;
     private Connection conn = null;
 
+    //constructor
     protected DAOFilamento() {
         this.DataSource = new DataSource();
     }
@@ -27,6 +26,7 @@ public class DAOFilamento {
             DAOFilamento.instance = new DAOFilamento();
         return instance;
     }
+
 
     //method open connection
     public void openConnection() {
@@ -43,6 +43,7 @@ public class DAOFilamento {
         }
     }
 
+
     //method close connection
     public void closeConnection() {
         try {
@@ -52,6 +53,7 @@ public class DAOFilamento {
             e.printStackTrace();
         }
     }
+
 
     // method inserimento filamento in DB
     public void insertFilamento(Filamento filamento) {
@@ -87,6 +89,7 @@ public class DAOFilamento {
         }
     }
 
+
     //method ricerca filamento in DB
     public boolean findItemById(Filamento filamento) {
 
@@ -118,6 +121,7 @@ public class DAOFilamento {
         }
         return false;
     }
+
 
     //method aggiornamento filamento in DB
     public void updateFilamento(Filamento filamento) {
@@ -151,7 +155,6 @@ public class DAOFilamento {
             }
         }
     }
-
 
 
     //method selezione id filamento from DB
@@ -188,6 +191,7 @@ public class DAOFilamento {
         }
         return idfilamenti;
     }
+
 
     //method selezione filamenti from DB
     public ArrayList<String> selectFilamentiFromDB(Float contrasto, Float minEllitticita, Float maxEllitticita) {
@@ -234,4 +238,5 @@ public class DAOFilamento {
         closeConnection();
         return filamenti;
     }
+
 }

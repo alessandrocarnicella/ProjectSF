@@ -5,10 +5,9 @@ import DAO.*;
 
 import java.util.ArrayList;
 
-/**
- * Created by Manuel on 10/02/2018.
- */
+
 public class ControlloreInserimentoDati {
+
 
     // Singleton
     private static ControlloreInserimentoDati instance;
@@ -54,11 +53,11 @@ public class ControlloreInserimentoDati {
             return false;
     }
 
+
     //method
     public boolean insertNewBandaFromBean(BeanBanda beanBanda){
         DAOBanda daoBanda = DAOBanda.getInstance();
         boolean inserimento = true;
-
         if ( !daoBanda.findItemById(beanBanda) ) {
             inserimento = daoBanda.insertNewBandaInDB(beanBanda);
         }
@@ -100,4 +99,5 @@ public class ControlloreInserimentoDati {
         else
             return null;
     }
+
 }

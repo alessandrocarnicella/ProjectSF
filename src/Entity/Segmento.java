@@ -1,14 +1,12 @@
 package Entity;
 
-/**
- * Created by Manuel on 08/02/2018.
- */
+
 public class Segmento {
 
     private int idSegmento;
     private int idFilamento;
 
-    //constructor
+    //default constructor
     public Segmento() {
         }
 
@@ -32,4 +30,5 @@ public class Segmento {
     public void setIdFilamento(int idFilamento) {
         this.idFilamento = idFilamento;
     }
+
 }

@@ -6,15 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- * Created by Manuel on 10/02/2018.
- */
+
 public class DAOAgenzia {
 
     private DataSource DataSource;
     private static DAOAgenzia instance;
 
-
+    //constructor
     protected DAOAgenzia() {
         this.DataSource = new DataSource();
     }
@@ -25,6 +23,7 @@ public class DAOAgenzia {
             DAOAgenzia.instance = new DAOAgenzia();
         return instance;
     }
+
 
     //method selezione agenzie from DB
     public ArrayList<String> selectAgenziaFromDB(){
@@ -78,4 +77,5 @@ public class DAOAgenzia {
         }
         return val;
     }
+
 }

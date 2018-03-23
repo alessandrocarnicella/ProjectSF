@@ -8,16 +8,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- * Created by Manuel on 10/02/2018.
- */
-public class DAOSatellite {
 
+public class DAOSatellite {
 
     private DataSource DataSource;
     private static DAOSatellite instance;
 
-
+    //constructor
     protected DAOSatellite() {
         this.DataSource = new DataSource();
     }
@@ -35,7 +32,6 @@ public class DAOSatellite {
 
         Connection conn = null;
         PreparedStatement stmt = null;
-
 
         try {
             conn = this.DataSource.getConnection();
@@ -125,9 +121,9 @@ public class DAOSatellite {
                 }
             }
         }
-
         return val;
     }
+
 }
 
 

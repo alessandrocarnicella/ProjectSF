@@ -4,9 +4,7 @@ import Control.ControlloreRFilamentsBySegmentsRange;
 
 import java.util.ArrayList;
 
-/**
- * Created by Manuel on 20/02/2018.
- */
+
 public class BeanSegmento {
 
     private int idSegmento;
@@ -27,6 +25,7 @@ public class BeanSegmento {
         this.idFilamento = idFilamento;
     }
 
+
     //method
     public ArrayList<String[]> selectFilamentsBySegmentsNumber(int int1,int int2){
         ArrayList<String[]> val=ControlloreRFilamentsBySegmentsRange.getInstance().selectFilamentsBySegmentsNumberFromBean(int1,int2);
@@ -37,6 +36,7 @@ public class BeanSegmento {
             return null;
     }
 
+
     //method
     public boolean controlloMinMax(int min,int max){
         if (min<=max){
@@ -44,4 +44,5 @@ public class BeanSegmento {
         }
         return false;
     }
+
 }

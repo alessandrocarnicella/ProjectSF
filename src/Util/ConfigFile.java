@@ -1,8 +1,5 @@
 package Util;
 
-/**
- * Created by alessandro on 08/02/18.
- */
 public class ConfigFile {
 
     // parametri di configurazione del DB
@@ -11,6 +8,7 @@ public class ConfigFile {
     public static String DBPassword = "postgresPSW";
     public static String DBDriver ="org.postgresql.Driver";
 
+    //default constructor
     public ConfigFile() {
     }
 }

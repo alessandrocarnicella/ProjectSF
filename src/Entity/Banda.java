@@ -1,8 +1,6 @@
 package Entity;
 
-/**
- * Created by Manuel on 08/02/2018.
- */
+
 public class Banda {
 
     private float lunghezza;
@@ -12,6 +10,7 @@ public class Banda {
         this.lunghezza = lunghezza;
     }
 
+
     //getter and setter
     public float getLunghezza() {
         return lunghezza;
@@ -19,4 +18,5 @@ public class Banda {
     public void setLunghezza(float lunghezza) {
         this.lunghezza = lunghezza;
     }
+
 }

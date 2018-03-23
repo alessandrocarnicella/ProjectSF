@@ -2,9 +2,7 @@ package Bean;
 
 import Control.ControlloreInserimentoDati;
 
-/**
- * Created by Manuel on 14/02/2018.
- */
+
 public class BeanMisurazione {
 
     private String nomeStrumento;
@@ -25,6 +23,7 @@ public class BeanMisurazione {
         this.banda = banda;
     }
 
+
     //method
     public boolean insertNewMisurazione(){
         boolean inserimento = ControlloreInserimentoDati.getInstance().insertNewMisurazioneFromBean(this);
@@ -33,4 +32,5 @@ public class BeanMisurazione {
         else
             return false;
     }
+
 }

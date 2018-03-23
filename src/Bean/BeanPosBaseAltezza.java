@@ -4,9 +4,7 @@ import Control.ControlloreRStelleRegione;
 
 import java.util.ArrayList;
 
-/**
- * Created by alessandro on 01/03/18.
- */
+
 public class BeanPosBaseAltezza {
 
     private Float lonG;

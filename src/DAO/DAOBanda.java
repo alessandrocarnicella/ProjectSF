@@ -7,15 +7,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- * Created by Manuel on 14/02/2018.
- */
 public class DAOBanda {
 
     private DataSource DataSource;
     private static DAOBanda instance;
 
-
+    //constructor
     protected DAOBanda() {
         this.DataSource = new DataSource();
     }
@@ -28,13 +25,11 @@ public class DAOBanda {
     }
 
 
-
     //method ricerca presenza banda in DB
     public boolean findItemById(BeanBanda beanBanda) {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Connection conn = null;
-
 
         String selectQuery = "SELECT * FROM banda WHERE lunghezza = ?;";
 
@@ -70,11 +65,11 @@ public class DAOBanda {
         return false;
     }
 
+
     //method inserimento nuova banda in DB
     public boolean insertNewBandaInDB(BeanBanda beanBanda) {
         Connection conn = null;
         PreparedStatement stmt = null;
-
 
         try {
 
@@ -108,5 +103,6 @@ public class DAOBanda {
         }
         return true;
     }
+
 }
 

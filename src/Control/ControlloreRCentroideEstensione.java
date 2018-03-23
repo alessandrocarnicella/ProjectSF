@@ -5,9 +5,6 @@ import DAO.DAOContorno;
 
 import java.util.ArrayList;
 
-/**
- * Created by Manuel on 19/02/2018.
- */
 public class ControlloreRCentroideEstensione {
 
     // Singleton
@@ -40,4 +37,5 @@ public class ControlloreRCentroideEstensione {
             return null;
         }
     }
+
 }
