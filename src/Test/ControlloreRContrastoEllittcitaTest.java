@@ -41,7 +41,7 @@ public class ControlloreRContrastoEllittcitaTest {
 
 
     @Test
-    public void selectFilamentoFromBean() throws Exception {
+    public void testSelectFilamentoFromBean() throws Exception {
 
         ArrayList<Filamento> val=beanBrillantezzaEllitticita.selectFilamentoFromBean();
 
