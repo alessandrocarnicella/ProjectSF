@@ -1,6 +1,5 @@
 package Test;
 
-import Bean.BeanFilamento;
 import Bean.BeanPosRaggioLato;
 import Entity.Filamento;
 import org.junit.Assert;
@@ -11,8 +10,6 @@ import org.junit.runners.Parameterized;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by alessandro on 22/03/18.

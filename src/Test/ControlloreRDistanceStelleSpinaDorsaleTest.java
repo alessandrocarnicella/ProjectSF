@@ -1,9 +1,6 @@
 package Test;
 
 import Bean.BeanFilamento;
-import Bean.BeanPosRaggioLato;
-import Bean.BeanScheletro;
-import Entity.Filamento;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

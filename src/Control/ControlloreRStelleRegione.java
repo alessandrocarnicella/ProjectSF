@@ -1,16 +1,12 @@
 package Control;
 
-import Bean.BeanFilamento;
 import Bean.BeanPosBaseAltezza;
 import DAO.DAOContorno;
 import DAO.DAOStelle;
 import Entity.Contorno;
-import Entity.Punto;
 import Entity.Stella;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
 
 /**
  * Created by Manuel on 07/03/2018.

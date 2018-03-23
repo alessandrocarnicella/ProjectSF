@@ -1,13 +1,11 @@
 package DAO;
 
 import Bean.BeanBanda;
-import Entity.Punto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.zip.CheckedOutputStream;
 
 /**
  * Created by Manuel on 14/02/2018.

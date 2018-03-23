@@ -1,7 +1,6 @@
 package Test;
 
 import Bean.BeanFilamento;
-import Bean.BeanLogin;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,8 +9,6 @@ import org.junit.runners.Parameterized;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by alessandro on 21/03/18.

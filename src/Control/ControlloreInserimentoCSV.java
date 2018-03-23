@@ -1,9 +1,7 @@
 package Control;
 
-import Bean.BeanInserimentoCSV;
 import DAO.*;
 import Entity.*;
-import com.sun.deploy.util.SyncAccess;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

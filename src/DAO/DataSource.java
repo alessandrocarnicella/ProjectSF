@@ -4,10 +4,11 @@ package DAO;
  * Created by alessandro on 08/02/18.
  */
 
+import Util.ConfigFile;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import Util.ConfigFile;
 
 public class DataSource {
 

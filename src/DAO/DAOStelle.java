@@ -1,7 +1,6 @@
 package DAO;
 
 import Bean.BeanPosBaseAltezza;
-import Bean.BeanStella;
 import Entity.Stella;
 
 import java.sql.Connection;
@@ -9,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by alessandro on 09/02/18.
