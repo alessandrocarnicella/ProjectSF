@@ -1,7 +1,6 @@
 package Test;
 
 import Bean.BeanFilamento;
-import Bean.BeanScheletro;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,13 +10,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static org.junit.Assert.*;
 
-/**
- * Created by alessandro on 23/03/18.
- */
 @RunWith(value = Parameterized.class)
 public class ControlloreRStelleInFilamentoTest {
+
     private BeanFilamento beanFilamento;
     private static final float DELTA = 0f;
     private static final float DELTA2 = 0.001f;
@@ -29,7 +25,7 @@ public class ControlloreRStelleInFilamentoTest {
         caso1.setIdFilamento(1013661);
 
         BeanFilamento caso2 = new BeanFilamento();
-        caso2.setIdFilamento(45);
+        caso2.setIdFilamento(59);
 
         BeanFilamento caso3 = new BeanFilamento();
         caso3.setIdFilamento(132);
@@ -43,11 +39,12 @@ public class ControlloreRStelleInFilamentoTest {
     }
 
     @Test
+    // test sul numero di stelle trovate e sul tipo
     public void searchStarsInFilamentFromBean() throws Exception {
 
         ArrayList<String> val = beanFilamento.searchStarsInFilament();
 
-        if(beanFilamento.getIdFilamento() == 45){
+        if(beanFilamento.getIdFilamento() == 59){
             Assert.assertEquals(1,Integer.valueOf(val.get(0)),DELTA);
             Assert.assertEquals(0,Float.valueOf(val.get(1)),DELTA2);
             Assert.assertEquals(100,Float.valueOf(val.get(2)),DELTA2);

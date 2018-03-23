@@ -71,6 +71,52 @@ public class DAOSatellite {
     }
 
 
+    //method
+    public boolean satelliteAlreadyInserted(BeanSatellite beanSatellite) {
+
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement stmt = null;
+
+        try {
+            conn = this.DataSource.getConnection();
+            String query = "SELECT * FROM satellite WHERE nome=?";
+            stmt = conn.prepareStatement(query);
+            stmt.setString(1, beanSatellite.getNome());
+
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return true;
+            }
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            // release resources
+            if(stmt != null){
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            // close connection
+            if(conn  != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return false;
+
+
+    }
+
+
     //method selezione stellite from DB
     public ArrayList<String> selectSatellitiFromDB(){
 

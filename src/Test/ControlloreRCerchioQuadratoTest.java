@@ -11,9 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-/**
- * Created by alessandro on 22/03/18.
- */
+
 @RunWith(value = Parameterized.class)
 public class ControlloreRCerchioQuadratoTest {
     private BeanPosRaggioLato beanPosRaggioLato;
@@ -64,6 +62,7 @@ public class ControlloreRCerchioQuadratoTest {
 
 
     @Test
+    // test sul numero di filamenti trovati nella regione
     public void selectForRegionePosSpazialeFromBean() throws Exception {
         ArrayList<Filamento> val = beanPosRaggioLato.selectFilamentoFromBean();
 
@@ -94,16 +93,16 @@ public class ControlloreRCerchioQuadratoTest {
             Assert.assertEquals(confronto.getNomeSatellite(),val.get(0).getNomeSatellite());
         }
         if (lato == 10.0f) {
-            Assert.assertEquals(6, val.size());
+            Assert.assertEquals(7, val.size());
         }
         if (raggio == 10000.0f ) {
-            Assert.assertEquals(11450, val.size());
+            Assert.assertEquals(21175, val.size());
         }
         if (lato == 1.0f ) {
             Assert.assertNull(val);
         }
-        if ( lato == 100500.0f) {
-            Assert.assertEquals(11450, val.size());
+        if ( lato == 10000.0f) {
+            Assert.assertEquals(21175, val.size());
         }
         if (raggio == 1.0f) {
             Assert.assertNull(val);

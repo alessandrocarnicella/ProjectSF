@@ -10,14 +10,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-/**
- * Created by alessandro on 23/03/18.
- */
 @RunWith(value = Parameterized.class)
 public class ControlloreRDistanzaTest {
+
     private BeanScheletro beanScheletro;
     private static final float DELTA = 0f;
     private static final float DELTA2 = 0.0001f;
+
     @Parameterized.Parameters
     public static Collection<BeanScheletro> data() {
 
@@ -38,6 +37,7 @@ public class ControlloreRDistanzaTest {
     }
 
     @Test
+    // test sulla distanza, sul numero progressivo e il numero degli elementi trovati
     public void selectDistanceFromBean() throws Exception {
         ArrayList<String> val = beanScheletro.resultDistanceVertici();
         if (beanScheletro.getIdSegmento() == 3){
@@ -55,6 +55,7 @@ public class ControlloreRDistanzaTest {
                 double latv = Double.valueOf(val.get(i + 4));
                 double lonp = Double.valueOf(val.get(i + 5));
                 double latp = Double.valueOf(val.get(i + 6));
+
                 if (i == 0) {
                     distance = Math.sqrt(((lonv - lonp) * (lonv - lonp) + (latv - latp) * (latv - latp)));
                 }

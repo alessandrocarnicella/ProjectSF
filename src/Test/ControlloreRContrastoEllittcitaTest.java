@@ -8,14 +8,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 
-import static org.junit.Assert.*;
-
-/**
- * Created by Manuel on 22/03/2018.
- */
 
 @RunWith(value = Parameterized.class)
 public class ControlloreRContrastoEllittcitaTest {
@@ -31,7 +26,7 @@ public class ControlloreRContrastoEllittcitaTest {
         BBe.setMaxEllitticita(1f);
         BBe.setMinEllitticita(1f);
 
-        return Arrays.asList(BBe);
+        return Collections.singletonList(BBe);
     }
 
     public ControlloreRContrastoEllittcitaTest(BeanBrillantezzaEllitticita beanBrillantezzaEllitticita) {
@@ -41,6 +36,7 @@ public class ControlloreRContrastoEllittcitaTest {
 
 
     @Test
+    //test sul range dell'ellitticita' e sulla brillanza
     public void testSelectFilamentoFromBean() throws Exception {
 
         ArrayList<Filamento> val=beanBrillantezzaEllitticita.selectFilamentoFromBean();
@@ -67,16 +63,12 @@ public class ControlloreRContrastoEllittcitaTest {
             Assert.assertEquals(confronto.getNomeSatellite(),val.get(0).getNomeSatellite());
             Assert.assertEquals(confronto.getNomeStrumento(),val.get(0).getNomeStrumento());
 
-            Assert.assertEquals(true,val.get(0).getEllitticita()>=beanBrillantezzaEllitticita.getMinEllitticita());
-            Assert.assertEquals(true,val.get(0).getEllitticita()<=beanBrillantezzaEllitticita.getMaxEllitticita());
-
+            Assert.assertEquals(true,val.get(0).getEllitticita() >= beanBrillantezzaEllitticita.getMinEllitticita());
+            Assert.assertEquals(true,val.get(0).getEllitticita() <= beanBrillantezzaEllitticita.getMaxEllitticita());
 
             Assert.assertEquals(true,val.get(0).getContrasto()>1.01);
 
         }
-
-
-
     }
 
 }

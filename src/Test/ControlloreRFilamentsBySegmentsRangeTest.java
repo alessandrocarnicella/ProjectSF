@@ -6,17 +6,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
-
-/**
- * Created by Manuel on 23/03/2018.
- */
 
 @RunWith(value = Parameterized.class)
 public class ControlloreRFilamentsBySegmentsRangeTest {
-
 
    private int[] arrayInteri;
 
@@ -43,7 +39,6 @@ public class ControlloreRFilamentsBySegmentsRangeTest {
         caso4[0]=1;
         caso4[1]=1;
 
-
         return Arrays.asList(caso1,caso2,caso3,caso4,caso5);
     }
 
@@ -54,18 +49,15 @@ public class ControlloreRFilamentsBySegmentsRangeTest {
 
 
     @Test
+    // test sul range del numero dei segmenti scelto
     public void testSelectFilamentsBySegmentsNumber() throws Exception {
-
         BeanSegmento beanSegmento=new BeanSegmento();
         ArrayList<String[]> val=beanSegmento.selectFilamentsBySegmentsNumber(arrayInteri[0],arrayInteri[1]);
         if(val!=null){
             for(String[] s:val){
-                Assert.assertEquals(true,Integer.valueOf(s[9])>=arrayInteri[0]&&Integer.valueOf(s[9])<=arrayInteri[1]);
+                Assert.assertEquals(true,Integer.valueOf(s[9]) >= arrayInteri[0] && Integer.valueOf(s[9]) <= arrayInteri[1]);
             }
-
         }
-
-
     }
 
 }

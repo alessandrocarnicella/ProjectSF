@@ -23,11 +23,11 @@ public class ControlloreInserimentoDati {
     public boolean insertNewUserFromBean(BeanRegistrazione beanRegistrazione){
 
         DAOUtente daoUtente = DAOUtente.getInstance();
-        boolean inserimento = daoUtente.insertNewUtenteInDB(beanRegistrazione);
-        if (inserimento == true)
-            return true;
-        else
+        if(daoUtente.userAlreadyInserted(beanRegistrazione)){
             return false;
+        }else {
+            return daoUtente.insertNewUtenteInDB(beanRegistrazione);
+        }
     }
 
 
@@ -35,22 +35,22 @@ public class ControlloreInserimentoDati {
     public boolean insertNewSatelliteFromBean(BeanSatellite beanSatellite){
 
         DAOSatellite daoSatellite = DAOSatellite.getInstance();
-        boolean inserimento = daoSatellite.insertNewSatelliteInDB(beanSatellite);
-        if (inserimento == true)
-            return true;
-        else
+        if (daoSatellite.satelliteAlreadyInserted(beanSatellite)){
             return false;
+        }else{
+            return daoSatellite.insertNewSatelliteInDB(beanSatellite);
+        }
     }
 
 
     //method
     public boolean insertNewStrumentoFromBean(BeanStrumento beanStrumento){
         DAOStrumento daoStrumento = DAOStrumento.getInstance();
-        boolean inserimento = daoStrumento.insertNewStrumentoInDB(beanStrumento);
-        if (inserimento == true)
-            return true;
-        else
+        if(daoStrumento.strumentAlreadyInserted(beanStrumento)){
             return false;
+        }else {
+            return daoStrumento.insertNewStrumentoInDB(beanStrumento);
+        }
     }
 
 

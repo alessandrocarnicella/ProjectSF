@@ -11,10 +11,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 
-
-/**
- * Created by Manuel on 21/03/2018.
- */
 @RunWith(value = Parameterized.class)
 public class ControlloreInserimentoDatiTest {
 
@@ -114,6 +110,7 @@ public class ControlloreInserimentoDatiTest {
 
 
     @Test
+    //test sull'inserimento di un nuovo strumento,banda,misurazione all'interno del sistema
     public void testInsertNewStrumentoBandaMisurazione() throws Exception {
         if (beanLogin.getTipoUtente().equals("Amministratore")) {
 

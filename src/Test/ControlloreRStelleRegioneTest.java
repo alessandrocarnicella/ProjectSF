@@ -7,11 +7,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Manuel on 23/03/2018.
@@ -41,6 +38,7 @@ public class ControlloreRStelleRegioneTest {
 
 
     @Test
+    // test sul numero di stelle trovate non trovate e il loro tipo
     public void testSearchStarsByRegion() throws Exception {
         ArrayList<String> val=beanPosBaseAltezza.searchStarsByRegion();
         if(val!=null){

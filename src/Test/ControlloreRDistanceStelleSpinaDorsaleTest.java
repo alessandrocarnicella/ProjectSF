@@ -10,9 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-/**
- * Created by alessandro on 22/03/18.
- */
+
 @RunWith(value = Parameterized.class)
 public class ControlloreRDistanceStelleSpinaDorsaleTest {
     private BeanFilamento beanFilamento;
@@ -32,7 +30,6 @@ public class ControlloreRDistanceStelleSpinaDorsaleTest {
         caso3.setIdFilamento(45);
         caso3.setOrdinamento("orddistanza");
 
-
         return Arrays.asList(caso1,caso2,caso3);
     }
 
@@ -42,6 +39,7 @@ public class ControlloreRDistanceStelleSpinaDorsaleTest {
     }
 
     @Test
+    //test sull ordinemanto per flusso e distanza
     public void searchDistanceStelleSpinaDorsaleFromBean() throws Exception {
         ArrayList<String[]> val = beanFilamento.searchDistance();
 

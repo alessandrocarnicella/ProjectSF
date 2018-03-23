@@ -31,7 +31,7 @@ public class ControlloreRCentroideEstensione {
 
             val.add(distanceMinMaxLong);
             val.add(distanceMinMaxLatg);
-            System.out.println(val);
+
             return val;
         } else {
             return null;

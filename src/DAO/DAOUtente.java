@@ -4,6 +4,7 @@ import Bean.BeanRegistrazione;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DAOUtente {
@@ -21,6 +22,50 @@ public class DAOUtente {
         if (DAOUtente.instance == null)
             DAOUtente.instance = new DAOUtente();
         return instance;
+    }
+
+
+    //method
+    public boolean userAlreadyInserted(BeanRegistrazione beanRegistrazione) {
+
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement stmt = null;
+
+        try {
+            conn = this.DataSource.getConnection();
+            String query = "SELECT * FROM utente WHERE username=? AND email=?";
+            stmt = conn.prepareStatement(query);
+            stmt.setString(1, beanRegistrazione.getUsername());
+            stmt.setString(2, beanRegistrazione.getEmail());
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return true;
+            }
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            // release resources
+            if(stmt != null){
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            // close connection
+            if(conn  != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return false;
     }
 
 

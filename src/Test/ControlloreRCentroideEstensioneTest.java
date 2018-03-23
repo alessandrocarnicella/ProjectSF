@@ -10,9 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-/**
- * Created by alessandro on 21/03/18.
- */
+
 @RunWith(value = Parameterized.class)
 public class ControlloreRCentroideEstensioneTest {
     private BeanFilamento beanFilamento;
@@ -24,7 +22,7 @@ public class ControlloreRCentroideEstensioneTest {
         caso1.setIdFilamento(133);
 
         BeanFilamento caso2 = new BeanFilamento();
-        caso2.setIdFilamento(1000);
+        caso2.setIdFilamento(10);
 
         return Arrays.asList(caso1,caso2);
     }
@@ -35,10 +33,9 @@ public class ControlloreRCentroideEstensioneTest {
     }
 
 
-
-
     @Test
-    public void selectForIdOrNameFilCentroidExtensionFromBean() throws Exception {
+    //test per il calcolo del centroide ed estensione per idFilamento
+    public void testSelectForIdOrNameFilCentroidExtension() throws Exception {
         ArrayList<String> val = beanFilamento.selectForIdOrNameFilCentroidExtension();
         ArrayList<String> confronto = new ArrayList<>();
 
@@ -56,10 +53,10 @@ public class ControlloreRCentroideEstensioneTest {
             Assert.assertNotNull(val);
 
             for(int i=0; i<confronto.size(); i++) {
-                Assert.assertEquals(Float.valueOf(val.get(i)),Float.valueOf(confronto.get(i)),DELTA);
+                Assert.assertEquals(Float.valueOf(confronto.get(i)),Float.valueOf(val.get(i)),DELTA);
             }
         }
-        if(beanFilamento.getIdFilamento() == 1000) {
+        if(beanFilamento.getIdFilamento() == 10) {
             Assert.assertNull(beanFilamento.selectForIdOrNameFilCentroidExtension());
         }
 

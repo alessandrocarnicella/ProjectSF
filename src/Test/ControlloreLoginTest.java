@@ -9,9 +9,6 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-/**
- * Created by alessandro on 21/03/18.
- */
 
 @RunWith(value = Parameterized.class)
 public class ControlloreLoginTest {
@@ -39,7 +36,8 @@ public class ControlloreLoginTest {
 
 
     @Test
-    public void verifyLoginFromBean() throws Exception {
+    //test se l'utente è loggato correttamente all'interno del sistema
+    public void testVerifyLogin() throws Exception {
 
         if(beanLogin.getUtente() == false) {
             Assert.assertEquals("Name isn't empty", null, beanLogin.getNome());
