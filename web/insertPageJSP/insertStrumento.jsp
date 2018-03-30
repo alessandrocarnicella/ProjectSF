@@ -58,7 +58,7 @@
             <!-- inserimento del nome strumento -->
             <label style="margin-left: 30px;margin-top: 30px"> <b>Inserisci nome strumento:</b></label><br><br>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="margin-left: 30px">
-                <input class="mdl-textfield__input" type="text" id="sample3" name="nomestrumento" required>
+                <input class="mdl-textfield__input" type="text" id="sample3" name="nomestrumento" required maxlength="20">
                 <label class="mdl-textfield__label" for="sample3"> nome </label>
             </div><br><br>
 

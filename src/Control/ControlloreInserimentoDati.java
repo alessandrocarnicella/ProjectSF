@@ -42,7 +42,6 @@ public class ControlloreInserimentoDati {
             return false;
         }else{
             if(beanSatellite.getMissioneTerminata()) {
-                System.out.println("in true");
                 float durata = ricavaDurata(beanSatellite.getDataInizio(),beanSatellite.getDataFine());
                 beanSatellite.setDurata(durata);
                 return daoSatellite.insertNewSatelliteInDB(beanSatellite);
@@ -65,9 +64,6 @@ public class ControlloreInserimentoDati {
     public float ricavaDurata(Date inizio, Date fine){
         float differenza = fine.getTime() - inizio.getTime();
         float days =Float.valueOf((float) Math.ceil(Double.valueOf(differenza/(1000*60*60*24))));
-        System.out.println("differenza: "+differenza);
-        System.out.println("time fine : "+fine.getTime());
-        System.out.println("time inizio: "+inizio.getTime());
         return days;
     }
 

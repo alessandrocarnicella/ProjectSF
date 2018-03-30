@@ -37,7 +37,7 @@
         <form method="post">
             <label style="margin-left: 30px;margin-top: 50px"> <b>Inserisci l'identificativo del segmento :</b></label>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"   style="margin-left: 30px; width: 200px" >
-                <input class="mdl-textfield__input" type="number" id="sample1" name="idsegmento" required maxlength="20" >
+                <input class="mdl-textfield__input" type="number" id="sample1" name="idsegmento" required max="20000000000" >
                 <label class="mdl-textfield__label" for="sample1" >id segmento</label>
             </div>
             <br>

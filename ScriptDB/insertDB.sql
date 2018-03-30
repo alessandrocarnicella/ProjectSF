@@ -6,8 +6,8 @@ INSERT INTO agenzia(nome)
 
 INSERT INTO satellite(nome,datainizio,datafine,nomeagenzia)
   VALUES
-    ('Herschel','2009-07-10','2013-06-17','ESA'),
-    ('Spitzer','2003-12-18','2009-05-15','NASA');
+    ('Herschel','2009-07-10','2013-06-17','ESA','2895'),
+    ('Spitzer','2003-12-18','2009-05-15','NASA','1975');
 
 
 INSERT INTO misurazione(nomestrumento, banda)

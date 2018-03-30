@@ -49,7 +49,7 @@
 
 </script>
 
-<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;height: 980px">
+<div style="background: url(/Images/img_sfondo.jpg);background-size: 1300px 1100px;height: 1040px">
     <br><br><br><br><br>
     <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-left: 10%;margin-top: 50px">
 
@@ -123,8 +123,6 @@
 
                     if(request.getParameter("radio")!=null){
 
-                        System.out.println("in if");
-
                         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
                         java.util.Date javaDate = null;
                         try {
@@ -136,12 +134,11 @@
 
                         BeanSatellite.setDataFine((dataFine));
                         BeanSatellite.setMissioneTerminata(Boolean.valueOf(request.getParameter("radio")));
-                        System.out.println(Boolean.valueOf(request.getParameter("radio")));
                         boolean controllo=true;
                         try {
                             BeanSatellite.setDataFine(Date.valueOf(request.getParameter("datafine")));
                             if(!BeanSatellite.ControlloData(Date.valueOf(request.getParameter("datainizio")),Date.valueOf(request.getParameter("datafine")))){
-                                controllo=false;%>
+                                controllo = false;%>
                                  <br><br>
                             <label style="color: red; margin-left: 20px" > <b>Errore inserimento dati!</b> </label>
                             <%}

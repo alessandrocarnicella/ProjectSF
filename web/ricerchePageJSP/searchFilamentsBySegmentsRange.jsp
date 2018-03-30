@@ -38,14 +38,14 @@
         <!--inserimento del primo intero di range-->
         <label style="margin-left: 30px;margin-top: 50px"><b> Inserisci il numero di segmenti minimo (compreso): </b></label>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"   style="margin-left: 30px; width: 50px" >
-            <input class="mdl-textfield__input" type="number"  id="sample3" name="int1" required min="3">
+            <input class="mdl-textfield__input" type="number"  id="sample3" name="int1" required min="3" max="90000">
             <label class="mdl-textfield__label"  for="sample3"></label>
         </div><br><br>
 
         <!--inserimento del secondo intero di range-->
         <label style="margin-left: 30px;margin-top: 50px"><b>Inserisci il numero di segmenti massimo (non compreso):</b></label>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"   style="margin-left: 30px; width: 50px" >
-            <input class="mdl-textfield__input" type="number"  id="sample4" name="int2" required min="3">
+            <input class="mdl-textfield__input" type="number"  id="sample4" name="int2" required min="3" max="90000">
             <label class="mdl-textfield__label" for="sample4"></label>
         </div><br><br>
 
