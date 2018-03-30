@@ -46,8 +46,9 @@ public class BeanSatellite {
     public boolean getMissioneTerminata() {
         return missioneTerminata;
     }
+
     public void setMissioneTerminata(boolean missioneTerminata) {
-        missioneTerminata = missioneTerminata;
+        this.missioneTerminata = missioneTerminata;
     }
 
     public float getDurata() {

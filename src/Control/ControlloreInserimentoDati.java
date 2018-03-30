@@ -4,6 +4,8 @@ import Bean.*;
 import DAO.*;
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 
@@ -39,12 +41,21 @@ public class ControlloreInserimentoDati {
         if (daoSatellite.satelliteAlreadyInserted(beanSatellite)){
             return false;
         }else{
-            if(beanSatellite.getMissioneTerminata() == true) {
+            if(beanSatellite.getMissioneTerminata()) {
+                System.out.println("in true");
                 float durata = ricavaDurata(beanSatellite.getDataInizio(),beanSatellite.getDataFine());
                 beanSatellite.setDurata(durata);
                 return daoSatellite.insertNewSatelliteInDB(beanSatellite);
             }else{
-                beanSatellite.setDataFine(Date.valueOf("0000-00-00"));
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+                java.util.Date javaDate = null;
+                try {
+                    javaDate = sdf.parse("0000/01/01");
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                java.sql.Date dataFine = new java.sql.Date(javaDate.getTime());
+                beanSatellite.setDataFine(dataFine);
                 beanSatellite.setDurata(0);
                 return daoSatellite.insertNewSatelliteInDB(beanSatellite);
             }
@@ -52,9 +63,12 @@ public class ControlloreInserimentoDati {
     }
 
     public float ricavaDurata(Date inizio, Date fine){
-        float differenza = inizio.getTime() - fine.getTime();
+        float differenza = fine.getTime() - inizio.getTime();
+        float days =Float.valueOf((float) Math.ceil(Double.valueOf(differenza/(1000*60*60*24))));
         System.out.println("differenza: "+differenza);
-        return differenza;
+        System.out.println("time fine : "+fine.getTime());
+        System.out.println("time inizio: "+inizio.getTime());
+        return days;
     }
 
     //method
