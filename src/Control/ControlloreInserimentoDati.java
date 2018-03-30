@@ -3,6 +3,7 @@ package Control;
 import Bean.*;
 import DAO.*;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 
@@ -38,10 +39,23 @@ public class ControlloreInserimentoDati {
         if (daoSatellite.satelliteAlreadyInserted(beanSatellite)){
             return false;
         }else{
-            return daoSatellite.insertNewSatelliteInDB(beanSatellite);
+            if(beanSatellite.getMissioneTerminata() == true) {
+                float durata = ricavaDurata(beanSatellite.getDataInizio(),beanSatellite.getDataFine());
+                beanSatellite.setDurata(durata);
+                return daoSatellite.insertNewSatelliteInDB(beanSatellite);
+            }else{
+                beanSatellite.setDataFine(Date.valueOf("0000-00-00"));
+                beanSatellite.setDurata(0);
+                return daoSatellite.insertNewSatelliteInDB(beanSatellite);
+            }
         }
     }
 
+    public float ricavaDurata(Date inizio, Date fine){
+        float differenza = inizio.getTime() - fine.getTime();
+        System.out.println("differenza: "+differenza);
+        return differenza;
+    }
 
     //method
     public boolean insertNewStrumentoFromBean(BeanStrumento beanStrumento){
@@ -101,3 +115,4 @@ public class ControlloreInserimentoDati {
     }
 
 }
+

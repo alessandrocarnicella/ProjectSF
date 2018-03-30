@@ -36,13 +36,14 @@ public class DAOSatellite {
         try {
             conn = this.DataSource.getConnection();
 
-            String query = "INSERT INTO satellite(nome, datainizio, datafine, nomeagenzia) " +
-                    "VALUES (?,?,?,?)";
+            String query = "INSERT INTO satellite(nome, datainizio, datafine, nomeagenzia, durata) " +
+                    "VALUES (?,?,?,?,?)";
             stmt = conn.prepareStatement(query);
             stmt.setString(1,beanSatellite.getNome());
             stmt.setDate(2, beanSatellite.getDataInizio());
             stmt.setDate(3, beanSatellite.getDataFine());
             stmt.setString(4,beanSatellite.getNomeAgenzia());
+            stmt.setFloat(5,beanSatellite.getDurata());
 
             stmt.executeUpdate();
 

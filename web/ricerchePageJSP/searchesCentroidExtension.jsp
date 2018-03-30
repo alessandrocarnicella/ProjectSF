@@ -104,11 +104,11 @@
 
                 <jsp:forward page="/ResultsPagesJSP/resultCentroidExtension.jsp"/>
         <%  }
-        else if (!Objects.equals(request.getParameter("searchbyidfil"), "")){
-            BeanFilamento.setIdFilamento(Integer.valueOf(request.getParameter("searchbyidfil")));
-            BeanFilamento.setNome(null);%>
-            <jsp:forward page="/ResultsPagesJSP/resultCentroidExtension.jsp"/>
-        <%}
+            else if (!Objects.equals(request.getParameter("searchbyidfil"), "")){
+                BeanFilamento.setIdFilamento(Integer.valueOf(request.getParameter("searchbyidfil")));
+                BeanFilamento.setNome(null);%>
+                <jsp:forward page="/ResultsPagesJSP/resultCentroidExtension.jsp"/>
+        <%  }
         else { %>
             <b style="color: red;margin-left: 20px;margin-top: 10px"> Errore: devi inserire un valore per continuare la ricerca! </b>
         <%}

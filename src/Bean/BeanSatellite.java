@@ -11,6 +11,8 @@ public class BeanSatellite {
     private Date dataInizio;
     private Date dataFine;
     private String nomeAgenzia;
+    private boolean missioneTerminata;
+    private float durata;
 
     //getter and setter
     public String getNome() {
@@ -41,6 +43,19 @@ public class BeanSatellite {
         this.nomeAgenzia = nomeAgenzia;
     }
 
+    public boolean getMissioneTerminata() {
+        return missioneTerminata;
+    }
+    public void setMissioneTerminata(boolean missioneTerminata) {
+        missioneTerminata = missioneTerminata;
+    }
+
+    public float getDurata() {
+        return durata;
+    }
+    public void setDurata(float durata) {
+        this.durata = durata;
+    }
 
     //method
     public boolean insertNewSatellite(){
