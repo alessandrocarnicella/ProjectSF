@@ -69,7 +69,7 @@ public class DAOScheletro {
             stmt.setDouble(4, scheletro.getLonG());
             stmt.setDouble(5, scheletro.getLatG());
             stmt.setInt(6, scheletro.getnProg());
-            stmt.setDouble(7, scheletro.getFlussoMisurato());
+            stmt.setFloat(7, scheletro.getFlussoMisurato());
             stmt.executeUpdate();
         } catch (SQLException e) {
             //e.printStackTrace();
@@ -133,7 +133,7 @@ public class DAOScheletro {
             stmt = conn.prepareStatement(insertQuery);
             stmt.setString(1, scheletro.getTipoRamo());
             stmt.setInt(2, scheletro.getnProg());
-            stmt.setDouble(3, scheletro.getFlussoMisurato());
+            stmt.setFloat(3, scheletro.getFlussoMisurato());
             stmt.setInt(4, scheletro.getIdFilamento());
             stmt.setInt(5, scheletro.getIdSegmento());
             stmt.setFloat(6, scheletro.getLonG());

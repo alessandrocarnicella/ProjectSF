@@ -379,7 +379,7 @@ public class ControlloreInserimentoCSV {
                     scheletro.setLonG(Float.valueOf(values.get(3)));
                     scheletro.setLatG(Float.valueOf(values.get(4)));
                     scheletro.setnProg(Integer.valueOf(values.get(5)));
-                    scheletro.setFlussoMisurato(Double.valueOf(values.get(6)));
+                    scheletro.setFlussoMisurato(Float.valueOf(values.get(6)));
 
                     if ( !DAOScheletro.findItemById(scheletro) ){
                         DAOScheletro.insertScheletro(scheletro);
@@ -419,7 +419,7 @@ public class ControlloreInserimentoCSV {
 
 
     //method
-    public boolean inserisciStelle(String nome, String path) {
+    private boolean inserisciStelle(String nome, String path) {
 
         BufferedReader br = null;
         String line = "";
@@ -513,7 +513,7 @@ public class ControlloreInserimentoCSV {
 
 
     //method
-    public void stampaTempo(){
+    private void stampaTempo(){
         System.out.println(Calendar.getInstance().get(Calendar.HOUR_OF_DAY)+":"
                 +Calendar.getInstance().get(Calendar.MINUTE)+":"
                 +Calendar.getInstance().get(Calendar.SECOND));

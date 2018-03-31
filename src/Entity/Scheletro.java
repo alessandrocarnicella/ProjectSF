@@ -8,14 +8,14 @@ public class Scheletro {
     private Float lonG;
     private Float latG;
     private int nProg;
-    private Double flussoMisurato;
+    private Float flussoMisurato;
 
     //default constructor
     public Scheletro() {
     }
 
     //constructor
-    public Scheletro(int idFilamento, int idSegmento, String tipoRamo, Float lonG, Float latG, int nProg, Double flussoMisurato) {
+    public Scheletro(int idFilamento, int idSegmento, String tipoRamo, Float lonG, Float latG, int nProg, Float flussoMisurato) {
         this.idFilamento = idFilamento;
         this.idSegmento = idSegmento;
         this.tipoRamo = tipoRamo;
@@ -69,10 +69,10 @@ public class Scheletro {
         this.nProg = nProg;
     }
 
-    public Double getFlussoMisurato() {
+    public Float getFlussoMisurato() {
         return flussoMisurato;
     }
-    public void setFlussoMisurato(Double flussoMisurato) {
+    public void setFlussoMisurato(Float flussoMisurato) {
         this.flussoMisurato = flussoMisurato;
     }
 

@@ -61,7 +61,8 @@ public class ControlloreInserimentoDati {
         }
     }
 
-    public float ricavaDurata(Date inizio, Date fine){
+    //method
+    private float ricavaDurata(Date inizio, Date fine){
         float differenza = fine.getTime() - inizio.getTime();
         float days =Float.valueOf((float) Math.ceil(Double.valueOf(differenza/(1000*60*60*24))));
         return days;
