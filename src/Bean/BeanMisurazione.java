@@ -7,6 +7,7 @@ public class BeanMisurazione {
 
     private String nomeStrumento;
     private float banda;
+    private String nomeSatellite;
 
     //getter and setter
     public String getNomeStrumento() {
@@ -23,6 +24,13 @@ public class BeanMisurazione {
         this.banda = banda;
     }
 
+    public void setNomeSatellite(String nomeSatellite) {
+        this.nomeSatellite = nomeSatellite;
+    }
+
+    public String getNomeSatellite() {
+        return nomeSatellite;
+    }
 
     //method
     public boolean insertNewMisurazione(){
@@ -32,5 +40,6 @@ public class BeanMisurazione {
         else
             return false;
     }
+
 
 }

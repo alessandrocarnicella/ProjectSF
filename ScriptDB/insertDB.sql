@@ -4,23 +4,23 @@ INSERT INTO agenzia(nome)
     ('NASA');
 
 
-INSERT INTO satellite(nome,datainizio,datafine,nomeagenzia)
+INSERT INTO satellite(nome,datainizio,datafine,nomeagenzia,durata)
   VALUES
     ('Herschel','2009-07-10','2013-06-17','ESA','2895'),
     ('Spitzer','2003-12-18','2009-05-15','NASA','1975');
 
 
-INSERT INTO misurazione(nomestrumento, banda)
+INSERT INTO misurazione(nomestrumento, banda, nomesatellite)
   VALUES
-    ('PACS',70),
-    ('PACS',160),
-    ('SPIRE',250),
-    ('SPIRE',350),
-    ('SPIRE',500),
-    ('IRAC',3.6),
-    ('IRAC',5.8),
-    ('IRAC',8.0),
-    ('MIPS',24);
+    ('PACS', 70, 'Herschel' ),
+    ('PACS', 160, 'Herschel'),
+    ('SPIRE', 250, 'Herschel'),
+    ('SPIRE', 350, 'Herschel'),
+    ('SPIRE', 500, 'Herschel'),
+    ('IRAC', 3.6, 'Spitzer'),
+    ('IRAC', 5.8, 'Spitzer'),
+    ('IRAC', 8.0, 'Spitzer'),
+    ('MIPS', 24, 'Spitzer');
 
 
 INSERT INTO banda(lunghezza)

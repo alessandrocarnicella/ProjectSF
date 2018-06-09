@@ -34,11 +34,12 @@ public class DAOMisurazione {
 
             conn = this.DataSource.getConnection();
 
-            String query = "INSERT INTO misurazione(nomestrumento, banda) " +
-                    "VALUES (?,?)";
+            String query = "INSERT INTO misurazione(nomestrumento, banda, nomesatellite) " +
+                    "VALUES (?,?,?)";
             stmt = conn.prepareStatement(query);
             stmt.setString(1,beanMisurazione.getNomeStrumento());
             stmt.setFloat(2,beanMisurazione.getBanda());
+            stmt.setString(3,beanMisurazione.getNomeSatellite());
             stmt.executeUpdate();
 
         } catch (SQLException | ClassNotFoundException e) {

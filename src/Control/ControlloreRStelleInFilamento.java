@@ -89,11 +89,14 @@ public class ControlloreRStelleInFilamento {
 
 
     //method
-    private void arrayContorni( ArrayList<String> strContorno,ArrayList<Punto> puntiContorno){
+    private void arrayContorni(ArrayList<String> strContorno, ArrayList<Punto> puntiContorno) {
+
+
+
         int j = 0;
-        while (j<strContorno.size()){
-            Punto puntoContorno=new Punto(Float.valueOf(strContorno.get(j)),Float.valueOf(strContorno.get(j+1)));
-            j=j+2;
+        while (j < strContorno.size()) {
+            Punto puntoContorno = new Punto(Float.valueOf(strContorno.get(j)), Float.valueOf(strContorno.get(j + 1)));
+            j = j + 2;
             puntiContorno.add(puntoContorno);
         }
     }
@@ -109,7 +112,7 @@ public class ControlloreRStelleInFilamento {
         }
     }
 
-
+    //method
     private void foundStars(Stella s){
 
         stelleTrovate++;

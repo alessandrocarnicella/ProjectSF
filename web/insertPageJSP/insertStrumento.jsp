@@ -83,8 +83,10 @@
                     BeanStrumento.setNome(request.getParameter("nomestrumento"));
 
                     BeanBanda.setLunghezza(Float.valueOf(request.getParameter("lunghezzabanda")));
+
                     BeanMisurazione.setNomeStrumento(request.getParameter("nomestrumento"));
                     BeanMisurazione.setBanda(Float.valueOf(request.getParameter("lunghezzabanda")));
+                    BeanMisurazione.setNomeSatellite(request.getParameter("selectsatellite"));
                     if(BeanStrumento.insertNewStrumento()&&BeanBanda.insertNewBanda()&&BeanMisurazione.insertNewMisurazione()){ %>
             <jsp:forward page="/ResultsPagesJSP/resultCorrectInsert.jsp"/>
             <%} else {%>
