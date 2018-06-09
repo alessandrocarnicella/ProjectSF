@@ -49,7 +49,8 @@ public class ControlloreRStelleRegione {
         int j = 0;
         Double result = 0.0;
         int num = 0;
-
+        stelleTrovate = 0;
+        stelleNonTrovate = 0;
 
         while (i < strStelle.size()){
             Stella Stella = new Stella(Integer.valueOf(strStelle.get(i)),String.valueOf(strStelle.get(i+1)),Float.valueOf(strStelle.get(i+2)), Float.valueOf(strStelle.get(i+3)),Float.valueOf(strStelle.get(i+4)),strStelle.get(i+5));
